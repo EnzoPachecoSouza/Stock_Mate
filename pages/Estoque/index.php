@@ -90,7 +90,7 @@
     <!----------------------->
 
     <!-- EDITAR PRODUTO -->
-    <div class="modal">
+    <!-- <div class="modal">
         <div class="modal-box">
             <form class="container" action="">
                 <div class="row">
@@ -122,39 +122,20 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
     <!----------------------->
 
     <!-- DESATIVAR PRODUTO -->
     <!-- <div class="modal">
         <div class="modal-box">
             <form class="container" action="">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label class="form-label" for="produto">Produto</label>
-                        <input class="form-control" type="text" id="produto" name="produto">
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label" for="tipo">Tipo</label>
-                        <select class="form-control" id="tipo" name="tipo"></select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <label class="form-label" for="estoque-minimo">Estoque mínimo</label>
-                        <input class="form-control" type="number" id="estoque-minimo" name="estoque-minimo">
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label" for="estoque-maximo">Estoque máximo</label>
-                        <input class="form-control" type="number" id="estoque-maximo" name="estoque-maximo">
-                    </div>
-                </div>
-
                 <div class="d-flex justify-content-center align-items-center">
-                    <button class="btn btn-outline-primary">Criar produto</button>
+                    <h4>Deseja desativar esse produto?</h4>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center gap-3">
+                    <button class="btn btn-outline-success">Sim</button>
+                    <button class="btn btn-outline-danger">Não</button>
                 </div>
             </form>
         </div>
