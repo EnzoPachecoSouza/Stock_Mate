@@ -53,13 +53,139 @@
         </div>
     </div>
 
-    <?php
-    // require './Components/cadastrar_produto.php'
-    // require './Components/editar_produto.php'
-    // require './Components/excluir_produto.php'
-    // require './Components/entrada_produto.php'
-        // >> FAZER MODAL DE SAÍDA <<
-    ?>
+    <!-- CADASTRAR PRODUTO -->
+    
+        <div class="modal-box">
+            <form class="container" action="">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label" for="produto">Produto</label>
+                        <input class="form-control" type="text" id="produto" name="produto">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="tipo">Tipo</label>
+                        <select class="form-control" id="tipo" name="tipo"></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label" for="estoque-minimo">Estoque mínimo</label>
+                        <input class="form-control" type="number" id="estoque-minimo" name="estoque-minimo">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="estoque-maximo">Estoque máximo</label>
+                        <input class="form-control" type="number" id="estoque-maximo" name="estoque-maximo">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center">
+                    <button class="btn btn-outline-primary">Criar produto</button>
+                </div>
+            </form>
+        </div>
+    </div> -->
+    <!----------------------->
+
+    <!-- EDITAR PRODUTO -->
+    <!-- <div class="modal">
+        <div class="modal-box">
+            <form class="container" action="">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label" for="produto">Produto</label>
+                        <input class="form-control" type="text" id="produto" name="produto">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="tipo">Tipo</label>
+                        <select class="form-control" id="tipo" name="tipo"></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label" for="estoque-minimo">Estoque mínimo</label>
+                        <input class="form-control" type="number" id="estoque-minimo" name="estoque-minimo">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="estoque-maximo">Estoque máximo</label>
+                        <input class="form-control" type="number" id="estoque-maximo" name="estoque-maximo">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center">
+                    <button class="btn btn-outline-primary">Editar produto</button>
+                </div>
+            </form>
+        </div>
+    </div> -->
+    <!----------------------->
+
+    <!-- DESATIVAR PRODUTO -->
+    <!-- <div class="modal">
+        <div class="modal-box">
+            <form class="container" action="">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label" for="produto">Produto</label>
+                        <input class="form-control" type="text" id="produto" name="produto">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="tipo">Tipo</label>
+                        <select class="form-control" id="tipo" name="tipo"></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label class="form-label" for="estoque-minimo">Estoque mínimo</label>
+                        <input class="form-control" type="number" id="estoque-minimo" name="estoque-minimo">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label" for="estoque-maximo">Estoque máximo</label>
+                        <input class="form-control" type="number" id="estoque-maximo" name="estoque-maximo">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center">
+                    <button class="btn btn-outline-primary">Criar produto</button>
+                </div>
+            </form>
+        </div>
+    </div> -->
+    <!----------------------->
+
+    <!-- CADASTRAR PRODUTO -->
+    <!-- <div class="modal">
+        <div class="modal-box">
+            <form class="container" action="">
+
+            </form>
+        </div>
+    </div> -->
+    <!----------------------->
+
+    <!-- CADASTRAR PRODUTO -->
+    <!-- <div class="modal">
+        <div class="modal-box">
+            <form class="container" action="">
+
+            </form>
+        </div>
+    </div> -->
+    <!----------------------->
+
+
+
+
+
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
