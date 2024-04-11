@@ -253,11 +253,32 @@
     </div> -->
     <!----------------------->
 
+    <!-- VER MAIS DETALHES -->
+    <!-- <div class="modal">
+        <div class="modal-box">
+            <table>
+                <tr>
+                    <th>Entrada</th>
+                    <th>Quantidade</th>
+                    <th>Fornecedor</th>
+                    <th>Saída</th>
+                    <th>Quantidade</th>
+                    <th>Cliente</th>
+                </tr> -->
 
+    <!-- <tr>
+        <th>DATA DA ENTRADA</th>
+        <th>QUANTIDADE (ENTRADA)</th>
+        <th>NOME DO FORNECEDOR</th>
+        <th>DATA DA SAÍDA</th>
+        <th>QUANTIDADE (SAIDA)</th>
+        <th>NOME DO CLIENTE</th>
+    </tr> -->
 
-
-
-
+    <!-- </table>
+        </div>
+    </div> -->
+    <!----------------------->
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
