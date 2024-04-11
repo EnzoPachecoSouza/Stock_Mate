@@ -13,8 +13,11 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <!-- CSS -->
+    <!-- Custom Style -->
     <link rel="stylesheet" href="../../styles/custom.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
@@ -28,21 +31,21 @@
                 <div class="col-6">
                     <ul class="nav justify-content-center align-items-center">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">Colaboradores</a>
+                            <a class="nav-link text-white" href="#">Colaboradores</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">Estoque</a>
+                            <a class="nav-link text-white" href="#">Estoque</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">Relatórios</a>
+                            <a class="nav-link text-white" href="#">Relatórios</a>
                         </li>
                     </ul>
                 </div>
 
                 <div class="col-3 text-end">
-                    <button class="btn btn-lg">Sair</button>
+                    <button class="btn btn-lg text-secondary">Sair</button>
                 </div>
             </div>
         </div>
@@ -57,7 +60,7 @@
     </div>
 
     <!-- CADASTRAR PRODUTO -->
-    <!-- <div class="modal">
+    <div class="modal">
         <div class="modal-box">
             <form class="container" action="">
                 <div class="row">
@@ -89,7 +92,7 @@
                 </div>
             </form>
         </div>
-    </div> -->
+    </div>
     <!----------------------->
 
     <!-- EDITAR PRODUTO -->
