@@ -145,7 +145,7 @@
     </div> -->
     <!----------------------->
 
-    <!-- CADASTRAR PRODUTO -->
+    <!-- ENTRADA PRODUTO -->
     <!-- <div class="modal">
         <div class="modal-box">
             <form class="container" action="">
@@ -158,8 +158,8 @@
                     <div class="col-md-4"></div>
 
                     <div class="col-md-4">
-                        <label class="form-label" for="data-entrega">Data da entrega</label>
-                        <input class="form-control" type="date" id="data-entrega" name="data-entrega">
+                        <label class="form-label" for="data-entrada">Data da entrada</label>
+                        <input class="form-control" type="date" id="data-entrada" name="data-entrada">
                     </div>
                 </div>
 
@@ -196,8 +196,55 @@
     </div> -->
     <!----------------------->
 
-    <!-- CADASTRAR PRODUTO -->
+    <!-- SAÍDA PRODUTO -->
     <!-- <div class="modal">
+        <div class="modal-box">
+            <form class="container" action="">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="form-label" for="ciente">Cliente</label>
+                        <input class="form-control" type="text" id="ciente" name="ciente">
+                    </div>
+
+                    <div class="col-md-4"></div>
+
+                    <div class="col-md-4">
+                        <label class="form-label" for="data-saida">Data da saída</label>
+                        <input class="form-control" type="date" id="data-saida" name="data-saida">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <label class="form-label" for="valor-total">Valor total</label>
+                        <input class="form-control" type="number" id="valor-total" name="valor-total">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label" for="forma-pagamento">Forma de pagamento</label>
+                        <select class="form-control" id="forma-pagamento" name="forma-pagamento"></select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label" for="data-pagamento">Data do pagamento</label>
+                        <input class="form-control" type="date" id="data-pagamento" name="data-pagamento">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-center align-items-center">
+                    <i class="bi bi-plus-circle-fill"></i>
+                </div> -->
+
+    <!------------>
+    <!-- TABELA -->
+    <!------------>
+
+    <!-- <div class="d-flex justify-content-center align-items-center">
+                    <button class="btn btn-outline-primary">Registrar Saída</button>
+                </div>
+            </form>
+        </div>
+    </div>
         <div class="modal-box">
             <form class="container" action="">
 
