@@ -1,0 +1,36 @@
+# # # # #
+A ideia é fazer os modais utilizando componentização para deixar o código mais limpo e mais fácil de fazer alterações,
+porém ainda não consegui pensar em um jeito efetivo de fazer isso.
+
+- P. Marcelino
+# # # # #
+
+
+
+1. Listar os selects dos modais
+    >> Cadastrar produto
+        >> Tipo
+    >> Editar produto
+        >> Tipo
+    >> Entrada
+        >> Forma de pagamento
+    >> Saída
+        >> Forma de pagamento
+
+
+
+2. Colocar tabela no modal REGISTRAR ENTRADA.
+
+
+
+3. Arrumar estilização dos componentes
+    Provavelmente vou incluir 'Sass' e alterar a raiz das variáveis do bootstrap para alterar as cores
+    - P. Marcelino
+
+
+
+4. Mapear o '<tr>' da tabela no modal 'ver mais detalhes'
+
+
+
+5. Colocar botão de fechar modal (em todos)
