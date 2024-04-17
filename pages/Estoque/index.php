@@ -76,9 +76,9 @@
             <!-- DADOS ESTÁTICOS PARA MAPEAMENTO DA TABELA DE PRODUTOS EM ESTOQUE -->
             <?php
             $produtos = [
-                ["id" => 1, "nome" => "Coca-Cola", "tipo" => "Refrigerante", "quantidade" => 12],
-                ["id" => 2, "nome" => "Trakinas", "tipo" => "Bolacha", "quantidade" => 8],
-                ["id" => 3, "nome" => "Tang", "tipo" => "Suco", "quantidade" => 25],
+                ["id" => 1, "nome" => "Coca-Cola", "tipo" => "Refrigerante", "quantidade" => 12, "minimo" => 10, "maximo" => 30],
+                ["id" => 2, "nome" => "Trakinas", "tipo" => "Bolacha", "quantidade" => 8, "minimo" => 10, "maximo" => 30],
+                ["id" => 3, "nome" => "Tang", "tipo" => "Suco", "quantidade" => 25, "minimo" => 10, "maximo" => 30],
             ]
                 ?>
             <!------->
@@ -96,10 +96,12 @@
                         <td>
                             <?php echo $produto["tipo"]; ?>
                         </td>
+
+                        <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" -->
                         <td 
-                            <?php if ($produto["quantidade"] < 10) { ?>
+                            <?php if ($produto["quantidade"] < $produto["minimo"]) { ?>
                                 style="background-color: red" 
-                            <?php } else if ($produto["quantidade"] < 20) { ?>
+                            <?php } else if ($produto["quantidade"] < (($produto["minimo"] + $produto["maximo"]) / 2)) { ?>
                                 style="background-color: yellow" 
                             <?php } else {?>
                                 style="background-color: green" 
@@ -107,6 +109,7 @@
                         >
                             <?php echo $produto["quantidade"]; ?>
                         </td>
+                        <!------->
 
                         <td><i class="bi bi-eye-fill"></i></td>
                         <td><i class="bi bi-pencil-square"></i></td>
