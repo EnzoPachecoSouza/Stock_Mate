@@ -73,6 +73,7 @@
                 </tr>
             </thead>
 
+            <!-- DADOS ESTÁTICOS PARA MAPEAMENTO DA TABELA DE PRODUTOS EM ESTOQUE -->
             <?php
             $produtos = [
                 ["id" => 1, "nome" => "Coca-Cola", "tipo" => "Refrigerante", "quantidade" => 12],
@@ -80,17 +81,24 @@
                 ["id" => 3, "nome" => "Tang", "tipo" => "Suco", "quantidade" => 25],
             ]
                 ?>
+            <!------->
 
+            <!-- TABELA MAPEADA -->
             <tbody>
                 <?php foreach ($produtos as $produto) { ?>
                     <tr>
                         <th scope="row">
                             <?php echo $produto["id"]; ?>
                         </th>
-                        
-                        <td><?php echo $produto["nome"]; ?></td>
-                        <td><?php echo $produto["tipo"]; ?></td>
-                        <td><?php echo $produto["quantidade"]; ?></td>
+                        <td>
+                            <?php echo $produto["nome"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $produto["tipo"]; ?>
+                        </td>
+                        <td <?php if ($produto["quantidade"] < 10) { ?> style="bg-primary" <?php } ?>>
+                            <?php echo $produto["quantidade"]; ?>
+                        </td>
 
                         <td><i class="bi bi-eye-fill"></i></td>
                         <td><i class="bi bi-pencil-square"></i></td>
@@ -98,6 +106,8 @@
                     </tr>
                 <?php } ?>
             </tbody>
+            <!------->
+
         </table>
     </div>
 
