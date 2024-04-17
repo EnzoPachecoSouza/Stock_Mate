@@ -72,35 +72,27 @@
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Coca-Cola</td>
-                    <td>Refrigerante</td>
-                    <td>12</td>
-                    <td><i class="bi bi-eye-fill"></i></td>
-                    <td><i class="bi bi-pencil-square"></i></td>
-                    <td><i class="bi bi-x-circle-fill"></i></td>
 
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Trakinas</td>
-                    <td>Bolacha</td>
-                    <td>8</td>
-                    <td><i class="bi bi-eye-fill"></i></td>
-                    <td><i class="bi bi-pencil-square"></i></td>
-                    <td><i class="bi bi-x-circle-fill"></i></td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Tang</td>
-                    <td>Suco</td>
-                    <td>25</td>
-                    <td><i class="bi bi-eye-fill"></i></td>
-                    <td><i class="bi bi-pencil-square"></i></td>
-                    <td><i class="bi bi-x-circle-fill"></i></td>
-                </tr>
+            <?php
+            $produtos = [
+                ["nome" => "Coca-Cola", "tipo" => "Refrigerante", "quantidade" => 12],
+                ["nome" => "Trakinas", "tipo" => "Bolacha", "quantidade" => 8],
+                ["nome" => "Tang", "tipo" => "Suco", "quantidade" => 25],
+            ]
+                ?>
+
+            <tbody>
+                <?php foreach ($produtos as $key => $produto) { ?>
+                    <tr>
+                        <th scope="row"><?php echo $key + 1; ?></th>
+                        <td><?php echo $produto["nome"]; ?></td>
+                        <td><?php echo $produto["tipo"]; ?></td>
+                        <td><?php echo $produto["quantidade"]; ?></td>
+                        <td><i class="bi bi-eye-fill"></i></td>
+                        <td><i class="bi bi-pencil-square"></i></td>
+                        <td><i class="bi bi-x-circle-fill"></i></td>
+                    </tr>
+                <?php } ?>
             </tbody>
         </table>
     </div>
