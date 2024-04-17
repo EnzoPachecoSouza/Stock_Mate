@@ -15,7 +15,7 @@
 
     <!-- Custom Style -->
     <link rel="stylesheet" href="../../styles/custom.css">
-    
+
     <!-- Style -->
     <link rel="stylesheet" href="./styles.css">
 </head>
@@ -59,8 +59,54 @@
         </div>
     </div>
 
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">PRODUTO</th>
+                    <th scope="col">TIPO</th>
+                    <th scope="col">QUANTIDADE</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Coca-Cola</td>
+                    <td>Refrigerante</td>
+                    <td>12</td>
+                    <td><i class="bi bi-eye-fill"></i></td>
+                    <td><i class="bi bi-pencil-square"></i></td>
+                    <td><i class="bi bi-x-circle-fill"></i></td>
+
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Trakinas</td>
+                    <td>Bolacha</td>
+                    <td>8</td>
+                    <td><i class="bi bi-eye-fill"></i></td>
+                    <td><i class="bi bi-pencil-square"></i></td>
+                    <td><i class="bi bi-x-circle-fill"></i></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Tang</td>
+                    <td>Suco</td>
+                    <td>25</td>
+                    <td><i class="bi bi-eye-fill"></i></td>
+                    <td><i class="bi bi-pencil-square"></i></td>
+                    <td><i class="bi bi-x-circle-fill"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
     <!-- CADASTRAR PRODUTO -->
-    <div class="modal">
+    <!-- <div class="modal">
         <div class="modal-box">
             <form class="container" action="">
                 <div class="row">
@@ -92,7 +138,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
     <!----------------------->
 
     <!-- EDITAR PRODUTO -->
