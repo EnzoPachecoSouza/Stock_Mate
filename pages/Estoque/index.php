@@ -75,19 +75,23 @@
 
             <?php
             $produtos = [
-                ["nome" => "Coca-Cola", "tipo" => "Refrigerante", "quantidade" => 12],
-                ["nome" => "Trakinas", "tipo" => "Bolacha", "quantidade" => 8],
-                ["nome" => "Tang", "tipo" => "Suco", "quantidade" => 25],
+                ["id" => 1, "nome" => "Coca-Cola", "tipo" => "Refrigerante", "quantidade" => 12],
+                ["id" => 2, "nome" => "Trakinas", "tipo" => "Bolacha", "quantidade" => 8],
+                ["id" => 3, "nome" => "Tang", "tipo" => "Suco", "quantidade" => 25],
             ]
                 ?>
 
             <tbody>
-                <?php foreach ($produtos as $key => $produto) { ?>
+                <?php foreach ($produtos as $produto) { ?>
                     <tr>
-                        <th scope="row"><?php echo $key + 1; ?></th>
+                        <th scope="row">
+                            <?php echo $produto["id"]; ?>
+                        </th>
+                        
                         <td><?php echo $produto["nome"]; ?></td>
                         <td><?php echo $produto["tipo"]; ?></td>
                         <td><?php echo $produto["quantidade"]; ?></td>
+
                         <td><i class="bi bi-eye-fill"></i></td>
                         <td><i class="bi bi-pencil-square"></i></td>
                         <td><i class="bi bi-x-circle-fill"></i></td>
