@@ -96,7 +96,15 @@
                         <td>
                             <?php echo $produto["tipo"]; ?>
                         </td>
-                        <td <?php if ($produto["quantidade"] < 10) { ?> style="bg-primary" <?php } ?>>
+                        <td 
+                            <?php if ($produto["quantidade"] < 10) { ?>
+                                style="background-color: red" 
+                            <?php } else if ($produto["quantidade"] < 20) { ?>
+                                style="background-color: yellow" 
+                            <?php } else {?>
+                                style="background-color: green" 
+                            <?php } ?>
+                        >
                             <?php echo $produto["quantidade"]; ?>
                         </td>
 
