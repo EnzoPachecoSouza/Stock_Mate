@@ -60,8 +60,9 @@
     </div>
 
     <div class="container">
-        <table class="table">
-            <thead>
+        <table class="table table-hover table-bordered">
+            <caption class="caption-top">LEGENDA DA TABELA</caption>
+            <thead class="table-active">
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">PRODUTO</th>
@@ -84,7 +85,7 @@
             <!------->
 
             <!-- TABELA MAPEADA -->
-            <tbody>
+            <tbody class="table-group-divider">
                 <?php foreach ($produtos as $produto) { ?>
                     <tr>
                         <th scope="row">
