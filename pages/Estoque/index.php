@@ -21,15 +21,20 @@
 </head>
 
 <body>
+    <!-- NAVBAR -->
     <div class="container-fluid bg-primary">
         <div class="container">
-            <div class="row">
+            <div class="row d-flex align-items-center py-3">
+
+                <!-- LOGO -->
                 <div class="col-3">
                     <img src="" alt="[Logo] Stock Mate">
                 </div>
+                <!------->
 
+                <!-- NAVIGATION -->
                 <div class="col-6">
-                    <ul class="nav justify-content-center align-items-center">
+                    <ul class="nav justify-content-center">
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">Colaboradores</a>
                         </li>
@@ -43,13 +48,17 @@
                         </li>
                     </ul>
                 </div>
+                <!------->
 
+                <!-- SAIR -->
                 <div class="col-3 text-end">
                     <button class="btn btn-lg text-secondary">Sair</button>
                 </div>
+                <!------->
             </div>
         </div>
     </div>
+    <!------->
 
     <div class="container mt-5">
         <div class="d-flex justify-content-center align-items-center gap-3">
@@ -59,7 +68,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container d-flex justify-content-center">
         <table class="table table-hover table-bordered">
             <caption class="caption-top">LEGENDA DA TABELA</caption>
             <thead class="table-active">
@@ -74,18 +83,19 @@
                 </tr>
             </thead>
 
-            <!-- DADOS ESTÁTICOS PARA MAPEAMENTO DA TABELA DE PRODUTOS EM ESTOQUE -->
-            <?php
-            $produtos = [
-                ["id" => 1, "nome" => "Coca-Cola", "tipo" => "Refrigerante", "quantidade" => 12, "minimo" => 10, "maximo" => 30],
-                ["id" => 2, "nome" => "Trakinas", "tipo" => "Bolacha", "quantidade" => 8, "minimo" => 10, "maximo" => 30],
-                ["id" => 3, "nome" => "Tang", "tipo" => "Suco", "quantidade" => 25, "minimo" => 10, "maximo" => 30],
-            ]
-                ?>
-            <!------->
-
-            <!-- TABELA MAPEADA -->
             <tbody class="table-group-divider">
+
+                <!-- DADOS ESTÁTICOS PARA MAPEAMENTO DA TABELA DE PRODUTOS EM ESTOQUE -->
+                <?php
+                $produtos = [
+                    ["id" => 1, "nome" => "Coca-Cola", "tipo" => "Refrigerante", "quantidade" => 12, "minimo" => 10, "maximo" => 30],
+                    ["id" => 2, "nome" => "Trakinas", "tipo" => "Bolacha", "quantidade" => 8, "minimo" => 10, "maximo" => 30],
+                    ["id" => 3, "nome" => "Tang", "tipo" => "Suco", "quantidade" => 25, "minimo" => 10, "maximo" => 30],
+                ]
+                ?>
+                <!------->
+
+                <!-- TABELA MAPEADA -->
                 <?php foreach ($produtos as $produto) { ?>
                     <tr>
                         <th scope="row">
@@ -98,8 +108,8 @@
                             <?php echo $produto["tipo"]; ?>
                         </td>
 
-                        <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" -->
-                        <td 
+                        <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
+                        <td
                             <?php if ($produto["quantidade"] < $produto["minimo"]) { ?>
                                 style="background-color: red" 
                             <?php } else if ($produto["quantidade"] < (($produto["minimo"] + $produto["maximo"]) / 2)) { ?>
@@ -112,13 +122,13 @@
                         </td>
                         <!------->
 
-                        <td><i class="bi bi-eye-fill"></i></td>
-                        <td><i class="bi bi-pencil-square"></i></td>
-                        <td><i class="bi bi-x-circle-fill"></i></td>
-                    </tr>
+                    <td><i class="bi bi-eye-fill"></i></td>
+                    <td><i class="bi bi-pencil-square"></i></td>
+                    <td><i class="bi bi-x-circle-fill"></i></td>
+                </tr>
                 <?php } ?>
+                <!------->
             </tbody>
-            <!------->
 
         </table>
     </div>
