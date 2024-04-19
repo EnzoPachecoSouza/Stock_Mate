@@ -59,16 +59,14 @@
         </div>
     </div>
     <!------->
-
-    <div class="container mt-5">
-        <div class="d-flex justify-content-center align-items-center gap-3">
+        
+    <div class="container d-flex flex-column justify-content-center mt-5">
+        <div class="d-flex justify-content-center align-items-center gap-3" style="position: relative">
             <button class="btn btn-lg btn-primary">Entrada</button>
             <button class="btn btn-lg btn-primary">Saída</button>
-            <button class="btn btn-lg btn-primary">Criar</button>
+            <button class="btn btn-lg btn-primary" style="position: absolute; top: 0; right: 0"><i class="bi bi-plus-lg"></i></button>
         </div>
-    </div>
 
-    <div class="container d-flex justify-content-center">
         <table class="table table-hover table-bordered">
             <caption class="caption-top">LEGENDA DA TABELA</caption>
             <thead class="table-active">
