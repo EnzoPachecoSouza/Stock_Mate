@@ -59,17 +59,14 @@
         </div>
     </div>
     <!------->
-        
+
     <div class="container d-flex flex-column justify-content-center mt-5">
         <div class="d-flex justify-content-center align-items-center gap-3" style="position: relative">
             <button class="btn btn-lg btn-primary">Entrada</button>
             <button class="btn btn-lg btn-primary">Saída</button>
 
             <!-- BOTÃO DE CRIAR PRODUTO -->
-            <button 
-                type="button"
-                class="btn btn-primary rounded-circle"
-                style="position: absolute; top: 0; right: 0"
+            <button type="button" class="btn btn-primary rounded-circle" style="position: absolute; top: 0; right: 0"
                 data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="bi bi-plus-lg"></i>
             </button>
@@ -97,7 +94,7 @@
                     ["id" => 2, "nome" => "Trakinas", "tipo" => "Bolacha", "quantidade" => 8, "minimo" => 10, "maximo" => 30],
                     ["id" => 3, "nome" => "Tang", "tipo" => "Suco", "quantidade" => 25, "minimo" => 10, "maximo" => 30],
                 ]
-                ?>
+                    ?>
                 <!------->
 
                 <!-- TABELA MAPEADA -->
@@ -114,16 +111,8 @@
                         </td>
 
                         <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
-                        <td
-                            <?php if ($produto["quantidade"] < $produto["minimo"]) { ?>
-                                style="background-color: red" 
-                            <?php } else if ($produto["quantidade"] < (($produto["minimo"] + $produto["maximo"]) / 2)) { ?>
-                                style="background-color: yellow" 
-                            <?php } else {?>
-                                style="background-color: green" 
-                            <?php } ?>
-                        >
-                            <?php echo $produto["quantidade"]; ?>
+                        <td> <!-- COLOCAR CODIGO DO NOTES AQUI -->
+                            <h4 class="text-center"><?php echo $produto["quantidade"]; ?></h4>
                         </td>
                         <!------->
 
