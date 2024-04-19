@@ -64,7 +64,16 @@
         <div class="d-flex justify-content-center align-items-center gap-3" style="position: relative">
             <button class="btn btn-lg btn-primary">Entrada</button>
             <button class="btn btn-lg btn-primary">Saída</button>
-            <button class="btn btn-lg btn-primary" style="position: absolute; top: 0; right: 0"><i class="bi bi-plus-lg"></i></button>
+
+            <!-- BOTÃO DE CRIAR PRODUTO -->
+            <button 
+                type="button"
+                class="btn btn-primary rounded-circle"
+                style="position: absolute; top: 0; right: 0"
+                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <i class="bi bi-plus-lg"></i>
+            </button>
+            <!------->
         </div>
 
         <table class="table table-hover table-bordered">
@@ -75,8 +84,6 @@
                     <th scope="col">PRODUTO</th>
                     <th scope="col">TIPO</th>
                     <th scope="col">QUANTIDADE</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -120,9 +127,11 @@
                         </td>
                         <!------->
 
-                    <td><i class="bi bi-eye-fill"></i></td>
-                    <td><i class="bi bi-pencil-square"></i></td>
-                    <td><i class="bi bi-x-circle-fill"></i></td>
+                    <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
+                        <i class="bi bi-eye-fill"></i>
+                        <i class="bi bi-pencil-square"></i>
+                        <i class="bi bi-x-circle-fill"></i>
+                    </td>
                 </tr>
                 <?php } ?>
                 <!------->
