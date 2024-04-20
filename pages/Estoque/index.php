@@ -127,7 +127,10 @@
 
                     <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
                         <!-- BOTÃO VISUALIZAR DETALHES -->
-                            <i class="bi bi-eye-fill"></i>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#visualizarDetalhesProdutoModal">
+                                <i class="bi bi-eye-fill"></i>
+                            </button>
                             <!------->
 
                         <!-- BOTÃO EDITAR PRODUTO -->
@@ -389,30 +392,37 @@
     <!----------------------->
 
     <!-- VER MAIS DETALHES -->
-    <!-- <div class="modal">
-        <div class="modal-box">
-            <table>
-                <tr>
-                    <th>Entrada</th>
-                    <th>Quantidade</th>
-                    <th>Fornecedor</th>
-                    <th>Saída</th>
-                    <th>Quantidade</th>
-                    <th>Cliente</th>
-                </tr> -->
-
-    <!-- <tr>
-        <th>DATA DA ENTRADA</th>
-        <th>QUANTIDADE (ENTRADA)</th>
-        <th>NOME DO FORNECEDOR</th>
-        <th>DATA DA SAÍDA</th>
-        <th>QUANTIDADE (SAIDA)</th>
-        <th>NOME DO CLIENTE</th>
-    </tr> -->
-
-    <!-- </table>
+    <div class="modal fade" id="visualizarDetalhesProdutoModal" tabindex="-1"
+        aria-labelledby="visualizarDetalhesProdutoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="visualizarDetalhesProdutoModalLabel">Desativar Produto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <th>Entrada</th>
+                            <th>Quantidade</th>
+                            <th>Fornecedor</th>
+                            <th>Saída</th>
+                            <th>Quantidade</th>
+                            <th>Cliente</th>
+                        </tr>
+                        <tr>
+                            <th>DATA DA ENTRADA</th>
+                            <th>QUANTIDADE (ENTRADA)</th>
+                            <th>NOME DO FORNECEDOR</th>
+                            <th>DATA DA SAÍDA</th>
+                            <th>QUANTIDADE (SAIDA)</th>
+                            <th>NOME DO CLIENTE</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
-    </div> -->
+    </div>
     <!----------------------->
 
     <!-- Bootstrap JS -->
