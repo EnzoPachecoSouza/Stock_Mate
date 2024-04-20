@@ -68,7 +68,11 @@
             </button>
             <!------->
 
-            <button class="btn btn-lg btn-primary">Saída</button>
+            <!-- BOTÃO DE REGISTRAR ENTRADA DE PRODUTO -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#saidaProdutoModal">
+                Saída
+            </button>
+            <!------->
 
             <!-- BOTÃO DE CRIAR PRODUTO -->
             <button type="button" class="btn btn-primary rounded-circle" style="position: absolute; top: 0; right: 0"
@@ -325,60 +329,63 @@
     <!----------------------->
 
     <!-- SAÍDA PRODUTO -->
-    <!-- <div class="modal">
-        <div class="modal-box">
-            <form class="container" action="">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="form-label" for="ciente">Cliente</label>
-                        <input class="form-control" type="text" id="ciente" name="ciente">
-                    </div>
-
-                    <div class="col-md-4"></div>
-
-                    <div class="col-md-4">
-                        <label class="form-label" for="data-saida">Data da saída</label>
-                        <input class="form-control" type="date" id="data-saida" name="data-saida">
-                    </div>
+    <div class="modal fade" id="saidaProdutoModal" tabindex="-1" aria-labelledby="saidaProdutoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="saidaProdutoModalLabel">Saída de Produto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="modal-body">
+                    <form class="container" action="">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label" for="ciente">Cliente</label>
+                                <input class="form-control" type="text" id="ciente" name="ciente">
+                            </div>
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="form-label" for="valor-total">Valor total</label>
-                        <input class="form-control" type="number" id="valor-total" name="valor-total">
-                    </div>
+                            <div class="col-md-4"></div>
 
-                    <div class="col-md-4">
-                        <label class="form-label" for="forma-pagamento">Forma de pagamento</label>
-                        <select class="form-control" id="forma-pagamento" name="forma-pagamento"></select>
-                    </div>
+                            <div class="col-md-4">
+                                <label class="form-label" for="data-saida">Data da saída</label>
+                                <input class="form-control" type="date" id="data-saida" name="data-saida">
+                            </div>
+                        </div>
 
-                    <div class="col-md-4">
-                        <label class="form-label" for="data-pagamento">Data do pagamento</label>
-                        <input class="form-control" type="date" id="data-pagamento" name="data-pagamento">
-                    </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label" for="valor-total">Valor total</label>
+                                <input class="form-control" type="number" id="valor-total" name="valor-total">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label" for="forma-pagamento">Forma pagamento</label>
+                                <select class="form-control" id="forma-pagamento" name="forma-pagamento"></select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label" for="data-pagamento">Data pagamento</label>
+                                <input class="form-control" type="date" id="data-pagamento" name="data-pagamento">
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <i class="bi bi-plus-circle-fill"></i>
+                        </div>
+
+                        <!------------>
+                        <!-- TABELA -->
+                        <!------------>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button class="btn btn-outline-primary">Registrar Saída</button>
+                        </div>
+                    </form>
                 </div>
-
-                <div class="d-flex justify-content-center align-items-center">
-                    <i class="bi bi-plus-circle-fill"></i>
-                </div> -->
-
-    <!------------>
-    <!-- TABELA -->
-    <!------------>
-
-    <!-- <div class="d-flex justify-content-center align-items-center">
-                    <button class="btn btn-outline-primary">Registrar Saída</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
-        <div class="modal-box">
-            <form class="container" action="">
-
-            </form>
-        </div>
-    </div> -->
     <!----------------------->
 
     <!-- VER MAIS DETALHES -->
