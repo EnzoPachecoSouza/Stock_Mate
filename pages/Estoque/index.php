@@ -66,7 +66,8 @@
             <button class="btn btn-lg btn-primary">Saída</button>
 
             <!-- BOTÃO DE CRIAR PRODUTO -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" class="btn btn-primary rounded-circle" style="position: absolute; top: 0; right: 0"
+                data-bs-toggle="modal" data-bs-target="#exampleModal">
                 <i class="bi bi-plus-lg"></i>
             </button>
             <!------->
@@ -128,7 +129,7 @@
         </table>
     </div>
 
-    <!-- CADASTRAR PRODUTO -->
+    <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -146,6 +147,8 @@
             </div>
         </div>
     </div>
+
+    <!-- CADASTRAR PRODUTO -->
     <!-- <div class="modal">
         <div class="modal-box">
             <form class="container" action="">
