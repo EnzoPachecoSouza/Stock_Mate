@@ -117,16 +117,23 @@
                         <!------->
 
                     <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
-                        <i class="bi bi-eye-fill"></i>
+                        <!-- BOTÃO VISUALIZAR DETALHES -->
+                            <i class="bi bi-eye-fill"></i>
+                            <!------->
 
                         <!-- BOTÃO EDITAR PRODUTO -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#editarProdutoModal">
-                            <i class="bi bi-pencil-square"></i>
-                        </button>
-                        <!------->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#editarProdutoModal">
+                                <i class="bi bi-pencil-square"></i>
+                            </button>
+                            <!------->
 
-                        <i class="bi bi-x-circle-fill"></i>
+                        <!-- BOTÃO DESATIVAR PRODUTO -->
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#desativarProdutoModal">
+                                <i class="bi bi-x-circle-fill"></i>
+                            </button>
+                            <!------->
                     </td>
                 </tr>
                 <?php } ?>
@@ -137,7 +144,8 @@
     </div>
 
     <!-- CADASTRAR PRODUTO -->
-    <div class="modal fade" id="cadastrarProdutoModal" tabindex="-1" aria-labelledby="cadastrarProdutoModalLabel" aria-hidden="true">
+    <div class="modal fade" id="cadastrarProdutoModal" tabindex="-1" aria-labelledby="cadastrarProdutoModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -171,7 +179,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center align-items-center">
-                            <button class="btn btn-outline-primary">Criar produto</button>
+                            <button class="btn btn-outline-primary">Registar produto</button>
                         </div>
                     </form>
                 </div>
@@ -181,7 +189,8 @@
     <!----------------------->
 
     <!-- EDITAR PRODUTO -->
-    <div class="modal fade" id="editarProdutoModal" tabindex="-1" aria-labelledby="editarProdutoModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editarProdutoModal" tabindex="-1" aria-labelledby="editarProdutoModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -225,20 +234,29 @@
     <!----------------------->
 
     <!-- DESATIVAR PRODUTO -->
-    <!-- <div class="modal">
-        <div class="modal-box">
-            <form class="container" action="">
-                <div class="d-flex justify-content-center align-items-center">
-                    <h4>Deseja desativar esse produto?</h4>
+    <div class="modal fade" id="desativarProdutoModal" tabindex="-1" aria-labelledby="desativarProdutoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="desativarProdutoModalLabel">Desativar Produto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="modal-body">
+                    <form class="container" action="">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <h4>Deseja desativar esse produto?</h4>
+                        </div>
 
-                <div class="d-flex justify-content-center align-items-center gap-3">
-                    <button class="btn btn-outline-success">Sim</button>
-                    <button class="btn btn-outline-danger">Não</button>
+                        <div class="d-flex justify-content-center align-items-center gap-3">
+                            <button class="btn btn-outline-success">Sim</button>
+                            <button class="btn btn-outline-danger">Não</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
-    </div> -->
+    </div>
     <!----------------------->
 
     <!-- ENTRADA PRODUTO -->
