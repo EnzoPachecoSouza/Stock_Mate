@@ -62,7 +62,12 @@
 
     <div class="container d-flex flex-column justify-content-center mt-5">
         <div class="d-flex justify-content-center align-items-center gap-3" style="position: relative">
-            <button class="btn btn-lg btn-primary">Entrada</button>
+            <!-- BOTÃO DE REGISTRAR ENTRADA DE PRODUTO -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#entradaProdutoModal">
+                Entrada
+            </button>
+            <!------->
+
             <button class="btn btn-lg btn-primary">Saída</button>
 
             <!-- BOTÃO DE CRIAR PRODUTO -->
@@ -260,54 +265,63 @@
     <!----------------------->
 
     <!-- ENTRADA PRODUTO -->
-    <!-- <div class="modal">
-        <div class="modal-box">
-            <form class="container" action="">
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="form-label" for="fornecedor">Fornecedor</label>
-                        <input class="form-control" type="text" id="fornecedor" name="fornecedor">
-                    </div>
-
-                    <div class="col-md-4"></div>
-
-                    <div class="col-md-4">
-                        <label class="form-label" for="data-entrada">Data da entrada</label>
-                        <input class="form-control" type="date" id="data-entrada" name="data-entrada">
-                    </div>
+    <div class="modal fade" id="entradaProdutoModal" tabindex="-1" aria-labelledby="entradaProdutoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="entradaProdutoModalLabel">Entrada de Produto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="modal-body">
+                    <form class="container" action="">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label" for="fornecedor">Fornecedor</label>
+                                <input class="form-control" type="text" id="fornecedor" name="fornecedor">
+                            </div>
 
-                <div class="row">
-                    <div class="col-md-4">
-                        <label class="form-label" for="valor-total">Valor total</label>
-                        <input class="form-control" type="number" id="valor-total" name="valor-total">
-                    </div>
+                            <div class="col-md-4"></div>
 
-                    <div class="col-md-4">
-                        <label class="form-label" for="forma-pagamento">Forma de pagamento</label>
-                        <select class="form-control" id="forma-pagamento" name="forma-pagamento"></select>
-                    </div>
+                            <div class="col-md-4">
+                                <label class="form-label" for="data-entrada">Data da entrada</label>
+                                <input class="form-control" type="date" id="data-entrada" name="data-entrada">
+                            </div>
+                        </div>
 
-                    <div class="col-md-4">
-                        <label class="form-label" for="data-pagamento">Data do pagamento</label>
-                        <input class="form-control" type="date" id="data-pagamento" name="data-pagamento">
-                    </div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label class="form-label" for="valor-total">Valor total</label>
+                                <input class="form-control" type="number" id="valor-total" name="valor-total">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label" for="forma-pagamento">Forma pagamento</label>
+                                <select class="form-control" id="forma-pagamento" name="forma-pagamento"></select>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label" for="data-pagamento">Data pagamento</label>
+                                <input class="form-control" type="date" id="data-pagamento" name="data-pagamento">
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <i class="bi bi-plus-circle-fill"></i>
+                        </div>
+
+                        <!------------>
+                        <!-- TABELA -->
+                        <!------------>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button class="btn btn-outline-primary">Registrar Entrada</button>
+                        </div>
+                    </form>
                 </div>
-
-                <div class="d-flex justify-content-center align-items-center">
-                    <i class="bi bi-plus-circle-fill"></i>
-                </div> -->
-
-    <!------------>
-    <!-- TABELA -->
-    <!------------>
-
-    <!-- <div class="d-flex justify-content-center align-items-center">
-                    <button class="btn btn-outline-primary">Registrar Entrada</button>
-                </div>
-            </form>
+            </div>
         </div>
-    </div> -->
+    </div>
     <!----------------------->
 
     <!-- SAÍDA PRODUTO -->
