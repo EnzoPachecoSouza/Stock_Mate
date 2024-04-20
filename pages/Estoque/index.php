@@ -401,23 +401,27 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <table>
-                        <tr>
-                            <th>Entrada</th>
-                            <th>Quantidade</th>
-                            <th>Fornecedor</th>
-                            <th>Saída</th>
-                            <th>Quantidade</th>
-                            <th>Cliente</th>
-                        </tr>
-                        <tr>
-                            <th>DATA DA ENTRADA</th>
-                            <th>QUANTIDADE (ENTRADA)</th>
-                            <th>NOME DO FORNECEDOR</th>
-                            <th>DATA DA SAÍDA</th>
-                            <th>QUANTIDADE (SAIDA)</th>
-                            <th>NOME DO CLIENTE</th>
-                        </tr>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Entrada</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Fornecedor</th>
+                                <th scope="col">Saída</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Cliente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">DATA DA ENTRADA</th>
+                                <th>QUANTIDADE (ENTRADA)</th>
+                                <th>NOME DO FORNECEDOR</th>
+                                <th>DATA DA SAÍDA</th>
+                                <th>QUANTIDADE (SAIDA)</th>
+                                <th>NOME DO CLIENTE</th>
+                            </tr>
+                        </tbody>
                     </table>
                 </div>
             </div>
