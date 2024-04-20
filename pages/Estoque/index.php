@@ -67,7 +67,7 @@
 
             <!-- BOTÃO DE CRIAR PRODUTO -->
             <button type="button" class="btn btn-primary rounded-circle" style="position: absolute; top: 0; right: 0"
-                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                data-bs-toggle="modal" data-bs-target="#cadastrarProdutoModal">
                 <i class="bi bi-plus-lg"></i>
             </button>
             <!------->
@@ -118,7 +118,14 @@
 
                     <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
                         <i class="bi bi-eye-fill"></i>
-                        <i class="bi bi-pencil-square"></i>
+
+                        <!-- BOTÃO EDITAR PRODUTO -->
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            <i class="bi bi-pencil-square"></i>
+                        </button>
+                        <!------->
+
                         <i class="bi bi-x-circle-fill"></i>
                     </td>
                 </tr>
@@ -130,11 +137,11 @@
     </div>
 
     <!-- CADASTRAR PRODUTO -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="cadastrarProdutoModal" tabindex="-1" aria-labelledby="cadastrarProdutoModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar Produto</h1>
+                    <h1 class="modal-title fs-5" id="cadastrarProdutoModalLabel">Registrar Produto</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -171,73 +178,48 @@
             </div>
         </div>
     </div>
-    <!-- <div class="modal">
-        <div class="modal-box">
-            <form class="container" action="">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label class="form-label" for="produto">Produto</label>
-                        <input class="form-control" type="text" id="produto" name="produto">
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label" for="tipo">Tipo</label>
-                        <select class="form-control" id="tipo" name="tipo"></select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <label class="form-label" for="estoque-minimo">Estoque mínimo</label>
-                        <input class="form-control" type="number" id="estoque-minimo" name="estoque-minimo">
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label" for="estoque-maximo">Estoque máximo</label>
-                        <input class="form-control" type="number" id="estoque-maximo" name="estoque-maximo">
-                    </div>
-                </div>
-
-                <div class="d-flex justify-content-center align-items-center">
-                    <button class="btn btn-outline-primary">Criar produto</button>
-                </div>
-            </form>
-        </div>
-    </div> -->
     <!----------------------->
 
     <!-- EDITAR PRODUTO -->
-    <!-- <div class="modal">
-        <div class="modal-box">
-            <form class="container" action="">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label class="form-label" for="produto">Produto</label>
-                        <input class="form-control" type="text" id="produto" name="produto">
-                    </div>
-
-                    <div class="col-md-6">
-                        <label class="form-label" for="tipo">Tipo</label>
-                        <select class="form-control" id="tipo" name="tipo"></select>
-                    </div>
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Produto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
+                <div class="modal-body">
+                    <form class="container" action="">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label" for="produto">Produto</label>
+                                <input class="form-control" type="text" id="produto" name="produto">
+                            </div>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <label class="form-label" for="estoque-minimo">Estoque mínimo</label>
-                        <input class="form-control" type="number" id="estoque-minimo" name="estoque-minimo">
-                    </div>
+                            <div class="col-md-6">
+                                <label class="form-label" for="tipo">Tipo</label>
+                                <select class="form-control" id="tipo" name="tipo"></select>
+                            </div>
+                        </div>
 
-                    <div class="col-md-6">
-                        <label class="form-label" for="estoque-maximo">Estoque máximo</label>
-                        <input class="form-control" type="number" id="estoque-maximo" name="estoque-maximo">
-                    </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label class="form-label" for="estoque-minimo">Estoque mínimo</label>
+                                <input class="form-control" type="number" id="estoque-minimo" name="estoque-minimo">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="estoque-maximo">Estoque máximo</label>
+                                <input class="form-control" type="number" id="estoque-maximo" name="estoque-maximo">
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button class="btn btn-outline-primary">Editar produto</button>
+                        </div>
+                    </form>
                 </div>
-
-                <div class="d-flex justify-content-center align-items-center">
-                    <button class="btn btn-outline-primary">Editar produto</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div> -->
     <!----------------------->
