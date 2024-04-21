@@ -127,23 +127,23 @@
 
                     <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
                         <!-- BOTÃO VISUALIZAR DETALHES -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            <button type="button" class="btn" data-bs-toggle="modal"
                                 data-bs-target="#visualizarDetalhesProdutoModal">
-                                <i class="bi bi-eye-fill"></i>
+                                <i class="bi bi-eye-fill text-success fs-5"></i>
                             </button>
                             <!------->
 
                         <!-- BOTÃO EDITAR PRODUTO -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            <button type="button" class="btn" data-bs-toggle="modal"
                                 data-bs-target="#editarProdutoModal">
-                                <i class="bi bi-pencil-square"></i>
+                                <i class="bi bi-pencil-square text-info fs-5"></i>
                             </button>
                             <!------->
 
                         <!-- BOTÃO DESATIVAR PRODUTO -->
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            <button type="button" class="btn" data-bs-toggle="modal"
                                 data-bs-target="#desativarProdutoModal">
-                                <i class="bi bi-x-circle-fill"></i>
+                                <i class="bi bi-x-circle-fill text-danger fs-5"></i>
                             </button>
                             <!------->
                     </td>
