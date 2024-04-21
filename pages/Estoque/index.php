@@ -166,7 +166,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="container" action="">
-                        <div class="row">
+                        <div class="row mb-4">
                             <div class="col-md-6">
                                 <label class="form-label" for="produto">Produto</label>
                                 <input class="form-control" type="text" id="produto" name="produto">
@@ -178,7 +178,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mb-5">
                             <div class="col-md-6">
                                 <label class="form-label" for="estoque-minimo">Estoque mínimo</label>
                                 <input class="form-control" type="number" id="estoque-minimo" name="estoque-minimo">
@@ -211,7 +211,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="container" action="">
-                        <div class="row">
+                        <div class="row mb-4">
                             <div class="col-md-6">
                                 <label class="form-label" for="produto">Produto</label>
                                 <input class="form-control" type="text" id="produto" name="produto">
@@ -223,7 +223,7 @@
                             </div>
                         </div>
 
-                        <div class="row">
+                        <div class="row mb-5">
                             <div class="col-md-6">
                                 <label class="form-label" for="estoque-minimo">Estoque mínimo</label>
                                 <input class="form-control" type="number" id="estoque-minimo" name="estoque-minimo">
@@ -256,7 +256,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="container" action="">
-                        <div class="d-flex justify-content-center align-items-center">
+                        <div class="d-flex justify-content-center align-items-center mb-4">
                             <h4>Deseja desativar esse produto?</h4>
                         </div>
 
@@ -282,7 +282,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="container" action="">
-                        <div class="row">
+                        <div class="row mb-4">
                             <div class="col-md-4">
                                 <label class="form-label" for="fornecedor">Fornecedor</label>
                                 <input class="form-control" type="text" id="fornecedor" name="fornecedor">
@@ -313,7 +313,7 @@
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-center align-items-center">
+                        <div class="d-flex justify-content-center align-items-center my-4">
                             <i class="bi bi-plus-circle-fill"></i>
                         </div>
 
@@ -342,7 +342,7 @@
                 </div>
                 <div class="modal-body">
                     <form class="container" action="">
-                        <div class="row">
+                        <div class="row mb-4">
                             <div class="col-md-4">
                                 <label class="form-label" for="ciente">Cliente</label>
                                 <input class="form-control" type="text" id="ciente" name="ciente">
@@ -373,7 +373,7 @@
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-center align-items-center">
+                        <div class="d-flex justify-content-center align-items-center my-4">
                             <i class="bi bi-plus-circle-fill"></i>
                         </div>
 
