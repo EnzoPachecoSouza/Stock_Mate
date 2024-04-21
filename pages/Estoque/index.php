@@ -401,15 +401,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <table class="table">
+                    <table class="table table-bordered" id="tabelaEntrada">
                         <thead>
                             <tr>
                                 <th scope="col">Entrada</th>
                                 <th scope="col">Quantidade</th>
                                 <th scope="col">Fornecedor</th>
-                                <th scope="col">Saída</th>
-                                <th scope="col">Quantidade</th>
-                                <th scope="col">Cliente</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -417,16 +414,48 @@
                                 <th scope="row">DATA DA ENTRADA</th>
                                 <th>QUANTIDADE (ENTRADA)</th>
                                 <th>NOME DO FORNECEDOR</th>
-                                <th>DATA DA SAÍDA</th>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <table class="d-none table table-bordered" id="tabelaSaida">
+                        <thead>
+                            <tr>
+                                <th scope="col">Saída</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Cliente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">DATA DA SAÍDA</th>
                                 <th>QUANTIDADE (SAIDA)</th>
                                 <th>NOME DO CLIENTE</th>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <div class="modal-footer">
+                    <button onclick="trocarEntradaSaida()">trocar</button>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        const tabelaEntradaElement = document.querySelector('#tabelaEntrada')
+        const tabelaSaidaElement = document.querySelector('#tabelaSaida')
+
+        function trocarEntradaSaida() {
+            tabelaEntradaElement.classList.contains('d-none')
+                ? tabelaEntradaElement.classList.remove('d-none')
+                : tabelaEntradaElement.classList.add('d-none')
+
+            tabelaSaidaElement.classList.contains('d-none')
+                ? tabelaSaidaElement.classList.remove('d-none')
+                : tabelaSaidaElement.classList.add('d-none')
+        }
+    </script>
     <!----------------------->
 
     <!-- Bootstrap JS -->
