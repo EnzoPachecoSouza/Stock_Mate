@@ -397,10 +397,11 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="visualizarDetalhesProdutoModalLabel">Desativar Produto</h1>
+                    <h1 class="modal-title fs-5" id="visualizarDetalhesProdutoModalLabel">Detalhes do Produto</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <!-- TABELA DE ENTRADAS (DETALHES) -->
                     <table class="table table-bordered" id="tabelaEntrada">
                         <thead>
                             <tr>
@@ -417,7 +418,9 @@
                             </tr>
                         </tbody>
                     </table>
+                    <!------------>
 
+                    <!-- TABELA DE SAIDAS (DETALHES) -->
                     <table class="d-none table table-bordered" id="tabelaSaida">
                         <thead>
                             <tr>
@@ -434,15 +437,17 @@
                             </tr>
                         </tbody>
                     </table>
+                    <!------------>
                 </div>
                 <div class="modal-footer">
-                    <button onclick="trocarEntradaSaida()">trocar</button>
+                    <button class="btn btn-primary" onclick="trocarEntradaSaida()">trocar</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        /* FUNÇÃO DE ALTERAR INFORMAÇÕES DO MODAL DE VISUALIZAR MAIS DETALHES */
         const tabelaEntradaElement = document.querySelector('#tabelaEntrada')
         const tabelaSaidaElement = document.querySelector('#tabelaSaida')
 
@@ -455,6 +460,7 @@
                 ? tabelaSaidaElement.classList.remove('d-none')
                 : tabelaSaidaElement.classList.add('d-none')
         }
+        /* --- */
     </script>
     <!----------------------->
 
