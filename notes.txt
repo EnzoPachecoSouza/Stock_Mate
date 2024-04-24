@@ -5,8 +5,6 @@ porém ainda não consegui pensar em um jeito efetivo de fazer isso.
 - P. Marcelino
 # # # # #
 
-
-
 1. Listar os selects dos modais
     >> Cadastrar produto
         >> Tipo
@@ -17,26 +15,15 @@ porém ainda não consegui pensar em um jeito efetivo de fazer isso.
     >> Saída
         >> Forma de pagamento
 
-
-
 2. Colocar tabela no modal REGISTRAR ENTRADA.
-
-
 
 3. Arrumar estilização dos componentes
     Provavelmente vou incluir 'Sass' e alterar a raiz das variáveis do bootstrap para alterar as cores
     - P. Marcelino
 
-
-
 4. Mapear o '<tr>' da tabela no modal 'ver mais detalhes'
 
-
-
 5. Colocar botão de fechar modal (em todos)
-
-
-
 
 # # #
 CODIGO DA LOGICA DE COLOCAR FUNDO DINAMICO NA QUANTIDADE DE PRODUTOS
@@ -48,4 +35,23 @@ CODIGO DA LOGICA DE COLOCAR FUNDO DINAMICO NA QUANTIDADE DE PRODUTOS
 <?php } else {?>
     style="background-color: green" 
 <?php } ?>
+# # #
+
+# # #
+SEQUENCIA DE CODIGOS PARA ATUALIZAR REPOSITORIO
+
+ATUALIZAR O "testes"
+
+git pull origin main (atualizar com tudo que está no git)
+
+git add . (criar ou deletar um arquivo)
+
+git commit -a -m "o que foi feito nesse commit" (registrar no git)
+
+git branch -m testes/main (vai depender pra onde quer enviar)
+
+git pull origin testes/main (para pegar tudo o que foi atualizado antes de fazer) (FAZER ANTES DO PUSH QUANDO O PULL DER ERRADO)
+
+git push origin testes/main (mandar pro repositorio)
+
 # # #
