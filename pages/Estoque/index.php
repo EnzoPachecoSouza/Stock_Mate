@@ -167,8 +167,14 @@
                     <form class="container" action="">
                         <div class="row mb-4">
                             <div class="col-md-6">
-                                <label class="form-label" for="code">Código</label>
-                                <input class="form-control" type="text" id="code" name="code">
+                                <div class="input-group">
+                                    <span class="input-group-text">#</span>
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="code" name="code"
+                                            placeholder="Código">
+                                        <label for="code">Código</label>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-md-6">
@@ -192,7 +198,7 @@
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <label class="form-label" for="category">Categoria</label>
-                                <select class="form-control" name="category" id="category"></select>
+                                <select class="form-select" name="category" id="category"></select>
                             </div>
 
                             <div class="col-md-6">
@@ -204,7 +210,10 @@
                         <div class="row mb-4">
                             <div class="col-md-4">
                                 <label class="form-label" for="price">Preço de compra</label>
-                                <input class="form-control" type="number" id="price" name="price">
+                                <div class="input-group">
+                                    <span class="input-group-text fw-bold">R$</span>
+                                    <input class="form-control" type="number" id="price" name="price">
+                                </div>
                             </div>
 
                             <div class="col-md-4">
@@ -257,7 +266,7 @@
 
                             <div class="col-md-6">
                                 <label class="form-label" for="tipo">Tipo</label>
-                                <select class="form-control" id="tipo" name="tipo"></select>
+                                <select class="form-select" id="tipo" name="tipo"></select>
                             </div>
                         </div>
 
@@ -342,7 +351,7 @@
 
                             <div class="col-md-4">
                                 <label class="form-label" for="forma-pagamento">Forma pagamento</label>
-                                <select class="form-control" id="forma-pagamento" name="forma-pagamento"></select>
+                                <select class="form-select" id="forma-pagamento" name="forma-pagamento"></select>
                             </div>
 
                             <div class="col-md-4">
@@ -402,7 +411,7 @@
 
                             <div class="col-md-4">
                                 <label class="form-label" for="forma-pagamento">Forma pagamento</label>
-                                <select class="form-control" id="forma-pagamento" name="forma-pagamento"></select>
+                                <select class="form-select" id="forma-pagamento" name="forma-pagamento"></select>
                             </div>
 
                             <div class="col-md-4">
