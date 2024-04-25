@@ -385,7 +385,7 @@
                         </div>
 
                         <div class="d-flex justify-content-center align-items-center">
-                            <button class="btn btn-outline-primary">Registar produto</button>
+                            <button class="btn btn-outline-primary">Editar produto</button>
                         </div>
                     </form>
                 </div>
@@ -432,33 +432,53 @@
                 <div class="modal-body">
                     <form class="container" action="">
                         <div class="row mb-4">
-                            <div class="col-md-4">
-                                <label class="form-label" for="fornecedor">Fornecedor</label>
-                                <input class="form-control" type="text" id="fornecedor" name="fornecedor">
+                            <div class="col-md-8">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="fornecedor" name="fornecedor"
+                                        placeholder="Fornecedor">
+                                    <label for="fornecedor">Fornecedor</label>
+                                </div>
                             </div>
 
-                            <div class="col-md-4"></div>
-
                             <div class="col-md-4">
-                                <label class="form-label" for="data-entrada">Data da entrada</label>
-                                <input class="form-control" type="date" id="data-entrada" name="data-entrada">
+                                <div class="form-floating">
+                                    <input class="form-control" type="date" id="data-entrada" name="data-entrada"
+                                        placeholder="Data da entrada">
+                                    <label for="data-entrada">Data da entrada</label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
-                                <label class="form-label" for="valor-total">Valor total</label>
-                                <input class="form-control" type="number" id="valor-total" name="valor-total">
+                                <div class="input-group">
+                                    <span class="input-group-text fw-bold">R$</span>
+                                    <div class="form-floating">
+                                        <input class="form-control" type="number" id="valor-total" name="valor-total"
+                                            placeholder="Valor total">
+                                        <label for="valor-total">Valor total</label>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label" for="forma-pagamento">Forma pagamento</label>
-                                <select class="form-select" id="forma-pagamento" name="forma-pagamento"></select>
+                                <div class="form-floating">
+                                    <select class="form-select" id="forma-pagamento" name="forma-pagamento">
+                                        <option selected></option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                    </select>
+                                    <label for="forma-pagamento">Forma de pagamento</label>
+                                </div>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label" for="data-pagamento">Data pagamento</label>
-                                <input class="form-control" type="date" id="data-pagamento" name="data-pagamento">
+                                <div class="form-floating">
+                                    <input class="form-control" type="date" id="data-pagamento" name="data-pagamento"
+                                        placeholder="Data de pagamento">
+                                    <label for="data-pagamento">Data de pagamento</label>
+                                </div>
                             </div>
                         </div>
 
