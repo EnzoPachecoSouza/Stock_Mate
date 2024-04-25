@@ -512,33 +512,53 @@
                 <div class="modal-body">
                     <form class="container" action="">
                         <div class="row mb-4">
-                            <div class="col-md-4">
-                                <label class="form-label" for="ciente">Cliente</label>
-                                <input class="form-control" type="text" id="ciente" name="ciente">
+                            <div class="col-md-8">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="cliente" name="cliente"
+                                        placeholder="Cliente">
+                                    <label for="cliente">Cliente</label>
+                                </div>
                             </div>
 
-                            <div class="col-md-4"></div>
-
                             <div class="col-md-4">
-                                <label class="form-label" for="data-saida">Data da saída</label>
-                                <input class="form-control" type="date" id="data-saida" name="data-saida">
+                                <div class="form-floating">
+                                    <input class="form-control" type="date" id="data-saida" name="data-saida"
+                                        placeholder="Data da saída">
+                                    <label for="data-saida">Data da saída</label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-4">
-                                <label class="form-label" for="valor-total">Valor total</label>
-                                <input class="form-control" type="number" id="valor-total" name="valor-total">
+                                <div class="input-group">
+                                    <span class="input-group-text fw-bold">R$</span>
+                                    <div class="form-floating">
+                                        <input class="form-control" type="number" id="valor-total" name="valor-total"
+                                            placeholder="Valor total">
+                                        <label for="valor-total">Valor total</label>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label" for="forma-pagamento">Forma pagamento</label>
-                                <select class="form-select" id="forma-pagamento" name="forma-pagamento"></select>
+                                <div class="form-floating">
+                                    <select class="form-select" id="forma-pagamento" name="forma-pagamento">
+                                        <option selected></option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                    </select>
+                                    <label for="forma-pagamento">Forma de pagamento</label>
+                                </div>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label" for="data-pagamento">Data pagamento</label>
-                                <input class="form-control" type="date" id="data-pagamento" name="data-pagamento">
+                                <div class="form-floating">
+                                    <input class="form-control" type="date" id="data-pagamento" name="data-pagamento"
+                                        placeholder="Data de pagamento">
+                                    <label for="data-pagamento">Data de pagamento</label>
+                                </div>
                             </div>
                         </div>
 
