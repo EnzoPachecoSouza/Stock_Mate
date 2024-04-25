@@ -168,62 +168,89 @@
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
-                                    <span class="input-group-text">#</span>
+                                    <span class="input-group-text fw-bold">#</span>
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="code" name="code"
+                                        <input class="form-control" type="text" id="codigo" name="codigo"
                                             placeholder="Código">
-                                        <label for="code">Código</label>
+                                        <label for="codigo">Código</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label" for="produto">Produto</label>
-                                <input class="form-control" type="text" id="produto" name="produto">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="produto" name="produto"
+                                        placeholder="Produto">
+                                    <label for="produto">Produto</label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row mb-4">
                             <div class="col-md-6">
-                                <label class="form-label" for="color">Cor</label>
-                                <input class="form-control" type="text" id="color" name="color">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="cor" name="cor" placeholder="Cor">
+                                    <label for="cor">Cor</label>
+                                </div>
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label" for="material">Material</label>
-                                <input class="form-control" type="text" id="material" name="material">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="material" name="material"
+                                        placeholder="Material">
+                                    <label for="material">Material</label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row mb-4">
                             <div class="col-md-6">
-                                <label class="form-label" for="category">Categoria</label>
-                                <select class="form-select" name="category" id="category"></select>
+                                <div class="form-floating">
+                                    <select class="form-select" id="categoria" name="category">
+                                        <option selected></option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                    </select>
+                                    <label for="categoria">Categoria</label>
+                                </div>
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label" for="details">Detalhes</label>
-                                <input class="form-control" type="text" id="details" name="details">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="detalhes" name="detalhes"
+                                        placeholder="Detalhes">
+                                    <label for="detalhes">Detalhes</label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row mb-4">
                             <div class="col-md-4">
-                                <label class="form-label" for="price">Preço de compra</label>
                                 <div class="input-group">
                                     <span class="input-group-text fw-bold">R$</span>
-                                    <input class="form-control" type="number" id="price" name="price">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="number" id="preco-de-compra"
+                                            name="preco-de-compra" placeholder="Preço">
+                                        <label for="preco-de-compra">Preço</label>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label" for="quantity">Em estoque</label>
-                                <input class="form-control" type="number" id="quantity" name="quantity">
+                                <div class="form-floating">
+                                    <input class="form-control" type="number" id="quantidade" name="quantidade"
+                                        placeholder="Quantidade">
+                                    <label for="quantidade">Quantidade</label>
+                                </div>
                             </div>
 
                             <div class="col-md-4">
-                                <label class="form-label" for="minimun">Estoque mínimo</label>
-                                <input class="form-control" type="number" id="minimun" name="minimun">
+                                <div class="form-floating">
+                                    <input class="form-control" type="number" id="minimo" name="minimo"
+                                        placeholder="Mínimo">
+                                    <label for="minimo">Mínimo</label>
+                                </div>
                             </div>
                         </div>
 
