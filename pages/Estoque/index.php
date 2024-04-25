@@ -101,8 +101,8 @@
                 <?php
                 $produtos = [
                     ["nome" => "Sofá", "cor" => "Vermelho", "detalhes" => "Sofá de 3 lugares", "material" => "Couro", "quantidade" => 5],
-                    ["nome" => "Mesa", "cor" => "Marrom", "detalhes" => "Mesa de madeira", "material" => "Madeira", "quantidade" => 5],
-                    ["nome" => "Cadeira", "cor" => "Branca", "detalhes" => "Cadeira com assento almofadado", "material" => "Madeira", "quantidade" => 5],
+                    ["nome" => "Mesa", "cor" => "Marrom", "detalhes" => "Mesa de madeira", "material" => "Madeira", "quantidade" => 7],
+                    ["nome" => "Cadeira", "cor" => "Branca", "detalhes" => "Cadeira com assento almofadado", "material" => "Madeira", "quantidade" => 10],
                 ]
                     ?>
                 <!------->
