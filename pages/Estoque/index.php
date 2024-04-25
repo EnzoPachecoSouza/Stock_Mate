@@ -134,8 +134,7 @@
                             <!------->
 
                         <!-- BOTÃO EDITAR PRODUTO -->
-                            <button type="button" class="btn" data-bs-toggle="modal"
-                                data-bs-target="#editarProdutoModal">
+                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editarProdutoModal">
                                 <i class="bi bi-pencil-square text-info fs-5"></i>
                             </button>
                             <!------->
@@ -168,25 +167,64 @@
                     <form class="container" action="">
                         <div class="row mb-4">
                             <div class="col-md-6">
-                                <label class="form-label" for="produto">Produto</label>
-                                <input class="form-control" type="text" id="produto" name="produto">
+                                <label class="form-label" for="code">Código</label>
+                                <input class="form-control" type="text" id="code" name="code">
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label" for="tipo">Tipo</label>
-                                <select class="form-control" id="tipo" name="tipo"></select>
+                                <label class="form-label" for="produto">Produto</label>
+                                <input class="form-control" type="text" id="produto" name="produto">
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label" for="color">Cor</label>
+                                <input class="form-control" type="text" id="color" name="color">
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="material">Material</label>
+                                <input class="form-control" type="text" id="material" name="material">
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <label class="form-label" for="category">Categoria</label>
+                                <select class="form-control" name="category" id="category"></select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label class="form-label" for="details">Detalhes</label>
+                                <input class="form-control" type="text" id="details" name="details">
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <label class="form-label" for="price">Preço de compra</label>
+                                <input class="form-control" type="number" id="price" name="price">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label" for="quantity">Em estoque</label>
+                                <input class="form-control" type="number" id="quantity" name="quantity">
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label" for="minimun">Estoque mínimo</label>
+                                <input class="form-control" type="number" id="minimun" name="minimun">
                             </div>
                         </div>
 
                         <div class="row mb-5">
-                            <div class="col-md-6">
-                                <label class="form-label" for="estoque-minimo">Estoque mínimo</label>
-                                <input class="form-control" type="number" id="estoque-minimo" name="estoque-minimo">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label" for="estoque-maximo">Estoque máximo</label>
-                                <input class="form-control" type="number" id="estoque-maximo" name="estoque-maximo">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Insira a descrição do produto"
+                                        id="description" style="height: 100px"></textarea>
+                                    <label for="description">Descrição</label>
+                                </div>
                             </div>
                         </div>
 
