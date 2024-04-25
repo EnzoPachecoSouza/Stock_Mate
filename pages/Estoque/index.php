@@ -86,10 +86,11 @@
             <caption class="caption-top">LEGENDA DA TABELA</caption>
             <thead class="table-active">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">PRODUTO</th>
-                    <th scope="col">TIPO</th>
-                    <th scope="col">QUANTIDADE</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Cor</th>
+                    <th scope="col">Detalhes</th>
+                    <th scope="col">Material</th>
+                    <th scope="col">Quantidade</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -99,9 +100,9 @@
                 <!-- DADOS ESTÁTICOS PARA MAPEAMENTO DA TABELA DE PRODUTOS EM ESTOQUE -->
                 <?php
                 $produtos = [
-                    ["id" => 1, "nome" => "Coca-Cola", "tipo" => "Refrigerante", "quantidade" => 12, "minimo" => 10, "maximo" => 30],
-                    ["id" => 2, "nome" => "Trakinas", "tipo" => "Bolacha", "quantidade" => 8, "minimo" => 10, "maximo" => 30],
-                    ["id" => 3, "nome" => "Tang", "tipo" => "Suco", "quantidade" => 25, "minimo" => 10, "maximo" => 30],
+                    ["nome" => "Sofá", "cor" => "Vermelho", "detalhes" => "Sofá de 3 lugares", "material" => "Couro", "quantidade" => 5],
+                    ["nome" => "Mesa", "cor" => "Marrom", "detalhes" => "Mesa de madeira", "material" => "Madeira", "quantidade" => 5],
+                    ["nome" => "Cadeira", "cor" => "Branca", "detalhes" => "Cadeira com assento almofadado", "material" => "Madeira", "quantidade" => 5],
                 ]
                     ?>
                 <!------->
@@ -110,18 +111,21 @@
                 <?php foreach ($produtos as $produto) { ?>
                     <tr>
                         <th scope="row">
-                            <?php echo $produto["id"]; ?>
+                            <?php echo $produto["nome"]; ?>
                         </th>
                         <td>
-                            <?php echo $produto["nome"]; ?>
+                            <?php echo $produto["cor"]; ?>
                         </td>
                         <td>
-                            <?php echo $produto["tipo"]; ?>
+                            <?php echo $produto["detalhes"]; ?>
+                        </td>
+                        <td>
+                            <?php echo $produto["material"]; ?>
                         </td>
 
                         <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
-                        <td> <!-- COLOCAR CODIGO DO NOTES AQUI -->
-                            <h4 class="text-center"><?php echo $produto["quantidade"]; ?></h4>
+                        <td> <!-- COLOCAR CÓDIGO DO NOTES AQUI -->
+                            <?php echo $produto["quantidade"]; ?>
                         </td>
                         <!------->
 
