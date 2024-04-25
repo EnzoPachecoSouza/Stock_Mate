@@ -287,30 +287,105 @@
                     <form class="container" action="">
                         <div class="row mb-4">
                             <div class="col-md-6">
-                                <label class="form-label" for="produto">Produto</label>
-                                <input class="form-control" type="text" id="produto" name="produto">
+                                <div class="input-group">
+                                    <span class="input-group-text fw-bold">#</span>
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="codigo" name="codigo"
+                                            placeholder="Código">
+                                        <label for="codigo">Código</label>
+                                    </div>
+                                </div>
                             </div>
 
                             <div class="col-md-6">
-                                <label class="form-label" for="tipo">Tipo</label>
-                                <select class="form-select" id="tipo" name="tipo"></select>
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="produto" name="produto"
+                                        placeholder="Produto">
+                                    <label for="produto">Produto</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="cor" name="cor" placeholder="Cor">
+                                    <label for="cor">Cor</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="material" name="material"
+                                        placeholder="Material">
+                                    <label for="material">Material</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <select class="form-select" id="categoria" name="category">
+                                        <option selected></option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                    </select>
+                                    <label for="categoria">Categoria</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="detalhes" name="detalhes"
+                                        placeholder="Detalhes">
+                                    <label for="detalhes">Detalhes</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-text fw-bold">R$</span>
+                                    <div class="form-floating">
+                                        <input class="form-control" type="number" id="preco-de-compra"
+                                            name="preco-de-compra" placeholder="Preço">
+                                        <label for="preco-de-compra">Preço</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <input class="form-control" type="number" id="quantidade" name="quantidade"
+                                        placeholder="Quantidade">
+                                    <label for="quantidade">Quantidade</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <input class="form-control" type="number" id="minimo" name="minimo"
+                                        placeholder="Mínimo">
+                                    <label for="minimo">Mínimo</label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="row mb-5">
-                            <div class="col-md-6">
-                                <label class="form-label" for="estoque-minimo">Estoque mínimo</label>
-                                <input class="form-control" type="number" id="estoque-minimo" name="estoque-minimo">
-                            </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label" for="estoque-maximo">Estoque máximo</label>
-                                <input class="form-control" type="number" id="estoque-maximo" name="estoque-maximo">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Insira a descrição do produto"
+                                        id="description" style="height: 100px"></textarea>
+                                    <label for="description">Descrição</label>
+                                </div>
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-center align-items-center">
-                            <button class="btn btn-outline-primary">Editar produto</button>
+                            <button class="btn btn-outline-primary">Registar produto</button>
                         </div>
                     </form>
                 </div>
