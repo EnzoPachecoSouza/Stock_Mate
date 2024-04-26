@@ -106,21 +106,21 @@ require '../../classes/produto.controller.php';
                 <?php foreach ($produtos as $indice => $produto) { ?>
                     <tr>
                         <th scope="row">
-                            <?= $produto->nome ?>
+                            <?= $produto->PRO_NOME ?>
                         </th>
                         <td>
-                            <?= $produto->cor ?>
+                            <?= $produto->PRO_COR ?>
                         </td>
                         <td>
-                            <?= $produto->detalhes ?>
+                            <?= $produto->PRO_DETALHES ?>
                         </td>
                         <td>
-                            <?= $produto->material ?>
+                            <?= $produto->PRO_MATERIAL ?>
                         </td>
 
                         <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
                         <td>
-                            <?= $produto->quantidade ?>
+                            <?= $produto->PRO_QUANTIDADE ?>
                         </td>
                         <!------->
 
