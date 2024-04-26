@@ -1,5 +1,7 @@
 <?php
-    require '../../classes/produto.controller.php';
+$acao = 'recuperar';
+
+require '../../classes/produto.controller.php';
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +21,7 @@
 
     <!-- Custom Style -->
     <link rel="stylesheet" href="./styles.css">
-    
+
     <!-- Style -->
     <link rel="stylesheet" href="../../styles/custom.css">
 </head>
@@ -103,33 +105,33 @@
 
                 <!-- DADOS ESTÁTICOS PARA MAPEAMENTO DA TABELA DE PRODUTOS EM ESTOQUE -->
                 <?php
-                $produtos = [
-                    ["nome" => "Sofá", "cor" => "Vermelho", "detalhes" => "Sofá de 3 lugares", "material" => "Couro", "quantidade" => 5],
-                    ["nome" => "Mesa", "cor" => "Marrom", "detalhes" => "Mesa de madeira", "material" => "Madeira", "quantidade" => 7],
-                    ["nome" => "Cadeira", "cor" => "Branca", "detalhes" => "Cadeira com assento almofadado", "material" => "Madeira", "quantidade" => 10],
-                ]
-                    ?>
+                // $produtos = [
+                //     ["nome" => "Sofá", "cor" => "Vermelho", "detalhes" => "Sofá de 3 lugares", "material" => "Couro", "quantidade" => 5],
+                //     ["nome" => "Mesa", "cor" => "Marrom", "detalhes" => "Mesa de madeira", "material" => "Madeira", "quantidade" => 7],
+                //     ["nome" => "Cadeira", "cor" => "Branca", "detalhes" => "Cadeira com assento almofadado", "material" => "Madeira", "quantidade" => 10],
+                // ]
+                ?>
                 <!------->
 
                 <!-- TABELA MAPEADA -->
-                <?php foreach ($produtos as $produto) { ?>
+                <?php foreach ($produtos as $indice => $produto) { ?>
                     <tr>
                         <th scope="row">
-                            <?php echo $produto["nome"]; ?>
+                            <?= $produto->nome ?>
                         </th>
                         <td>
-                            <?php echo $produto["cor"]; ?>
+                            <?= $produto->cor ?>
                         </td>
                         <td>
-                            <?php echo $produto["detalhes"]; ?>
+                            <?= $produto->detalhes ?>
                         </td>
                         <td>
-                            <?php echo $produto["material"]; ?>
+                            <?= $produto->material ?>
                         </td>
 
                         <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
                         <td>
-                            <?php echo $produto["quantidade"]; ?>
+                            <?= $produto->quantidade ?>
                         </td>
                         <!------->
 
@@ -187,8 +189,7 @@
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="nome" name="nome"
-                                        placeholder="Nome">
+                                    <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome">
                                     <label for="nome">Nome</label>
                                 </div>
                             </div>
@@ -247,8 +248,8 @@
 
                             <div class="col-md-4">
                                 <div class="form-floating">
-                                    <input class="form-control" type="number" id="quantidadeEmEstoque" name="quantidadeEmEstoque"
-                                        placeholder="Quantidade">
+                                    <input class="form-control" type="number" id="quantidadeEmEstoque"
+                                        name="quantidadeEmEstoque" placeholder="Quantidade">
                                     <label for="quantidadeEmEstoque">Quantidade</label>
                                 </div>
                             </div>

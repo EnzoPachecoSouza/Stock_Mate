@@ -18,7 +18,7 @@ class ProdutoService
         INSERT INTO
         produtos(PRO_CODIGO, PRO_NOME, PRO_MATERIAL, PRO_CATEGORIA, PRO_DESCRICAO, PRO_COR, PRO_MINIMO, PRO_QUANTIDADE, PRO_PRECO_CUSTO, PRO_DETALHES)
         VALUES (:codigo, :nome, :material, :categoria, :descricao, :cor, :estoqueMinimo, :quantidadeEmEstoque, :precoDeCompra, :detalhes)
-    ';
+        ';
 
         $stmt = $this->conexao->prepare($query);
 
@@ -33,7 +33,18 @@ class ProdutoService
         $stmt->bindValue(':precoDeCompra', $this->produto->__get('precoDeCompra'));
         $stmt->bindValue(':detalhes', $this->produto->__get('detalhes'));
 
-        $stmt->execute(); 
+        $stmt->execute();
     }
 
+    public function recuperar()
+    {
+        $query = '
+        SELECT PRO_NOME, PRO_COR, PRO_DETALHES, PRO_MATERIAL, PRO_QUANTIDADE 
+        FROM produtos
+        ';
+
+        $stmt = $this->conexao->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }

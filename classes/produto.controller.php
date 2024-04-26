@@ -1,8 +1,8 @@
 <?php
 
-require "./produto.model.php";
-require "./produto.service.php";
-require "./conexao.php";
+require "produto.model.php";
+require "produto.service.php";
+require "conexao.php";
 
 //recebe a ação através do action do form
 $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
@@ -32,4 +32,11 @@ if ($acao == 'inserir') {
 
     //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi registrado
     header('Location: ../pages/Estoque/index.php?inclusao=1');
+} else if ($acao == 'recuperar') {
+    $produto = new Produto();
+
+    $conexao = new Conexao();
+
+    $produtoService = new ProdutoService($conexao, $produto);
+    $produtos = $produtoService->recuperar();
 }
