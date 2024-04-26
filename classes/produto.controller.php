@@ -31,5 +31,5 @@ if ($acao == 'inserir') {
     $produtoService->inserir();
 
     //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi registrado
-    // header('Location: novo_produto.php?inclusao=1');
+    header('Location: ../pages/Estoque/index.php?inclusao=1');
 }
