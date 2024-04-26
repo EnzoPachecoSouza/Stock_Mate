@@ -102,17 +102,6 @@ require '../../classes/produto.controller.php';
             </thead>
 
             <tbody class="table-group-divider">
-
-                <!-- DADOS ESTÁTICOS PARA MAPEAMENTO DA TABELA DE PRODUTOS EM ESTOQUE -->
-                <?php
-                // $produtos = [
-                //     ["nome" => "Sofá", "cor" => "Vermelho", "detalhes" => "Sofá de 3 lugares", "material" => "Couro", "quantidade" => 5],
-                //     ["nome" => "Mesa", "cor" => "Marrom", "detalhes" => "Mesa de madeira", "material" => "Madeira", "quantidade" => 7],
-                //     ["nome" => "Cadeira", "cor" => "Branca", "detalhes" => "Cadeira com assento almofadado", "material" => "Madeira", "quantidade" => 10],
-                // ]
-                ?>
-                <!------->
-
                 <!-- TABELA MAPEADA -->
                 <?php foreach ($produtos as $indice => $produto) { ?>
                     <tr>
