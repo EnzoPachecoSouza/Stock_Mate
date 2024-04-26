@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Custom Style -->
-    <link rel="stylesheet" href="../../styles/custom.css">
-
-    <!-- Style -->
     <link rel="stylesheet" href="./styles.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="../../styles/custom.css">
 </head>
 
 <body>
@@ -168,7 +168,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" action="">
+                    <form class="container" method="post" action="../../classes/produto.controller.php?acao=inserir">
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
@@ -183,9 +183,9 @@
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="produto" name="produto"
-                                        placeholder="Produto">
-                                    <label for="produto">Produto</label>
+                                    <input class="form-control" type="text" id="nome" name="nome"
+                                        placeholder="Nome">
+                                    <label for="nome">Nome</label>
                                 </div>
                             </div>
                         </div>
@@ -210,7 +210,7 @@
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-select" id="categoria" name="category">
+                                    <select class="form-select" id="categoria" name="categoria">
                                         <option selected></option>
                                         <option value="">1</option>
                                         <option value="">2</option>
@@ -234,26 +234,26 @@
                                 <div class="input-group">
                                     <span class="input-group-text fw-bold">R$</span>
                                     <div class="form-floating">
-                                        <input class="form-control" type="number" id="preco-de-compra"
-                                            name="preco-de-compra" placeholder="Preço">
-                                        <label for="preco-de-compra">Preço</label>
+                                        <input class="form-control" type="number" id="precoDeCompra"
+                                            name="precoDeCompra" placeholder="Preço">
+                                        <label for="precoDeCompra">Preço</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-floating">
-                                    <input class="form-control" type="number" id="quantidade" name="quantidade"
+                                    <input class="form-control" type="number" id="quantidadeEmEstoque" name="quantidadeEmEstoque"
                                         placeholder="Quantidade">
-                                    <label for="quantidade">Quantidade</label>
+                                    <label for="quantidadeEmEstoque">Quantidade</label>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-floating">
-                                    <input class="form-control" type="number" id="minimo" name="minimo"
+                                    <input class="form-control" type="number" id="estoqueMinimo" name="estoqueMinimo"
                                         placeholder="Mínimo">
-                                    <label for="minimo">Mínimo</label>
+                                    <label for="estoqueMinimo">Mínimo</label>
                                 </div>
                             </div>
                         </div>
@@ -262,8 +262,8 @@
                             <div class="col-12">
                                 <div class="form-floating">
                                     <textarea class="form-control" placeholder="Insira a descrição do produto"
-                                        id="description" style="height: 100px"></textarea>
-                                    <label for="description">Descrição</label>
+                                        id="descricao" name="descricao" style="height: 100px"></textarea>
+                                    <label for="descricao">Descrição</label>
                                 </div>
                             </div>
                         </div>
