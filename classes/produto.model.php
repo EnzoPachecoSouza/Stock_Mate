@@ -1,5 +1,5 @@
 <?php
-
+//CLASSE DO PRODUTO
 class Produto
 {
     private $codigo;

@@ -1,5 +1,5 @@
 <?php
-
+//SERVICE VAI EXECUTAR AS FUNÇÕES DAS AÇÕES QUE RECEBER DO CONTROLLER
 class ProdutoService
 {
     private $conexao;
