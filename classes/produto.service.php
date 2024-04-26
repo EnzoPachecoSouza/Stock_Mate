@@ -16,7 +16,7 @@ class ProdutoService
     {
         $query = '
         INSERT INTO
-        produtos(PRO_CODIGO, PRO_NOME, PRO_MATERIAL, PRO_CATEGORIA, PRO_DESCRICAO, PRO_COR, PRO_MINIMO, PRO_QUANTIDADE, PRO_PRECO_CUSTO, PRO_DETALHES)
+        produtos(PRO_CODIGO, PRO_NOME, PRO_MATERIAL, PRO_CAT, PRO_DESCRICAO, PRO_COR, PRO_MINIMO, PRO_QUANTIDADE, PRO_PRECO_CUSTO, PRO_DETALHES)
         VALUES (:codigo, :nome, :material, :categoria, :descricao, :cor, :estoqueMinimo, :quantidadeEmEstoque, :precoDeCompra, :detalhes)
         ';
 
@@ -39,12 +39,16 @@ class ProdutoService
     public function recuperar()
     {
         $query = '
-        SELECT PRO_NOME, PRO_COR, PRO_DETALHES, PRO_MATERIAL, PRO_QUANTIDADE 
+        SELECT *
         FROM produtos
         ';
 
         $stmt = $this->conexao->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function editar(){
+        
     }
 }

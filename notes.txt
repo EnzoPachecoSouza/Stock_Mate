@@ -24,6 +24,11 @@ SEQUENCIA DE CODIGOS PARA ATUALIZAR REPOSITÓRIO
 
 ATUALIZAR O "testes"
 
+1. git stash (guarda suas alterações)
+2. git pull origin testes (recebe o repositório atualizado)
+3.1. git stash apply (coloca suas alterações dentro do repositório atualizado)
+3.2. git stash drop (descarta suas alterações)
+
 git pull origin main (atualizar com tudo que está no git)
 
 git add . (criar ou deletar um arquivo)
