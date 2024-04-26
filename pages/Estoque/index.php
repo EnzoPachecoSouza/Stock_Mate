@@ -124,7 +124,7 @@
                         </td>
 
                         <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
-                        <td> <!-- COLOCAR CÓDIGO DO NOTES AQUI -->
+                        <td>
                             <?php echo $produto["quantidade"]; ?>
                         </td>
                         <!------->
