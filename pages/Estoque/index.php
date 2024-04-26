@@ -1,3 +1,7 @@
+<?php
+    require '../../classes/produto.controller.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
