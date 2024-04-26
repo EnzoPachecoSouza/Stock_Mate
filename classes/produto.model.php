@@ -5,14 +5,14 @@ class Produto
 
     private $codigo;
     private $nome;
-    private $cor;
     private $material;
     private $categoria;
-    private $detalhes;
-    private $precoDeCompra;
-    private $quantidadeEmEstoque;
-    private $estoqueMinimo;
     private $descricao;
+    private $cor;
+    private $estoqueMinimo;
+    private $quantidadeEmEstoque;
+    private $precoDeCompra;
+    private $detalhes;
 
     public function __set($atributo, $valor)
     {
@@ -23,23 +23,4 @@ class Produto
     {
         return $this->$atributo;
     }
-
-    // private $codigo;
-    // private $nome;
-    // private $cor;
-    // private $material;
-    // private $categoria;
-    // private $detalhes;
-    // private $precoDeCompra;
-    // private $quantidadeEmEstoque;
-    // private $estoqueMinimo;
-    // private $descricao;
-
-    // public function __set($atributo, $valor){
-    //     $this->$atributo = $valor;
-    // }
-
-    // public function __get($atributo){
-    //     return $this->$atributo;
-    // }
 }

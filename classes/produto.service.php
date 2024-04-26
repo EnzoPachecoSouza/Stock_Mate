@@ -6,30 +6,32 @@ class ProdutoService
     private $conexao;
     private $produto;
 
-    public function __construct(PDO $conexao, Produto $produto)
+    public function __construct(Conexao $conexao, Produto $produto)
     {
-        $this->conexao = $conexao;
+        $this->conexao = $conexao->conectar();
         $this->produto = $produto;
     }
 
     public function inserir()
     {
         $query = '
-        INSERT INTO produtos(PRO_CODIGO, PRO_NOME, PRO_COR, PRO_MATERIAL, CAT_CATEGORIA, PRO_DESCRICAO, PRO_PRECO_CUSTO, PRO_QUANTIDADE, PRO_MINIMO)
-        VALUES (:codigo, :nome, :cor, :material, :categoria, :descricao, :precoDeCompra, :quantidadeEmEstoque, :estoqueMinimo)
+        INSERT INTO
+        produtos(PRO_CODIGO, PRO_NOME, PRO_MATERIAL, PRO_CATEGORIA, PRO_DESCRICAO, PRO_COR, PRO_MINIMO, PRO_QUANTIDADE, PRO_PRECO_CUSTO, PRO_DETALHES)
+        VALUES (:codigo, :nome, :material, :categoria, :descricao, :cor, :estoqueMinimo, :quantidadeEmEstoque, :precoDeCompra, :detalhes)
     ';
 
         $stmt = $this->conexao->prepare($query);
 
         $stmt->bindValue(':codigo', $this->produto->__get('codigo'));
         $stmt->bindValue(':nome', $this->produto->__get('nome'));
-        $stmt->bindValue(':cor', $this->produto->__get('cor'));
         $stmt->bindValue(':material', $this->produto->__get('material'));
         $stmt->bindValue(':categoria', $this->produto->__get('categoria'));
         $stmt->bindValue(':descricao', $this->produto->__get('descricao'));
-        $stmt->bindValue(':precoDeCompra', $this->produto->__get('precoDeCompra'));
-        $stmt->bindValue(':quantidadeEmEstoque', $this->produto->__get('quantidadeEmEstoque'));
+        $stmt->bindValue(':cor', $this->produto->__get('cor'));
         $stmt->bindValue(':estoqueMinimo', $this->produto->__get('estoqueMinimo'));
+        $stmt->bindValue(':quantidadeEmEstoque', $this->produto->__get('quantidadeEmEstoque'));
+        $stmt->bindValue(':precoDeCompra', $this->produto->__get('precoDeCompra'));
+        $stmt->bindValue(':detalhes', $this->produto->__get('detalhes'));
 
         $stmt->execute(); 
     }
