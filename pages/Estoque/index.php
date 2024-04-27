@@ -133,7 +133,8 @@ require '../../classes/produto.controller.php';
                             <!------->
 
                         <!-- BOTÃO EDITAR PRODUTO -->
-                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#editarProdutoModal<?= $indice ?>">
+                            <button type="button" class="btn" data-bs-toggle="modal"
+                                data-bs-target="#editarProdutoModal<?= $indice ?>">
                                 <i class="bi bi-pencil-square text-info fs-5"></i>
                             </button>
                             <!------->
@@ -145,135 +146,6 @@ require '../../classes/produto.controller.php';
                             </button>
                             <!------->
                     </td>
-
-                    <!-- EDITAR PRODUTO -->
-                        <div class="modal fade" id="editarProdutoModal<?= $indice ?>" tabindex="-1"
-                            aria-labelledby="editarProdutoModalLabel<?= $indice ?>" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="editarProdutoModalLabel<?= $indice ?>">Editar Produto</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form class="container" action="">
-                                            <div class="row mb-4">
-                                                <div class="col-md-6">
-                                                    <div class="input-group">
-                                                        <span class="input-group-text fw-bold">#</span>
-                                                        <div class="form-floating">
-                                                            <input class="form-control" type="text" id="codigo"
-                                                                name="codigo" placeholder="Código"
-                                                                value="<?= $produto->PRO_CODIGO ?>">
-                                                            <label for="codigo">Código</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" type="text" id="produto" name="produto"
-                                                            placeholder="Produto" value="<?= $produto->PRO_NOME ?> ">
-                                                        <label for="produto">Produto</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-4">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" type="text" id="cor" name="cor"
-                                                            placeholder="Cor" value="<?= $produto->PRO_COR ?> ">
-                                                        <label for="cor">Cor</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" type="text" id="material"
-                                                            name="material" placeholder="Material"
-                                                            value="<?= $produto->PRO_MATERIAL ?> ">
-                                                        <label for="material">Material</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-4">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <select class="form-select" id="categoria" name="category">
-                                                            <option selected value="<?= $produto->PRO_CAT ?>">
-                                                                <?= $produto->PRO_CAT ?></option>
-                                                            <option value="categoria 1">categoria 1</option>
-                                                            <option value="categoria 2">categoria 2</option>
-                                                            <option value="categoria 3">categoria 3</option>
-                                                        </select>
-                                                        <label for="categoria">Categoria</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" type="text" id="detalhes"
-                                                            name="detalhes" placeholder="Detalhes"
-                                                            value="<?= $produto->PRO_DETALHES ?> ">
-                                                        <label for="detalhes">Detalhes</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-4">
-                                                <div class="col-md-4">
-                                                    <div class="input-group">
-                                                        <span class="input-group-text fw-bold">R$</span>
-                                                        <div class="form-floating">
-                                                            <input class="form-control" type="text" id="preco-de-compra"
-                                                                name="preco-de-compra" placeholder="Preço"
-                                                                value="<?= $produto->PRO_PRECO_CUSTO ?> ">
-                                                            <label for="preco-de-compra">Preço</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" type="text" id="quantidade"
-                                                            name="quantidade" placeholder="Quantidade"
-                                                            value="<?= $produto->PRO_QUANTIDADE ?> ">
-                                                        <label for="quantidade">Quantidade</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-4">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" type="text" id="minimo" name="minimo"
-                                                            placeholder="Mínimo" value="<?= $produto->PRO_MINIMO ?> ">
-                                                        <label for="minimo">Mínimo</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row mb-5">
-                                                <div class="col-12">
-                                                    <div class="form-floating">
-                                                        <textarea class="form-control"
-                                                            placeholder="Insira a descrição do produto" id="description"
-                                                            style="height: 100px"><?= $produto->PRO_DESCRICAO ?></textarea>
-                                                        <label for="description">Descrição</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="d-flex justify-content-center align-items-center">
-                                                <button class="btn btn-outline-primary">Editar produto</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!----------------------->
                 </tr>
                 <?php } ?>
                 <!------->
@@ -399,6 +271,132 @@ require '../../classes/produto.controller.php';
             </div>
         </div>
     </div>
+    <!----------------------->
+
+    <!-- EDITAR PRODUTO -->
+    <?php foreach ($produtos as $indice => $produto) { ?>
+        <div class="modal fade" id="editarProdutoModal<?= $indice ?>" tabindex="-1"
+            aria-labelledby="editarProdutoModalLabel<?= $indice ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="editarProdutoModalLabel<?= $indice ?>">Editar Produto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="container" action="">
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text fw-bold">#</span>
+                                        <div class="form-floating">
+                                            <input class="form-control" type="text" id="codigo" name="codigo"
+                                                placeholder="Código" value="<?= $produto->PRO_CODIGO ?>">
+                                            <label for="codigo">Código</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="produto" name="produto"
+                                            placeholder="Produto" value="<?= $produto->PRO_NOME ?> ">
+                                        <label for="produto">Produto</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="cor" name="cor" placeholder="Cor"
+                                            value="<?= $produto->PRO_COR ?> ">
+                                        <label for="cor">Cor</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="material" name="material"
+                                            placeholder="Material" value="<?= $produto->PRO_MATERIAL ?> ">
+                                        <label for="material">Material</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="categoria" name="category">
+                                            <option selected value="<?= $produto->PRO_CAT ?>">
+                                                <?= $produto->PRO_CAT ?>
+                                            </option>
+                                            <option value="categoria 1">categoria 1</option>
+                                            <option value="categoria 2">categoria 2</option>
+                                            <option value="categoria 3">categoria 3</option>
+                                        </select>
+                                        <label for="categoria">Categoria</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="detalhes" name="detalhes"
+                                            placeholder="Detalhes" value="<?= $produto->PRO_DETALHES ?> ">
+                                        <label for="detalhes">Detalhes</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text fw-bold">R$</span>
+                                        <div class="form-floating">
+                                            <input class="form-control" type="text" id="preco-de-compra"
+                                                name="preco-de-compra" placeholder="Preço"
+                                                value="<?= $produto->PRO_PRECO_CUSTO ?> ">
+                                            <label for="preco-de-compra">Preço</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="quantidade" name="quantidade"
+                                            placeholder="Quantidade" value="<?= $produto->PRO_QUANTIDADE ?> ">
+                                        <label for="quantidade">Quantidade</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="minimo" name="minimo"
+                                            placeholder="Mínimo" value="<?= $produto->PRO_MINIMO ?> ">
+                                        <label for="minimo">Mínimo</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-5">
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Insira a descrição do produto"
+                                            id="description" style="height: 100px"><?= $produto->PRO_DESCRICAO ?></textarea>
+                                        <label for="description">Descrição</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center align-items-center">
+                                <button class="btn btn-outline-primary">Editar produto</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
     <!----------------------->
 
     <!-- DESATIVAR PRODUTO -->
