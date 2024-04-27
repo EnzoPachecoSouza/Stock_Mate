@@ -120,7 +120,7 @@ require '../../classes/produto.controller.php';
 
                         <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
                         <td>
-                            <?= $produto->PRO_QUANTIDADE ?>
+                            <?= $produto->PRO_STATUS ?>
                         </td>
                         <!------->
 
@@ -141,7 +141,7 @@ require '../../classes/produto.controller.php';
 
                         <!-- BOTÃO DESATIVAR PRODUTO -->
                             <button type="button" class="btn" data-bs-toggle="modal"
-                                data-bs-target="#desativarProdutoModal">
+                                data-bs-target="#desativarProdutoModal<?= $indice ?>">
                                 <i class="bi bi-x-circle-fill text-danger fs-5"></i>
                             </button>
                             <!------->
@@ -403,12 +403,12 @@ require '../../classes/produto.controller.php';
 
     <!-- DESATIVAR PRODUTO -->
     <?php foreach ($produtos as $indice => $produto) { ?>
-        <div class="modal fade" id="desativarProdutoModal" tabindex="-1" aria-labelledby="desativarProdutoModalLabel"
+        <div class="modal fade" id="desativarProdutoModal<?= $indice ?>" tabindex="-1" aria-labelledby="desativarProdutoModalLabel<?= $indice ?>"
             aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="desativarProdutoModalLabel">Desativar Produto</h1>
+                        <h1 class="modal-title fs-5" id="desativarProdutoModalLabel<?= $indice ?>">Desativar Produto</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
