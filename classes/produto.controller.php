@@ -32,7 +32,7 @@ if ($acao == 'inserir') {
     $produtoService->inserir();
 
     //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi registrado
-    header('Location: ../pages/Estoque/index.php?inserir=1');
+    header('Location: ../pages/Estoque/index.php?registro=1');
 
 } else if ($acao == 'recuperar') {
     //instancia o objeto do produto.model.php
