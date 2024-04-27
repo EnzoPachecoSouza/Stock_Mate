@@ -284,7 +284,8 @@ require '../../classes/produto.controller.php';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="container" method="post" action="../../classes/produto.controller.php?acao=editar&id=<?=$produto->PRO_ID?>">
+                        <form class="container" method="post"
+                            action="../../classes/produto.controller.php?acao=editar&id=<?= $produto->PRO_ID ?>">
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <div class="input-group">
@@ -587,61 +588,59 @@ require '../../classes/produto.controller.php';
     <!----------------------->
 
     <!-- VER MAIS DETALHES -->
-    <?php foreach ($produtos as $indice => $produto) { ?>
-        <div class="modal fade" id="visualizarDetalhesProdutoModal" tabindex="-1"
-            aria-labelledby="visualizarDetalhesProdutoModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="visualizarDetalhesProdutoModalLabel">Detalhes do Produto</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <!-- TABELA DE ENTRADAS (DETALHES) -->
-                        <table class="table table-bordered" id="tabelaEntrada">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Entrada</th>
-                                    <th scope="col">Quantidade</th>
-                                    <th scope="col">Fornecedor</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">DATA DA ENTRADA</th>
-                                    <th>QUANTIDADE (ENTRADA)</th>
-                                    <th>NOME DO FORNECEDOR</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!------------>
+    <div class="modal fade" id="visualizarDetalhesProdutoModal" tabindex="-1"
+        aria-labelledby="visualizarDetalhesProdutoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="visualizarDetalhesProdutoModalLabel">Detalhes do Produto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- TABELA DE ENTRADAS (DETALHES) -->
+                    <table class="table table-bordered" id="tabelaEntrada">
+                        <thead>
+                            <tr>
+                                <th scope="col">Entrada</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Fornecedor</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">DATA DA ENTRADA</th>
+                                <th>QUANTIDADE (ENTRADA)</th>
+                                <th>NOME DO FORNECEDOR</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!------------>
 
-                        <!-- TABELA DE SAIDAS (DETALHES) -->
-                        <table class="d-none table table-bordered" id="tabelaSaida">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Saída</th>
-                                    <th scope="col">Quantidade</th>
-                                    <th scope="col">Cliente</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">DATA DA SAÍDA</th>
-                                    <th>QUANTIDADE (SAIDA)</th>
-                                    <th>NOME DO CLIENTE</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!------------>
-                    </div>
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" onclick="trocarEntradaSaida()">trocar</button>
-                    </div>
+                    <!-- TABELA DE SAIDAS (DETALHES) -->
+                    <table class="d-none table table-bordered" id="tabelaSaida">
+                        <thead>
+                            <tr>
+                                <th scope="col">Saída</th>
+                                <th scope="col">Quantidade</th>
+                                <th scope="col">Cliente</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">DATA DA SAÍDA</th>
+                                <th>QUANTIDADE (SAIDA)</th>
+                                <th>NOME DO CLIENTE</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!------------>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" onclick="trocarEntradaSaida()">trocar</button>
                 </div>
             </div>
         </div>
-    <?php } ?>
+    </div>
 
     <script>
         /* FUNÇÃO DE ALTERAR INFORMAÇÕES DO MODAL DE VISUALIZAR MAIS DETALHES */
