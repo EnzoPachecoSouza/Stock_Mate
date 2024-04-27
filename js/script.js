@@ -1,9 +1,15 @@
 // TOAST DE CONFIRMAÇÃO DE AÇÃO
 const parametrosURL = new URLSearchParams(window.location.search)
-const registro = parametrosURL.get('registro')
+const acao = parametrosURL.get('act')
 const toast = document.querySelector('#toast')
 
-if (registro === '1') {
+if (acao === 'inserir') {
+    showToast()
+} else if (acao === 'editar') {
+    showToast()
+} else if (acao === 'desativar') {
+    showToast()
+} else if (acao === 'ativar') {
     showToast()
 }
 
