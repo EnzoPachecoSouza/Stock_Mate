@@ -97,4 +97,25 @@ if ($acao == 'inserir') {
     //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi desativado
     header('Location: ../pages/Estoque/index.php?desativar=1');
 
+} else if ($acao == 'ativar') {
+    //recebe o id do produto a ser desativado
+    $id = isset($_GET['id']) ? $_GET['id'] : $id;
+
+    //instancia o objeto do produto.model.php
+    $produto = new Produto();
+
+    //faz a atribuição do atributo pelo __set no produto.model.php
+    $produto->__set('status', 1);
+
+    //inicia conexão com o BD
+    $conexao = new Conexao();
+
+    //instancia o objeto ProdutoService do produto.service.php com a conexao do BD e o produto a ser desativado
+    $produtoService = new ProdutoService($conexao, $produto);
+    //ação a ser executa no produto.service.php que faz a requisição para o BD
+    $produtoService->ativar($id);
+
+    //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi desativado
+    header('Location: ../pages/Estoque/index.php?ativar=1');
+
 }
