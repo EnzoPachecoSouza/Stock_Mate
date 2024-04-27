@@ -104,7 +104,11 @@ require '../../classes/produto.controller.php';
             <tbody class="table-group-divider">
                 <!-- TABELA MAPEADA -->
                 <?php foreach ($produtos as $indice => $produto) { ?>
-                    <tr>
+                    <?php if ($produto->PRO_STATUS == 0) { ?>
+                        <tr class="table-active">
+                        <?php } else { ?>
+                        <tr>
+                        <?php } ?>
                         <th scope="row">
                             <?= $produto->PRO_NOME ?>
                         </th>
@@ -124,7 +128,7 @@ require '../../classes/produto.controller.php';
                         </td>
                         <!------->
 
-                    <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
+                        <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
                         <!-- BOTÃO VISUALIZAR DETALHES -->
                             <button type="button" class="btn" data-bs-toggle="modal"
                                 data-bs-target="#visualizarDetalhesProdutoModal">
@@ -146,7 +150,8 @@ require '../../classes/produto.controller.php';
                                     <i class="bi bi-x-circle-fill text-danger fs-5"></i>
                                 </button>
                             <?php } else { ?>
-                                <form method="post" action="../../classes/produto.controller.php?acao=ativar&id=<?= $produto->PRO_ID ?>">
+                                <form method="post"
+                                    action="../../classes/produto.controller.php?acao=ativar&id=<?= $produto->PRO_ID ?>">
                                     <button type="submit" class="btn">
                                         <i class="bi bi-check-circle-fill text-success fs-5"></i>
                                     </button>
