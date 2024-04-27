@@ -123,12 +123,18 @@ require '../../classes/produto.controller.php';
                         </td>
 
                         <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
-                        <td>
+                        <?php if ($produto->PRO_QUANTIDADE <= $produto->PRO_MINIMO) { ?>
+                            <td class="bg-danger">
+                            <?php } else if ($produto->PRO_QUANTIDADE <= ($produto->PRO_MINIMO * 2)) { ?>
+                                <td class="bg-secondary">
+                            <?php } else { ?>
+                                <td class="bg-success">
+                            <?php } ?>
                             <?= $produto->PRO_QUANTIDADE ?>
                         </td>
                         <!------->
 
-                        <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
+                    <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
                         <!-- BOTÃO VISUALIZAR DETALHES -->
                             <button type="button" class="btn" data-bs-toggle="modal"
                                 data-bs-target="#visualizarDetalhesProdutoModal">
