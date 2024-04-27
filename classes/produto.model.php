@@ -6,13 +6,14 @@ class Produto
     private $codigo;
     private $nome;
     private $material;
-    private $categoria;
     private $descricao;
+    private $detalhes;
     private $cor;
     private $estoqueMinimo;
     private $quantidadeEmEstoque;
     private $precoDeCompra;
-    private $detalhes;
+    private $status;
+    private $categoria;
 
     public function __set($atributo, $valor)
     {

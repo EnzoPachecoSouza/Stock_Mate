@@ -120,7 +120,7 @@ require '../../classes/produto.controller.php';
 
                         <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
                         <td>
-                            <?= $produto->PRO_QUANTIDADE ?>
+                            <?= $produto->PRO_STATUS ?>
                         </td>
                         <!------->
 
@@ -402,29 +402,32 @@ require '../../classes/produto.controller.php';
     <!----------------------->
 
     <!-- DESATIVAR PRODUTO -->
-    <div class="modal fade" id="desativarProdutoModal" tabindex="-1" aria-labelledby="desativarProdutoModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="desativarProdutoModalLabel">Desativar Produto</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form class="container" action="">
-                        <div class="d-flex justify-content-center align-items-center mb-4">
-                            <h4>Deseja desativar esse produto?</h4>
-                        </div>
+    <?php foreach ($produtos as $indice => $produto) { ?>
+        <div class="modal fade" id="desativarProdutoModal" tabindex="-1" aria-labelledby="desativarProdutoModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="desativarProdutoModalLabel">Desativar Produto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="container" method="post"
+                            action="../../classes/produto.controller.php?acao=desativar&id=<?= $produto->PRO_ID ?>">
+                            <div class="d-flex justify-content-center align-items-center mb-4">
+                                <h4>Deseja desativar esse produto?</h4>
+                            </div>
 
-                        <div class="d-flex justify-content-center align-items-center gap-3">
-                            <button class="btn btn-outline-success">Sim</button>
-                            <button class="btn btn-outline-danger">Não</button>
-                        </div>
-                    </form>
+                            <div class="d-flex justify-content-center align-items-center gap-3">
+                                <button type="submit" class="btn btn-outline-success">Sim</button>
+                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Não</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    <?php } ?>
     <!----------------------->
 
     <!-- ENTRADA PRODUTO -->

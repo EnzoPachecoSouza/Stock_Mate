@@ -81,4 +81,20 @@ class ProdutoService
 
         return $stmt->execute();
     }
+
+    public function desativar($id)
+    {
+        $query = '
+        UPDATE PRODUTOS
+        SET PRO_STATUS = :status
+        WHERE PRO_ID = :id
+        ';
+
+        $stmt = $this->conexao->prepare($query);
+
+        $stmt->bindValue(':status', 0);
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+    }
 }
