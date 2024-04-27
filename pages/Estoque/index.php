@@ -20,10 +20,10 @@ require '../../classes/produto.controller.php';
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Custom Style -->
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="../../styles/custom.css">
 
     <!-- Style -->
-    <link rel="stylesheet" href="../../styles/custom.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
@@ -660,6 +660,19 @@ require '../../classes/produto.controller.php';
                 <div class="modal-footer">
                     <button class="btn btn-primary" onclick="trocarEntradaSaida()">trocar</button>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div class="toast d-block" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="bi bi-square-fill text-success"></i>
+                <strong class="me-auto ms-2">Registro</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                Produto registrado com sucesso!
             </div>
         </div>
     </div>
