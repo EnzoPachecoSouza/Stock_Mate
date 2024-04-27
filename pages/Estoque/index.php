@@ -206,9 +206,9 @@ require '../../classes/produto.controller.php';
                                 <div class="form-floating">
                                     <select class="form-select" id="categoria" name="categoria">
                                         <option selected></option>
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                        <option value="">3</option>
+                                        <option value="categoria 1">categoria 1</option>
+                                        <option value="categoria 2">categoria 2</option>
+                                        <option value="categoria 3">categoria 3</option>
                                     </select>
                                     <label for="categoria">Categoria</label>
                                 </div>
@@ -326,9 +326,9 @@ require '../../classes/produto.controller.php';
                                 <div class="form-floating">
                                     <select class="form-select" id="categoria" name="category">
                                         <option selected></option>
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                        <option value="">3</option>
+                                        <option value="categoria 1">categoria 1</option>
+                                        <option value="categoria 2">categoria 2</option>
+                                        <option value="categoria 3">categoria 3</option>
                                     </select>
                                     <label for="categoria">Categoria</label>
                                 </div>
