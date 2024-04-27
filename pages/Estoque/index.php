@@ -664,18 +664,43 @@ require '../../classes/produto.controller.php';
         </div>
     </div>
 
+    <!-- TOAST DE CONFIRMAR AÇÃO REALIZADA -->
     <div class="toast-container position-fixed top-0 end-0 p-3">
-        <div class="toast d-block" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header">
+        <div class="toast" id="toast">
+            <div class="toast-header fs-5">
                 <i class="bi bi-square-fill text-success"></i>
-                <strong class="me-auto ms-2">Registro</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                <strong class="me-auto ms-3">Registro</strong>
+                <button type="button" class="btn-close" onclick="closeToast()"></button>
             </div>
-            <div class="toast-body">
+            <div class="toast-body fs-6">
                 Produto registrado com sucesso!
             </div>
         </div>
     </div>
+    <!-- </div> -->
+
+    <script>
+        const parametroURL = new URLSearchParams(window.location.search)
+        const registro = parametroURL.get('registro')
+        const toast = document.querySelector('#toast')
+
+        if (registro === '1') {
+            showToast()
+        }
+
+        function showToast() {
+            toast.classList.add('d-block')
+            
+            setTimeout(() => {
+                toast.classList.remove('d-block')
+            }, 3000)
+        }
+
+        function closeToast() {
+            toast.classList.remove('d-block')
+        }
+    </script>
+    <!----------------------->
 
     <script>
         /* FUNÇÃO DE ALTERAR INFORMAÇÕES DO MODAL DE VISUALIZAR MAIS DETALHES */
