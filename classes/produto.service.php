@@ -48,35 +48,37 @@ class ProdutoService
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function editar()
+    public function editar($id)
     {
-        // $query = '
-        // UPDATE PRODUTOS
-        // SET PRO_CODIGO = :codigo,
-        //     PRO_NOME = :nome,
-        //     PRO_COR = :cor,
-        //     PRO_MATERIAL = :material,
-        //     PRO_CAT = :categoria,
-        //     PRO_DETALHES = :detalhes,
-        //     PRO_PRECO_CUSTO = :precoDeCompra,
-        //     PRO_QUANTIDADE = :quantidadeEmEstoque,
-        //     PRO_MINIMO = :estoqueMinimo,
-        //     PRO_DESCRICAO = :descricao
-        // ';
+        $query = '
+        UPDATE PRODUTOS
+        SET PRO_CODIGO = :codigo,
+            PRO_NOME = :nome,
+            PRO_COR = :cor,
+            PRO_MATERIAL = :material,
+            PRO_CAT = :categoria,
+            PRO_DETALHES = :detalhes,
+            PRO_PRECO_CUSTO = :precoDeCompra,
+            PRO_QUANTIDADE = :quantidadeEmEstoque,
+            PRO_MINIMO = :estoqueMinimo,
+            PRO_DESCRICAO = :descricao
+        WHERE PRO_ID = :id
+        ';
 
-        // $stmt = $this->conexao->prepare($query);
+        $stmt = $this->conexao->prepare($query);
 
-        // $stmt->bindValue(':codigo', $this->produto->__get('codigo'));
-        // $stmt->bindValue(':nome', $this->produto->__get('nome'));
-        // $stmt->bindValue(':cor', $this->produto->__get('cor'));
-        // $stmt->bindValue(':material', $this->produto->__get('material'));
-        // $stmt->bindValue(':categoria', $this->produto->__get('categoria'));
-        // $stmt->bindValue(':detalhes', $this->produto->__get('detalhes'));
-        // $stmt->bindValue(':precoDeCompra', $this->produto->__get('precoDeCompra'));
-        // $stmt->bindValue(':quantidadeEmEstoque', $this->produto->__get('quantidadeEmEstoque'));
-        // $stmt->bindValue(':estoqueMinimo', $this->produto->__get('estoqueMinimo'));
-        // $stmt->bindValue(':descricao', $this->produto->__get('descricao'));
+        $stmt->bindValue(':codigo', $this->produto->__get('codigo'));
+        $stmt->bindValue(':nome', $this->produto->__get('nome'));
+        $stmt->bindValue(':cor', $this->produto->__get('cor'));
+        $stmt->bindValue(':material', $this->produto->__get('material'));
+        $stmt->bindValue(':categoria', $this->produto->__get('categoria'));
+        $stmt->bindValue(':detalhes', $this->produto->__get('detalhes'));
+        $stmt->bindValue(':precoDeCompra', $this->produto->__get('precoDeCompra'));
+        $stmt->bindValue(':quantidadeEmEstoque', $this->produto->__get('quantidadeEmEstoque'));
+        $stmt->bindValue(':estoqueMinimo', $this->produto->__get('estoqueMinimo'));
+        $stmt->bindValue(':descricao', $this->produto->__get('descricao'));
+        $stmt->bindValue(':id', $id);
 
-        // return $stmt->execute();
+        return $stmt->execute();
     }
 }

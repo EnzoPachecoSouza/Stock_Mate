@@ -69,7 +69,7 @@ if ($acao == 'inserir') {
     //instancia o objeto ProdutoService do produto.service.php com a conexao do BD e o produto a ser editado
     $produtoService = new ProdutoService($conexao, $produto);
     //ação a ser executa no produto.service.php que faz a requisição para o BD
-    $produtoService->editar();
+    $produtoService->editar($id);
 
     //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi editado
     header('Location: ../pages/Estoque/index.php?edicao=1');
