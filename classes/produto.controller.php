@@ -10,6 +10,7 @@ $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 if ($acao == 'inserir') {
     //instancia o objeto do produto.model.php
     $produto = new Produto();
+    
     //faz a atribuição do atributo pelo __set no produto.model.php
     $produto->__set('codigo', $_POST['codigo']);
     $produto->__set('nome', $_POST['nome']);
@@ -46,6 +47,18 @@ if ($acao == 'inserir') {
 } else if ($acao == 'editar') {
     //instancia o objeto do produto.model.php
     $produto = new Produto();
+
+    //faz a atribuição do atributo pelo __set no produto.model.php
+    $produto->__set('codigo', $_POST['codigo']);
+    $produto->__set('nome', $_POST['nome']);
+    $produto->__set('material', $_POST['material']);
+    $produto->__set('categoria', $_POST['categoria']);
+    $produto->__set('descricao', $_POST['descricao']);
+    $produto->__set('cor', $_POST['cor']);
+    $produto->__set('estoqueMinimo', $_POST['estoqueMinimo']);
+    $produto->__set('quantidadeEmEstoque', $_POST['quantidadeEmEstoque']);
+    $produto->__set('precoDeCompra', $_POST['precoDeCompra']);
+    $produto->__set('detalhes', $_POST['detalhes']);
 
     //inicia conexão com o BD
     $conexao = new Conexao();

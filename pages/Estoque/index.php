@@ -327,7 +327,7 @@ require '../../classes/produto.controller.php';
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select" id="categoria" name="category">
+                                        <select class="form-select" id="categoria" name="categoria">
                                             <option selected value="<?= $produto->PRO_CAT ?>">
                                                 <?= $produto->PRO_CAT ?>
                                             </option>
@@ -353,27 +353,27 @@ require '../../classes/produto.controller.php';
                                     <div class="input-group">
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
-                                            <input class="form-control" type="text" id="preco-de-compra"
-                                                name="preco-de-compra" placeholder="Preço"
+                                            <input class="form-control" type="text" id="precoDeCompra"
+                                                name="precoDeCompra" placeholder="Preço"
                                                 value="<?= $produto->PRO_PRECO_CUSTO ?> ">
-                                            <label for="preco-de-compra">Preço</label>
+                                            <label for="precoDeCompra">Preço</label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="quantidade" name="quantidade"
+                                        <input class="form-control" type="text" id="quantidadeEmEstoque" name="quantidadeEmEstoque"
                                             placeholder="Quantidade" value="<?= $produto->PRO_QUANTIDADE ?> ">
-                                        <label for="quantidade">Quantidade</label>
+                                        <label for="quantidadeEmEstoque">Quantidade</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="minimo" name="minimo"
+                                        <input class="form-control" type="text" id="estoqueMinimo" name="estoqueMinimo"
                                             placeholder="Mínimo" value="<?= $produto->PRO_MINIMO ?> ">
-                                        <label for="minimo">Mínimo</label>
+                                        <label for="estoqueMinimo">Mínimo</label>
                                     </div>
                                 </div>
                             </div>
@@ -382,8 +382,8 @@ require '../../classes/produto.controller.php';
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Insira a descrição do produto"
-                                            id="description" style="height: 100px"><?= $produto->PRO_DESCRICAO ?></textarea>
-                                        <label for="description">Descrição</label>
+                                            id="descricao" name="descricao" style="height: 100px"><?= $produto->PRO_DESCRICAO ?></textarea>
+                                        <label for="descricao">Descrição</label>
                                     </div>
                                 </div>
                             </div>
