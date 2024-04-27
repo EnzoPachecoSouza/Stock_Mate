@@ -45,6 +45,9 @@ if ($acao == 'inserir') {
     //ação a ser executa no produto.service.php que faz a requisição para o BD
     $produtos = $produtoService->recuperar();
 } else if ($acao == 'editar') {
+    //recebe o id do produto a ser editado
+    $id = isset($_GET['id']) ? $_GET['id'] : $id;
+    
     //instancia o objeto do produto.model.php
     $produto = new Produto();
 

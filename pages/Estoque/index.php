@@ -284,7 +284,7 @@ require '../../classes/produto.controller.php';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="container" method="post" action="../../classes/produto.controller.php?acao=editar">
+                        <form class="container" method="post" action="../../classes/produto.controller.php?acao=editar&id=<?=$produto->PRO_ID?>">
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <div class="input-group">
