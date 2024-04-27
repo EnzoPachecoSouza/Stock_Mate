@@ -299,9 +299,9 @@ require '../../classes/produto.controller.php';
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="produto" name="produto"
-                                            placeholder="Produto" value="<?= $produto->PRO_NOME ?> ">
-                                        <label for="produto">Produto</label>
+                                        <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome"
+                                            value="<?= $produto->PRO_NOME ?>">
+                                        <label for="nome">Nome</label>
                                     </div>
                                 </div>
                             </div>
@@ -310,7 +310,7 @@ require '../../classes/produto.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="cor" name="cor" placeholder="Cor"
-                                            value="<?= $produto->PRO_COR ?> ">
+                                            value="<?= $produto->PRO_COR ?>">
                                         <label for="cor">Cor</label>
                                     </div>
                                 </div>
@@ -318,7 +318,7 @@ require '../../classes/produto.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="material" name="material"
-                                            placeholder="Material" value="<?= $produto->PRO_MATERIAL ?> ">
+                                            placeholder="Material" value="<?= $produto->PRO_MATERIAL ?>">
                                         <label for="material">Material</label>
                                     </div>
                                 </div>
@@ -342,7 +342,7 @@ require '../../classes/produto.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="detalhes" name="detalhes"
-                                            placeholder="Detalhes" value="<?= $produto->PRO_DETALHES ?> ">
+                                            placeholder="Detalhes" value="<?= $produto->PRO_DETALHES ?>">
                                         <label for="detalhes">Detalhes</label>
                                     </div>
                                 </div>
@@ -353,9 +353,8 @@ require '../../classes/produto.controller.php';
                                     <div class="input-group">
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
-                                            <input class="form-control" type="text" id="precoDeCompra"
-                                                name="precoDeCompra" placeholder="Preço"
-                                                value="<?= $produto->PRO_PRECO_CUSTO ?> ">
+                                            <input class="form-control" type="text" id="precoDeCompra" name="precoDeCompra"
+                                                placeholder="Preço" value="<?= $produto->PRO_PRECO_CUSTO ?>">
                                             <label for="precoDeCompra">Preço</label>
                                         </div>
                                     </div>
@@ -363,8 +362,9 @@ require '../../classes/produto.controller.php';
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="quantidadeEmEstoque" name="quantidadeEmEstoque"
-                                            placeholder="Quantidade" value="<?= $produto->PRO_QUANTIDADE ?> ">
+                                        <input class="form-control" type="text" id="quantidadeEmEstoque"
+                                            name="quantidadeEmEstoque" placeholder="Quantidade"
+                                            value="<?= $produto->PRO_QUANTIDADE ?>">
                                         <label for="quantidadeEmEstoque">Quantidade</label>
                                     </div>
                                 </div>
@@ -372,7 +372,7 @@ require '../../classes/produto.controller.php';
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="estoqueMinimo" name="estoqueMinimo"
-                                            placeholder="Mínimo" value="<?= $produto->PRO_MINIMO ?> ">
+                                            placeholder="Mínimo" value="<?= $produto->PRO_MINIMO ?>">
                                         <label for="estoqueMinimo">Mínimo</label>
                                     </div>
                                 </div>
@@ -382,7 +382,8 @@ require '../../classes/produto.controller.php';
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Insira a descrição do produto"
-                                            id="descricao" name="descricao" style="height: 100px"><?= $produto->PRO_DESCRICAO ?></textarea>
+                                            id="descricao" name="descricao"
+                                            style="height: 100px"><?= $produto->PRO_DESCRICAO ?></textarea>
                                         <label for="descricao">Descrição</label>
                                     </div>
                                 </div>
