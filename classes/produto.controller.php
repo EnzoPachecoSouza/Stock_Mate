@@ -8,7 +8,7 @@ require "conexao.php";
 $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 
 if ($acao == 'inserir') {
-    //instância o objeto do produto.model.php
+    //instancia o objeto do produto.model.php
     $produto = new Produto();
     //faz a atribuição do atributo pelo __set no produto.model.php
     $produto->__set('codigo', $_POST['codigo']);
@@ -33,10 +33,28 @@ if ($acao == 'inserir') {
     //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi registrado
     header('Location: ../pages/Estoque/index.php?inclusao=1');
 } else if ($acao == 'recuperar') {
+    //instancia o objeto do produto.model.php
     $produto = new Produto();
 
+    //inicia conexão com o BD
     $conexao = new Conexao();
 
+    //instancia o objeto ProdutoService do produto.service.php com a conexao do BD e o produto a ser recuperado
     $produtoService = new ProdutoService($conexao, $produto);
+    //ação a ser executa no produto.service.php que faz a requisição para o BD
     $produtos = $produtoService->recuperar();
+} else if ($acao == 'editar') {
+    //instancia o objeto do produto.model.php
+    $produto = new Produto();
+
+    //inicia conexão com o BD
+    $conexao = new Conexao();
+
+    //instancia o objeto ProdutoService do produto.service.php com a conexao do BD e o produto a ser editado
+    $produtoService = new ProdutoService($conexao, $produto);
+    //ação a ser executa no produto.service.php que faz a requisição para o BD
+    $produtoService->editar();
+
+    //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi editado
+    header('Location: ../pages/Estoque/index.php?edicao=1');
 }
