@@ -140,10 +140,18 @@ require '../../classes/produto.controller.php';
                             <!------->
 
                         <!-- BOTÃO DESATIVAR PRODUTO -->
-                            <button type="button" class="btn" data-bs-toggle="modal"
-                                data-bs-target="#desativarProdutoModal<?= $indice ?>">
-                                <i class="bi bi-x-circle-fill text-danger fs-5"></i>
-                            </button>
+                            <?php if ($produto->PRO_STATUS === 1) { ?>
+                                <button type="button" class="btn" data-bs-toggle="modal"
+                                    data-bs-target="#desativarProdutoModal<?= $indice ?>">
+                                    <i class="bi bi-x-circle-fill text-danger fs-5"></i>
+                                </button>
+                            <?php } else { ?>
+                                <form method="post" action="../../classes/produto.controller.php?acao=ativar&id=<?= $produto->PRO_ID ?>">
+                                    <button type="submit" class="btn">
+                                        <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                    </button>
+                                </form>
+                            <?php } ?>
                             <!------->
                     </td>
                 </tr>
@@ -403,8 +411,8 @@ require '../../classes/produto.controller.php';
 
     <!-- DESATIVAR PRODUTO -->
     <?php foreach ($produtos as $indice => $produto) { ?>
-        <div class="modal fade" id="desativarProdutoModal<?= $indice ?>" tabindex="-1" aria-labelledby="desativarProdutoModalLabel<?= $indice ?>"
-            aria-hidden="true">
+        <div class="modal fade" id="desativarProdutoModal<?= $indice ?>" tabindex="-1"
+            aria-labelledby="desativarProdutoModalLabel<?= $indice ?>" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
