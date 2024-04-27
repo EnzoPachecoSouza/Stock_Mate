@@ -677,53 +677,15 @@ require '../../classes/produto.controller.php';
             </div>
         </div>
     </div>
-    <!-- </div> -->
-
-    <script>
-        const parametroURL = new URLSearchParams(window.location.search)
-        const registro = parametroURL.get('registro')
-        const toast = document.querySelector('#toast')
-
-        if (registro === '1') {
-            showToast()
-        }
-
-        function showToast() {
-            toast.classList.add('d-block')
-            
-            setTimeout(() => {
-                toast.classList.remove('d-block')
-            }, 3000)
-        }
-
-        function closeToast() {
-            toast.classList.remove('d-block')
-        }
-    </script>
-    <!----------------------->
-
-    <script>
-        /* FUNÇÃO DE ALTERAR INFORMAÇÕES DO MODAL DE VISUALIZAR MAIS DETALHES */
-        const tabelaEntradaElement = document.querySelector('#tabelaEntrada')
-        const tabelaSaidaElement = document.querySelector('#tabelaSaida')
-
-        function trocarEntradaSaida() {
-            tabelaEntradaElement.classList.contains('d-none')
-                ? tabelaEntradaElement.classList.remove('d-none')
-                : tabelaEntradaElement.classList.add('d-none')
-
-            tabelaSaidaElement.classList.contains('d-none')
-                ? tabelaSaidaElement.classList.remove('d-none')
-                : tabelaSaidaElement.classList.add('d-none')
-        }
-        /* --- */
-    </script>
     <!----------------------->
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+    <!-- Script -->
+    <script src="../../js/script.js"></script>
 </body>
 
 </html>
