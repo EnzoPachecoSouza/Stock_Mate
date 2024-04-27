@@ -667,14 +667,44 @@ require '../../classes/produto.controller.php';
     <!-- TOAST DE CONFIRMAR AÇÃO REALIZADA -->
     <div class="toast-container position-fixed top-0 end-0 p-3">
         <div class="toast" id="toast">
-            <div class="toast-header fs-5">
-                <i class="bi bi-square-fill text-success"></i>
-                <strong class="me-auto ms-3">Registro</strong>
-                <button type="button" class="btn-close" onclick="closeToast()"></button>
-            </div>
-            <div class="toast-body fs-6">
-                Produto registrado com sucesso!
-            </div>
+            <?php $toastAcao = isset($_GET['act']) ? $_GET['act'] : $toastAcao; ?>
+            <?php if ($toastAcao === 'inserir') { ?>
+                <div class="toast-header fs-5">
+                    <i class="bi bi-square-fill text-success"></i>
+                    <strong class="me-auto ms-3">Inserir</strong>
+                    <button type="button" class="btn-close" onclick="closeToast()"></button>
+                </div>
+                <div class="toast-body fs-6">
+                    <strong>Produto registrado com sucesso!</strong>
+                </div>
+            <?php } else if ($toastAcao === 'editar') { ?>
+                    <div class="toast-header fs-5">
+                        <i class="bi bi-square-fill text-primary"></i>
+                        <strong class="me-auto ms-3">Editar</strong>
+                        <button type="button" class="btn-close" onclick="closeToast()"></button>
+                    </div>
+                    <div class="toast-body fs-6">
+                        <strong>Produto editado com sucesso!</strong>
+                    </div>
+            <?php } else if ($toastAcao === 'desativar') { ?>
+                        <div class="toast-header fs-5">
+                            <i class="bi bi-square-fill text-danger"></i>
+                            <strong class="me-auto ms-3">Desativar</strong>
+                            <button type="button" class="btn-close" onclick="closeToast()"></button>
+                        </div>
+                        <div class="toast-body fs-6">
+                            <strong>Produto desativado com sucesso!</strong>
+                        </div>
+            <?php } else if ($toastAcao === 'ativar') { ?>
+                            <div class="toast-header fs-5">
+                                <i class="bi bi-square-fill text-success"></i>
+                                <strong class="me-auto ms-3">Ativar</strong>
+                                <button type="button" class="btn-close" onclick="closeToast()"></button>
+                            </div>
+                            <div class="toast-body fs-6">
+                                <strong>Produto reativado com sucesso!</strong>
+                            </div>
+            <?php } ?>
         </div>
     </div>
     <!----------------------->
