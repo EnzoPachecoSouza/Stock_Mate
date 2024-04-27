@@ -120,7 +120,7 @@ require '../../classes/produto.controller.php';
 
                         <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
                         <td>
-                            <?= $produto->PRO_STATUS ?>
+                            <?= $produto->PRO_QUANTIDADE ?>
                         </td>
                         <!------->
 
