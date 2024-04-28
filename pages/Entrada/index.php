@@ -65,7 +65,62 @@
     <!------->
 
     <div class="container mt-5">
+        <table class="table table-hover table-bordered mt-3">
+            <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
+            <thead class="table-active">
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Cor</th>
+                    <th scope="col">Detalhes</th>
+                    <th scope="col">Material</th>
+                    <th scope="col">Quantidade</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
 
+            <tbody class="table-group-divider">
+                <tr class="table-active">
+
+                    <th scope="row" class="">
+                        1
+                    </th>
+                    <td>
+                        2
+                    </td>
+                    <td>
+                        3
+                    </td>
+                    <td>
+                        4
+                    </td>
+                    <td>
+                        5
+                    </td>
+
+                    <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
+                        <!-- BOTÃO VISUALIZAR DETALHES -->
+                        <button type="button" class="btn" data-bs-toggle="modal"
+                            data-bs-target="#visualizarDetalhesProdutoModal">
+                            <i class="bi bi-eye-fill text-success fs-5"></i>
+                        </button>
+                        <!------->
+
+                        <!-- BOTÃO EDITAR PRODUTO -->
+                        <button type="button" class="btn" data-bs-toggle="modal"
+                            data-bs-target="#editarProdutoModal<?= $indice ?>">
+                            <i class="bi bi-pencil-square text-info fs-5"></i>
+                        </button>
+                        <!------->
+
+                        <!-- BOTÃO DESATIVAR PRODUTO -->
+                        <button type="button" class="btn" data-bs-toggle="modal"
+                            data-bs-target="#desativarProdutoModal<?= $indice ?>">
+                            <i class="bi bi-x-circle-fill text-danger fs-5"></i>
+                        </button>
+                        <!------->
+                    </td>
+                </tr>
+            </tbody>
     </div>
 
     <!-- Bootstrap JS -->
