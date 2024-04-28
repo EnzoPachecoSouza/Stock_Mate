@@ -10,7 +10,7 @@ require '../../classes/produto.controller.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StockMate</title>
+    <title>StockMate | Estoque</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -46,9 +46,11 @@ require '../../classes/produto.controller.php';
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Estoque</a>
+                            <a class="nav-link text-white" href="">Estoque</a>
                         </li>
 
+                        
+                        
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">Relatórios</a>
                         </li>
@@ -113,7 +115,7 @@ require '../../classes/produto.controller.php';
                         <?php } else { ?>
                         <tr>
                         <?php } ?>
-                        <th scope="row">
+                        <th scope="row" class="">
                             <?= $produto->PRO_NOME ?>
                         </th>
                         <td>
