@@ -49,7 +49,9 @@ require '../../classes/produto.controller.php';
                             <a class="nav-link text-white" href="">Estoque</a>
                         </li>
 
-                        
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="../entrada">Entrada</a>
+                        </li>
                         
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">Relatórios</a>
