@@ -66,30 +66,34 @@ require '../../classes/produto.controller.php';
     </div>
     <!------->
 
-    <div class="container d-flex flex-column justify-content-center mt-5">
-        <div class="d-flex justify-content-center align-items-center gap-3" style="position: relative">
-            <!-- BOTÃO DE REGISTRAR ENTRADA DE PRODUTO -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#entradaProdutoModal">
-                Entrada
-            </button>
-            <!------->
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center">
+            <div>
+                <!-- BOTÃO DE REGISTRAR ENTRADA DE PRODUTO -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#entradaProdutoModal">
+                    Entrada
+                </button>
+                <!------->
 
-            <!-- BOTÃO DE REGISTRAR ENTRADA DE PRODUTO -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#saidaProdutoModal">
-                Saída
-            </button>
-            <!------->
+                <!-- BOTÃO DE REGISTRAR ENTRADA DE PRODUTO -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#saidaProdutoModal">
+                    Saída
+                </button>
+                <!------->
+            </div>
 
             <!-- BOTÃO DE CRIAR PRODUTO -->
-            <button type="button" class="btn btn-primary rounded-circle" style="position: absolute; top: 0; right: 0"
-                data-bs-toggle="modal" data-bs-target="#cadastrarProdutoModal">
+            <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
+                data-bs-target="#cadastrarProdutoModal">
                 <i class="bi bi-plus-lg"></i>
             </button>
             <!------->
         </div>
 
-        <table class="table table-hover table-bordered">
-            <caption class="caption-top">LEGENDA DA TABELA</caption>
+        <table class="table table-hover table-bordered mt-3">
+            <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
             <thead class="table-active">
                 <tr>
                     <th scope="col">Nome</th>
@@ -666,7 +670,7 @@ require '../../classes/produto.controller.php';
 
     <!-- TOAST DE CONFIRMAR AÇÃO REALIZADA -->
     <div class="toast-container position-fixed top-0 end-0 p-3">
-        <div class="toast" id="toast">
+        <div class="toast bg-white" id="toast">
             <?php $toastAcao = isset($_GET['act']) ? $_GET['act'] : $toastAcao; ?>
             <?php if ($toastAcao === 'inserir') { ?>
                 <div class="toast-header fs-5">
