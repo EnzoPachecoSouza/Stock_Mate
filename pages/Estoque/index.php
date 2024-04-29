@@ -674,7 +674,8 @@ require '../../classes/produto.controller.php';
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" id="categoria" name="categoria" value="<?= $produto->PRO_CAT ?>" disabled>                                          
+                                        <input class="form-control" id="categoria" name="categoria"
+                                            value="<?= $produto->PRO_CAT ?>" disabled>
                                         <label for="categoria">Categoria</label>
                                     </div>
                                 </div>
@@ -723,7 +724,7 @@ require '../../classes/produto.controller.php';
                                     <div class="input-group">
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="status" name="status"
-                                                placeholder="Status" value="<?= $produto->PRO_STATUS?>" disabled>
+                                                placeholder="Status" value="<?= $produto->PRO_STATUS ?>" disabled>
                                             <label for="status">Status</label>
                                         </div>
                                     </div>
@@ -731,9 +732,8 @@ require '../../classes/produto.controller.php';
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="empresa"
-                                            name="empresa" placeholder="Empresa"
-                                            value=" " disabled>
+                                        <input class="form-control" type="text" id="empresa" name="empresa"
+                                            placeholder="Empresa" value=" " disabled>
                                         <label for="empresa">Empresa</label>
                                     </div>
                                 </div>
@@ -743,8 +743,8 @@ require '../../classes/produto.controller.php';
                                 <div class="col-12">
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Insira a descrição do produto"
-                                            id="descricao" name="descricao"
-                                            style="height: 100px" disabled><?= $produto->PRO_DESCRICAO ?></textarea>
+                                            id="descricao" name="descricao" style="height: 100px"
+                                            disabled><?= $produto->PRO_DESCRICAO ?></textarea>
                                         <label for="descricao">Descrição</label>
                                     </div>
                                 </div>
