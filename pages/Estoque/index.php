@@ -52,7 +52,7 @@ require '../../classes/produto.controller.php';
                         <li class="nav-item">
                             <a class="nav-link text-white" href="../entrada">Entrada</a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link text-white" href="#">Relatórios</a>
                         </li>
@@ -145,7 +145,7 @@ require '../../classes/produto.controller.php';
                     <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
                         <!-- BOTÃO VISUALIZAR DETALHES -->
                             <button type="button" class="btn" data-bs-toggle="modal"
-                                data-bs-target="#visualizarDetalhesProdutoModal">
+                                data-bs-target="#visualizarDetalhesProdutoModal<?= $indice ?>">
                                 <i class="bi bi-eye-fill text-success fs-5"></i>
                             </button>
                             <!------->
@@ -618,59 +618,144 @@ require '../../classes/produto.controller.php';
     <!----------------------->
 
     <!-- VER MAIS DETALHES -->
-    <div class="modal fade" id="visualizarDetalhesProdutoModal" tabindex="-1"
-        aria-labelledby="visualizarDetalhesProdutoModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="visualizarDetalhesProdutoModalLabel">Detalhes do Produto</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <!-- TABELA DE ENTRADAS (DETALHES) -->
-                    <table class="table table-bordered" id="tabelaEntrada">
-                        <thead>
-                            <tr>
-                                <th scope="col">Entrada</th>
-                                <th scope="col">Quantidade</th>
-                                <th scope="col">Fornecedor</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">DATA DA ENTRADA</th>
-                                <th>QUANTIDADE (ENTRADA)</th>
-                                <th>NOME DO FORNECEDOR</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <!------------>
 
-                    <!-- TABELA DE SAIDAS (DETALHES) -->
-                    <table class="d-none table table-bordered" id="tabelaSaida">
-                        <thead>
-                            <tr>
-                                <th scope="col">Saída</th>
-                                <th scope="col">Quantidade</th>
-                                <th scope="col">Cliente</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">DATA DA SAÍDA</th>
-                                <th>QUANTIDADE (SAIDA)</th>
-                                <th>NOME DO CLIENTE</th>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <!------------>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" onclick="trocarEntradaSaida()">trocar</button>
+    <?php foreach ($produtos as $indice => $produto) { ?>
+        <!-- VER MAIS DETALHES -->
+        <div class="modal fade" id="visualizarDetalhesProdutoModal<?= $indice ?>" tabindex="-1"
+            aria-labelledby="visualizarDetalhesProdutoModalLabel<?= $indice ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="visualizarDetalhesProdutoModalLabel<?= $indice ?>">Detalhes do
+                            Produto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text fw-bold">#</span>
+                                        <div class="form-floating">
+                                            <input class="form-control" type="text" id="codigo" name="codigo"
+                                                placeholder="Código" value="<?= $produto->PRO_CODIGO ?>" readonly>
+                                            <label for="codigo">Código</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome"
+                                            value="<?= $produto->PRO_NOME ?>" readonly>
+                                        <label for="nome">Nome</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="cor" name="cor" placeholder="Cor"
+                                            value="<?= $produto->PRO_COR ?>" readonly>
+                                        <label for="cor">Cor</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="material" name="material"
+                                            placeholder="Material" value="<?= $produto->PRO_MATERIAL ?>" readonly>
+                                        <label for="material">Material</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" id="categoria" name="categoria" value="<?= $produto->PRO_CAT ?>" readonly>                                          
+                                        <label for="categoria">Categoria</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="detalhes" name="detalhes"
+                                            placeholder="Detalhes" value="<?= $produto->PRO_DETALHES ?>" readonly>
+                                        <label for="detalhes">Detalhes</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text fw-bold">R$</span>
+                                        <div class="form-floating">
+                                            <input class="form-control" type="text" id="precoDeCompra" name="precoDeCompra"
+                                                placeholder="Preço" value="<?= $produto->PRO_PRECO_CUSTO ?>" readonly>
+                                            <label for="precoDeCompra">Preço</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="quantidadeEmEstoque"
+                                            name="quantidadeEmEstoque" placeholder="Quantidade"
+                                            value="<?= $produto->PRO_QUANTIDADE ?>" readonly>
+                                        <label for="quantidadeEmEstoque">Quantidade</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="estoqueMinimo" name="estoqueMinimo"
+                                            placeholder="Mínimo" value="<?= $produto->PRO_MINIMO ?>" readonly>
+                                        <label for="estoqueMinimo">Mínimo</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <div class="form-floating">
+                                            <input class="form-control" type="text" id="status" name="status"
+                                                placeholder="Status" value="<?= $produto->PRO_STATUS?>" readonly>
+                                            <label for="status">Status</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="empresa"
+                                            name="empresa" placeholder="Empresa"
+                                            value=" " readonly>
+                                        <label for="empresa">Empresa</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-5">
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Insira a descrição do produto"
+                                            id="descricao" name="descricao"
+                                            style="height: 100px" readonly><?= $produto->PRO_DESCRICAO ?></textarea>
+                                        <label for="descricao">Descrição</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    <?php } ?>
+
 
     <!-- TOAST DE CONFIRMAR AÇÃO REALIZADA -->
     <div class="toast-container position-fixed top-0 end-0 p-3">
