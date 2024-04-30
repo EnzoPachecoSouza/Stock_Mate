@@ -1,4 +1,12 @@
+* {
+    font-family: "Noto Sans", sans-serif;
+}
+
 /* NAVBAR STYLES */
+.nav-font {
+    font-family: "Kanit", sans-serif;
+}
+
 .navbar-shadow {
     box-shadow: 0 1px 15px #002555;
 }

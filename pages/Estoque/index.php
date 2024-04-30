@@ -12,6 +12,20 @@ require '../../classes/Produto/produto.controller.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StockMate | Estoque</title>
 
+    <!-- Font [Noto Sans] -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wght@100..800&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font [Kanit] -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -32,7 +46,7 @@ require '../../classes/Produto/produto.controller.php';
 <body>
     <!-- NAVBAR -->
     <div class="container-fluid bg-primary navbar-shadow">
-        <div class="container">
+        <nav class="container">
             <div class="row d-flex align-items-center py-3">
 
                 <!-- LOGO -->
@@ -45,19 +59,19 @@ require '../../classes/Produto/produto.controller.php';
                 <div class="col-6">
                     <ul class="nav justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Colaboradores</a>
+                            <a class="nav-link text-white nav-font" href="#">Colaboradores</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="">Estoque</a>
+                            <a class="nav-link text-white nav-font" href="">Estoque</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="../entrada">Entrada</a>
+                            <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="#">Relatórios</a>
+                            <a class="nav-link text-white nav-font" href="#">Relatórios</a>
                         </li>
                     </ul>
                 </div>
@@ -65,11 +79,11 @@ require '../../classes/Produto/produto.controller.php';
 
                 <!-- SAIR -->
                 <div class="col-3 text-end">
-                    <button class="btn btn-lg text-secondary">Sair</button>
+                    <button class="btn btn-lg text-secondary nav-font">Sair</button>
                 </div>
                 <!------->
             </div>
-        </div>
+        </nav>
     </div>
     <!------->
 
@@ -83,7 +97,7 @@ require '../../classes/Produto/produto.controller.php';
             <!------->
         </div>
 
-        <table class="table table-hover table-bordered mt-3">
+        <table class="table table-hover mt-3">
             <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
             <thead class="table-dark">
                 <tr>
