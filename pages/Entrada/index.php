@@ -69,32 +69,32 @@
             <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
             <thead class="table-active">
                 <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Cor</th>
-                    <th scope="col">Detalhes</th>
-                    <th scope="col">Material</th>
-                    <th scope="col">Quantidade</th>
+                    <th scope="col">Data Compra</th>
+                    <th scope="col">Valor Total</th>
+                    <th scope="col">Data Pagamento</th>
+                    <th scope="col">Fornecedor</th>
+                    <th scope="col">Forma Pagamento</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
 
             <tbody class="table-group-divider">
-                <tr class="table-active">
+                <tr>
 
-                    <th scope="row" class="">
-                        1
+                    <th scope="row">
+                        data de compra
                     </th>
                     <td>
-                        2
+                        valor total
                     </td>
                     <td>
-                        3
+                        data pagamento
                     </td>
                     <td>
-                        4
+                        fornecedor
                     </td>
                     <td>
-                        5
+                        forma pagamento
                     </td>
 
                     <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
