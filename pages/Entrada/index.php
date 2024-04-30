@@ -1,3 +1,9 @@
+<?php
+$acao = 'recuperar';
+
+require '../../classes/Entrada/entrada.controller.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -146,7 +152,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" action="">
+                    <form class="container" method="post" action="../../classes/Entrada/entrada.controller.php?acao=inserir">
                         <div class="row mb-4">
                             <div class="col-md-8">
                                 <div class="form-floating">
@@ -158,9 +164,9 @@
 
                             <div class="col-md-4">
                                 <div class="form-floating">
-                                    <input class="form-control" type="date" id="data-entrada" name="data-entrada"
-                                        placeholder="Data da entrada">
-                                    <label for="data-entrada">Data da entrada</label>
+                                    <input class="form-control" type="date" id="dataCompra" name="dataCompra"
+                                        placeholder="Data de compra">
+                                    <label for="dataCompra">Data de compra</label>
                                 </div>
                             </div>
                         </div>
@@ -170,41 +176,33 @@
                                 <div class="input-group">
                                     <span class="input-group-text fw-bold">R$</span>
                                     <div class="form-floating">
-                                        <input class="form-control" type="number" id="valor-total" name="valor-total"
+                                        <input class="form-control" type="number" id="valorTotal" name="valorTotal"
                                             placeholder="Valor total">
-                                        <label for="valor-total">Valor total</label>
+                                        <label for="valorTotal">Valor total</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-floating">
-                                    <select class="form-select" id="forma-pagamento" name="forma-pagamento">
+                                    <select class="form-select" id="formaPagamento" name="formaPagamento">
                                         <option selected></option>
                                         <option value="">1</option>
                                         <option value="">2</option>
                                         <option value="">3</option>
                                     </select>
-                                    <label for="forma-pagamento">Forma de pagamento</label>
+                                    <label for="formaPagamento">Forma de pagamento</label>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="form-floating">
-                                    <input class="form-control" type="date" id="data-pagamento" name="data-pagamento"
+                                    <input class="form-control" type="date" id="dataPagamento" name="dataPagamento"
                                         placeholder="Data de pagamento">
-                                    <label for="data-pagamento">Data de pagamento</label>
+                                    <label for="dataPagamento">Data de pagamento</label>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="d-flex justify-content-center align-items-center my-4">
-                            <i class="bi bi-plus-circle-fill"></i>
-                        </div>
-
-                        <!------------>
-                        <!-- TABELA -->
-                        <!------------>
 
                         <div class="d-flex justify-content-center align-items-center">
                             <button class="btn btn-outline-primary">Registrar Entrada</button>
@@ -277,14 +275,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="d-flex justify-content-center align-items-center my-4">
-                            <i class="bi bi-plus-circle-fill"></i>
-                        </div>
-
-                        <!------------>
-                        <!-- TABELA -->
-                        <!------------>
 
                         <div class="d-flex justify-content-center align-items-center">
                             <button class="btn btn-outline-primary">Registrar Saída</button>
