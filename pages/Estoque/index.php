@@ -1,7 +1,7 @@
 <?php
 $acao = 'recuperar';
 
-require '../../classes/produto.controller.php';
+require '../../classes/Produto/produto.controller.php';
 ?>
 
 <!DOCTYPE html>
@@ -165,7 +165,7 @@ require '../../classes/produto.controller.php';
                                 </button>
                             <?php } else { ?>
                                 <form method="post"
-                                    action="../../classes/produto.controller.php?acao=ativar&id=<?= $produto->PRO_ID ?>">
+                                    action="../../classes/Produto/produto.controller.php?acao=ativar&id=<?= $produto->PRO_ID ?>">
                                     <button type="submit" class="btn">
                                         <i class="bi bi-check-circle-fill text-success fs-5"></i>
                                     </button>
@@ -191,7 +191,7 @@ require '../../classes/produto.controller.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" method="post" action="../../classes/produto.controller.php?acao=inserir">
+                    <form class="container" method="post" action="../../classes/Produto/produto.controller.php?acao=inserir">
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
@@ -312,7 +312,7 @@ require '../../classes/produto.controller.php';
                     </div>
                     <div class="modal-body">
                         <form class="container" method="post"
-                            action="../../classes/produto.controller.php?acao=editar&id=<?= $produto->PRO_ID ?>">
+                            action="../../classes/Produto/produto.controller.php?acao=editar&id=<?= $produto->PRO_ID ?>">
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <div class="input-group">
@@ -440,7 +440,7 @@ require '../../classes/produto.controller.php';
                     </div>
                     <div class="modal-body">
                         <form class="container" method="post"
-                            action="../../classes/produto.controller.php?acao=desativar&id=<?= $produto->PRO_ID ?>">
+                            action="../../classes/Produto/produto.controller.php?acao=desativar&id=<?= $produto->PRO_ID ?>">
                             <div class="d-flex justify-content-center align-items-center mb-4">
                                 <h4>Deseja desativar esse produto?</h4>
                             </div>

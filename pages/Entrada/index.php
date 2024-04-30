@@ -80,7 +80,6 @@
 
             <tbody class="table-group-divider">
                 <tr>
-
                     <th scope="row">
                         data de compra
                     </th>

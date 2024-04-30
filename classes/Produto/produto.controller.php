@@ -2,7 +2,7 @@
 
 require "produto.model.php";
 require "produto.service.php";
-require "conexao.php";
+require "../../classes/conexao.php";
 
 //recebe a ação através do action do form
 $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
@@ -32,7 +32,7 @@ if ($acao == 'inserir') {
     $produtoService->inserir();
 
     //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi registrado
-    header('Location: ../pages/Estoque/index.php?act=inserir');
+    header('Location: ../../pages/Estoque/index.php?act=inserir');
 
 } else if ($acao == 'recuperar') {
     //instancia o objeto do produto.model.php
@@ -74,7 +74,7 @@ if ($acao == 'inserir') {
     $produtoService->editar($id);
 
     //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi editado
-    header('Location: ../pages/Estoque/index.php?act=editar');
+    header('Location: ../../pages/Estoque/index.php?act=editar');
 
 } else if ($acao == 'desativar') {
     //recebe o id do produto a ser desativado
@@ -95,7 +95,7 @@ if ($acao == 'inserir') {
     $produtoService->desativar($id);
 
     //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi desativado
-    header('Location: ../pages/Estoque/index.php?act=desativar');
+    header('Location: ../../pages/Estoque/index.php?act=desativar');
 
 } else if ($acao == 'ativar') {
     //recebe o id do produto a ser desativado
@@ -116,6 +116,6 @@ if ($acao == 'inserir') {
     $produtoService->ativar($id);
 
     //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi desativado
-    header('Location: ../pages/Estoque/index.php?act=ativar');
+    header('Location: ../../pages/Estoque/index.php?act=ativar');
 
 }
