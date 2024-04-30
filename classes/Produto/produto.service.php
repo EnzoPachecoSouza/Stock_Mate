@@ -40,7 +40,8 @@ class ProdutoService
     {
         $query = '
         SELECT *
-        FROM produtos
+        FROM PRODUTOS
+        ORDER BY PRO_STATUS DESC 
         ';
 
         $stmt = $this->conexao->prepare($query);
