@@ -194,7 +194,8 @@ require '../../classes/Produto/produto.controller.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" method="post" action="../../classes/Produto/produto.controller.php?acao=inserir">
+                    <form class="container" method="post"
+                        action="../../classes/Produto/produto.controller.php?acao=inserir">
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
@@ -726,8 +727,13 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <div class="form-floating">
-                                            <input class="form-control" type="text" id="status" name="status"
-                                                placeholder="Status" value="<?= $produto->PRO_STATUS ?>" disabled>
+                                            <?php if ($produto->PRO_STATUS == 0) { ?>
+                                                <input class="form-control" type="text" id="status" name="status"
+                                                    placeholder="Status" value="Desativado" disabled>
+                                            <?php } else { ?>
+                                                <input class="form-control" type="text" id="status" name="status"
+                                                    placeholder="Status" value="Ativo" disabled>
+                                            <?php } ?>
                                             <label for="status">Status</label>
                                         </div>
                                     </div>
