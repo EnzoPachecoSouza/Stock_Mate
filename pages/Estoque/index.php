@@ -98,7 +98,7 @@ require '../../classes/Produto/produto.controller.php';
 
         <table class="table table-hover table-bordered mt-3">
             <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
-            <thead class="table-active">
+            <thead class="table-dark">
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Cor</th>
