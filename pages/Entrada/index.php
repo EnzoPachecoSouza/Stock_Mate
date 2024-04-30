@@ -18,6 +18,9 @@
 
     <!-- Style -->
     <link rel="stylesheet" href="./styles.css">
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../../styles/global.css">
 </head>
 
 <body>

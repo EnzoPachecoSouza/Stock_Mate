@@ -24,6 +24,9 @@ require '../../classes/Produto/produto.controller.php';
 
     <!-- Style -->
     <link rel="stylesheet" href="./styles.css">
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="../../styles/global.css">
 </head>
 
 <body>
@@ -96,7 +99,7 @@ require '../../classes/Produto/produto.controller.php';
             <!------->
         </div>
 
-        <table class="table table-hover table-bordered mt-3">
+        <table class="table table-hover table-bordered mt-3 table-shadow">
             <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
             <thead class="table-dark">
                 <tr>
