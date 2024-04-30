@@ -112,7 +112,7 @@ require '../../classes/Produto/produto.controller.php';
                 </tr>
             </thead>
 
-            <tbody class="table-group-divider">
+            <tbody class="table-group-divider teste">
                 <!-- TABELA MAPEADA -->
                 <?php foreach ($produtos as $indice => $produto) { ?>
                     <?php if ($produto->PRO_STATUS == 0) { ?>
