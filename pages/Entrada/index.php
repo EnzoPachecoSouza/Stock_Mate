@@ -68,6 +68,24 @@
     <!------->
 
     <div class="container mt-5">
+        <div class="d-flex justify-content-start align-items-center">
+            <div>
+                <!-- BOTÃO DE REGISTRAR ENTRADA DE PRODUTO -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#entradaProdutoModal">
+                    Entrada
+                </button>
+                <!------->
+
+                <!-- BOTÃO DE REGISTRAR ENTRADA DE PRODUTO -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#saidaProdutoModal">
+                    Saída
+                </button>
+                <!------->
+            </div>
+        </div>
+
         <table class="table table-hover table-bordered mt-3">
             <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
             <thead class="table-dark">
@@ -117,6 +135,166 @@
                 </tr>
             </tbody>
     </div>
+
+    <!-- ENTRADA PRODUTO -->
+    <div class="modal fade" id="entradaProdutoModal" tabindex="-1" aria-labelledby="entradaProdutoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="entradaProdutoModalLabel">Entrada de Produto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="container" action="">
+                        <div class="row mb-4">
+                            <div class="col-md-8">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="fornecedor" name="fornecedor"
+                                        placeholder="Fornecedor">
+                                    <label for="fornecedor">Fornecedor</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <input class="form-control" type="date" id="data-entrada" name="data-entrada"
+                                        placeholder="Data da entrada">
+                                    <label for="data-entrada">Data da entrada</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-text fw-bold">R$</span>
+                                    <div class="form-floating">
+                                        <input class="form-control" type="number" id="valor-total" name="valor-total"
+                                            placeholder="Valor total">
+                                        <label for="valor-total">Valor total</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <select class="form-select" id="forma-pagamento" name="forma-pagamento">
+                                        <option selected></option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                    </select>
+                                    <label for="forma-pagamento">Forma de pagamento</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <input class="form-control" type="date" id="data-pagamento" name="data-pagamento"
+                                        placeholder="Data de pagamento">
+                                    <label for="data-pagamento">Data de pagamento</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center my-4">
+                            <i class="bi bi-plus-circle-fill"></i>
+                        </div>
+
+                        <!------------>
+                        <!-- TABELA -->
+                        <!------------>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button class="btn btn-outline-primary">Registrar Entrada</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------->
+
+    <!-- SAÍDA PRODUTO -->
+    <div class="modal fade" id="saidaProdutoModal" tabindex="-1" aria-labelledby="saidaProdutoModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="saidaProdutoModalLabel">Saída de Produto</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="container" action="">
+                        <div class="row mb-4">
+                            <div class="col-md-8">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="cliente" name="cliente"
+                                        placeholder="Cliente">
+                                    <label for="cliente">Cliente</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <input class="form-control" type="date" id="data-saida" name="data-saida"
+                                        placeholder="Data da saída">
+                                    <label for="data-saida">Data da saída</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="input-group">
+                                    <span class="input-group-text fw-bold">R$</span>
+                                    <div class="form-floating">
+                                        <input class="form-control" type="number" id="valor-total" name="valor-total"
+                                            placeholder="Valor total">
+                                        <label for="valor-total">Valor total</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <select class="form-select" id="forma-pagamento" name="forma-pagamento">
+                                        <option selected></option>
+                                        <option value="">1</option>
+                                        <option value="">2</option>
+                                        <option value="">3</option>
+                                    </select>
+                                    <label for="forma-pagamento">Forma de pagamento</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <input class="form-control" type="date" id="data-pagamento" name="data-pagamento"
+                                        placeholder="Data de pagamento">
+                                    <label for="data-pagamento">Data de pagamento</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center my-4">
+                            <i class="bi bi-plus-circle-fill"></i>
+                        </div>
+
+                        <!------------>
+                        <!-- TABELA -->
+                        <!------------>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button class="btn btn-outline-primary">Registrar Saída</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!----------------------->
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
