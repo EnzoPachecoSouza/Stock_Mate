@@ -1,12 +1,14 @@
-.table-shadow {
-    /* box-shadow: 5px 5px 0 #0050DC; */
+/* NAVBAR STYLES */
+.navbar-shadow {
+    box-shadow: 0 1px 15px #002555;
 }
 
-.teste tr {
-    transition: all 0.3s;
+/* TABLE STYLES */
+.table-hover-shadow tr {
+    transition: all 0.2s;
 }
 
-.teste tr:hover {
+.table-hover-shadow tr:hover {
     transform: translate(-3px, -3px);
     box-shadow: 3px 3px 0 #0050DC;
 }

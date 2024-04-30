@@ -31,7 +31,7 @@ require '../../classes/Produto/produto.controller.php';
 
 <body>
     <!-- NAVBAR -->
-    <div class="container-fluid bg-primary">
+    <div class="container-fluid bg-primary navbar-shadow">
         <div class="container">
             <div class="row d-flex align-items-center py-3">
 
@@ -99,7 +99,7 @@ require '../../classes/Produto/produto.controller.php';
             <!------->
         </div>
 
-        <table class="table table-hover table-bordered mt-3 table-shadow">
+        <table class="table table-hover table-bordered mt-3">
             <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
             <thead class="table-dark">
                 <tr>
@@ -112,7 +112,7 @@ require '../../classes/Produto/produto.controller.php';
                 </tr>
             </thead>
 
-            <tbody class="table-group-divider teste">
+            <tbody class="table-group-divider table-hover-shadow">
                 <!-- TABELA MAPEADA -->
                 <?php foreach ($produtos as $indice => $produto) { ?>
                     <?php if ($produto->PRO_STATUS == 0) { ?>

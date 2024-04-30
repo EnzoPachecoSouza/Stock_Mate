@@ -25,7 +25,7 @@
 
 <body>
     <!-- NAVBAR -->
-    <div class="container-fluid bg-primary">
+    <div class="container-fluid bg-primary navbar-shadow">
         <div class="container">
             <div class="row d-flex align-items-center py-3">
 
@@ -81,7 +81,7 @@
                 </tr>
             </thead>
 
-            <tbody class="table-group-divider">
+            <tbody class="table-group-divider table-hover-shadow">
                 <tr>
                     <th scope="row">
                         data de compra
@@ -100,13 +100,6 @@
                     </td>
 
                     <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
-                        <!-- BOTÃO VISUALIZAR DETALHES -->
-                        <button type="button" class="btn" data-bs-toggle="modal"
-                            data-bs-target="#visualizarDetalhesProdutoModal">
-                            <i class="bi bi-eye-fill text-success fs-5"></i>
-                        </button>
-                        <!------->
-
                         <!-- BOTÃO EDITAR PRODUTO -->
                         <button type="button" class="btn" data-bs-toggle="modal"
                             data-bs-target="#editarProdutoModal<?= $indice ?>">
