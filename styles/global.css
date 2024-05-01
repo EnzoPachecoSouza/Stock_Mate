@@ -8,7 +8,14 @@
 }
 
 .navbar-shadow {
-    box-shadow: 0 1px 15px #002555;
+    box-shadow: 0 1px 15px rgb(0, 37, 85);
+}
+
+a.selected {
+    border-radius: 12px 7px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 80, 220, 1);
 }
 
 /* TABLE STYLES */
@@ -18,5 +25,5 @@
 
 .table-hover-shadow tr:hover {
     transform: translate(-3px, -3px);
-    box-shadow: 3px 3px 0 #0050DC;
+    box-shadow: 3px 3px 0 rgba(0, 80, 220, 1);
 }

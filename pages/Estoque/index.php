@@ -63,7 +63,7 @@ require '../../classes/Produto/produto.controller.php';
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="">Estoque</a>
+                            <a class="nav-link text-white nav-font selected" href="">Estoque</a>
                         </li>
 
                         <li class="nav-item">
@@ -97,89 +97,90 @@ require '../../classes/Produto/produto.controller.php';
             <!------->
         </div>
 
-        <table class="table table-hover mt-3">
-            <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
-            <thead class="table-dark">
-                <tr>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Cor</th>
-                    <th scope="col">Detalhes</th>
-                    <th scope="col">Material</th>
-                    <th scope="col">Quantidade</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
+        <div style="height: 590px; overflow: auto; padding-left: 5px;">
+            <table class="table table-hover">
+                <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Cor</th>
+                        <th scope="col">Detalhes</th>
+                        <th scope="col">Material</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
 
-            <tbody class="table-group-divider table-hover-shadow">
-                <!-- TABELA MAPEADA -->
-                <?php foreach ($produtos as $indice => $produto) { ?>
-                    <?php if ($produto->PRO_STATUS == 0) { ?>
-                        <tr class="table-active">
-                        <?php } else { ?>
-                        <tr>
-                        <?php } ?>
-                        <th scope="row" class="">
-                            <?= $produto->PRO_NOME ?>
-                        </th>
-                        <td>
-                            <?= $produto->PRO_COR ?>
-                        </td>
-                        <td>
-                            <?= $produto->PRO_DETALHES ?>
-                        </td>
-                        <td>
-                            <?= $produto->PRO_MATERIAL ?>
-                        </td>
-
-                        <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
-                        <?php if ($produto->PRO_QUANTIDADE <= $produto->PRO_MINIMO) { ?>
-                            <td class="bg-danger">
-                            <?php } else if ($produto->PRO_QUANTIDADE <= ($produto->PRO_MINIMO * 2)) { ?>
-                                <td class="bg-secondary">
+                <tbody class="table-group-divider table-hover-shadow">
+                    <!-- TABELA MAPEADA -->
+                    <?php foreach ($produtos as $indice => $produto) { ?>
+                        <?php if ($produto->PRO_STATUS == 0) { ?>
+                            <tr class="table-active">
                             <?php } else { ?>
-                                <td class="bg-success">
+                            <tr>
                             <?php } ?>
-                            <?= $produto->PRO_QUANTIDADE ?>
-                        </td>
-                        <!------->
+                            <th scope="row" class="">
+                                <?= $produto->PRO_NOME ?>
+                            </th>
+                            <td>
+                                <?= $produto->PRO_COR ?>
+                            </td>
+                            <td>
+                                <?= $produto->PRO_DETALHES ?>
+                            </td>
+                            <td>
+                                <?= $produto->PRO_MATERIAL ?>
+                            </td>
 
-                    <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
-                        <!-- BOTÃO VISUALIZAR DETALHES -->
-                            <button type="button" class="btn" data-bs-toggle="modal"
-                                data-bs-target="#visualizarDetalhesProdutoModal<?= $indice ?>">
-                                <i class="bi bi-eye-fill text-success fs-5"></i>
-                            </button>
+                            <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
+                            <?php if ($produto->PRO_QUANTIDADE <= $produto->PRO_MINIMO) { ?>
+                                <td class="bg-danger">
+                                <?php } else if ($produto->PRO_QUANTIDADE <= ($produto->PRO_MINIMO * 2)) { ?>
+                                    <td class="bg-secondary">
+                                <?php } else { ?>
+                                    <td class="bg-success">
+                                <?php } ?>
+                                <?= $produto->PRO_QUANTIDADE ?>
+                            </td>
                             <!------->
 
-                        <!-- BOTÃO EDITAR PRODUTO -->
-                            <button type="button" class="btn" data-bs-toggle="modal"
-                                data-bs-target="#editarProdutoModal<?= $indice ?>">
-                                <i class="bi bi-pencil-square text-info fs-5"></i>
-                            </button>
-                            <!------->
-
-                        <!-- BOTÃO DESATIVAR PRODUTO -->
-                            <?php if ($produto->PRO_STATUS === 1) { ?>
+                        <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
+                            <!-- BOTÃO VISUALIZAR DETALHES -->
                                 <button type="button" class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#desativarProdutoModal<?= $indice ?>">
-                                    <i class="bi bi-x-circle-fill text-danger fs-5"></i>
+                                    data-bs-target="#visualizarDetalhesProdutoModal<?= $indice ?>">
+                                    <i class="bi bi-eye-fill text-success fs-5"></i>
                                 </button>
-                            <?php } else { ?>
-                                <form method="post"
-                                    action="../../classes/Produto/produto.controller.php?acao=ativar&id=<?= $produto->PRO_ID ?>">
-                                    <button type="submit" class="btn">
-                                        <i class="bi bi-check-circle-fill text-success fs-5"></i>
-                                    </button>
-                                </form>
-                            <?php } ?>
-                            <!------->
-                    </td>
-                </tr>
-                <?php } ?>
-                <!------->
-            </tbody>
+                                <!------->
 
-        </table>
+                            <!-- BOTÃO EDITAR PRODUTO -->
+                                <button type="button" class="btn" data-bs-toggle="modal"
+                                    data-bs-target="#editarProdutoModal<?= $indice ?>">
+                                    <i class="bi bi-pencil-square text-info fs-5"></i>
+                                </button>
+                                <!------->
+
+                            <!-- BOTÃO DESATIVAR PRODUTO -->
+                                <?php if ($produto->PRO_STATUS === 1) { ?>
+                                    <button type="button" class="btn" data-bs-toggle="modal"
+                                        data-bs-target="#desativarProdutoModal<?= $indice ?>">
+                                        <i class="bi bi-x-circle-fill text-danger fs-5"></i>
+                                    </button>
+                                <?php } else { ?>
+                                    <form method="post"
+                                        action="../../classes/Produto/produto.controller.php?acao=ativar&id=<?= $produto->PRO_ID ?>">
+                                        <button type="submit" class="btn">
+                                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                        </button>
+                                    </form>
+                                <?php } ?>
+                                <!------->
+                        </td>
+                    </tr>
+                    <?php } ?>
+                    <!------->
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- CADASTRAR PRODUTO -->

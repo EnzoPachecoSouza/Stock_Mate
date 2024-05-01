@@ -67,7 +67,7 @@ require '../../classes/Entrada/entrada.controller.php';
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="">Entrada</a>
+                            <a class="nav-link text-white nav-font selected" href="">Entrada</a>
                         </li>
 
                         <li class="nav-item">
