@@ -106,54 +106,57 @@ require '../../classes/Entrada/entrada.controller.php';
             </div>
         </div>
 
-        <table class="table table-hover mt-3">
-            <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
-            <thead class="table-dark">
-                <tr>
-                    <th scope="col">Data Compra</th>
-                    <th scope="col">Valor Total</th>
-                    <th scope="col">Data Pagamento</th>
-                    <th scope="col">Fornecedor</th>
-                    <th scope="col">Forma Pagamento</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
+        <div class="ps-1" style="height: 70vh; overflow: auto;">
+            <table class="table table-hover mt-3">
+                <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">Data Compra</th>
+                        <th scope="col">Valor Total</th>
+                        <th scope="col">Data Pagamento</th>
+                        <th scope="col">Fornecedor</th>
+                        <th scope="col">Forma Pagamento</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
 
-            <tbody class="table-group-divider table-hover-shadow">
-                <tr>
-                    <th scope="row">
-                        data de compra
-                    </th>
-                    <td>
-                        valor total
-                    </td>
-                    <td>
-                        data pagamento
-                    </td>
-                    <td>
-                        fornecedor
-                    </td>
-                    <td>
-                        forma pagamento
-                    </td>
+                <tbody class="table-group-divider table-hover-shadow">
+                    <tr>
+                        <th scope="row">
+                            data de compra
+                        </th>
+                        <td>
+                            valor total
+                        </td>
+                        <td>
+                            data pagamento
+                        </td>
+                        <td>
+                            fornecedor
+                        </td>
+                        <td>
+                            forma pagamento
+                        </td>
 
-                    <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
-                        <!-- BOTÃO EDITAR PRODUTO -->
-                        <button type="button" class="btn" data-bs-toggle="modal"
-                            data-bs-target="#editarProdutoModal<?= $indice ?>">
-                            <i class="bi bi-pencil-square text-info fs-5"></i>
-                        </button>
-                        <!------->
+                        <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
+                            <!-- BOTÃO EDITAR PRODUTO -->
+                            <button type="button" class="btn" data-bs-toggle="modal"
+                                data-bs-target="#editarProdutoModal<?= $indice ?>">
+                                <i class="bi bi-pencil-square text-info fs-5"></i>
+                            </button>
+                            <!------->
 
-                        <!-- BOTÃO DESATIVAR PRODUTO -->
-                        <button type="button" class="btn" data-bs-toggle="modal"
-                            data-bs-target="#desativarProdutoModal<?= $indice ?>">
-                            <i class="bi bi-x-circle-fill text-danger fs-5"></i>
-                        </button>
-                        <!------->
-                    </td>
-                </tr>
-            </tbody>
+                            <!-- BOTÃO DESATIVAR PRODUTO -->
+                            <button type="button" class="btn" data-bs-toggle="modal"
+                                data-bs-target="#desativarProdutoModal<?= $indice ?>">
+                                <i class="bi bi-x-circle-fill text-danger fs-5"></i>
+                            </button>
+                            <!------->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- ENTRADA PRODUTO -->
