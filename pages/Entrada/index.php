@@ -98,10 +98,10 @@ require '../../classes/Entrada/entrada.controller.php';
                 <!------->
 
                 <!-- BOTÃO DE REGISTRAR ENTRADA DE PRODUTO -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#saidaProdutoModal">
                     Saída
-                </button>
+                </button> -->
                 <!------->
             </div>
         </div>
@@ -121,39 +121,41 @@ require '../../classes/Entrada/entrada.controller.php';
                 </thead>
 
                 <tbody class="table-group-divider table-hover-shadow">
-                    <tr>
-                        <th scope="row">
-                            data de compra
-                        </th>
-                        <td>
-                            valor total
-                        </td>
-                        <td>
-                            data pagamento
-                        </td>
-                        <td>
-                            fornecedor
-                        </td>
-                        <td>
-                            forma pagamento
-                        </td>
+                    <?php foreach ($entradas as $indice => $entrada) { ?>
+                        <tr>
+                            <th scope="row">
+                                <?= $entrada->ENT_DATA_COMPRA ?>
+                            </th>
+                            <td>
+                                valor total
+                            </td>
+                            <td>
+                                data pagamento
+                            </td>
+                            <td>
+                                fornecedor
+                            </td>
+                            <td>
+                                forma pagamento
+                            </td>
 
-                        <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
-                            <!-- BOTÃO EDITAR PRODUTO -->
-                            <button type="button" class="btn" data-bs-toggle="modal"
-                                data-bs-target="#editarProdutoModal<?= $indice ?>">
-                                <i class="bi bi-pencil-square text-info fs-5"></i>
-                            </button>
-                            <!------->
+                            <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
+                                <!-- BOTÃO EDITAR PRODUTO -->
+                                <button type="button" class="btn" data-bs-toggle="modal"
+                                    data-bs-target="#editarProdutoModal<?= $indice ?>">
+                                    <i class="bi bi-pencil-square text-info fs-5"></i>
+                                </button>
+                                <!------->
 
                             <!-- BOTÃO DESATIVAR PRODUTO -->
-                            <button type="button" class="btn" data-bs-toggle="modal"
-                                data-bs-target="#desativarProdutoModal<?= $indice ?>">
-                                <i class="bi bi-x-circle-fill text-danger fs-5"></i>
-                            </button>
-                            <!------->
+                                <button type="button" class="btn" data-bs-toggle="modal"
+                                    data-bs-target="#desativarProdutoModal<?= $indice ?>">
+                                    <i class="bi bi-x-circle-fill text-danger fs-5"></i>
+                                </button>
+                                <!------->
                         </td>
                     </tr>
+                    <?php } ?>
                 </tbody>
             </table>
         </div>
@@ -232,76 +234,79 @@ require '../../classes/Entrada/entrada.controller.php';
     </div>
     <!----------------------->
 
-    <!-- SAÍDA PRODUTO -->
-    <div class="modal fade" id="saidaProdutoModal" tabindex="-1" aria-labelledby="saidaProdutoModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="saidaProdutoModalLabel">Saída de Produto</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form class="container" action="">
-                        <div class="row mb-4">
-                            <div class="col-md-8">
-                                <div class="form-floating">
-                                    <input class="form-control" type="text" id="cliente" name="cliente"
-                                        placeholder="Cliente">
-                                    <label for="cliente">Cliente</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <input class="form-control" type="date" id="data-saida" name="data-saida"
-                                        placeholder="Data da saída">
-                                    <label for="data-saida">Data da saída</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <span class="input-group-text fw-bold">R$</span>
+    <!-- EDITAR PRODUTO -->
+    <?php foreach ($entradas as $indice => $entrada) { ?>
+        <div class="modal fade" id="entradaProdutoModal<?= $indice ?>" tabindex="-1"
+            aria-labelledby="entradaProdutoModalLabel<?= $indice ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="entradaProdutoModalLabel<?= $indice ?>">Entrada de Produto</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="container" method="post"
+                            action="../../classes/Entrada/entrada.controller.php?acao=inserir">
+                            <div class="row mb-4">
+                                <div class="col-md-8">
                                     <div class="form-floating">
-                                        <input class="form-control" type="number" id="valor-total" name="valor-total"
-                                            placeholder="Valor total">
-                                        <label for="valor-total">Valor total</label>
+                                        <input class="form-control" type="text" id="fornecedor" name="fornecedor"
+                                            placeholder="Fornecedor">
+                                        <label for="fornecedor">Fornecedor</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="date" id="dataCompra" name="dataCompra"
+                                            placeholder="Data de compra">
+                                        <label for="dataCompra">Data de compra</label>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <select class="form-select" id="forma-pagamento" name="forma-pagamento">
-                                        <option selected></option>
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                        <option value="">3</option>
-                                    </select>
-                                    <label for="forma-pagamento">Forma de pagamento</label>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="input-group">
+                                        <span class="input-group-text fw-bold">R$</span>
+                                        <div class="form-floating">
+                                            <input class="form-control" type="number" id="valorTotal" name="valorTotal"
+                                                placeholder="Valor total">
+                                            <label for="valorTotal">Valor total</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="formaPagamento" name="formaPagamento">
+                                            <option selected></option>
+                                            <option value="">1</option>
+                                            <option value="">2</option>
+                                            <option value="">3</option>
+                                        </select>
+                                        <label for="formaPagamento">Forma de pagamento</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="date" id="dataPagamento" name="dataPagamento"
+                                            placeholder="Data de pagamento">
+                                        <label for="dataPagamento">Data de pagamento</label>
+                                    </div>
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <input class="form-control" type="date" id="data-pagamento" name="data-pagamento"
-                                        placeholder="Data de pagamento">
-                                    <label for="data-pagamento">Data de pagamento</label>
-                                </div>
+                            <div class="d-flex justify-content-center align-items-center">
+                                <button class="btn btn-outline-primary">Registrar Entrada</button>
                             </div>
-                        </div>
-
-                        <div class="d-flex justify-content-center align-items-center">
-                            <button class="btn btn-outline-primary">Registrar Saída</button>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    <?php } ?>
     <!----------------------->
 
     <!-- Bootstrap JS -->

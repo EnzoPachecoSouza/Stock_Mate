@@ -21,4 +21,11 @@ if ($acao == 'inserir') {
     $entradaService->inserir();
 
     header('Location: ../../pages/Entrada/index.php?act=inserir');
+} else if ($acao == 'recuperar') {
+    $entrada = new Entrada();
+
+    $conexao = new Conexao();
+
+    $entradaService = new EntradaService($conexao, $entrada);
+    $entradas = $entradaService->recuperar();
 }

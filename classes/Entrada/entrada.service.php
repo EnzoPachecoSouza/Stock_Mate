@@ -30,4 +30,15 @@ class EntradaService
 
         $stmt->execute();
     }
+
+    public function recuperar()
+    {
+        $query = '
+        SELECT * FROM ENTRADA
+        ';
+
+        $stmt = $this->conexao->prepare($query);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }
