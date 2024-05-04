@@ -7,6 +7,7 @@ class Entrada
     private $valorTotal;
     private $dataPagamento;
     private $formaPagamento;
+    private $status;
 
     public function __set($atributo, $valor)
     {

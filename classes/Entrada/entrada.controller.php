@@ -45,4 +45,17 @@ if ($acao == 'inserir') {
     $entradaService->editar($id);
 
     header('Location: ../../pages/Entrada/index.php?act=editar');
+} else if ($acao == 'desativar') {
+    $id = isset($_GET['id']) ? $_GET['id'] : $id;
+
+    $entrada = new Entrada();
+
+    $entrada->__set('status', 0);
+
+    $conexao = new Conexao();
+
+    $entradaService = new EntradaService($conexao, $entrada);
+    $entradaService->desativar($id);
+
+    header('Location: ../../pages/Entrada/index.php?act=desativar');
 }
