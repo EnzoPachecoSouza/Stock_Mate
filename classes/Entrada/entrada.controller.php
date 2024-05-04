@@ -28,4 +28,21 @@ if ($acao == 'inserir') {
 
     $entradaService = new EntradaService($conexao, $entrada);
     $entradas = $entradaService->recuperar();
+} else if ($acao == 'editar') {
+    $id = isset($_GET['id']) ? $_GET['id'] : $id;
+
+    $entrada = new Entrada();
+
+    $entrada->__set('dataCompra', $_POST['dataCompra']);
+    $entrada->__set('valorTotal', $_POST['valorTotal']);
+    $entrada->__set('dataPagamento', $_POST['dataPagamento']);
+    // $entrada->__set('fornecedor', $_POST['fornecedor']);
+    $entrada->__set('formaPagamento', $_POST['formaPagamento']);
+
+    $conexao = new Conexao();
+
+    $entradaService = new EntradaService($conexao, $entrada);
+    $entradaService->editar($id);
+
+    header('Location: ../../pages/Entrada/index.php?act=editar');
 }

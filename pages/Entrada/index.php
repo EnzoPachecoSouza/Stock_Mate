@@ -246,7 +246,7 @@ require '../../classes/Entrada/entrada.controller.php';
                     </div>
                     <div class="modal-body">
                         <form class="container" method="post"
-                            action="../../classes/Entrada/entrada.controller.php?acao=inserir">
+                            action="../../classes/Entrada/entrada.controller.php?acao=editar&id=<?= $entrada->ENT_ID ?>">
                             <div class="row mb-4">
                                 <div class="col-md-8">
                                     <div class="form-floating">
@@ -258,8 +258,8 @@ require '../../classes/Entrada/entrada.controller.php';
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" value="<?= $entrada->ENT_DATA_COMPRA ?>" type="date" id="dataCompra" name="dataCompra"
-                                            placeholder="Data de compra">
+                                        <input class="form-control" value="<?= $entrada->ENT_DATA_COMPRA ?>" type="date"
+                                            id="dataCompra" name="dataCompra" placeholder="Data de compra">
                                         <label for="dataCompra">Data de compra</label>
                                     </div>
                                 </div>
@@ -270,8 +270,8 @@ require '../../classes/Entrada/entrada.controller.php';
                                     <div class="input-group">
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
-                                            <input class="form-control" value="<?= $entrada->ENT_VALOR_TOTAL ?>" type="number" id="valorTotal" name="valorTotal"
-                                                placeholder="Valor total">
+                                            <input class="form-control" value="<?= $entrada->ENT_VALOR_TOTAL ?>"
+                                                type="number" id="valorTotal" name="valorTotal" placeholder="Valor total">
                                             <label for="valorTotal">Valor total</label>
                                         </div>
                                     </div>
@@ -280,7 +280,8 @@ require '../../classes/Entrada/entrada.controller.php';
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <select class="form-select" id="formaPagamento" name="formaPagamento">
-                                            <option selected value="<?= $entrada->ENT_FORMA_PAGAMENTO ?>"><?= $entrada->ENT_FORMA_PAGAMENTO ?></option>
+                                            <option selected value="<?= $entrada->ENT_FORMA_PAGAMENTO ?>">
+                                                <?= $entrada->ENT_FORMA_PAGAMENTO ?></option>
                                             <option value="">1</option>
                                             <option value="">2</option>
                                             <option value="">3</option>
@@ -291,8 +292,8 @@ require '../../classes/Entrada/entrada.controller.php';
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" value="<?= $entrada->ENT_DATA_PAGAMENTO ?>" type="date" id="dataPagamento" name="dataPagamento"
-                                            placeholder="Data de pagamento">
+                                        <input class="form-control" value="<?= $entrada->ENT_DATA_PAGAMENTO ?>" type="date"
+                                            id="dataPagamento" name="dataPagamento" placeholder="Data de pagamento">
                                         <label for="dataPagamento">Data de pagamento</label>
                                     </div>
                                 </div>

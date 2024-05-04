@@ -80,7 +80,7 @@ class ProdutoService
         $stmt->bindValue(':descricao', $this->produto->__get('descricao'));
         $stmt->bindValue(':id', $id);
 
-        return $stmt->execute();
+        $stmt->execute();
     }
 
     public function desativar($id)
