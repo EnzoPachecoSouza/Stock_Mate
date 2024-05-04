@@ -66,19 +66,4 @@ class EntradaService
         $stmt->execute();
     }
 
-    public function desativar($id)
-    {
-        $query = '
-        UPDATE ENTRADA
-        SET ENT_STATUS = :status
-        WHERE ENT_ID = :id
-        ';
-
-        $stmt = $this->conexao->prepare($query);
-
-        $stmt->bindValue(':status', 0);
-        $stmt->bindValue(':id', $id);
-
-        $stmt->execute();
-    }
 }
