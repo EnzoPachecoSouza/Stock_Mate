@@ -127,22 +127,22 @@ require '../../classes/Entrada/entrada.controller.php';
                                 <?= $entrada->ENT_DATA_COMPRA ?>
                             </th>
                             <td>
-                                valor total
+                                <?= $entrada->ENT_VALOR_TOTAL ?>
                             </td>
                             <td>
-                                data pagamento
+                                <?= $entrada->ENT_DATA_PAGAMENTO ?>
                             </td>
                             <td>
                                 fornecedor
                             </td>
                             <td>
-                                forma pagamento
+                                <?= $entrada->ENT_FORMA_PAGAMENTO ?>
                             </td>
 
                             <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
                                 <!-- BOTÃO EDITAR PRODUTO -->
                                 <button type="button" class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#editarProdutoModal<?= $indice ?>">
+                                    data-bs-target="#editarEntradaModal<?= $indice ?>">
                                     <i class="bi bi-pencil-square text-info fs-5"></i>
                                 </button>
                                 <!------->
@@ -236,12 +236,12 @@ require '../../classes/Entrada/entrada.controller.php';
 
     <!-- EDITAR PRODUTO -->
     <?php foreach ($entradas as $indice => $entrada) { ?>
-        <div class="modal fade" id="entradaProdutoModal<?= $indice ?>" tabindex="-1"
-            aria-labelledby="entradaProdutoModalLabel<?= $indice ?>" aria-hidden="true">
+        <div class="modal fade" id="editarEntradaModal<?= $indice ?>" tabindex="-1"
+            aria-labelledby="editarEntradaModalLabel<?= $indice ?>" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="entradaProdutoModalLabel<?= $indice ?>">Entrada de Produto</h1>
+                        <h1 class="modal-title fs-5" id="editarEntradaModalLabel<?= $indice ?>">Editar Entrada</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -258,7 +258,7 @@ require '../../classes/Entrada/entrada.controller.php';
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" type="date" id="dataCompra" name="dataCompra"
+                                        <input class="form-control" value="<?= $entrada->ENT_DATA_COMPRA ?>" type="date" id="dataCompra" name="dataCompra"
                                             placeholder="Data de compra">
                                         <label for="dataCompra">Data de compra</label>
                                     </div>
@@ -270,7 +270,7 @@ require '../../classes/Entrada/entrada.controller.php';
                                     <div class="input-group">
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
-                                            <input class="form-control" type="number" id="valorTotal" name="valorTotal"
+                                            <input class="form-control" value="<?= $entrada->ENT_VALOR_TOTAL ?>" type="number" id="valorTotal" name="valorTotal"
                                                 placeholder="Valor total">
                                             <label for="valorTotal">Valor total</label>
                                         </div>
@@ -280,7 +280,7 @@ require '../../classes/Entrada/entrada.controller.php';
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <select class="form-select" id="formaPagamento" name="formaPagamento">
-                                            <option selected></option>
+                                            <option selected value="<?= $entrada->ENT_FORMA_PAGAMENTO ?>"><?= $entrada->ENT_FORMA_PAGAMENTO ?></option>
                                             <option value="">1</option>
                                             <option value="">2</option>
                                             <option value="">3</option>
@@ -291,7 +291,7 @@ require '../../classes/Entrada/entrada.controller.php';
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" type="date" id="dataPagamento" name="dataPagamento"
+                                        <input class="form-control" value="<?= $entrada->ENT_DATA_PAGAMENTO ?>" type="date" id="dataPagamento" name="dataPagamento"
                                             placeholder="Data de pagamento">
                                         <label for="dataPagamento">Data de pagamento</label>
                                     </div>
@@ -299,7 +299,7 @@ require '../../classes/Entrada/entrada.controller.php';
                             </div>
 
                             <div class="d-flex justify-content-center align-items-center">
-                                <button class="btn btn-outline-primary">Registrar Entrada</button>
+                                <button class="btn btn-outline-primary">Editar Entrada</button>
                             </div>
                         </form>
                     </div>
