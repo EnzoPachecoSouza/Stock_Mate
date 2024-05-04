@@ -35,10 +35,10 @@ require '../../classes/Produto/produto.controller.php';
 
     <!-- Custom Style -->
     <link rel="stylesheet" href="../../styles/custom.css">
-
+    
     <!-- Style -->
     <link rel="stylesheet" href="./styles.css">
-
+    
     <!-- Global CSS -->
     <link rel="stylesheet" href="../../styles/global.css">
 </head>

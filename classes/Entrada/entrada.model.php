@@ -2,7 +2,7 @@
 
 class Entrada
 {
-    private $fornecedor;
+    // private $fornecedor;
     private $dataCompra;
     private $valorTotal;
     private $dataPagamento;
