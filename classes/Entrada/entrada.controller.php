@@ -18,4 +18,7 @@ if ($acao == 'inserir') {
     $conexao = new Conexao();
 
     $entradaService = new EntradaService($conexao, $entrada);
+    $entradaService->inserir();
+
+    header('Location: ../../pages/Entrada/index.php?act=inserir');
 }
