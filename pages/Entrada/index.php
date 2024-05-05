@@ -127,7 +127,7 @@ require '../../classes/Entrada/entrada.controller.php';
                                 <?= $entrada->ENT_DATA_COMPRA ?>
                             </th>
                             <td>
-                                <?= $entrada->ENT_VALOR_TOTAL ?>
+                                <?= number_format($entrada->ENT_VALOR_TOTAL, 2, ',', '.') ?>
                             </td>
                             <td>
                                 <?= $entrada->ENT_DATA_PAGAMENTO ?>
@@ -189,7 +189,7 @@ require '../../classes/Entrada/entrada.controller.php';
                                 <div class="input-group">
                                     <span class="input-group-text fw-bold">R$</span>
                                     <div class="form-floating">
-                                        <input class="form-control" type="number" id="valorTotal" name="valorTotal"
+                                        <input class="form-control" type="text" id="valorTotal" name="valorTotal"
                                             placeholder="Valor total">
                                         <label for="valorTotal">Valor total</label>
                                     </div>

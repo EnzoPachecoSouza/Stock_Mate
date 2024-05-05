@@ -65,5 +65,4 @@ class EntradaService
 
         $stmt->execute();
     }
-
 }
