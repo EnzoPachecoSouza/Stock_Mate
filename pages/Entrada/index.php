@@ -227,7 +227,7 @@ require '../../classes/Entrada/entrada.controller.php';
     </div>
     <!----------------------->
 
-    <!-- EDITAR PRODUTO -->
+    <!-- EDITAR ENTRADA -->
     <?php foreach ($entradas as $indice => $entrada) { ?>
         <div class="modal fade" id="editarEntradaModal<?= $indice ?>" tabindex="-1"
             aria-labelledby="editarEntradaModalLabel<?= $indice ?>" aria-hidden="true">
@@ -302,6 +302,33 @@ require '../../classes/Entrada/entrada.controller.php';
             </div>
         </div>
     <?php } ?>
+    <!----------------------->
+
+    <!-- TOAST DE CONFIRMAR AÇÃO REALIZADA -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div class="toast bg-white" id="toast">
+            <?php $toastAcao = isset($_GET['act']) ? $_GET['act'] : $toastAcao; ?>
+            <?php if ($toastAcao === 'inserir') { ?>
+                <div class="toast-header fs-5">
+                    <i class="bi bi-square-fill text-success"></i>
+                    <strong class="me-auto ms-3">Inserir</strong>
+                    <button type="button" class="btn-close" onclick="closeToast()"></button>
+                </div>
+                <div class="toast-body fs-6">
+                    <strong>Entrada registrada com sucesso!</strong>
+                </div>
+            <?php } else if ($toastAcao === 'editar') { ?>
+                    <div class="toast-header fs-5">
+                        <i class="bi bi-square-fill text-primary"></i>
+                        <strong class="me-auto ms-3">Editar</strong>
+                        <button type="button" class="btn-close" onclick="closeToast()"></button>
+                    </div>
+                    <div class="toast-body fs-6">
+                        <strong>Entrada editada com sucesso!</strong>
+                    </div>
+            <?php } ?>
+        </div>
+    </div>
     <!----------------------->
 
     <!-- Bootstrap JS -->

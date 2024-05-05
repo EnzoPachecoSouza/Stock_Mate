@@ -34,7 +34,7 @@ class EntradaService
     public function recuperar()
     {
         $query = '
-        SELECT * 
+        SELECT *
         FROM ENTRADA
         ';
 
