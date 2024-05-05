@@ -123,14 +123,14 @@ require '../../classes/Entrada/entrada.controller.php';
                 <tbody class="table-group-divider table-hover-shadow">
                     <?php foreach ($entradas as $indice => $entrada) { ?>
                         <tr>
-                            <th scope="row">
-                                <?= $entrada->ENT_DATA_COMPRA ?>
-                            </th>
+                            <td scope="row">
+                                <?= date("d/m/Y", strtotime($entrada->ENT_DATA_COMPRA)) ?>
+                            </td>
                             <td>
                                 <?= number_format($entrada->ENT_VALOR_TOTAL, 2, ',', '.') ?>
                             </td>
                             <td>
-                                <?= $entrada->ENT_DATA_PAGAMENTO ?>
+                                <?= date("d/m/Y", strtotime($entrada->ENT_DATA_PAGAMENTO)) ?>
                             </td>
                             <td>
                                 fornecedor
