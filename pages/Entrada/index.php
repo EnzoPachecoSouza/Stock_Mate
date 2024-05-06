@@ -200,9 +200,11 @@ require '../../classes/Entrada/entrada.controller.php';
                                 <div class="form-floating">
                                     <select class="form-select" id="formaPagamento" name="formaPagamento">
                                         <option selected></option>
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                        <option value="">3</option>
+                                        <option value="Cartão de crédito">Cartão de crédito</option>
+                                        <option value="Cartão de Débito">Cartão de Débito</option>
+                                        <option value="Transferência Bancária">Transferência Bancária</option>
+                                        <option value="Dinheiro">Dinheiro</option>
+                                        <option value="Boleto">Boleto</option>
                                     </select>
                                     <label for="formaPagamento">Forma de pagamento</label>
                                 </div>
