@@ -2,6 +2,7 @@
 $acao = 'recuperar';
 
 require '../../classes/Produto/produto.controller.php';
+require '../../classes/Categoria/categoria.controller.php';
 ?>
 
 <!DOCTYPE html>
@@ -35,10 +36,10 @@ require '../../classes/Produto/produto.controller.php';
 
     <!-- Custom Style -->
     <link rel="stylesheet" href="../../styles/custom.css">
-    
+
     <!-- Style -->
     <link rel="stylesheet" href="./styles.css">
-    
+
     <!-- Global CSS -->
     <link rel="stylesheet" href="../../styles/global.css">
 </head>
@@ -237,9 +238,10 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="form-floating">
                                     <select class="form-select" id="categoria" name="categoria">
                                         <option selected></option>
-                                        <option value="categoria 1">categoria 1</option>
-                                        <option value="categoria 2">categoria 2</option>
-                                        <option value="categoria 3">categoria 3</option>
+                                        <?php foreach ($categorias as $indice => $categoria) { ?>
+                                            <option value="<?= $categoria->CAT_ID ?>"><?= $categoria->CAT_CATEGORIA ?>
+                                            </option>
+                                        <?php } ?>
                                     </select>
                                     <label for="categoria">Categoria</label>
                                 </div>
@@ -362,9 +364,10 @@ require '../../classes/Produto/produto.controller.php';
                                             <option selected value="<?= $produto->PRO_CAT ?>">
                                                 <?= $produto->PRO_CAT ?>
                                             </option>
-                                            <option value="categoria 1">categoria 1</option>
-                                            <option value="categoria 2">categoria 2</option>
-                                            <option value="categoria 3">categoria 3</option>
+                                            <?php foreach ($categorias as $indice => $categoria) { ?>
+                                                <option value="<?= $categoria->CAT_ID ?>"><?= $categoria->CAT_CATEGORIA ?>
+                                                </option>
+                                            <?php } ?>
                                         </select>
                                         <label for="categoria">Categoria</label>
                                     </div>
