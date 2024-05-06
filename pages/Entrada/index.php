@@ -2,6 +2,7 @@
 $acao = 'recuperar';
 
 require '../../classes/Entrada/entrada.controller.php';
+require '../../classes/Fornecedor/fornecedor.controller.php';
 ?>
 
 <!DOCTYPE html>
