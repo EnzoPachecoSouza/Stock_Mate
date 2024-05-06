@@ -18,5 +18,4 @@ if ($acao == 'recuperar') {
     $fornecedorService = new FornecedorService($conexao, $fornecedor);
     //ação a ser executa no produto.service.php que faz a requisição para o BD
     $fornecedores = $fornecedorService->recuperar();
-
 }

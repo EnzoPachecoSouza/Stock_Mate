@@ -97,19 +97,11 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                     Entrada
                 </button>
                 <!------->
-
-                <!-- BOTÃO DE REGISTRAR ENTRADA DE PRODUTO -->
-                <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#saidaProdutoModal">
-                    Saída
-                </button> -->
-                <!------->
             </div>
         </div>
 
         <div class="ps-1" style="height: 70vh; overflow: auto;">
             <table class="table table-hover mt-3">
-                <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">Data Compra</th>
@@ -123,25 +115,25 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
 
                 <tbody class="table-group-divider table-hover-shadow">
                     <?php foreach ($entradas as $indice => $entrada) { ?>
-                        <tr>
-                            <td scope="row">
-                                <?= date("d/m/Y", strtotime($entrada->ENT_DATA_COMPRA)) ?>
-                            </td>
-                            <td>
-                                <?= number_format($entrada->ENT_VALOR_TOTAL, 2, ',', '.') ?>
-                            </td>
-                            <td>
-                                <?= date("d/m/Y", strtotime($entrada->ENT_DATA_PAGAMENTO)) ?>
-                            </td>
-                            <td>
-                                fornecedor
-                            </td>
-                            <td>
-                                <?= $entrada->ENT_FORMA_PAGAMENTO ?>
-                            </td>
+                    <tr>
+                        <td scope="row">
+                            <?= date("d/m/Y", strtotime($entrada->ENT_DATA_COMPRA)) ?>
+                        </td>
+                        <td>
+                            <?= number_format($entrada->ENT_VALOR_TOTAL, 2, ',', '.') ?>
+                        </td>
+                        <td>
+                            <?= date("d/m/Y", strtotime($entrada->ENT_DATA_PAGAMENTO)) ?>
+                        </td>
+                        <td>
+                            fornecedor
+                        </td>
+                        <td>
+                            <?= $entrada->ENT_FORMA_PAGAMENTO ?>
+                        </td>
 
-                            <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
-                                <!-- BOTÃO EDITAR ENTRADA -->
+                        <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
+                            <!-- BOTÃO EDITAR ENTRADA -->
                                 <button type="button" class="btn" data-bs-toggle="modal"
                                     data-bs-target="#editarEntradaModal<?= $indice ?>">
                                     <i class="bi bi-pencil-square text-info fs-5"></i>
@@ -170,8 +162,12 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                         <div class="row mb-4">
                             <div class="col-md-8">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="fornecedor" name="fornecedor"
-                                        placeholder="Fornecedor">
+                                    <select class="form-select" id="fornecedor" name="fornecedor">
+                                        <option selected></option>
+                                        <?php foreach ($fornecedores as $indice => $fornecedor) { ?>
+                                            <option value="<?= $fornecedor->FOR_ID ?>"><?= $fornecedor->FOR_NOME ?></option>
+                                        <?php } ?>
+                                    </select>
                                     <label for="fornecedor">Fornecedor</label>
                                 </div>
                             </div>
@@ -246,8 +242,12 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                             <div class="row mb-4">
                                 <div class="col-md-8">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="fornecedor" name="fornecedor"
-                                            placeholder="Fornecedor">
+                                        <select class="form-select" id="fornecedor" name="fornecedor">
+                                            <option selected></option>
+                                            <?php foreach ($fornecedores as $indice => $fornecedor) { ?>
+                                                <option value="<?= $fornecedor->FOR_ID ?>"><?= $fornecedor->FOR_NOME ?></option>
+                                            <?php } ?>
+                                        </select>
                                         <label for="fornecedor">Fornecedor</label>
                                     </div>
                                 </div>
