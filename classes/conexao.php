@@ -1,6 +1,7 @@
 <?php
 
-class Conexao
+if (!class_exists('Conexao')) {
+    class Conexao
     {
         private $host = '127.0.0.1:3307';
         private $dbname = 'stock_mate_teste';
@@ -20,3 +21,4 @@ class Conexao
             }
         }
     }
+}
