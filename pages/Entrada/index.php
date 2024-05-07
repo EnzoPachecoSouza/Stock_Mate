@@ -181,6 +181,32 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                             </div>
                         </div>
 
+                        <div>
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h6 class="modal-title">Registrar Fornecedor</h6>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input class="form-control" type="text" id=""
+                                                            name="" placeholder="Nome">
+                                                        <label for="">Nome</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
@@ -195,14 +221,15 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-select" id="formaPagamento" name="formaPagamento">
+                                    <input list="formaPagamento" id="formaPagamento" name="formaPagamento" />
+                                    <datalist id="formaPagamento">
                                         <option selected></option>
-                                        <option value="Cartão de crédito">Cartão de Crédito</option>
-                                        <option value="Cartão de Débito">Cartão de Débito</option>
-                                        <option value="Transferência Bancária">Transferência Bancária</option>
-                                        <option value="Dinheiro">Dinheiro</option>
-                                        <option value="Boleto">Boleto</option>
-                                    </select>
+                                        <option value="Cartão de crédito"></option>
+                                        <option value="Cartão de Débito"></option>
+                                        <option value="Transferência Bancária"></option>
+                                        <option value="Dinheiro"></option>
+                                        <option value="Boleto"></option>
+                                    </datalist>
                                     <label for="formaPagamento">Forma de pagamento</label>
                                 </div>
                             </div>
