@@ -159,30 +159,30 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                 <div class="modal-body">
                     <form class="container" method="post"
                         action="../../classes/Entrada/entrada.controller.php?acao=inserir">
-                        <div class="row mb-4">
-                            <div class="col-md-8">
+                        <div class="row align-items-center mb-4">
+                            <div class="col-md-10">
                                 <div class="form-floating">
                                     <select class="form-select" id="fornecedor" name="fornecedor">
                                         <option selected></option>
                                         <?php foreach ($fornecedores as $indice => $fornecedor) { ?>
-                                            <option value="<?= $fornecedor->FOR_ID ?>"><?= $fornecedor->FOR_NOME ?></option>
+                                            <option value="<?= $fornecedor->FOR_ID ?>"><?= $fornecedor->FOR_NOME ?>
+                                            </option>
                                         <?php } ?>
                                     </select>
                                     <label for="fornecedor">Fornecedor</label>
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <input class="form-control" type="date" id="dataCompra" name="dataCompra"
-                                        placeholder="Data de compra">
-                                    <label for="dataCompra">Data de compra</label>
-                                </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary" type="button" class="btn btn-primary rounded-circle"
+                                    data-bs-toggle="modal" data-bs-target="#cadastrarProdutoModal">
+                                    <i class="bi bi-plus-lg fs-5"></i>
+                                </button>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-4">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-text fw-bold">R$</span>
                                     <div class="form-floating">
@@ -193,7 +193,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <div class="form-floating">
                                     <select class="form-select" id="formaPagamento" name="formaPagamento">
                                         <option selected></option>
@@ -206,8 +206,18 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                     <label for="formaPagamento">Forma de pagamento</label>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-md-4">
+                        <div class="row mb-5">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input class="form-control" type="date" id="dataCompra" name="dataCompra"
+                                        placeholder="Data de compra">
+                                    <label for="dataCompra">Data de compra</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="date" id="dataPagamento" name="dataPagamento"
                                         placeholder="Data de pagamento">
@@ -239,8 +249,8 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                     <div class="modal-body">
                         <form class="container" method="post"
                             action="../../classes/Entrada/entrada.controller.php?acao=editar&id=<?= $entrada->ENT_ID ?>">
-                            <div class="row mb-4">
-                                <div class="col-md-8">
+                            <div class="row align-items-center mb-4">
+                                <div class="col-md-10">
                                     <div class="form-floating">
                                         <select class="form-select" id="fornecedor" name="fornecedor">
                                             <option selected></option>
@@ -252,17 +262,16 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <div class="form-floating">
-                                        <input class="form-control" value="<?= $entrada->ENT_DATA_COMPRA ?>" type="date"
-                                            id="dataCompra" name="dataCompra" placeholder="Data de compra">
-                                        <label for="dataCompra">Data de compra</label>
-                                    </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-primary" type="button" class="btn btn-primary rounded-circle"
+                                        data-bs-toggle="modal" data-bs-target="#cadastrarProdutoModal">
+                                        <i class="bi bi-plus-lg fs-5"></i>
+                                    </button>
                                 </div>
                             </div>
 
-                            <div class="row">
-                                <div class="col-md-4">
+                            <div class="row mb-4">
+                                <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
@@ -273,7 +282,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-floating">
                                         <select class="form-select" id="formaPagamento" name="formaPagamento">
                                             <option selected value="<?= $entrada->ENT_FORMA_PAGAMENTO ?>">
@@ -288,8 +297,18 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                         <label for="formaPagamento">Forma de pagamento</label>
                                     </div>
                                 </div>
+                            </div>
 
-                                <div class="col-md-4">
+                            <div class="row mb-5">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" value="<?= $entrada->ENT_DATA_COMPRA ?>" type="date"
+                                            id="dataCompra" name="dataCompra" placeholder="Data de compra">
+                                        <label for="dataCompra">Data de compra</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" value="<?= $entrada->ENT_DATA_PAGAMENTO ?>" type="date"
                                             id="dataPagamento" name="dataPagamento" placeholder="Data de pagamento">
