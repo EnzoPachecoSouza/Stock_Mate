@@ -197,7 +197,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                 <div class="form-floating">
                                     <select class="form-select" id="formaPagamento" name="formaPagamento">
                                         <option selected></option>
-                                        <option value="Cartão de crédito">Cartão de crédito</option>
+                                        <option value="Cartão de crédito">Cartão de Crédito</option>
                                         <option value="Cartão de Débito">Cartão de Débito</option>
                                         <option value="Transferência Bancária">Transferência Bancária</option>
                                         <option value="Dinheiro">Dinheiro</option>
@@ -279,7 +279,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                             <option selected value="<?= $entrada->ENT_FORMA_PAGAMENTO ?>">
                                                 <?= $entrada->ENT_FORMA_PAGAMENTO ?>
                                             </option>
-                                            <option value="Cartão de crédito">Cartão de crédito</option>
+                                            <option value="Cartão de crédito">Cartão de Crédito</option>
                                             <option value="Cartão de Débito">Cartão de Débito</option>
                                             <option value="Transferência Bancária">Transferência Bancária</option>
                                             <option value="Dinheiro">Dinheiro</option>
