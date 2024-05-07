@@ -34,8 +34,9 @@ class EntradaService
     public function recuperar()
     {
         $query = '
-        SELECT *
-        FROM ENTRADA
+        SELECT ENT.*, FORN.FOR_NOME
+        FROM ENTRADA AS ENT
+        INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID;
         ';
 
         $stmt = $this->conexao->prepare($query);
@@ -50,8 +51,7 @@ class EntradaService
         SET ENT_DATA_COMPRA = :dataCompra,
             ENT_VALOR_TOTAL = :valorTotal,
             ENT_DATA_PAGAMENTO = :dataPagamento,
-            ENT_FORMA_PAGAMENTO = :formaPagamento,
-            FORNECEDORES_FOR_ID = :fornecedor
+            ENT_FORMA_PAGAMENTO = :formaPagamento
         WHERE ENT_ID = :id
         ';
 
@@ -60,8 +60,8 @@ class EntradaService
         $stmt->bindValue(':dataCompra', $this->entrada->__get('dataCompra'));
         $stmt->bindValue(':valorTotal', $this->entrada->__get('valorTotal'));
         $stmt->bindValue(':dataPagamento', $this->entrada->__get('dataPagamento'));
-        $stmt->bindValue(':fornecedor', $this->entrada->__get('fornecedor'));
         $stmt->bindValue(':formaPagamento', $this->entrada->__get('formaPagamento'));
+        // $stmt->bindValue(':fornecedor', $this->entrada->__get('fornecedor'));
         $stmt->bindValue(':id', $id);
 
         $stmt->execute();
