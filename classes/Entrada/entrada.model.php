@@ -2,12 +2,12 @@
 
 class Entrada
 {
-    // private $fornecedor;
     private $dataCompra;
     private $valorTotal;
     private $dataPagamento;
     private $formaPagamento;
     private $status;
+    private $fornecedor;
 
     public function __set($atributo, $valor)
     {

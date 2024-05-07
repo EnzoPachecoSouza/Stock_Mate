@@ -16,8 +16,8 @@ class EntradaService
     {
         $query = '
         INSERT INTO
-        ENTRADA(ENT_DATA_COMPRA, ENT_VALOR_TOTAL, ENT_DATA_PAGAMENTO, ENT_FORMA_PAGAMENTO)
-        VALUES (:dataCompra, :valorTotal, :dataPagamento, :formaPagamento)
+        ENTRADA(ENT_DATA_COMPRA, ENT_VALOR_TOTAL, ENT_DATA_PAGAMENTO, ENT_FORMA_PAGAMENTO, FORNECEDORES_FOR_ID)
+        VALUES (:dataCompra, :valorTotal, :dataPagamento, :formaPagamento, :fornecedor)
         ';
 
         $stmt = $this->conexao->prepare($query);
@@ -25,8 +25,8 @@ class EntradaService
         $stmt->bindValue(':dataCompra', $this->entrada->__get('dataCompra'));
         $stmt->bindValue(':valorTotal', $this->entrada->__get('valorTotal'));
         $stmt->bindValue(':dataPagamento', $this->entrada->__get('dataPagamento'));
-        // $stmt->bindValue(':fornecedor', $this->entrada->__get('fornecedor'));
         $stmt->bindValue(':formaPagamento', $this->entrada->__get('formaPagamento'));
+        $stmt->bindValue(':fornecedor', $this->entrada->__get('fornecedor'));
 
         $stmt->execute();
     }
@@ -50,7 +50,8 @@ class EntradaService
         SET ENT_DATA_COMPRA = :dataCompra,
             ENT_VALOR_TOTAL = :valorTotal,
             ENT_DATA_PAGAMENTO = :dataPagamento,
-            ENT_FORMA_PAGAMENTO = :formaPagamento
+            ENT_FORMA_PAGAMENTO = :formaPagamento,
+            FORNECEDORES_FOR_ID = :fornecedor
         WHERE ENT_ID = :id
         ';
 
@@ -59,7 +60,7 @@ class EntradaService
         $stmt->bindValue(':dataCompra', $this->entrada->__get('dataCompra'));
         $stmt->bindValue(':valorTotal', $this->entrada->__get('valorTotal'));
         $stmt->bindValue(':dataPagamento', $this->entrada->__get('dataPagamento'));
-        // $stmt->bindValue(':fornecedor', $this->entrada->__get('fornecedor'));
+        $stmt->bindValue(':fornecedor', $this->entrada->__get('fornecedor'));
         $stmt->bindValue(':formaPagamento', $this->entrada->__get('formaPagamento'));
         $stmt->bindValue(':id', $id);
 

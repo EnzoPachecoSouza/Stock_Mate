@@ -12,7 +12,7 @@ if ($acao == 'inserir') {
     $entrada->__set('dataCompra', $_POST['dataCompra']);
     $entrada->__set('valorTotal', $_POST['valorTotal']);
     $entrada->__set('dataPagamento', $_POST['dataPagamento']);
-    // $entrada->__set('fornecedor', $_POST['fornecedor']);
+    $entrada->__set('fornecedor', $_POST['fornecedor']);
     $entrada->__set('formaPagamento', $_POST['formaPagamento']);
 
     $conexao = new Conexao();
@@ -36,8 +36,8 @@ if ($acao == 'inserir') {
     $entrada->__set('dataCompra', $_POST['dataCompra']);
     $entrada->__set('valorTotal', $_POST['valorTotal']);
     $entrada->__set('dataPagamento', $_POST['dataPagamento']);
-    // $entrada->__set('fornecedor', $_POST['fornecedor']);
     $entrada->__set('formaPagamento', $_POST['formaPagamento']);
+    $entrada->__set('fornecedor', $_POST['fornecedor']);
 
     $conexao = new Conexao();
 
