@@ -72,6 +72,10 @@ require '../../classes/Categoria/categoria.controller.php';
                         </li>
 
                         <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../saida">Saída</a>
+                        </li>
+
+                        <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="#">Relatórios</a>
                         </li>
                     </ul>
