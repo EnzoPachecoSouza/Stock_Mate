@@ -72,7 +72,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white nav-font"  href="../saida">Saída</a>
+                            <a class="nav-link text-white nav-font" href="../saida">Saída</a>
                         </li>
 
                         <li class="nav-item">
@@ -195,17 +195,47 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                     </div>
 
                                     <div class="modal-body">
-                                        <div class="container">
-                                            <div class="row">
+                                        <form class="container">
+                                            <div class="row mb-4">
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" type="text" id=""
-                                                            name="" placeholder="Nome">
+                                                        <input class="form-control" type="text" id="" name=""
+                                                            placeholder="Nome">
                                                         <label for="">Nome</label>
                                                     </div>
                                                 </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input class="form-control" type="email" id="" name=""
+                                                            placeholder="Nome">
+                                                        <label for="">Email</label>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
+
+                                            <div class="row mb-5">
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input class="form-control" type="text" id="" name=""
+                                                            placeholder="Nome">
+                                                        <label for="">Contato</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-6">
+                                                    <div class="form-floating">
+                                                        <input class="form-control" type="email" id="" name=""
+                                                            placeholder="Nome">
+                                                        <label for="">CNPJ</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex justify-content-center align-items-center">
+                                                <button class="btn btn-outline-primary">Registrar Fornecedor</button>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -225,21 +255,22 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input list="formaPagamento" id="formaPagamento" name="formaPagamento" />
-                                    <datalist id="formaPagamento">
-                                        <option selected></option>
-                                        <option value="Cartão de crédito"></option>
-                                        <option value="Cartão de Débito"></option>
-                                        <option value="Transferência Bancária"></option>
-                                        <option value="Dinheiro"></option>
-                                        <option value="Boleto"></option>
-                                    </datalist>
+                                    <select class="form-select" id="formaPagamento" name="formaPagamento">
+                                        <option selected value="<?= $entrada->ENT_FORMA_PAGAMENTO ?>">
+                                            <?= $entrada->ENT_FORMA_PAGAMENTO ?>
+                                        </option>
+                                        <option value="Cartão de crédito">Cartão de Crédito</option>
+                                        <option value="Cartão de Débito">Cartão de Débito</option>
+                                        <option value="Transferência Bancária">Transferência Bancária</option>
+                                        <option value="Dinheiro">Dinheiro</option>
+                                        <option value="Boleto">Boleto</option>
+                                    </select>
                                     <label for="formaPagamento">Forma de pagamento</label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row mb-5">
+                        <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="date" id="dataCompra" name="dataCompra"
@@ -254,6 +285,14 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                         placeholder="Data de pagamento">
                                     <label for="dataPagamento">Data de pagamento</label>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="d-flex justify-content-center">
+                                <button type="button" class="btn btn-primary rounded-circle">
+                                    <i class="bi bi-plus-lg"></i>
+                                </button>
                             </div>
                         </div>
 
