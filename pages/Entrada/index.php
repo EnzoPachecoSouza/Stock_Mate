@@ -51,13 +51,13 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
             <div class="row d-flex align-items-center py-3">
 
                 <!-- LOGO -->
-                <div class="col-3">
-                    <img src="" alt="[Logo] Stock Mate">
+                <div class="col-2">
+                    <img src="../img/logo_stock_mate.png" alt="" class="img-fluid">
                 </div>
                 <!------->
 
                 <!-- NAVIGATION -->
-                <div class="col-6">
+                <div class="col-8">
                     <ul class="nav justify-content-center">
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="#">Colaboradores</a>
@@ -83,7 +83,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                 <!------->
 
                 <!-- SAIR -->
-                <div class="col-3 text-end">
+                <div class="col-2 text-end">
                     <button class="btn btn-lg text-secondary nav-font">Sair</button>
                 </div>
                 <!------->
@@ -130,7 +130,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                             <?= date("d/m/Y", strtotime($entrada->ENT_DATA_PAGAMENTO)) ?>
                         </td>
                         <td>
-                            fornecedor
+                            <?= $entrada->FOR_NOME ?>
                         </td>
                         <td>
                             <?= $entrada->ENT_FORMA_PAGAMENTO ?>

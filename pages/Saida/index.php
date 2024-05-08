@@ -51,13 +51,13 @@ require '../../classes/Cliente/cliente.controller.php';
             <div class="row d-flex align-items-center py-3">
 
                 <!-- LOGO -->
-                <div class="col-3">
-                    <img src="" alt="[Logo] Stock Mate">
+                <div class="col-2">
+                    <img src="../img/logo_stock_mate.png" alt="" class="img-fluid">
                 </div>
                 <!------->
 
                 <!-- NAVIGATION -->
-                <div class="col-6">
+                <div class="col-8">
                     <ul class="nav justify-content-center">
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="#">Colaboradores</a>
@@ -72,7 +72,7 @@ require '../../classes/Cliente/cliente.controller.php';
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white nav-font selected"  href="../saida">Saída</a>
+                            <a class="nav-link text-white nav-font selected" href="../saida">Saída</a>
                         </li>
 
                         <li class="nav-item">
@@ -83,7 +83,7 @@ require '../../classes/Cliente/cliente.controller.php';
                 <!------->
 
                 <!-- SAIR -->
-                <div class="col-3 text-end">
+                <div class="col-2 text-end">
                     <button class="btn btn-lg text-secondary nav-font">Sair</button>
                 </div>
                 <!------->
@@ -108,10 +108,11 @@ require '../../classes/Cliente/cliente.controller.php';
             <table class="table table-hover mt-3">
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">Fornecedor</th>
+
                         <th scope="col">Data Compra</th>
                         <th scope="col">Valor Total</th>
                         <th scope="col">Data Pagamento</th>
+                        <th scope="col">Cliente</th>
                         <th scope="col">Forma Pagamento</th>
                         <th scope="col"></th>
                     </tr>
@@ -130,7 +131,7 @@ require '../../classes/Cliente/cliente.controller.php';
                             <?= date("d/m/Y", strtotime($saida->SAIDA_DATA_PAGAMENTO)) ?>
                         </td>
                         <td>
-                            cliente
+                            <?= $saida->CLI_NOME ?>
                         </td>
                         <td>
                             <?= $saida->SAIDA_FORMA_PAGAMENTO ?>
@@ -151,7 +152,7 @@ require '../../classes/Cliente/cliente.controller.php';
         </div>
     </div>
 
-    <!-- ENTRADA PRODUTO -->
+    <!-- SAÍDA PRODUTO -->
     <div class="modal fade" id="saidaProdutoModal" tabindex="-1" aria-labelledby="saidaProdutoModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -233,6 +234,123 @@ require '../../classes/Cliente/cliente.controller.php';
     </div>
     <!----------------------->
 
+    <!-- EDITAR SAÍDA -->
+    <?php foreach ($saidas as $indice => $saida) { ?>
+        <div class="modal fade" id="editarSaidaModal<?= $indice ?>" tabindex="-1"
+            aria-labelledby="editarSaidaModalLabel<?= $indice ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="editarSaidaModalLabel<?= $indice ?>">Editar Saída</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="container" method="post"
+                            action="../../classes/Saida/saida.controller.php?acao=editar&id=<?= $saida->SAIDA_ID ?>">
+                            <div class="row align-items-center mb-4">
+                                <div class="col-md-10">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="cliente" name="cliente">
+                                            <option selected></option>
+                                            <?php foreach ($clientes as $indice => $cliente) { ?>
+                                                <option value="<?= $cliente->CLI_ID ?>"><?= $cliente->CLI_NOME ?></option>
+                                            <?php } ?>
+                                        </select>
+                                        <label for="cliente">Cliente</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2">
+                                    <button class="btn btn-primary" type="button" class="btn btn-primary rounded-circle"
+                                        data-bs-toggle="modal" data-bs-target="#cadastrarProdutoModal">
+                                        <i class="bi bi-plus-lg fs-5"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text fw-bold">R$</span>
+                                        <div class="form-floating">
+                                            <input class="form-control" value="<?= $saida->SAIDA_VALOR_TOTAL ?>"
+                                                type="number" id="valorTotal" name="valorTotal" placeholder="Valor total">
+                                            <label for="valorTotal">Valor total</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="formaPagamento" name="formaPagamento">
+                                            <option selected value="<?= $saida->SAIDA_FORMA_PAGAMENTO ?>">
+                                                <?= $saida->SAIDA_FORMA_PAGAMENTO ?>
+                                            </option>
+                                            <option value="Cartão de crédito">Cartão de Crédito</option>
+                                            <option value="Cartão de Débito">Cartão de Débito</option>
+                                            <option value="Transferência Bancária">Transferência Bancária</option>
+                                            <option value="Dinheiro">Dinheiro</option>
+                                            <option value="Boleto">Boleto</option>
+                                        </select>
+                                        <label for="formaPagamento">Forma de pagamento</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-5">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" value="<?= $saida->SAIDA_DATA_VENDA ?>" type="date"
+                                            id="dataVenda" name="dataVenda" placeholder="Data de venda">
+                                        <label for="dataVenda">Data de venda</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" value="<?= $saida->SAIDA_DATA_PAGAMENTO ?>" type="date"
+                                            id="dataPagamento" name="dataPagamento" placeholder="Data de pagamento">
+                                        <label for="dataPagamento">Data de pagamento</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center align-items-center">
+                                <button class="btn btn-outline-primary">Editar Saída</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+    <!----------------------->
+
+    <!-- TOAST DE CONFIRMAR AÇÃO REALIZADA -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div class="toast bg-white" id="toast">
+            <?php $toastAcao = isset($_GET['act']) ? $_GET['act'] : $toastAcao; ?>
+            <?php if ($toastAcao === 'inserir') { ?>
+                <div class="toast-header fs-5">
+                    <i class="bi bi-square-fill text-success"></i>
+                    <strong class="me-auto ms-3">Inserir</strong>
+                    <button type="button" class="btn-close" onclick="closeToast()"></button>
+                </div>
+                <div class="toast-body fs-6">
+                    <strong>Saída registrada com sucesso!</strong>
+                </div>
+            <?php } else if ($toastAcao === 'editar') { ?>
+                    <div class="toast-header fs-5">
+                        <i class="bi bi-square-fill text-primary"></i>
+                        <strong class="me-auto ms-3">Editar</strong>
+                        <button type="button" class="btn-close" onclick="closeToast()"></button>
+                    </div>
+                    <div class="toast-body fs-6">
+                        <strong>Saída editada com sucesso!</strong>
+                    </div>
+            <?php } ?>
+        </div>
+    </div>
 
     <!----------------------->
 
