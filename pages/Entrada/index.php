@@ -288,6 +288,33 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                         </div>
 
                         <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <select class="form-select" id="" name="">
+                                        <!-- mapear os produtos -->
+
+                                        <!-- ------------------ -->
+                                    </select>
+                                    <label for=""></label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <input class="form-control" type="number" id="" name="" placeholder="">
+                                    <label for="">Quantidade</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <input class="form-control" type="number" id="" name="" placeholder="">
+                                    <label for="">Valor unitário</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="d-flex justify-content-center">
                                 <button type="button" class="btn btn-primary rounded-circle">
                                     <i class="bi bi-plus-lg"></i>
@@ -308,7 +335,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
         const modalCadastrarFornecedor = document.querySelector('#modalCadastrarFornecedor')
 
         function showModalCadastrarFornecedor() {
-            if(modalCadastrarFornecedor.classList.contains('d-none')){
+            if (modalCadastrarFornecedor.classList.contains('d-none')) {
                 modalCadastrarFornecedor.className = ''
                 modalCadastrarFornecedor.classList.add('d-block')
             } else {
