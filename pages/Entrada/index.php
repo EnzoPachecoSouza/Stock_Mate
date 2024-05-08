@@ -184,7 +184,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                             </div>
                         </div>
 
-                        <div class="d-none">
+                        <div id="modalCadastrarFornecedor" class="d-none">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -308,7 +308,13 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
         const modalCadastrarFornecedor = document.querySelector('#modalCadastrarFornecedor')
 
         function showModalCadastrarFornecedor() {
-            
+            if(modalCadastrarFornecedor.classList.contains('d-none')){
+                modalCadastrarFornecedor.className = ''
+                modalCadastrarFornecedor.classList.add('d-block')
+            } else {
+                modalCadastrarFornecedor.className = ''
+                modalCadastrarFornecedor.classList.add('d-none')
+            }
         }
     </script>
     <!----------------------->
