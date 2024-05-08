@@ -24,3 +24,4 @@ function showToast() {
 function closeToast() {
     toast.classList.remove('d-block')
 }
+

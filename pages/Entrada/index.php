@@ -177,15 +177,14 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                 </div>
                             </div>
 
-                            <div class="col-md-2">
-                                <button class="btn btn-primary" type="button" class="btn btn-primary rounded-circle"
-                                    data-bs-toggle="modal" data-bs-target="#cadastrarProdutoModal">
+                            <div class="col-md-2" onclick="showModalCadastrarFornecedor()">
+                                <button type="button" class="btn btn-primary rounded-circle">
                                     <i class="bi bi-plus-lg fs-5"></i>
                                 </button>
                             </div>
                         </div>
 
-                        <div>
+                        <div class="d-none">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -304,6 +303,14 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
             </div>
         </div>
     </div>
+    <script>
+        // MOSTRAR MODAL DE REGISTRAR FORNECEDOR
+        const modalCadastrarFornecedor = document.querySelector('#modalCadastrarFornecedor')
+
+        function showModalCadastrarFornecedor() {
+            
+        }
+    </script>
     <!----------------------->
 
     <!-- EDITAR ENTRADA -->
