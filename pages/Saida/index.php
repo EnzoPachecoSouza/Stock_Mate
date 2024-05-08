@@ -51,13 +51,13 @@ require '../../classes/Cliente/cliente.controller.php';
             <div class="row d-flex align-items-center py-3">
 
                 <!-- LOGO -->
-                <div class="col-3">
-                    <img src="" alt="[Logo] Stock Mate">
+                <div class="col-2">
+                    <img src="../img/logo_stock_mate.png" alt="" class="img-fluid">
                 </div>
                 <!------->
 
                 <!-- NAVIGATION -->
-                <div class="col-6">
+                <div class="col-8">
                     <ul class="nav justify-content-center">
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="#">Colaboradores</a>
@@ -72,7 +72,7 @@ require '../../classes/Cliente/cliente.controller.php';
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white nav-font selected"  href="../saida">Saída</a>
+                            <a class="nav-link text-white nav-font selected" href="../saida">Saída</a>
                         </li>
 
                         <li class="nav-item">
@@ -83,7 +83,7 @@ require '../../classes/Cliente/cliente.controller.php';
                 <!------->
 
                 <!-- SAIR -->
-                <div class="col-3 text-end">
+                <div class="col-2 text-end">
                     <button class="btn btn-lg text-secondary nav-font">Sair</button>
                 </div>
                 <!------->
@@ -108,7 +108,7 @@ require '../../classes/Cliente/cliente.controller.php';
             <table class="table table-hover mt-3">
                 <thead class="table-dark">
                     <tr>
-                        
+
                         <th scope="col">Data Compra</th>
                         <th scope="col">Valor Total</th>
                         <th scope="col">Data Pagamento</th>

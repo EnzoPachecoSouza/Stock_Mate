@@ -51,13 +51,13 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
             <div class="row d-flex align-items-center py-3">
 
                 <!-- LOGO -->
-                <div class="col-3">
-                    <img src="" alt="[Logo] Stock Mate">
+                <div class="col-2">
+                    <img src="../img/logo_stock_mate.png" alt="" class="img-fluid">
                 </div>
                 <!------->
 
                 <!-- NAVIGATION -->
-                <div class="col-6">
+                <div class="col-8">
                     <ul class="nav justify-content-center">
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="#">Colaboradores</a>
@@ -72,7 +72,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white nav-font"  href="../saida">Saída</a>
+                            <a class="nav-link text-white nav-font" href="../saida">Saída</a>
                         </li>
 
                         <li class="nav-item">
@@ -83,7 +83,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                 <!------->
 
                 <!-- SAIR -->
-                <div class="col-3 text-end">
+                <div class="col-2 text-end">
                     <button class="btn btn-lg text-secondary nav-font">Sair</button>
                 </div>
                 <!------->
@@ -199,8 +199,8 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" type="text" id=""
-                                                            name="" placeholder="Nome">
+                                                        <input class="form-control" type="text" id="" name=""
+                                                            placeholder="Nome">
                                                         <label for="">Nome</label>
                                                     </div>
                                                 </div>
