@@ -130,7 +130,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                             <?= date("d/m/Y", strtotime($entrada->ENT_DATA_PAGAMENTO)) ?>
                         </td>
                         <td>
-                            fornecedor
+                            <?= $entrada->FOR_NOME ?>
                         </td>
                         <td>
                             <?= $entrada->ENT_FORMA_PAGAMENTO ?>

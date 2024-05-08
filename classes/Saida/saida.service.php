@@ -34,8 +34,9 @@ class SaidaService
     public function recuperar()
     {
         $query = '
-        SELECT *
-        FROM SAIDA
+        SELECT SAI.*, CLIE.CLI_NOME
+        FROM SAIDA AS SAI
+        INNER JOIN CLIENTE AS CLIE ON SAI.CLIENTE_CLI_ID = CLIE.CLI_ID;
         ';
 
         $stmt = $this->conexao->prepare($query);
@@ -44,8 +45,8 @@ class SaidaService
     }
 
     public function editar($id)
-{
-    $query = '
+    {
+        $query = '
     UPDATE SAIDA
     SET SAIDA_DATA_VENDA = :dataVenda,
         SAIDA_VALOR_TOTAL = :valorTotal,
@@ -55,16 +56,16 @@ class SaidaService
     WHERE SAIDA_ID = :id
     ';
 
-    $stmt = $this->conexao->prepare($query);
+        $stmt = $this->conexao->prepare($query);
 
-    $stmt->bindValue(':dataVenda', $this->saida->__get('dataVenda'));
-    $stmt->bindValue(':valorTotal', $this->saida->__get('valorTotal'));
-    $stmt->bindValue(':dataPagamento', $this->saida->__get('dataPagamento'));
-    $stmt->bindValue(':formaPagamento', $this->saida->__get('formaPagamento'));
-    $stmt->bindValue(':cliente', $this->saida->__get('cliente'));
-    $stmt->bindValue(':id', $id);
+        $stmt->bindValue(':dataVenda', $this->saida->__get('dataVenda'));
+        $stmt->bindValue(':valorTotal', $this->saida->__get('valorTotal'));
+        $stmt->bindValue(':dataPagamento', $this->saida->__get('dataPagamento'));
+        $stmt->bindValue(':formaPagamento', $this->saida->__get('formaPagamento'));
+        $stmt->bindValue(':cliente', $this->saida->__get('cliente'));
+        $stmt->bindValue(':id', $id);
 
-    $stmt->execute();
-}
+        $stmt->execute();
+    }
 
 }

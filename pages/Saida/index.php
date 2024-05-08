@@ -108,10 +108,11 @@ require '../../classes/Cliente/cliente.controller.php';
             <table class="table table-hover mt-3">
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">Fornecedor</th>
+                        
                         <th scope="col">Data Compra</th>
                         <th scope="col">Valor Total</th>
                         <th scope="col">Data Pagamento</th>
+                        <th scope="col">Cliente</th>
                         <th scope="col">Forma Pagamento</th>
                         <th scope="col"></th>
                     </tr>
@@ -130,7 +131,7 @@ require '../../classes/Cliente/cliente.controller.php';
                             <?= date("d/m/Y", strtotime($saida->SAIDA_DATA_PAGAMENTO)) ?>
                         </td>
                         <td>
-                            cliente
+                            <?= $saida->CLI_NOME ?>
                         </td>
                         <td>
                             <?= $saida->SAIDA_FORMA_PAGAMENTO ?>
@@ -151,7 +152,7 @@ require '../../classes/Cliente/cliente.controller.php';
         </div>
     </div>
 
-    <!-- ENTRADA PRODUTO -->
+    <!-- SAÍDA PRODUTO -->
     <div class="modal fade" id="saidaProdutoModal" tabindex="-1" aria-labelledby="saidaProdutoModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -233,7 +234,7 @@ require '../../classes/Cliente/cliente.controller.php';
     </div>
     <!----------------------->
 
-    <!-- EDITAR ENTRADA -->
+    <!-- EDITAR SAÍDA -->
     <?php foreach ($saidas as $indice => $saida) { ?>
         <div class="modal fade" id="editarSaidaModal<?= $indice ?>" tabindex="-1"
             aria-labelledby="editarSaidaModalLabel<?= $indice ?>" aria-hidden="true">
