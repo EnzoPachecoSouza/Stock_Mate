@@ -367,15 +367,22 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                         <form class="container" method="post"
                             action="../../classes/Entrada/entrada.controller.php?acao=editar&id=<?= $entrada->ENT_ID ?>">
                             <div class="row align-items-center mb-4">
-                                <div class="col-md-10">
+                            <div class="col-md-10">
                                     <div class="form-floating">
-                                        <select class="form-select" id="fornecedor" name="fornecedor">
-                                            <option selected></option>
-                                            <?php foreach ($fornecedores as $indice => $fornecedor) { ?>
-                                                <option value="<?= $fornecedor->FOR_ID ?>"><?= $fornecedor->FOR_NOME ?></option>
+                                        <select class="form-select" id="cliente" name="cliente">
+                                            <?php foreach ($fornecedores as $fornecedor_item) { ?>
+                                                <?php if ($fornecedor_item->FOR_ID == $entrada->FORNECEDORES_FOR_ID) { ?>
+                                                    <option value="<?= $fornecedor_item->FOR_ID ?>" selected>
+                                                        <?= $fornecedor_item->FOR_NOME ?>
+                                                    </option>
+                                                <?php } else { ?>
+                                                    <option value="<?= $fornecedor_item->FOR_ID ?>">
+                                                        <?= $fornecedor_item->FOR_NOME ?>
+                                                    </option>
+                                                <?php } ?>
                                             <?php } ?>
                                         </select>
-                                        <label for="fornecedor">Fornecedor</label>
+                                        <label for="cliente">Fornecedor</label>
                                     </div>
                                 </div>
 

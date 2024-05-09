@@ -258,9 +258,16 @@ require '../../classes/Cliente/cliente.controller.php';
                                 <div class="col-md-10">
                                     <div class="form-floating">
                                         <select class="form-select" id="cliente" name="cliente">
-                                            <option selected></option>
-                                            <?php foreach ($clientes as $indice => $cliente) { ?>
-                                                <option value="<?= $cliente->CLI_ID ?>"><?= $cliente->CLI_NOME ?></option>
+                                            <?php foreach ($clientes as $cliente_item) { ?>
+                                                <?php if ($cliente_item->CLI_ID == $saida->CLIENTE_CLI_ID) { ?>
+                                                    <option value="<?= $cliente_item->CLI_ID ?>" selected>
+                                                        <?= $cliente_item->CLI_NOME ?>
+                                                    </option>
+                                                <?php } else { ?>
+                                                    <option value="<?= $cliente_item->CLI_ID ?>">
+                                                        <?= $cliente_item->CLI_NOME ?>
+                                                    </option>
+                                                <?php } ?>
                                             <?php } ?>
                                         </select>
                                         <label for="cliente">Cliente</label>
