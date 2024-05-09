@@ -33,11 +33,24 @@ class EntradaService
 
     public function recuperar()
     {
-        $query = '
-        SELECT ENT.*, FORN.FOR_NOME
-        FROM ENTRADA AS ENT
-        INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID;
-        ';
+        //VAI MOSTRAR DE ACORDO COM A PESQUISA DA FUNÇÃO DE PESQUISAR NOME NO JS
+        if (!empty($_GET['search'])) {
+            $pesquisaProduto = $_GET['search'];
+
+            $query = "
+            SELECT ENT.*, FORN.FOR_NOME
+            FROM ENTRADA AS ENT
+            INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
+            WHERE FORN.FOR_NOME LIKE '%$pesquisaProduto%' OR ENT.ENT_FORMA_PAGAMENTO LIKE '%$pesquisaProduto%'
+            ";
+        } else {
+            
+            $query = '
+            SELECT ENT.*, FORN.FOR_NOME
+            FROM ENTRADA AS ENT
+            INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID;
+            ';
+        }
 
         $stmt = $this->conexao->prepare($query);
         $stmt->execute();

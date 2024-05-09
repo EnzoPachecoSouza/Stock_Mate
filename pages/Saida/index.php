@@ -93,14 +93,21 @@ require '../../classes/Cliente/cliente.controller.php';
     <!------->
 
     <div class="container mt-5">
-        <div class="d-flex justify-content-start align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
             <div>
-                <!-- BOTÃO DE REGISTRAR ENTRADA DE PRODUTO -->
+                <!-- BOTÃO DE REGISTRAR SAÍDA DE PRODUTO -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
                     data-bs-target="#saidaProdutoModal">
                     Saída
                 </button>
                 <!------->
+            </div>
+
+            <div class="box-search d-flex">
+                <input type="search" class="form-control" placeholder="Pesquisar" id="pesquisar">
+                <button onclick="pesquisarDados()" class="btn btn-primary">
+                    <i class="bi bi-search"></i>
+                </button>
             </div>
         </div>
 

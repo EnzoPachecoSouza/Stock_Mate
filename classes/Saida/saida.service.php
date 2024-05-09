@@ -33,11 +33,23 @@ class SaidaService
 
     public function recuperar()
     {
-        $query = '
-        SELECT SAI.*, CLIE.CLI_NOME
-        FROM SAIDA AS SAI
-        INNER JOIN CLIENTE AS CLIE ON SAI.CLIENTE_CLI_ID = CLIE.CLI_ID;
-        ';
+        //VAI MOSTRAR DE ACORDO COM A PESQUISA DA FUNÇÃO DE PESQUISAR NOME NO JS
+        if (!empty($_GET['search'])) {
+            $pesquisaProduto = $_GET['search'];
+
+            $query = "
+            SELECT SAI.*, CLIE.CLI_NOME
+            FROM SAIDA AS SAI
+            INNER JOIN CLIENTE AS CLIE ON SAI.CLIENTE_CLI_ID = CLIE.CLI_ID
+            WHERE CLIE.CLI_NOME LIKE '%$pesquisaProduto%' OR SAI.SAIDA_FORMA_PAGAMENTO LIKE '%$pesquisaProduto%'
+            ";
+        } else {
+            $query = '
+            SELECT SAI.*, CLIE.CLI_NOME
+            FROM SAIDA AS SAI
+            INNER JOIN CLIENTE AS CLIE ON SAI.CLIENTE_CLI_ID = CLIE.CLI_ID;
+            ';
+        }       
 
         $stmt = $this->conexao->prepare($query);
         $stmt->execute();
@@ -47,14 +59,14 @@ class SaidaService
     public function editar($id)
     {
         $query = '
-    UPDATE SAIDA
-    SET SAIDA_DATA_VENDA = :dataVenda,
+        UPDATE SAIDA
+        SET SAIDA_DATA_VENDA = :dataVenda,
         SAIDA_VALOR_TOTAL = :valorTotal,
         SAIDA_DATA_PAGAMENTO = :dataPagamento,
         SAIDA_FORMA_PAGAMENTO = :formaPagamento,
         CLIENTE_CLI_ID = :cliente
-    WHERE SAIDA_ID = :id
-    ';
+        WHERE SAIDA_ID = :id
+        ';
 
         $stmt = $this->conexao->prepare($query);
 
