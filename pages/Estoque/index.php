@@ -93,14 +93,25 @@ require '../../classes/Categoria/categoria.controller.php';
     <!------->
 
     <div class="container mt-5">
-        <div class="d-flex justify-content-start align-items-center">
+        <div class="d-flex justify-content-between align-items-center">
             <!-- BOTÃO DE CRIAR PRODUTO -->
-            <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
-                data-bs-target="#cadastrarProdutoModal">
-                <i class="bi bi-plus-lg"></i>
-            </button>
+            <div>
+                <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
+                    data-bs-target="#cadastrarProdutoModal">
+                    <i class="bi bi-plus-lg"></i>
+                </button>
+            </div>
             <!------->
+
+            <div class="box-search d-flex">
+                <input type="search" class="form-control" placeholder="Pesquisar" id="pesquisar">
+                <button onclick="pesquisarDados()" class="btn btn-primary">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+
         </div>
+
 
         <div class="mt-3 ps-1" style="height: 70vh; overflow: auto;">
             <table class="table table-hover">
@@ -658,8 +669,8 @@ require '../../classes/Categoria/categoria.controller.php';
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+        </script>
 
     <!-- Script -->
     <script src="../../js/script.js"></script>

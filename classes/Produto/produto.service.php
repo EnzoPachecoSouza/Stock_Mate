@@ -38,12 +38,26 @@ class ProdutoService
 
     public function recuperar()
     {
-        $query = '
-        SELECT *
-        FROM PRODUTOS
-        ORDER BY PRO_STATUS DESC, PRO_NOME
-        ';
+        //VAI MOSTRAR DE ACORDO COM A PESQUISA DA FUNÇÃO DE PESQUISAR NOME NO JS
+        if(!empty($_GET['search'])){
+            $pesquisaProduto = $_GET['search'];
 
+            $query = "
+            SELECT *
+            FROM PRODUTOS WHERE PRO_NOME LIKE '%$pesquisaProduto%' 
+            OR PRO_COR LIKE '%$pesquisaProduto%' 
+            OR PRO_MATERIAL LIKE '%$pesquisaProduto%'
+            ORDER BY PRO_STATUS DESC, PRO_NOME
+            ";
+        }else{
+            $query = '
+            SELECT *
+            FROM PRODUTOS
+            ORDER BY PRO_STATUS DESC, PRO_NOME
+            ';
+    
+        }
+        
         $stmt = $this->conexao->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -115,3 +129,4 @@ class ProdutoService
         $stmt->execute();
     }
 }
+?>

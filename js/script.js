@@ -24,3 +24,16 @@ function showToast() {
 function closeToast() {
     toast.classList.remove('d-block')
 }
+
+//PESQUISA DE NOMES
+var search = document.getElementById('pesquisar');
+
+search.addEventListener("keydown", function(event){
+    if(event.key === "Enter"){
+        pesquisarDados();
+    }
+})
+
+function pesquisarDados() {
+    window.location = 'index.php?search=' + search.value;
+}
