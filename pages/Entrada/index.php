@@ -168,8 +168,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" method="post"
-                        action="../../classes/Entrada/entrada.controller.php?acao=inserir">
+                    <form class="container" method="post" action="" id="mainForm">
                         <div class="row align-items-center mb-4">
                             <div class="col-md-10">
                                 <div class="form-floating">
@@ -181,62 +180,6 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                         <?php } ?>
                                     </select>
                                     <label for="fornecedor">Fornecedor</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-2" onclick="showModalCadastrarFornecedor()">
-                                <button type="button" class="btn btn-primary rounded-circle">
-                                    <i class="bi bi-plus-lg fs-5"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div id="modalCadastrarFornecedor" class="d-none">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h6 class="modal-title">Registrar Fornecedor</h6>
-                                    </div>
-
-                                    <div class="modal-body">
-                                        <form class="container">
-                                            <div class="row mb-4">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" type="text" id="" name=""
-                                                            placeholder="Nome">
-                                                        <label for="">Nome</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" type="email" id="" name=""
-                                                            placeholder="Nome">
-                                                        <label for="">Email</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" type="text" id="" name=""
-                                                            placeholder="Nome">
-                                                        <label for="">Contato</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <div class="form-floating">
-                                                        <input class="form-control" type="email" id="" name=""
-                                                            placeholder="Nome">
-                                                        <label for="">CNPJ</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -256,9 +199,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <select class="form-select" id="formaPagamento" name="formaPagamento">
-                                        <option selected value="<?= $entrada->ENT_FORMA_PAGAMENTO ?>">
-                                            <?= $entrada->ENT_FORMA_PAGAMENTO ?>
-                                        </option>
+                                        <option selected value=""></option>
                                         <option value="Cartão de crédito">Cartão de Crédito</option>
                                         <option value="Cartão de Débito">Cartão de Débito</option>
                                         <option value="Transferência Bancária">Transferência Bancária</option>
@@ -288,33 +229,6 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                             </div>
                         </div>
 
-                        <div class="row" id="produtosEntrada">
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <select class="form-select" id="" name="">
-                                        <!-- mapear os produtos -->
-
-                                        <!-- ------------------ -->
-                                    </select>
-                                    <label for=""></label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <input class="form-control" type="number" id="" name="" placeholder="">
-                                    <label for="">Quantidade</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <input class="form-control" type="number" id="" name="" placeholder="">
-                                    <label for="">Valor unitário</label>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="row">
                             <div class="d-flex justify-content-center">
                                 <button type="button" class="btn btn-primary rounded-circle">
@@ -324,27 +238,13 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                         </div>
 
                         <div class="d-flex justify-content-center align-items-center">
-                            <button class="btn btn-outline-primary">Registrar Entrada</button>
+                            <button class="btn btn-outline-primary" onclick="submitForms()">Registrar Entrada</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        // MOSTRAR MODAL DE REGISTRAR FORNECEDOR
-        const modalCadastrarFornecedor = document.querySelector('#modalCadastrarFornecedor')
-
-        function showModalCadastrarFornecedor() {
-            if (modalCadastrarFornecedor.classList.contains('d-none')) {
-                modalCadastrarFornecedor.className = ''
-                modalCadastrarFornecedor.classList.add('d-block')
-            } else {
-                modalCadastrarFornecedor.className = ''
-                modalCadastrarFornecedor.classList.add('d-none')
-            }
-        }
-    </script>
     <!----------------------->
 
     <!-- EDITAR ENTRADA -->
@@ -361,7 +261,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                         <form class="container" method="post"
                             action="../../classes/Entrada/entrada.controller.php?acao=editar&id=<?= $entrada->ENT_ID ?>">
                             <div class="row align-items-center mb-4">
-                            <div class="col-md-10">
+                                <div class="col-md-10">
                                     <div class="form-floating">
                                         <select class="form-select" id="cliente" name="cliente">
                                             <?php foreach ($fornecedores as $fornecedor_item) { ?>
