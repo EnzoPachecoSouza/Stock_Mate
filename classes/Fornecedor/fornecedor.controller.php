@@ -7,7 +7,21 @@ require "../../classes/conexao.php";
 //recebe a ação através do action do form
 $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 
-if ($acao == 'recuperar') {
+if ($acao == 'inserir') {
+    $fornecedor = new Fornecedor();
+
+    $fornecedor->__set('fornecedor', $_POST['fornecedor']);
+    $fornecedor->__set('email', $_POST['email']);
+    $fornecedor->__set('contato', $_POST['contato']);
+    $fornecedor->__set('cnpj', $_POST['cnpj']);
+
+    $conexao = new Conexao();
+
+    $fornecedorService = new FornecedorService($conexao, $fornecedor);
+    $fornecedorService->inserir();
+
+    header('Location: ../../pages/Entrada/index.php?act=inserir');
+} else if ($acao == 'recuperar') {
     //instancia o objeto do produto.model.php
     $fornecedor = new Fornecedor();
 
