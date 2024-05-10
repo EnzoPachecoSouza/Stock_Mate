@@ -168,9 +168,10 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" method="post" action="" id="mainForm">
+                    <form class="container" method="post"
+                        action="../../classes/Entrada/entrada.controller.php?acao=inserir">
                         <div class="row align-items-center mb-4">
-                            <div class="col-md-10">
+                            <div class="col-md-12">
                                 <div class="form-floating">
                                     <select class="form-select" id="fornecedor" name="fornecedor">
                                         <option selected></option>
@@ -261,30 +262,23 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                         <form class="container" method="post"
                             action="../../classes/Entrada/entrada.controller.php?acao=editar&id=<?= $entrada->ENT_ID ?>">
                             <div class="row align-items-center mb-4">
-                                <div class="col-md-10">
+                                <div class="col-md-12">
                                     <div class="form-floating">
-                                        <select class="form-select" id="cliente" name="cliente">
-                                            <?php foreach ($fornecedores as $fornecedor_item) { ?>
-                                                <?php if ($fornecedor_item->FOR_ID == $entrada->FORNECEDORES_FOR_ID) { ?>
-                                                    <option value="<?= $fornecedor_item->FOR_ID ?>" selected>
-                                                        <?= $fornecedor_item->FOR_NOME ?>
+                                        <select class="form-select" id="fornecedor" name="fornecedor">
+                                            <?php foreach ($fornecedores as $fornecedor) { ?>
+                                                <?php if ($fornecedor->FOR_ID == $entrada->FORNECEDORES_FOR_ID) { ?>
+                                                    <option value="<?= $fornecedor->FOR_ID ?>" selected>
+                                                        <?= $fornecedor->FOR_NOME ?>
                                                     </option>
                                                 <?php } else { ?>
-                                                    <option value="<?= $fornecedor_item->FOR_ID ?>">
-                                                        <?= $fornecedor_item->FOR_NOME ?>
+                                                    <option value="<?= $fornecedor->FOR_ID ?>">
+                                                        <?= $fornecedor->FOR_NOME ?>
                                                     </option>
                                                 <?php } ?>
                                             <?php } ?>
                                         </select>
-                                        <label for="cliente">Fornecedor</label>
+                                        <label for="fornecedor">Fornecedor</label>
                                     </div>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <button class="btn btn-primary" type="button" class="btn btn-primary rounded-circle"
-                                        data-bs-toggle="modal" data-bs-target="#cadastrarProdutoModal">
-                                        <i class="bi bi-plus-lg fs-5"></i>
-                                    </button>
                                 </div>
                             </div>
 
