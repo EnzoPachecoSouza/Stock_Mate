@@ -52,7 +52,7 @@ require '../../classes/Categoria/categoria.controller.php';
 
                 <!-- LOGO -->
                 <div class="col-2">
-                    <img src="../img/logo_stock_mate.png" alt="" class="img-fluid">
+                    <img src="../../images/logo_stock_mate.png" alt="Logo Stock Mate" class="img-fluid">
                 </div>
                 <!------->
 
