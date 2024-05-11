@@ -3,6 +3,7 @@ $acao = 'recuperar';
 
 require '../../classes/Entrada/entrada.controller.php';
 require '../../classes/Fornecedor/fornecedor.controller.php';
+require '../../classes/Produto/produto.controller.php';
 ?>
 
 <!DOCTYPE html>
@@ -198,7 +199,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                     <span class="input-group-text fw-bold">R$</span>
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="valorTotal" name="valorTotal"
-                                            placeholder="Valor total">
+                                            placeholder="Valor total" disabled>
                                         <label for="valorTotal">Valor total</label>
                                     </div>
                                 </div>
@@ -235,6 +236,40 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                     <label for="dataPagamento">Data de pagamento</label>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <select class="form-select" id="" name="">
+                                        <option value="" selected></option>
+                                        <?php foreach ($produtos as $indice => $produto) { ?>
+                                            <option value="<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
+                                        <?php } ?>
+                                    </select>
+                                    <label for="">Produto</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <input class="form-control" type="number" id="" name=""
+                                        placeholder="Quantidade">
+                                    <label for="">Quantidade</label>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="form-floating">
+                                    <input class="form-control" type="number" id="" name=""
+                                        placeholder="Valor unitário">
+                                    <label for="">Valor Unitário</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" id="products">
+
                         </div>
 
                         <div class="row">
@@ -388,8 +423,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="cnpj" name="cnpj"
-                                        placeholder="CNPJ">
+                                    <input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="CNPJ">
                                     <label for="cnpj">CNPJ</label>
                                 </div>
                             </div>
