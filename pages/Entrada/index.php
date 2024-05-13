@@ -240,41 +240,39 @@ require '../../classes/Produto/produto.controller.php';
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <select class="form-select" id="" name="">
-                                        <option value="" selected></option>
-                                        <?php foreach ($produtos as $indice => $produto) { ?>
-                                            <option value="<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
-                                        <?php } ?>
-                                    </select>
-                                    <label for="">Produto</label>
+                        <div id="products">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="" name="">
+                                            <option value="" selected></option>
+                                            <?php foreach ($produtos as $indice => $produto) { ?>
+                                                <option value="<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
+                                            <?php } ?>
+                                        </select>
+                                        <label for="">Produto</label>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <input class="form-control" type="number" id="" name=""
-                                        placeholder="Quantidade">
-                                    <label for="">Quantidade</label>
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="number" id="" name=""
+                                            placeholder="Quantidade">
+                                        <label for="">Quantidade</label>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <input class="form-control" type="number" id="" name=""
-                                        placeholder="Valor unitário">
-                                    <label for="">Valor Unitário</label>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="number" id="" name=""
+                                            placeholder="Valor unitário">
+                                        <label for="">Valor Unitário</label>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row" id="products">
-
-                        </div>
-
-                        <div class="row">
+                        <div class="row my-3">
                             <div class="d-flex justify-content-center">
                                 <button type="button" class="btn btn-primary rounded-circle">
                                     <i class="bi bi-plus-lg"></i>

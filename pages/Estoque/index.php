@@ -106,11 +106,12 @@ require '../../classes/Categoria/categoria.controller.php';
 
             <div class="form-floating d-flex">
                 <select class="form-select" id="filtro" name="filtro">
-                    <option value="">Selecione um filtro</option>
+                    <option value=""></option>
                     <option value="1">Maior quantidade</option>
                     <option value="2">Menor quantidade</option>
                     <option value="3">Categoria</option>
                 </select>
+                <label for="filtro">Selecione um filtro</label>
                 <button onclick="filtrarDados()" class="btn btn-primary">Filtrar</button>
             </div>
 
