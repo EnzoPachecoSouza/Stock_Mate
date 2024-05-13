@@ -61,7 +61,7 @@ class ProdutoService
                  ORDER BY PRO_QUANTIDADE DESC;
                  ";
 
-                 $filtrarProduto = 0;
+                $filtrarProduto = 0;
             } else if ($filtrarProduto == 2) {
                 $query = "
                     SELECT *
@@ -69,14 +69,20 @@ class ProdutoService
                     ORDER BY PRO_QUANTIDADE ASC;
                     ";
 
-                    $filtrarProduto = 0;
+                $filtrarProduto = 0;
             }
         } else {
+            // $query = '
+            // SELECT *
+            // FROM PRODUTOS
+            // ORDER BY PRO_STATUS DESC, PRO_NOME
+            // ';
             $query = '
-            SELECT *
-            FROM PRODUTOS
-            ORDER BY PRO_STATUS DESC, PRO_NOME
+            SELECT PRO.*, CATE.CAT_CATEGORIA
+            FROM PRODUTOS AS PRO
+            INNER JOIN CATEGORIA AS CATE ON PRO.CATEGORIA_CAT_ID = CATE.CAT_ID;
             ';
+
 
         }
 

@@ -548,7 +548,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" id="categoria" name="categoria"
-                                            value="<?= $produto->PRO_CAT ?>" disabled>
+                                            value="<?= $produto->CAT_CATEGORIA ?>" disabled>
                                         <label for="categoria">Categoria</label>
                                     </div>
                                 </div>

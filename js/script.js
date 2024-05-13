@@ -38,6 +38,7 @@ function pesquisarDados() {
     window.location = 'index.php?search=' + search.value;
 }
 
+
 //FILTRO DE DADOS
 var filter = document.getElementById('filtro');
 
