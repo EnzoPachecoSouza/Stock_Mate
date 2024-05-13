@@ -244,41 +244,55 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <select class="form-select" id="" name="" onchange="teste(this.value)">
+                                        <select class="form-select" id="produtoSelect" name=""
+                                            onchange="determinaValorUnitario(this.value)">
                                             <option value="" selected></option>
                                             <?php foreach ($produtos as $indice => $produto) { ?>
                                                 <option value="<?= $produto->PRO_ID ?>">
-                                                    <?= $produto->PRO_NOME ?></option>
+                                                    <?= $produto->PRO_NOME ?>
+                                                </option>
                                             <?php } ?>
                                         </select>
-                                        <label for="">Produto</label>
+                                        <label for="produtoSelect">Produto</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" type="number" id="" name=""
-                                            placeholder="Quantidade">
-                                        <label for="">Quantidade</label>
+                                        <input class="form-control" type="number" id="quantidade" name="quantidade"
+                                            placeholder="Quantidade" oninput="atualizarValor()">
+                                        <label for="quantidade">Quantidade</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" type="number" id="valorUnitario" name=""
-                                            placeholder="Valor unitário">
-                                        <label for="">Valor Unitário</label>
+                                        <input class="form-control" type="number" id="valorUnitario"
+                                            name="valorUnitario" placeholder="Valor unitário">
+                                        <label for="valorUnitario">Valor Unitário</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <script>
-                            const valorUnitario = document.querySelector('#valorUnitario')
-                            function teste(valor){
-                                valorUnitario.value = valor
+                            const valorUnitarioInput = document.querySelector('#valorUnitario');
+                            const quantidadeInput = document.querySelector('#quantidade');
+                            const valorTotalInput = document.querySelector('#valorTotal')
+
+                            function determinaValorUnitario(valor) {
+                                valorUnitarioInput.value = valor;
+                            }
+
+                            function atualizarValor() {
+                                const quantidade = quantidadeInput.value;
+                                const valorUnitario = valorUnitarioInput.value;
+                                const valorTotal = quantidade * valorUnitario;
+
+                                valorTotalInput.value = valorTotal
                             }
                         </script>
+
 
                         <div class="row my-3">
                             <div class="d-flex justify-content-center">
