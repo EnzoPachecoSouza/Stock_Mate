@@ -200,7 +200,7 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="input-group">
                                     <span class="input-group-text fw-bold">R$</span>
                                     <div class="form-floating">
-                                        <input class="form-control form-disabled" type="text" id="valorTotal" name="valorTotal"
+                                        <input class="form-control" type="text" id="valorTotal" name="valorTotal"
                                             placeholder="Valor total" readonly>
                                         <label for="valorTotal">Valor total</label>
                                     </div>
@@ -244,7 +244,7 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <select class="form-select" id="produtoSelect" name=""
+                                        <select class="form-select" id="produto" name="produto"
                                             onchange="determinaValorUnitario(this.value)">
                                             <option value="" selected></option>
                                             <?php foreach ($produtos as $indice => $produto) { ?>
@@ -253,7 +253,7 @@ require '../../classes/Produto/produto.controller.php';
                                                 </option>
                                             <?php } ?>
                                         </select>
-                                        <label for="produtoSelect">Produto</label>
+                                        <label for="produto">Produto</label>
                                     </div>
                                 </div>
 
@@ -296,11 +296,55 @@ require '../../classes/Produto/produto.controller.php';
 
                         <div class="row my-3">
                             <div class="d-flex justify-content-center">
-                                <button type="button" class="btn btn-primary rounded-circle">
+                                <button type="button" class="btn btn-primary rounded-circle"
+                                    onclick="createNewProductForm()">
                                     <i class="bi bi-plus-lg"></i>
                                 </button>
                             </div>
                         </div>
+
+                        <script>
+                            function createNewProductForm() {
+                                // Seleciona a div onde os componentes serão adicionados
+                                var productsDiv = document.getElementById("products");
+
+                                // Cria os elementos HTML
+                                var rowDiv = document.createElement("div");
+                                rowDiv.classList.add("row");
+
+                                var colDiv1 = document.createElement("div");
+                                colDiv1.classList.add("col-md-4");
+                                var select = document.createElement("select");
+                                // Adicione aqui o código para preencher o select com as opções dinamicamente
+                                colDiv1.appendChild(select);
+
+                                var colDiv2 = document.createElement("div");
+                                colDiv2.classList.add("col-md-4");
+                                var inputQuantidade = document.createElement("input");
+                                inputQuantidade.classList.add("form-control");
+                                inputQuantidade.setAttribute("type", "number");
+                                inputQuantidade.setAttribute("placeholder", "Quantidade");
+                                // Adicione aqui o event listener para o input de quantidade
+                                colDiv2.appendChild(inputQuantidade);
+
+                                var colDiv3 = document.createElement("div");
+                                colDiv3.classList.add("col-md-4");
+                                var inputValorUnitario = document.createElement("input");
+                                inputValorUnitario.classList.add("form-control");
+                                inputValorUnitario.setAttribute("type", "number");
+                                inputValorUnitario.setAttribute("placeholder", "Valor unitário");
+                                // Adicione aqui o event listener para o input de valor unitário
+                                colDiv3.appendChild(inputValorUnitario);
+
+                                // Adiciona os elementos à div row
+                                rowDiv.appendChild(colDiv1);
+                                rowDiv.appendChild(colDiv2);
+                                rowDiv.appendChild(colDiv3);
+
+                                // Adiciona a div row à div products
+                                productsDiv.appendChild(rowDiv);
+                            }
+                        </script>
 
                         <div class="d-flex justify-content-center align-items-center">
                             <button class="btn btn-outline-primary">Registrar Entrada</button>
@@ -490,8 +534,7 @@ require '../../classes/Produto/produto.controller.php';
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script
 
     <!-- Script -->
     <script src="../../js/script.js"></script>
