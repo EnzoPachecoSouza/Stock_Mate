@@ -118,7 +118,7 @@ require '../../classes/Produto/produto.controller.php';
                 </button>
             </div>
 
-            
+
         </div>
 
         <div class="ps-1" style="height: 70vh; overflow: auto;">
@@ -244,10 +244,11 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <select class="form-select" id="" name="">
+                                        <select class="form-select" id="" name="" onchange="teste(this.value)">
                                             <option value="" selected></option>
                                             <?php foreach ($produtos as $indice => $produto) { ?>
-                                                <option value="<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
+                                                <option value="<?= $produto->PRO_ID ?>">
+                                                    <?= $produto->PRO_NOME ?></option>
                                             <?php } ?>
                                         </select>
                                         <label for="">Produto</label>
@@ -264,13 +265,20 @@ require '../../classes/Produto/produto.controller.php';
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" type="number" id="" name=""
+                                        <input class="form-control" type="number" id="valorUnitario" name=""
                                             placeholder="Valor unitário">
                                         <label for="">Valor Unitário</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                        <script>
+                            const valorUnitario = document.querySelector('#valorUnitario')
+                            function teste(valor){
+                                valorUnitario.value = valor
+                            }
+                        </script>
 
                         <div class="row my-3">
                             <div class="d-flex justify-content-center">
@@ -304,11 +312,7 @@ require '../../classes/Produto/produto.controller.php';
                         <form class="container" method="post"
                             action="../../classes/Entrada/entrada.controller.php?acao=editar&id=<?= $entrada->ENT_ID ?>">
                             <div class="row align-items-center mb-4">
-<<<<<<< Updated upstream
                                 <div class="col-md-12">
-=======
-                                <div class="col-md-10">
->>>>>>> Stashed changes
                                     <div class="form-floating">
                                         <select class="form-select" id="fornecedor" name="fornecedor">
                                             <?php foreach ($fornecedores as $fornecedor) { ?>
