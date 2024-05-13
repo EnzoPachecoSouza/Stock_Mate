@@ -117,6 +117,8 @@ require '../../classes/Produto/produto.controller.php';
                     <i class="bi bi-search"></i>
                 </button>
             </div>
+
+            
         </div>
 
         <div class="ps-1" style="height: 70vh; overflow: auto;">
@@ -304,7 +306,11 @@ require '../../classes/Produto/produto.controller.php';
                         <form class="container" method="post"
                             action="../../classes/Entrada/entrada.controller.php?acao=editar&id=<?= $entrada->ENT_ID ?>">
                             <div class="row align-items-center mb-4">
+<<<<<<< Updated upstream
                                 <div class="col-md-12">
+=======
+                                <div class="col-md-10">
+>>>>>>> Stashed changes
                                     <div class="form-floating">
                                         <select class="form-select" id="fornecedor" name="fornecedor">
                                             <?php foreach ($fornecedores as $fornecedor) { ?>

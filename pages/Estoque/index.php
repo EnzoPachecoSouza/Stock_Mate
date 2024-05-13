@@ -103,13 +103,25 @@ require '../../classes/Categoria/categoria.controller.php';
             </div>
             <!------->
 
+
+            <div class="form-floating d-flex">
+                <select class="form-select" id="filtro" name="filtro">
+                    <option value="">Selecione um filtro</option>
+                    <option value="1">Maior quantidade</option>
+                    <option value="2">Menor quantidade</option>
+                    <option value="3">Categoria</option>
+                </select>
+                <button onclick="filtrarDados()" class="btn btn-primary">Filtrar</button>
+            </div>
+
+
+
             <div class="box-search d-flex">
                 <input type="search" class="form-control" placeholder="Pesquisar" id="pesquisar">
                 <button onclick="pesquisarDados()" class="btn btn-primary">
                     <i class="bi bi-search"></i>
                 </button>
             </div>
-
         </div>
 
 

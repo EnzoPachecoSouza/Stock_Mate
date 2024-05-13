@@ -1,4 +1,5 @@
 <?php
+
 //SERVICE VAI EXECUTAR AS FUNÇÕES DAS AÇÕES QUE RECEBER DO CONTROLLER
 class ProdutoService
 {
@@ -39,7 +40,8 @@ class ProdutoService
     public function recuperar()
     {
         //VAI MOSTRAR DE ACORDO COM A PESQUISA DA FUNÇÃO DE PESQUISAR NOME NO JS
-        if(!empty($_GET['search'])){
+
+        if (!empty($_GET['search'])) {
             $pesquisaProduto = $_GET['search'];
 
             $query = "
@@ -49,15 +51,35 @@ class ProdutoService
             OR PRO_MATERIAL LIKE '%$pesquisaProduto%'
             ORDER BY PRO_STATUS DESC, PRO_NOME
             ";
-        }else{
+        } else if (!empty($_GET['filter'])) {
+            $filtrarProduto = $_GET['filter'];
+
+            if ($filtrarProduto == 1) {
+                $query = "
+                 SELECT *
+                 FROM PRODUTOS
+                 ORDER BY PRO_QUANTIDADE DESC;
+                 ";
+
+                 $filtrarProduto = 0;
+            } else if ($filtrarProduto == 2) {
+                $query = "
+                    SELECT *
+                    FROM PRODUTOS
+                    ORDER BY PRO_QUANTIDADE ASC;
+                    ";
+
+                    $filtrarProduto = 0;
+            }
+        } else {
             $query = '
             SELECT *
             FROM PRODUTOS
             ORDER BY PRO_STATUS DESC, PRO_NOME
             ';
-    
+
         }
-        
+
         $stmt = $this->conexao->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);

@@ -37,3 +37,10 @@ search.addEventListener("keydown", function(event){
 function pesquisarDados() {
     window.location = 'index.php?search=' + search.value;
 }
+
+//FILTRO DE DADOS
+var filter = document.getElementById('filtro');
+
+function filtrarDados() {
+    window.location = 'index.php?filter=' + filter.value;
+}
