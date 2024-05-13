@@ -200,8 +200,8 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="input-group">
                                     <span class="input-group-text fw-bold">R$</span>
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="valorTotal" name="valorTotal"
-                                            placeholder="Valor total" disabled>
+                                        <input class="form-control form-disabled" type="text" id="valorTotal" name="valorTotal"
+                                            placeholder="Valor total" readonly>
                                         <label for="valorTotal">Valor total</label>
                                     </div>
                                 </div>
