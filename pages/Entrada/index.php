@@ -305,43 +305,55 @@ require '../../classes/Produto/produto.controller.php';
 
                         <script>
                             function createNewProductForm() {
-                                // Seleciona a div onde os componentes serão adicionados
                                 var productsDiv = document.getElementById("products");
 
-                                // Cria os elementos HTML
                                 var rowDiv = document.createElement("div");
                                 rowDiv.classList.add("row");
 
                                 var colDiv1 = document.createElement("div");
                                 colDiv1.classList.add("col-md-4");
+                                var formFloat1 = document.createElement("div");
+                                formFloat1.classList.add("form-floating");
+                                colDiv1.appendChild(formFloat1)
                                 var select = document.createElement("select");
-                                // Adicione aqui o código para preencher o select com as opções dinamicamente
-                                colDiv1.appendChild(select);
+                                select.classList.add("form-select")
+                                var label1 = document.createElement("label");
+                                label1.innerText = "Produto"
+                                formFloat1.appendChild(select);
+                                formFloat1.appendChild(label1)
 
                                 var colDiv2 = document.createElement("div");
                                 colDiv2.classList.add("col-md-4");
+                                var formFloat2 = document.createElement("div");
+                                formFloat2.classList.add("form-floating");
+                                colDiv2.appendChild(formFloat2)
                                 var inputQuantidade = document.createElement("input");
                                 inputQuantidade.classList.add("form-control");
                                 inputQuantidade.setAttribute("type", "number");
                                 inputQuantidade.setAttribute("placeholder", "Quantidade");
-                                // Adicione aqui o event listener para o input de quantidade
-                                colDiv2.appendChild(inputQuantidade);
+                                var label2 = document.createElement("label");
+                                label2.innerText = "Quantidade"
+                                formFloat2.appendChild(inputQuantidade);
+                                formFloat2.appendChild(label2);
 
                                 var colDiv3 = document.createElement("div");
                                 colDiv3.classList.add("col-md-4");
+                                var formFloat3 = document.createElement("div");
+                                formFloat3.classList.add("form-floating");
+                                colDiv3.appendChild(formFloat3)
                                 var inputValorUnitario = document.createElement("input");
                                 inputValorUnitario.classList.add("form-control");
                                 inputValorUnitario.setAttribute("type", "number");
                                 inputValorUnitario.setAttribute("placeholder", "Valor unitário");
-                                // Adicione aqui o event listener para o input de valor unitário
-                                colDiv3.appendChild(inputValorUnitario);
+                                var label3 = document.createElement("label");
+                                label3.innerText = "Valor Unitário"
+                                formFloat3.appendChild(inputValorUnitario);
+                                formFloat3.appendChild(label3);
 
-                                // Adiciona os elementos à div row
                                 rowDiv.appendChild(colDiv1);
                                 rowDiv.appendChild(colDiv2);
                                 rowDiv.appendChild(colDiv3);
 
-                                // Adiciona a div row à div products
                                 productsDiv.appendChild(rowDiv);
                             }
                         </script>
