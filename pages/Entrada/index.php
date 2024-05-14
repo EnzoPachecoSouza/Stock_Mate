@@ -125,10 +125,10 @@ require '../../classes/Produto/produto.controller.php';
             <table class="table table-hover mt-3">
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">Data Compra</th>
-                        <th scope="col">Valor Total</th>
-                        <th scope="col">Data Pagamento</th>
                         <th scope="col">Fornecedor</th>
+                        <th scope="col">Data Compra</th>
+                        <th scope="col">Data Pagamento</th>
+                        <th scope="col">Valor Total</th>
                         <th scope="col">Forma Pagamento</th>
                         <th scope="col"></th>
                     </tr>
@@ -137,17 +137,17 @@ require '../../classes/Produto/produto.controller.php';
                 <tbody class="table-group-divider table-hover-shadow">
                     <?php foreach ($entradas as $indice => $entrada) { ?>
                     <tr>
+                        <td>
+                            <?= $entrada->FOR_NOME ?>
+                        </td>
                         <td scope="row">
                             <?= date("d/m/Y", strtotime($entrada->ENT_DATA_COMPRA)) ?>
-                        </td>
-                        <td>
-                            <?= number_format($entrada->ENT_VALOR_TOTAL, 2, ',', '.') ?>
                         </td>
                         <td>
                             <?= date("d/m/Y", strtotime($entrada->ENT_DATA_PAGAMENTO)) ?>
                         </td>
                         <td>
-                            <?= $entrada->FOR_NOME ?>
+                            <?= number_format($entrada->ENT_VALOR_TOTAL, 2, ',', '.') ?>
                         </td>
                         <td>
                             <?= $entrada->ENT_FORMA_PAGAMENTO ?>
@@ -200,8 +200,8 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="input-group">
                                     <span class="input-group-text fw-bold">R$</span>
                                     <div class="form-floating">
-                                        <input class="form-control form-disabled" type="text" id="valorTotal" name="valorTotal"
-                                            placeholder="Valor total" readonly>
+                                        <input class="form-control form-disabled" type="text" id="valorTotal"
+                                            name="valorTotal" placeholder="Valor total">
                                         <label for="valorTotal">Valor total</label>
                                     </div>
                                 </div>
