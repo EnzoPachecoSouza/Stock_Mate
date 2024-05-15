@@ -101,6 +101,13 @@ require '../../classes/Cliente/cliente.controller.php';
                     Saída
                 </button>
                 <!------->
+
+                <!-- BOTÃO DE REGISTRAR CLIENTE -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                    data-bs-target="#registrarClienteModal">
+                    Cliente
+                </button>
+                <!------->
             </div>
 
             <div class="box-search d-flex">
@@ -337,6 +344,63 @@ require '../../classes/Cliente/cliente.controller.php';
             </div>
         </div>
     <?php } ?>
+    <!----------------------->
+
+     <!-- REGISTRAR FORNECEDOR -->
+     <div class="modal fade" id="registrarClienteModal" tabindex="-1" aria-labelledby="registrarClienteModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="registrarClienteModalLabel">Registrar Cliente</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="container" method="post"
+                        action="../../classes/Cliente/cliente.controller.php?acao=inserir">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="cliente" name="cliente"
+                                        placeholder="Nome">
+                                    <label for="cliente">Nome</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input class="form-control" type="email" id="email" name="email"
+                                        placeholder="Email">
+                                    <label for="email">Email</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="contato" name="contato"
+                                        placeholder="Contato">
+                                    <label for="contato">Contato</label>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF">
+                                    <label for="cpf">CPF</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button class="btn btn-outline-primary">Registrar Cliente</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <!----------------------->
 
     <!-- TOAST DE CONFIRMAR AÇÃO REALIZADA -->

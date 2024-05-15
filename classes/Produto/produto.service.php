@@ -48,6 +48,7 @@ class ProdutoService
         WHERE PRO_NOME LIKE '%$pesquisaProduto%' 
         OR PRO_COR LIKE '%$pesquisaProduto%' 
         OR PRO_MATERIAL LIKE '%$pesquisaProduto%'
+        OR PRO_DETALHES LIKE '%$pesquisaProduto%'
         ORDER BY PRO_STATUS DESC, PRO_NOME
         ";
         } elseif (!empty($_GET['filter'])) {
