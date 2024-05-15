@@ -1,8 +1,7 @@
 <?php
-//CLASSE DO PRODUTO
+//CLASSE DE CATEGORIA
 class Categoria
 {
-
     private $nome;
 
     public function __set($atributo, $valor)
@@ -15,3 +14,4 @@ class Categoria
         return $this->$atributo;
     }
 }
+?>

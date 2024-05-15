@@ -1,9 +1,10 @@
 <?php
-
+require_once "../../classes/Categoria/categoria.controller.php";
+require_once "../../classes/Categoria/categoria.model.php";
+require_once "../../classes/Categoria/categoria.service.php";
 //SERVICE VAI EXECUTAR AS FUNÇÕES DAS AÇÕES QUE RECEBER DO CONTROLLER
 class ProdutoService
 {
-
     private $conexao;
     private $produto;
 
@@ -39,140 +40,67 @@ class ProdutoService
 
     public function recuperar()
     {
-        //VAI MOSTRAR DE ACORDO COM A PESQUISA DA FUNÇÃO DE PESQUISAR NOME NO JS
-
         if (!empty($_GET['search'])) {
             $pesquisaProduto = $_GET['search'];
-
             $query = "
-            SELECT *
-            FROM PRODUTOS WHERE PRO_NOME LIKE '%$pesquisaProduto%' 
-            OR PRO_COR LIKE '%$pesquisaProduto%' 
-            OR PRO_MATERIAL LIKE '%$pesquisaProduto%'
-            ORDER BY PRO_STATUS DESC, PRO_NOME
-            ";
-        } 
-        
-        else if (!empty($_GET['filter'])) {
+        SELECT *
+        FROM PRODUTOS 
+        WHERE PRO_NOME LIKE '%$pesquisaProduto%' 
+        OR PRO_COR LIKE '%$pesquisaProduto%' 
+        OR PRO_MATERIAL LIKE '%$pesquisaProduto%'
+        ORDER BY PRO_STATUS DESC, PRO_NOME
+        ";
+        } elseif (!empty($_GET['filter'])) {
             $filtrarProduto = $_GET['filter'];
-
-            if ($filtrarProduto == 1) {
-                $query = "
-                 SELECT *
-                 FROM PRODUTOS
-                 ORDER BY PRO_STATUS DESC, PRO_NOME ASC;
-                 ";
-
-                $filtrarProduto = 0;
-            } else if ($filtrarProduto == 2) {
-                $query = "
-                 SELECT *
-                 FROM PRODUTOS
-                 ORDER BY PRO_STATUS DESC, PRO_NOME DESC;
-                 ";
-
-                $filtrarProduto = 0;
-            } else if ($filtrarProduto == 3) {
-                $query = "
-                 SELECT *
-                 FROM PRODUTOS
-                 ORDER BY PRO_STATUS DESC, PRO_COR ASC;
-                 ";
-
-                $filtrarProduto = 0;
-            } else if ($filtrarProduto == 4) {
-                $query = "
-                 SELECT *
-                 FROM PRODUTOS
-                 ORDER BY PRO_STATUS DESC, PRO_COR DESC;
-                 ";
-
-                $filtrarProduto = 0;
-            } else if ($filtrarProduto == 5) {
-                $query = "
-                 SELECT *
-                 FROM PRODUTOS
-                 ORDER BY PRO_STATUS DESC, PRO_MATERIAL ASC;
-                 ";
-
-                $filtrarProduto = 0;
-            } else if ($filtrarProduto == 6) {
-                $query = "
-                 SELECT *
-                 FROM PRODUTOS
-                 ORDER BY PRO_STATUS DESC, PRO_MATERIAL DESC;
-                 ";
-
-                $filtrarProduto = 0;
-            } else if ($filtrarProduto == 7) {
-                $query = "
-                 SELECT *
-                 FROM PRODUTOS
-                 ORDER BY PRO_STATUS DESC, PRO_QUANTIDADE DESC;
-                 ";
-
-                $filtrarProduto = 0;
-            } else if ($filtrarProduto == 8) {
-                $query = "
-                    SELECT *
-                    FROM PRODUTOS
-                    ORDER BY PRO_STATUS DESC, PRO_QUANTIDADE ASC;
-                    ";
-
-                $filtrarProduto = 0;
-            } else if ($filtrarProduto == 9) {
-                $query = "
-                 SELECT *
-                 FROM PRODUTOS
-                 WHERE PRO_STATUS = 1
-                 ORDER BY PRO_NOME ASC;
-                 ";
-
-                $filtrarProduto = 0;
-            } else if ($filtrarProduto == 10) {
-                $query = "
-                 SELECT *
-                 FROM PRODUTOS
-                 WHERE PRO_STATUS = 0
-                 ORDER BY PRO_NOME ASC;
-                 ";
-
-                $filtrarProduto = 0;
-            }
-        } 
-        
-        else if (!empty($_GET['catFiltro'])) {
+            $query = $this->getFilterQuery($filtrarProduto);
+        } elseif (!empty($_GET['catFiltro'])) {
             $filtrarCategoria = $_GET['catFiltro'];
-
-            if (!empty($categorias)) {
-                foreach ($categorias as $indice => $categoria) {
-                    if ($categoria->CATEGORIA_CAT_ID == $filtrarCategoria) {
-                        $query = "
-                            SELECT *
-                            FROM PRODUTOS
-                            WHERE CAT_ID = '$filtrarCategoria';
-                        ";
-
-                        $filtrarCategoria = 0;
-                    }
-                }
-            } else {
-               echo $filtrarCategoria;
-            }
-        } 
-        
-        else {
+            $query = "
+        SELECT *
+        FROM PRODUTOS
+        WHERE CATEGORIA_CAT_ID = '$filtrarCategoria';
+        ";
+        } else {
             $query = '
-            SELECT PRO.*, CATE.CAT_CATEGORIA
-            FROM PRODUTOS AS PRO
-            INNER JOIN CATEGORIA AS CATE ON PRO.CATEGORIA_CAT_ID = CATE.CAT_ID ORDER BY PRO_STATUS DESC, PRO_NOME;
-            ';
+        SELECT PRO.*, CATE.CAT_CATEGORIA
+        FROM PRODUTOS AS PRO
+        INNER JOIN CATEGORIA AS CATE ON PRO.CATEGORIA_CAT_ID = CATE.CAT_ID 
+        ORDER BY PRO_STATUS DESC, PRO_NOME;
+        ';
         }
 
         $stmt = $this->conexao->prepare($query);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
+
+    private function getFilterQuery($filter)
+    {
+        switch ($filter) {
+            case 1:
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_NOME ASC;";
+            case 2:
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_NOME DESC;";
+            case 3:
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_COR ASC;";
+            case 4:
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_COR DESC;";
+            case 5:
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_MATERIAL ASC;";
+            case 6:
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_MATERIAL DESC;";
+            case 7:
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_QUANTIDADE DESC;";
+            case 8:
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_QUANTIDADE ASC;";
+            case 9:
+                return "SELECT * FROM PRODUTOS WHERE PRO_STATUS = 1 ORDER BY PRO_NOME ASC;";
+            case 10:
+                return "SELECT * FROM PRODUTOS WHERE PRO_STATUS = 0 ORDER BY PRO_NOME ASC;";
+        }
+    }
+
 
     public function editar($id)
     {
@@ -217,10 +145,8 @@ class ProdutoService
         ';
 
         $stmt = $this->conexao->prepare($query);
-
         $stmt->bindValue(':status', 0);
         $stmt->bindValue(':id', $id);
-
         $stmt->execute();
     }
 
@@ -233,10 +159,8 @@ class ProdutoService
         ';
 
         $stmt = $this->conexao->prepare($query);
-
         $stmt->bindValue(':status', 1);
         $stmt->bindValue(':id', $id);
-
         $stmt->execute();
     }
 }

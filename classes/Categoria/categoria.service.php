@@ -1,5 +1,6 @@
 <?php
 //SERVICE VAI EXECUTAR AS FUNÇÕES DAS AÇÕES QUE RECEBER DO CONTROLLER
+require_once "categoria.model.php";
 class CategoriaService
 {
 

@@ -1,7 +1,7 @@
 <?php
 
-require "categoria.model.php";
-require "categoria.service.php";
+require_once "categoria.model.php";
+require_once "categoria.service.php";
 require "../../classes/conexao.php";
 
 //recebe a ação através do action do form
