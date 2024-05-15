@@ -41,7 +41,9 @@ class EntradaService
             SELECT ENT.*, FORN.FOR_NOME
             FROM ENTRADA AS ENT
             INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
-            WHERE FORN.FOR_NOME LIKE '%$pesquisaProduto%' OR ENT.ENT_FORMA_PAGAMENTO LIKE '%$pesquisaProduto%'
+            WHERE FORN.FOR_NOME LIKE '%$pesquisaProduto%' 
+            OR ENT.ENT_FORMA_PAGAMENTO LIKE '%$pesquisaProduto%'
+            OR ENT.ENT_DATA_COMPRA LIKE '%$pesquisaProduto%'
             ";
         } else {
             
