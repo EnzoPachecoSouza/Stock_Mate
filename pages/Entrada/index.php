@@ -186,8 +186,7 @@ require '../../classes/Produto/produto.controller.php';
                                     <select class="form-select" id="fornecedor" name="fornecedor">
                                         <option selected></option>
                                         <?php foreach ($fornecedores as $indice => $fornecedor) { ?>
-                                            <option value="<?= $fornecedor->FOR_ID ?>"><?= $fornecedor->FOR_NOME ?>
-                                            </option>
+                                            <option value="<?= $fornecedor->FOR_ID ?>"><?= $fornecedor->FOR_NOME ?></option>
                                         <?php } ?>
                                     </select>
                                     <label for="fornecedor">Fornecedor</label>
@@ -201,7 +200,7 @@ require '../../classes/Produto/produto.controller.php';
                                     <span class="input-group-text fw-bold">R$</span>
                                     <div class="form-floating">
                                         <input class="form-control form-disabled" type="text" id="valorTotal"
-                                            name="valorTotal" placeholder="Valor total">
+                                            name="valorTotal" placeholder="Valor total" readonly>
                                         <label for="valorTotal">Valor total</label>
                                     </div>
                                 </div>
@@ -241,15 +240,15 @@ require '../../classes/Produto/produto.controller.php';
                         </div>
 
                         <div id="products">
-                            <div class="row">
+                            <div class="row mb-2 product-row">
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <select class="form-select" id="produto" name="produto"
-                                            onchange="determinaValorUnitario(this.value)">
+                                        <select class="form-select produto" name="produto[]"
+                                            onchange="determinaValorUnitario(this)">
                                             <option value="" selected></option>
                                             <?php foreach ($produtos as $indice => $produto) { ?>
-                                                <option value="<?= $produto->PRO_ID ?>">
-                                                    <?= $produto->PRO_NOME ?>
+                                                <option value="<?= $produto->PRO_ID ?>"
+                                                    data-valor="<?= $produto->PRO_VALOR ?>"><?= $produto->PRO_NOME ?>
                                                 </option>
                                             <?php } ?>
                                         </select>
@@ -259,40 +258,21 @@ require '../../classes/Produto/produto.controller.php';
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" type="number" id="quantidade" name="quantidade"
-                                            placeholder="Quantidade" oninput="atualizarValor()">
+                                        <input class="form-control quantidade" type="number" name="quantidade[]"
+                                            placeholder="Quantidade" oninput="atualizarValor(this)">
                                         <label for="quantidade">Quantidade</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" type="number" id="valorUnitario"
-                                            name="valorUnitario" placeholder="Valor unitário">
+                                        <input class="form-control valorUnitario" type="number" name="valorUnitario[]"
+                                            placeholder="Valor unitário" readonly>
                                         <label for="valorUnitario">Valor Unitário</label>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <script>
-                            const valorUnitarioInput = document.querySelector('#valorUnitario');
-                            const quantidadeInput = document.querySelector('#quantidade');
-                            const valorTotalInput = document.querySelector('#valorTotal')
-
-                            function determinaValorUnitario(valor) {
-                                valorUnitarioInput.value = valor;
-                            }
-
-                            function atualizarValor() {
-                                const quantidade = quantidadeInput.value;
-                                const valorUnitario = valorUnitarioInput.value;
-                                const valorTotal = quantidade * valorUnitario;
-
-                                valorTotalInput.value = valorTotal
-                            }
-                        </script>
-
 
                         <div class="row my-3">
                             <div class="d-flex justify-content-center">
@@ -303,61 +283,6 @@ require '../../classes/Produto/produto.controller.php';
                             </div>
                         </div>
 
-                        <script>
-                            function createNewProductForm() {
-                                var productsDiv = document.getElementById("products");
-
-                                var rowDiv = document.createElement("div");
-                                rowDiv.classList.add("row");
-
-                                var colDiv1 = document.createElement("div");
-                                colDiv1.classList.add("col-md-4");
-                                var formFloat1 = document.createElement("div");
-                                formFloat1.classList.add("form-floating");
-                                colDiv1.appendChild(formFloat1)
-                                var select = document.createElement("select");
-                                select.classList.add("form-select")
-                                var label1 = document.createElement("label");
-                                label1.innerText = "Produto"
-                                formFloat1.appendChild(select);
-                                formFloat1.appendChild(label1)
-
-                                var colDiv2 = document.createElement("div");
-                                colDiv2.classList.add("col-md-4");
-                                var formFloat2 = document.createElement("div");
-                                formFloat2.classList.add("form-floating");
-                                colDiv2.appendChild(formFloat2)
-                                var inputQuantidade = document.createElement("input");
-                                inputQuantidade.classList.add("form-control");
-                                inputQuantidade.setAttribute("type", "number");
-                                inputQuantidade.setAttribute("placeholder", "Quantidade");
-                                var label2 = document.createElement("label");
-                                label2.innerText = "Quantidade"
-                                formFloat2.appendChild(inputQuantidade);
-                                formFloat2.appendChild(label2);
-
-                                var colDiv3 = document.createElement("div");
-                                colDiv3.classList.add("col-md-4");
-                                var formFloat3 = document.createElement("div");
-                                formFloat3.classList.add("form-floating");
-                                colDiv3.appendChild(formFloat3)
-                                var inputValorUnitario = document.createElement("input");
-                                inputValorUnitario.classList.add("form-control");
-                                inputValorUnitario.setAttribute("type", "number");
-                                inputValorUnitario.setAttribute("placeholder", "Valor unitário");
-                                var label3 = document.createElement("label");
-                                label3.innerText = "Valor Unitário"
-                                formFloat3.appendChild(inputValorUnitario);
-                                formFloat3.appendChild(label3);
-
-                                rowDiv.appendChild(colDiv1);
-                                rowDiv.appendChild(colDiv2);
-                                rowDiv.appendChild(colDiv3);
-
-                                productsDiv.appendChild(rowDiv);
-                            }
-                        </script>
-
                         <div class="d-flex justify-content-center align-items-center">
                             <button class="btn btn-outline-primary">Registrar Entrada</button>
                         </div>
@@ -366,7 +291,97 @@ require '../../classes/Produto/produto.controller.php';
             </div>
         </div>
     </div>
-    <!----------------------->
+
+    <script>
+        function determinaValorUnitario(selectElement) {
+            const valorUnitarioInput = selectElement.closest('.product-row').querySelector('.valorUnitario');
+            const selectedOption = selectElement.options[selectElement.selectedIndex];
+            valorUnitarioInput.value = selectedOption.getAttribute('data-valor') || 0;
+            atualizarValor(selectElement);
+        }
+
+        function atualizarValor(inputElement) {
+            const productRow = inputElement.closest('.product-row');
+            const quantidadeInput = productRow.querySelector('.quantidade');
+            const valorUnitarioInput = productRow.querySelector('.valorUnitario');
+            const quantidade = parseFloat(quantidadeInput.value) || 0;
+            const valorUnitario = parseFloat(valorUnitarioInput.value) || 0;
+            const valorTotalInput = document.querySelector('#valorTotal');
+
+            let total = 0;
+            document.querySelectorAll('.product-row').forEach(row => {
+                const qty = parseFloat(row.querySelector('.quantidade').value) || 0;
+                const valUnit = parseFloat(row.querySelector('.valorUnitario').value) || 0;
+                total += qty * valUnit;
+            });
+
+            valorTotalInput.value = total.toFixed(2);
+        }
+
+        function createNewProductForm() {
+            const productsDiv = document.getElementById("products");
+
+            const rowDiv = document.createElement("div");
+            rowDiv.classList.add("row", "mb-2", "product-row");
+
+            const colDiv1 = document.createElement("div");
+            colDiv1.classList.add("col-md-4");
+            const formFloat1 = document.createElement("div");
+            formFloat1.classList.add("form-floating");
+            colDiv1.appendChild(formFloat1);
+            const select = document.createElement("select");
+            select.classList.add("form-select", "produto");
+            select.name = "produto[]";
+            select.innerHTML = `<?php foreach ($produtos as $indice => $produto) { ?>
+                                        <option value="<?= $produto->PRO_ID ?>" data-valor="<?= $produto->PRO_VALOR ?>"><?= $produto->PRO_NOME ?></option>
+                            <?php } ?>`;
+            select.onchange = function () { determinaValorUnitario(this); };
+            const label1 = document.createElement("label");
+            label1.innerText = "Produto";
+            formFloat1.appendChild(select);
+            formFloat1.appendChild(label1);
+
+            const colDiv2 = document.createElement("div");
+            colDiv2.classList.add("col-md-4");
+            const formFloat2 = document.createElement("div");
+            formFloat2.classList.add("form-floating");
+            colDiv2.appendChild(formFloat2);
+            const inputQuantidade = document.createElement("input");
+            inputQuantidade.classList.add("form-control", "quantidade");
+            inputQuantidade.setAttribute("type", "number");
+            inputQuantidade.setAttribute("placeholder", "Quantidade");
+            inputQuantidade.name = "quantidade[]";
+            inputQuantidade.oninput = function () { atualizarValor(this); };
+            const label2 = document.createElement("label");
+            label2.innerText = "Quantidade";
+            formFloat2.appendChild(inputQuantidade);
+            formFloat2.appendChild(label2);
+
+            const colDiv3 = document.createElement("div");
+            colDiv3.classList.add("col-md-4");
+            const formFloat3 = document.createElement("div");
+            formFloat3.classList.add("form-floating");
+            colDiv3.appendChild(formFloat3);
+            const inputValorUnitario = document.createElement("input");
+            inputValorUnitario.classList.add("form-control", "valorUnitario");
+            inputValorUnitario.setAttribute("type", "number");
+            inputValorUnitario.setAttribute("placeholder", "Valor unitário");
+            inputValorUnitario.name = "valorUnitario[]";
+            inputValorUnitario.readOnly = true;
+            const label3 = document.createElement("label");
+            label3.innerText = "Valor Unitário";
+            formFloat3.appendChild(inputValorUnitario);
+            formFloat3.appendChild(label3);
+
+            rowDiv.appendChild(colDiv1);
+            rowDiv.appendChild(colDiv2);
+            rowDiv.appendChild(colDiv3);
+
+            productsDiv.appendChild(rowDiv);
+        }
+    </script>
+    <!-- ------ -->
+
 
     <!-- EDITAR ENTRADA -->
     <?php foreach ($entradas as $indice => $entrada) { ?>
