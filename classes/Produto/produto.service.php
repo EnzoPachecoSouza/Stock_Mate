@@ -59,7 +59,8 @@ class ProdutoService
             $query = "
         SELECT *
         FROM PRODUTOS
-        WHERE CATEGORIA_CAT_ID = '$filtrarCategoria';
+        WHERE CATEGORIA_CAT_ID = '$filtrarCategoria'
+        ORDER BY PRO_STATUS DESC, PRO_NOME;
         ";
         } else {
             $query = '
