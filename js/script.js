@@ -28,8 +28,8 @@ function closeToast() {
 //PESQUISA DE NOMES
 var search = document.getElementById('pesquisar');
 
-search.addEventListener("keydown", function(event){
-    if(event.key === "Enter"){
+search.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
         pesquisarDados();
     }
 })
@@ -38,9 +38,16 @@ function pesquisarDados() {
     window.location = 'index.php?search=' + search.value;
 }
 
+
 //FILTRO DE DADOS
 var filter = document.getElementById('filtro');
 
-function filtrarDados() {
-    window.location = 'index.php?filter=' + filter.value;
+function filtrarDados(valor) {
+    window.location = 'index.php?filter=' + valor;
 }
+
+
+//FILTRO DE CATEGORIA
+function filtrarCategoria() {
+     window.location = 'index.php?catFiltro=' + catFiltro.value;
+ }

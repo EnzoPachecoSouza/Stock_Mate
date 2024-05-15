@@ -115,11 +115,10 @@ require '../../classes/Cliente/cliente.controller.php';
             <table class="table table-hover mt-3">
                 <thead class="table-dark">
                     <tr>
-
-                        <th scope="col">Data Compra</th>
-                        <th scope="col">Valor Total</th>
-                        <th scope="col">Data Pagamento</th>
                         <th scope="col">Cliente</th>
+                        <th scope="col">Data Compra</th>
+                        <th scope="col">Data Pagamento</th>
+                        <th scope="col">Valor Total</th>
                         <th scope="col">Forma Pagamento</th>
                         <th scope="col"></th>
                     </tr>
@@ -128,17 +127,17 @@ require '../../classes/Cliente/cliente.controller.php';
                 <tbody class="table-group-divider table-hover-shadow">
                     <?php foreach ($saidas as $indice => $saida) { ?>
                     <tr>
+                        <td>
+                            <?= $saida->CLI_NOME ?>
+                        </td>
                         <td scope="row">
                             <?= date("d/m/Y", strtotime($saida->SAIDA_DATA_VENDA)) ?>
-                        </td>
-                        <td>
-                            <?= number_format($saida->SAIDA_VALOR_TOTAL, 2, ',', '.') ?>
                         </td>
                         <td>
                             <?= date("d/m/Y", strtotime($saida->SAIDA_DATA_PAGAMENTO)) ?>
                         </td>
                         <td>
-                            <?= $saida->CLI_NOME ?>
+                            <?= number_format($saida->SAIDA_VALOR_TOTAL, 2, ',', '.') ?>
                         </td>
                         <td>
                             <?= $saida->SAIDA_FORMA_PAGAMENTO ?>

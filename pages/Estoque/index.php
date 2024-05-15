@@ -105,14 +105,16 @@ require '../../classes/Categoria/categoria.controller.php';
 
 
             <div class="form-floating d-flex">
-                <select class="form-select" id="filtro" name="filtro">
-                    <option value=""></option>
-                    <option value="1">Maior quantidade</option>
-                    <option value="2">Menor quantidade</option>
-                    <option value="3">Categoria</option>
+                <select class="form-select" id="catFiltro" name="catFiltro">
+                    <option selected></option>
+                    <?php foreach ($categorias as $indice => $categoria) { ?>
+                    <option value="<?= $categoria->CAT_ID ?>">
+                        <?= $categoria->CAT_CATEGORIA ?>
+                    </option>
+                    <?php } ?>
                 </select>
-                <label for="filtro">Selecione um filtro</label>
-                <button onclick="filtrarDados()" class="btn btn-primary">Filtrar</button>
+                <label for="catFiltro">Categorias</label>
+                <button onclick="filtrarCategoria()" class="btn btn-primary">Filtrar</button>
             </div>
 
 
@@ -131,12 +133,28 @@ require '../../classes/Categoria/categoria.controller.php';
                 <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Cor</th>
-                        <th scope="col">Detalhes</th>
-                        <th scope="col">Material</th>
-                        <th scope="col">Quantidade</th>
-                        <th scope="col"></th>
+                        <th scope="col">Nome
+                            <i onclick="filtrarDados(1)" id="filtro" name="filtro" class="bi bi-arrow-up"></i>
+                            <i onclick="filtrarDados(2)" id="filtro" name="filtro" class="bi bi-arrow-down"></i>
+                        </th>
+                        <th scope="col">Cor
+                            <i onclick="filtrarDados(3)" id="filtro" name="filtro" class="bi bi-arrow-up"></i>
+                            <i onclick="filtrarDados(4)" id="filtro" name="filtro" class="bi bi-arrow-down"></i>
+                        </th>
+                        <th scope="col">Detalhes
+                        </th>
+                        <th scope="col">Material
+                            <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="bi bi-arrow-up"></i>
+                            <i onclick="filtrarDados(6)" id="filtro" name="filtro" class="bi bi-arrow-down"></i>
+                        </th>
+                        <th scope="col">Quantidade
+                            <i onclick="filtrarDados(7)" id="filtro" name="filtro" class="bi bi-arrow-up"></i>
+                            <i onclick="filtrarDados(8)" id="filtro" name="filtro" class="bi bi-arrow-down"></i>
+                        </th>
+                        <th scope="col">Status
+                            <i onclick="filtrarDados(9)" id="filtro" name="filtro" class="bi bi-arrow-up"></i>
+                            <i onclick="filtrarDados(10)" id="filtro" name="filtro" class="bi bi-arrow-down"></i>
+                        </th>
                     </tr>
                 </thead>
 
@@ -389,12 +407,16 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <select class="form-select" id="categoria" name="categoria">
-                                            <option selected value="<?= $produto->PRO_CAT ?>">
-                                                <?= $produto->PRO_CAT ?>
-                                            </option>
-                                            <?php foreach ($categorias as $indice => $categoria) { ?>
-                                                <option value="<?= $categoria->CAT_ID ?>"><?= $categoria->CAT_CATEGORIA ?>
-                                                </option>
+                                            <?php foreach ($categorias as $categoria) { ?>
+                                                <?php if ($categoria->CAT_ID == $produto->CATEGORIA_CAT_ID) { ?>
+                                                    <option value="<?= $categoria->CAT_ID ?>" selected>
+                                                        <?= $categoria->CAT_CATEGORIA ?>
+                                                    </option>
+                                                <?php } else { ?>
+                                                    <option value="<?= $categoria->CAT_ID ?>">
+                                                        <?= $categoria->CAT_CATEGORIA ?>
+                                                    </option>
+                                                <?php } ?>
                                             <?php } ?>
                                         </select>
                                         <label for="categoria">Categoria</label>
@@ -548,7 +570,11 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" id="categoria" name="categoria"
-                                            value="<?= $produto->PRO_CAT ?>" disabled>
+                                        <?php foreach ($categorias as $categoria) { ?>
+                                                <?php if ($categoria->CAT_ID == $produto->CATEGORIA_CAT_ID) { ?>
+                                                     value="<?= $categoria->CAT_CATEGORIA ?>" disabled>
+                                                <?php }
+                                                } ?>
                                         <label for="categoria">Categoria</label>
                                     </div>
                                 </div>

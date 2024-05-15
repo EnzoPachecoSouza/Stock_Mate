@@ -17,7 +17,7 @@ class ProdutoService
     {
         $query = '
         INSERT INTO
-        produtos(PRO_CODIGO, PRO_NOME, PRO_COR, PRO_MATERIAL, PRO_CAT, PRO_DETALHES, PRO_PRECO_CUSTO, PRO_QUANTIDADE, PRO_MINIMO, PRO_DESCRICAO)
+        produtos(PRO_CODIGO, PRO_NOME, PRO_COR, PRO_MATERIAL, CATEGORIA_CAT_ID, PRO_DETALHES, PRO_PRECO_CUSTO, PRO_QUANTIDADE, PRO_MINIMO, PRO_DESCRICAO)
         VALUES (:codigo, :nome, :cor, :material, :categoria, :detalhes, :precoDeCompra, :quantidadeEmEstoque, :estoqueMinimo, :descricao)
         ';
 
@@ -51,33 +51,122 @@ class ProdutoService
             OR PRO_MATERIAL LIKE '%$pesquisaProduto%'
             ORDER BY PRO_STATUS DESC, PRO_NOME
             ";
-        } else if (!empty($_GET['filter'])) {
+        } 
+        
+        else if (!empty($_GET['filter'])) {
             $filtrarProduto = $_GET['filter'];
 
             if ($filtrarProduto == 1) {
                 $query = "
                  SELECT *
                  FROM PRODUTOS
-                 ORDER BY PRO_QUANTIDADE DESC;
+                 ORDER BY PRO_STATUS DESC, PRO_NOME ASC;
                  ";
 
-                 $filtrarProduto = 0;
+                $filtrarProduto = 0;
             } else if ($filtrarProduto == 2) {
+                $query = "
+                 SELECT *
+                 FROM PRODUTOS
+                 ORDER BY PRO_STATUS DESC, PRO_NOME DESC;
+                 ";
+
+                $filtrarProduto = 0;
+            } else if ($filtrarProduto == 3) {
+                $query = "
+                 SELECT *
+                 FROM PRODUTOS
+                 ORDER BY PRO_STATUS DESC, PRO_COR ASC;
+                 ";
+
+                $filtrarProduto = 0;
+            } else if ($filtrarProduto == 4) {
+                $query = "
+                 SELECT *
+                 FROM PRODUTOS
+                 ORDER BY PRO_STATUS DESC, PRO_COR DESC;
+                 ";
+
+                $filtrarProduto = 0;
+            } else if ($filtrarProduto == 5) {
+                $query = "
+                 SELECT *
+                 FROM PRODUTOS
+                 ORDER BY PRO_STATUS DESC, PRO_MATERIAL ASC;
+                 ";
+
+                $filtrarProduto = 0;
+            } else if ($filtrarProduto == 6) {
+                $query = "
+                 SELECT *
+                 FROM PRODUTOS
+                 ORDER BY PRO_STATUS DESC, PRO_MATERIAL DESC;
+                 ";
+
+                $filtrarProduto = 0;
+            } else if ($filtrarProduto == 7) {
+                $query = "
+                 SELECT *
+                 FROM PRODUTOS
+                 ORDER BY PRO_STATUS DESC, PRO_QUANTIDADE DESC;
+                 ";
+
+                $filtrarProduto = 0;
+            } else if ($filtrarProduto == 8) {
                 $query = "
                     SELECT *
                     FROM PRODUTOS
-                    ORDER BY PRO_QUANTIDADE ASC;
+                    ORDER BY PRO_STATUS DESC, PRO_QUANTIDADE ASC;
                     ";
 
-                    $filtrarProduto = 0;
-            }
-        } else {
-            $query = '
-            SELECT *
-            FROM PRODUTOS
-            ORDER BY PRO_STATUS DESC, PRO_NOME
-            ';
+                $filtrarProduto = 0;
+            } else if ($filtrarProduto == 9) {
+                $query = "
+                 SELECT *
+                 FROM PRODUTOS
+                 WHERE PRO_STATUS = 1
+                 ORDER BY PRO_NOME ASC;
+                 ";
 
+                $filtrarProduto = 0;
+            } else if ($filtrarProduto == 10) {
+                $query = "
+                 SELECT *
+                 FROM PRODUTOS
+                 WHERE PRO_STATUS = 0
+                 ORDER BY PRO_NOME ASC;
+                 ";
+
+                $filtrarProduto = 0;
+            }
+        } 
+        
+        else if (!empty($_GET['catFiltro'])) {
+            $filtrarCategoria = $_GET['catFiltro'];
+
+            if (!empty($categorias)) {
+                foreach ($categorias as $indice => $categoria) {
+                    if ($categoria->CATEGORIA_CAT_ID == $filtrarCategoria) {
+                        $query = "
+                            SELECT *
+                            FROM PRODUTOS
+                            WHERE CAT_ID = '$filtrarCategoria';
+                        ";
+
+                        $filtrarCategoria = 0;
+                    }
+                }
+            } else {
+               echo $filtrarCategoria;
+            }
+        } 
+        
+        else {
+            $query = '
+            SELECT PRO.*, CATE.CAT_CATEGORIA
+            FROM PRODUTOS AS PRO
+            INNER JOIN CATEGORIA AS CATE ON PRO.CATEGORIA_CAT_ID = CATE.CAT_ID ORDER BY PRO_STATUS DESC, PRO_NOME;
+            ';
         }
 
         $stmt = $this->conexao->prepare($query);
@@ -93,7 +182,7 @@ class ProdutoService
             PRO_NOME = :nome,
             PRO_COR = :cor,
             PRO_MATERIAL = :material,
-            PRO_CAT = :categoria,
+            CATEGORIA_CAT_ID = :categoria,
             PRO_DETALHES = :detalhes,
             PRO_PRECO_CUSTO = :precoDeCompra,
             PRO_QUANTIDADE = :quantidadeEmEstoque,
