@@ -57,8 +57,15 @@ require '../../classes/Cliente/cliente.controller.php';
                 <!------->
 
                 <!-- NAVIGATION -->
-                <div class="col-8">
+                <div class="col-9">
                     <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="#">Colaboradores</a>
                         </li>
@@ -83,7 +90,7 @@ require '../../classes/Cliente/cliente.controller.php';
                 <!------->
 
                 <!-- SAIR -->
-                <div class="col-2 text-end">
+                <div class="col-1 text-end">
                     <button class="btn btn-lg text-secondary nav-font">Sair</button>
                 </div>
                 <!------->
@@ -104,7 +111,7 @@ require '../../classes/Cliente/cliente.controller.php';
 
                 <!-- BOTÃO DE REGISTRAR CLIENTE -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#registrarClienteModal">
+                    data-bs-target="#cadastrarClienteModal">
                     Cliente
                 </button>
                 <!------->
@@ -346,13 +353,13 @@ require '../../classes/Cliente/cliente.controller.php';
     <?php } ?>
     <!----------------------->
 
-     <!-- REGISTRAR FORNECEDOR -->
-     <div class="modal fade" id="registrarClienteModal" tabindex="-1" aria-labelledby="registrarClienteModalLabel"
+    <!-- REGISTRAR CLIENTE -->
+    <div class="modal fade" id="cadastrarClienteModal" tabindex="-1" aria-labelledby="cadastrarClienteModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="registrarClienteModalLabel">Registrar Cliente</h1>
+                    <h1 class="modal-title fs-5" id="cadastrarClienteModalLabel">Registrar Cliente</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -360,23 +367,25 @@ require '../../classes/Cliente/cliente.controller.php';
                         action="../../classes/Cliente/cliente.controller.php?acao=inserir">
                         <div class="row mb-4">
                             <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input class="form-control" type="text" id="cliente" name="cliente"
-                                        placeholder="Nome">
-                                    <label for="cliente">Nome</label>
+                                <div class="input-group">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="cliente" name="cliente"
+                                            placeholder="Nome">
+                                        <label for="cliente">Nome</label>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="email" id="email" name="email"
-                                        placeholder="Email">
-                                    <label for="email">Email</label>
+                                    <input class="form-control" type="text" id="email" name="email"
+                                        placeholder="E-mail">
+                                    <label for="email">E-mail</label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row mb-5">
+                        <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="text" id="contato" name="contato"
@@ -397,6 +406,7 @@ require '../../classes/Cliente/cliente.controller.php';
                             <button class="btn btn-outline-primary">Registrar Cliente</button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>
