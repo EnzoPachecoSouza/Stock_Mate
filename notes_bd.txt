@@ -44,7 +44,7 @@ SELECT * FROM CATEGORIA;
 CREATE TABLE CLIENTE (
   CLI_ID INT PRIMARY KEY AUTO_INCREMENT,
   CLI_NOME VARCHAR(45) NOT NULL,
-  CLI_STATUS TINYINT NOT NULL,
+  CLI_STATUS TINYINT NOT NULL DEFAULT 1,
   CLI_EMAIL VARCHAR(45) NOT NULL,
   CLI_CONTATO VARCHAR (45) NOT NULL,
   CLI_CPF VARCHAR(45) NOT NULL
@@ -79,7 +79,7 @@ CREATE TABLE FORNECEDORES (
   FOR_STATUS TINYINT NOT NULL,
   FOR_EMAIL VARCHAR(45) NOT NULL,
   FOR_CONTATO VARCHAR(20) NOT NULL,
-  FOR_CPF VARCHAR (11) NOT NULL
+  FOR_CNPJ VARCHAR (18) NOT NULL
 );
 
 -- TABELA ENTRADA (COM CHAVES ESTRANGEIRAS PARA FORNECEDORES)
@@ -174,13 +174,13 @@ VALUES
 
 
 
--- Inserir fornecedores
-INSERT INTO FORNECEDORES (FOR_NOME, FOR_STATUS, FOR_EMAIL, FOR_CONTATO, FOR_CPF) VALUES
-('Distribuidora de Móveis ABC', 1, 'contato@distribuidoraabc.com', '(11) 1234-5678', '123.456.789-10'),
-('Atacado de Decoração XYZ', 1, 'vendas@atacadodecoracaoxyz.com', '(11) 2345-6789', '234.567.890-12'),
-('Fabricante de Móveis QRS', 1, 'comercial@fabricantemoveisqrs.com', '(11) 3456-7890', '345.678.901-23'),
-('Importadora de Utensílios LMN', 1, 'compras@importadorautensilioslmn.com', '(11) 4567-8901', '456.789.012-34'),
-('Indústria de Mobiliário UVW', 1, 'vendas@industriamobiliariouvw.com', '(11) 5678-9012', '567.890.123-45');
+-- Inserir fornecedores com CNPJ 
+INSERT INTO FORNECEDORES (FOR_NOME, FOR_STATUS, FOR_EMAIL, FOR_CONTATO, FOR_CNPJ) VALUES
+('Distribuidora de Móveis ABC', 1, 'contato@distribuidoraabc.com', '(11) 1234-5678', '12.345.678/0001-10'),
+('Atacado de Decoração XYZ', 1, 'vendas@atacadodecoracaoxyz.com', '(11) 2345-6789', '23.456.789/0001-12'),
+('Fabricante de Móveis QRS', 1, 'comercial@fabricantemoveisqrs.com', '(11) 3456-7890', '34.567.890/0001-23'),
+('Importadora de Utensílios LMN', 1, 'compras@importadorautensilioslmn.com', '(11) 4567-8901', '45.678.901/0001-34'),
+('Indústria de Mobiliário UVW', 1, 'vendas@industriamobiliariouvw.com', '(11) 5678-9012', '56.789.012/0001-45');
 
 -- Inserir clientes
 INSERT INTO CLIENTE (CLI_NOME, CLI_STATUS, CLI_EMAIL, CLI_CONTATO, CLI_CPF) VALUES

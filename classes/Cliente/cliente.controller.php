@@ -4,18 +4,40 @@ require "cliente.model.php";
 require "cliente.service.php";
 require "../../classes/conexao.php";
 
-//recebe a ação através do action do form
 $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 
-if ($acao == 'recuperar') {
-    //instancia o objeto do produto.model.php
+if ($acao == 'inserir') {
     $cliente = new Cliente();
 
-    //inicia conexão com o BD
+    $cliente->__set('nome', $_POST['cliente']);
+    $cliente->__set('email', $_POST['email']);
+    $cliente->__set('contato', $_POST['contato']);
+    $cliente->__set('cpf', $_POST['cpf']);
+
     $conexao = new Conexao();
 
-    //instancia o objeto ProdutoService do produto.service.php com a conexao do BD e o produto a ser recuperado
     $clienteService = new ClienteService($conexao, $cliente);
-    //ação a ser executa no produto.service.php que faz a requisição para o BD
+    $clienteService->inserir();
+
+    header('Location: ../../pages/Cliente/index.php?act=inserir');
+} else if ($acao == 'recuperar') {
+    $cliente = new Cliente();
+    $conexao = new Conexao();
+    $clienteService = new ClienteService($conexao, $cliente);
     $clientes = $clienteService->recuperar();
+} else if ($acao == 'editar') {
+    $id = isset($_GET['id']) ? $_GET['id'] : $id;
+    $cliente = new Cliente();
+
+    $cliente->__set('nome', $_POST['cliente']);
+    $cliente->__set('email', $_POST['email']);
+    $cliente->__set('contato', $_POST['contato']);
+    $cliente->__set('cpf', $_POST['cpf']);
+
+    $conexao = new Conexao();
+    $clienteService = new ClienteService($conexao, $cliente);
+    $clienteService->editar($id);
+
+    header('Location: ../../pages/Cliente/index.php?act=editar');
 }
+?>

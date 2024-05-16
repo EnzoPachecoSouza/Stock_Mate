@@ -57,8 +57,16 @@ require '../../classes/Categoria/categoria.controller.php';
                 <!------->
 
                 <!-- NAVIGATION -->
-                <div class="col-8">
+                <div class="col-9">
                     <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+                        </li>
+                    
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
+                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="#">Colaboradores</a>
                         </li>
@@ -83,7 +91,7 @@ require '../../classes/Categoria/categoria.controller.php';
                 <!------->
 
                 <!-- SAIR -->
-                <div class="col-2 text-end">
+                <div class="col-1 text-end">
                     <button class="btn btn-lg text-secondary nav-font">Sair</button>
                 </div>
                 <!------->
@@ -120,7 +128,7 @@ require '../../classes/Categoria/categoria.controller.php';
 
 
             <div class="box-search d-flex">
-                <input type="search" class="form-control" placeholder="Pesquisar" id="pesquisar">
+                <input type="search" class="form-control" placeholder="Pesquisar" id="pesquisar" name="pesquisar">
                 <button onclick="pesquisarDados()" class="btn btn-primary">
                     <i class="bi bi-search"></i>
                 </button>

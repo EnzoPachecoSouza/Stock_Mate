@@ -25,7 +25,7 @@ function closeToast() {
     toast.classList.remove('d-block')
 }
 
-//PESQUISA DE NOMES
+//PESQUISA DE PRODUTOS
 var search = document.getElementById('pesquisar');
 
 search.addEventListener("keydown", function (event) {
@@ -39,7 +39,7 @@ function pesquisarDados() {
 }
 
 
-//FILTRO DE DADOS
+//ORDENAÇÃO DE DADOS
 var filter = document.getElementById('filtro');
 
 function filtrarDados(valor) {

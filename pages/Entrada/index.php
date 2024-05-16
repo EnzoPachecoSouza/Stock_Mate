@@ -58,8 +58,15 @@ require '../../classes/Produto/produto.controller.php';
                 <!------->
 
                 <!-- NAVIGATION -->
-                <div class="col-8">
+                <div class="col-9">
                     <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="#">Colaboradores</a>
                         </li>
@@ -84,7 +91,7 @@ require '../../classes/Produto/produto.controller.php';
                 <!------->
 
                 <!-- SAIR -->
-                <div class="col-2 text-end">
+                <div class="col-1 text-end">
                     <button class="btn btn-lg text-secondary nav-font">Sair</button>
                 </div>
                 <!------->
@@ -327,7 +334,7 @@ require '../../classes/Produto/produto.controller.php';
             select.classList.add("form-select", "produto");
             select.name = "produto[]";
             select.innerHTML = `<?php foreach ($produtos as $indice => $produto) { ?>
-                                <option value="<?= $produto->PRO_ID ?>" data-valor="<?= $produto->PRO_VALOR ?>"><?= $produto->PRO_NOME ?></option>
+                                        <option value="<?= $produto->PRO_ID ?>" data-valor="<?= $produto->PRO_VALOR ?>"><?= $produto->PRO_NOME ?></option>
                             <?php } ?>`;
             select.onchange = function () { determinaValorUnitario(this); };
             const label1 = document.createElement("label");
