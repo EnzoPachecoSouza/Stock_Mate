@@ -34,6 +34,7 @@ class EntradaService
     public function recuperar()
     {
         //VAI MOSTRAR DE ACORDO COM A PESQUISA DA FUNÇÃO DE PESQUISAR NOME NO JS
+        
         if (!empty($_GET['search'])) {
             $pesquisaProduto = $_GET['search'];
 

@@ -251,6 +251,7 @@ require '../../classes/Produto/produto.controller.php';
                                                     data-valor="<?= $produto->PRO_VALOR ?>"><?= $produto->PRO_NOME ?>
                                                 </option>
                                             <?php } ?>
+
                                         </select>
                                         <label for="produto">Produto</label>
                                     </div>
@@ -333,7 +334,7 @@ require '../../classes/Produto/produto.controller.php';
             select.classList.add("form-select", "produto");
             select.name = "produto[]";
             select.innerHTML = `<?php foreach ($produtos as $indice => $produto) { ?>
-                                        <option value="<?= $produto->PRO_ID ?>" data-valor="<?= $produto->PRO_VALOR ?>"><?= $produto->PRO_NOME ?></option>
+                                                <option value="<?= $produto->PRO_ID ?>" data-valor="<?= $produto->PRO_VALOR ?>"><?= $produto->PRO_NOME ?></option>
                             <?php } ?>`;
             select.onchange = function () { determinaValorUnitario(this); };
             const label1 = document.createElement("label");
