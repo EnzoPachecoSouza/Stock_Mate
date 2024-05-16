@@ -1,5 +1,4 @@
 <?php
-
 require "entrada.model.php";
 require "entrada.service.php";
 require "../../classes/conexao.php";
