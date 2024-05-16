@@ -1,0 +1,221 @@
+# # # # #
+ -- DROP DATABASE STOCK_MATE;
+
+-- CRIAR BANCO DE DADOS: STOCK_MATE
+CREATE DATABASE STOCK_MATE;
+
+-- SELECIONAR BANCO DE DADOS: STOCK_MATE
+USE STOCK_MATE;
+
+-- TABELA: EMPRESA
+CREATE TABLE EMPRESA (
+   EMP_ID INT PRIMARY KEY NOT NULL,
+  EMP_CNPJ VARCHAR(20),
+  EMP_NOME VARCHAR(45) NOT NULL
+);
+
+-- TABELA: PRODUTOS (COM CHAVE ESTRANGEIRA PARA EMPRESA)
+ CREATE TABLE CATEGORIA (
+ CAT_ID INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+ CAT_CATEGORIA VARCHAR(45) NOT NULL
+ );
+
+CREATE TABLE PRODUTOS (
+  PRO_ID INT PRIMARY KEY AUTO_INCREMENT,
+  PRO_CODIGO VARCHAR(50) NOT NULL,
+  PRO_NOME VARCHAR(50) NOT NULL,
+  PRO_MATERIAL VARCHAR(50) NOT NULL,
+  PRO_DESCRICAO TEXT NOT NULL,
+  PRO_DETALHES VARCHAR(50) NOT NULL,
+  PRO_COR VARCHAR(25) NOT NULL,
+  PRO_MINIMO INT NOT NULL,
+  PRO_QUANTIDADE INT NOT NULL,
+  PRO_PRECO_CUSTO DOUBLE NOT NULL,
+  PRO_STATUS TINYINT NOT NULL DEFAULT 1,
+  EMPRESA_EMP_ID INT DEFAULT NULL,
+  CATEGORIA_CAT_ID INT,
+  FOREIGN KEY (EMPRESA_EMP_ID) REFERENCES EMPRESA(EMP_ID),
+  FOREIGN KEY (CATEGORIA_CAT_ID) REFERENCES CATEGORIA(CAT_ID)
+);
+
+SELECT * FROM CATEGORIA;
+
+-- TABELA: CLIENTE (COM CHAVE ESTRANGEIRA PARA PESSOA)
+CREATE TABLE CLIENTE (
+  CLI_ID INT PRIMARY KEY AUTO_INCREMENT,
+  CLI_NOME VARCHAR(45) NOT NULL,
+  CLI_STATUS TINYINT NOT NULL,
+  CLI_EMAIL VARCHAR(45) NOT NULL,
+  CLI_CONTATO VARCHAR (45) NOT NULL,
+  CLI_CPF VARCHAR(45) NOT NULL
+);
+
+-- TABELA: SAIDA (COM CHAVE ESTRANGEIRA PARA CLIENTE)
+CREATE TABLE SAIDA (
+  SAIDA_ID INT PRIMARY KEY AUTO_INCREMENT,
+  SAIDA_DATA_VENDA DATE NOT NULL,
+  SAIDA_VALOR_TOTAL INT NOT NULL,
+  SAIDA_DATA_PAGAMENTO DATE NOT NULL,
+  SAIDA_FORMA_PAGAMENTO VARCHAR(45) NOT NULL,
+  CLIENTE_CLI_ID INT NOT NULL,
+  FOREIGN KEY (CLIENTE_CLI_ID) REFERENCES CLIENTE(CLI_ID)
+);
+
+-- TABELA: ITENSSAIDA (COM CHAVES ESTRANGEIRAS PARA SAIDA E PRODUTOS)
+CREATE TABLE ITENS_SAIDA (
+  ITENSSAIDA_ID INT PRIMARY KEY AUTO_INCREMENT,
+  ITENSSAIDA_QUANTIDADE INT NOT NULL,
+  ITENSSAIDA_VALOR_VENDA INT NOT NULL,
+  SAIDA_SAIDA_ID INT NOT NULL,
+  PRODUTOS_PRO_ID INT NOT NULL,
+  FOREIGN KEY (SAIDA_SAIDA_ID) REFERENCES SAIDA(SAIDA_ID),
+  FOREIGN KEY (PRODUTOS_PRO_ID) REFERENCES PRODUTOS(PRO_ID)
+);
+
+-- TABELA FORNECEDORES (COM CHAVE ESTRANGEIRA PARA PESSOA)
+CREATE TABLE FORNECEDORES (
+  FOR_ID INT PRIMARY KEY AUTO_INCREMENT,
+  FOR_NOME VARCHAR(45) NOT NULL,
+  FOR_STATUS TINYINT NOT NULL,
+  FOR_EMAIL VARCHAR(45) NOT NULL,
+  FOR_CONTATO VARCHAR(20) NOT NULL,
+  FOR_CPF VARCHAR (11) NOT NULL
+);
+
+-- TABELA ENTRADA (COM CHAVES ESTRANGEIRAS PARA FORNECEDORES)
+CREATE TABLE ENTRADA (
+  ENT_ID INT PRIMARY KEY AUTO_INCREMENT,
+  ENT_DATA_COMPRA DATE NOT NULL,
+  ENT_VALOR_TOTAL INT NOT NULL,
+  ENT_DATA_PAGAMENTO DATE NOT NULL,
+  FORNECEDORES_FOR_ID INT NOT NULL,
+  ENT_FORMA_PAGAMENTO VARCHAR(45) NOT NULL,
+  FOREIGN KEY (FORNECEDORES_FOR_ID) REFERENCES FORNECEDORES(FOR_ID)
+);
+
+-- TABELA RELATORIO (COM CHAVE ESTRANGEIRA PARA PRODUTOS)
+CREATE TABLE RELATORIO (
+  REL_TIPO VARCHAR(45) NOT NULL PRIMARY KEY,
+  ESTOQUE_PRO_ID INT NOT NULL,
+  FOREIGN KEY (ESTOQUE_PRO_ID) REFERENCES PRODUTOS(PRO_ID)
+);
+
+-- TABELA FORNECEDORES_HAS_PRODUTOS (MUITOS PARA MUITOS)
+CREATE TABLE FORNECEDORES_HAS_PRODUTOS (
+  FORNECEDORES_FOR_ID INT NOT NULL,
+  PRODUTOS_PRO_ID INT NOT NULL,
+  PRIMARY KEY (FORNECEDORES_FOR_ID, PRODUTOS_PRO_ID),
+  FOREIGN KEY (FORNECEDORES_FOR_ID) REFERENCES FORNECEDORES(FOR_ID),
+  FOREIGN KEY (PRODUTOS_PRO_ID) REFERENCES PRODUTOS(PRO_ID)
+);
+
+-- TABELA ITENS_ENTRADA (COM CHAVES ESTRANGEIRAS PARA ENTRADA E PRODUTOS)
+CREATE TABLE ITENS_ENTRADA (
+  ITENS_ENTRADA_ID INT PRIMARY KEY AUTO_INCREMENT,
+  ENTRADA_ENT_ID INT NOT NULL,
+  PRODUTOS_PRO_ID INT NOT NULL,
+  ITENS_QUANTIDADE INT NOT NULL,
+  ITENS_VALOR INT NOT NULL,
+  FOREIGN KEY (ENTRADA_ENT_ID) REFERENCES ENTRADA(ENT_ID),
+  FOREIGN KEY (PRODUTOS_PRO_ID) REFERENCES PRODUTOS(PRO_ID)
+);
+
+-- TABELA COLABORADORES (COM CHAVES ESTRANGEIRAS PARA EMPRESA E PESSOA)
+CREATE TABLE COLABORADORES (
+  COL_ID INT PRIMARY KEY AUTO_INCREMENT,
+  COL_CARGO VARCHAR(45) NOT NULL,
+  EMPRESA_EMP_ID INT NOT NULL,
+  PESSOA_PES_ID INT NOT NULL,
+  COL_SENHA VARCHAR(45) NOT NULL,
+  FOREIGN KEY (EMPRESA_EMP_ID) REFERENCES EMPRESA(EMP_ID)
+ -- FOREIGN KEY (PESSOA_PES_ID) REFERENCES PESSOA(PES_ID)
+);
+
+-- INSERT DE CATEGORIA
+INSERT INTO CATEGORIA (CAT_CATEGORIA) VALUES 
+    ('Sofás'),
+    ('Camas'),
+    ('Mesas'),
+    ('Armários'),
+    ('Cadeiras');
+
+-- INSERÇÃO DE 20 PRODUTOS PARA UMA LOJA DE MÓVEIS
+-- Excluir os produtos existentes
+DELETE FROM PRODUTOS;
+
+-- Inserir novos produtos com códigos sequenciais
+INSERT INTO PRODUTOS (PRO_CODIGO, PRO_NOME, PRO_MATERIAL, PRO_DESCRICAO, PRO_DETALHES, PRO_COR, PRO_MINIMO, PRO_QUANTIDADE, PRO_PRECO_CUSTO, CATEGORIA_CAT_ID)
+VALUES 
+    ('0001', 'Sofá Reclinável Marrom', 'Couro Sintético', 'Sofá reclinável confortável', 'Revestido em couro sintético marrom', 'Marrom', 2, 10, 799.99, 1),
+    ('0002', 'Cama King Size com Gavetas', 'Madeira Maciça', 'Cama king size com armazenamento', 'Feita de madeira maciça, com gavetas embutidas', 'Marrom', 1, 5, 999.99, 2),
+    ('0003', 'Mesa de Jantar Redonda', 'Madeira de Pinho', 'Mesa de jantar para 4 pessoas', 'Design elegante e compacto, ideal para espaços menores', 'Marrom', 3, 8, 399.99, 3),
+    ('0004', 'Guarda-Roupa Espelhado', 'MDF', 'Guarda-roupa com espelho', 'Portas deslizantes com espelho, amplo espaço interno', 'Branco', 2, 6, 899.99, 4),
+    ('0005', 'Cadeira de Escritório Ergonômica', 'Tecido Mesh', 'Cadeira de escritório confortável', 'Design ergonômico, ajustável em altura e inclinação', 'Preto', 5, 20, 199.99, 5),
+    ('0006', 'Escrivaninha Moderna', 'MDF e Metal', 'Escrivaninha com estilo contemporâneo', 'Estrutura em metal preto, ideal para ambientes modernos', 'Preto', 4, 15, 249.99, 2),
+    ('0007', 'Rack para TV com LED', 'MDF e Vidro', 'Rack para televisão com iluminação LED', 'Compartimentos amplos e iluminação LED embutida', 'Branco', 2, 10, 399.99, 3),
+    ('0008', 'Poltrona Reclinável', 'Couro Legítimo', 'Poltrona reclinável luxuosa', 'Feita de couro legítimo, com função reclinável', 'Marrom', 3, 12, 599.99, 1),
+    ('0009', 'Mesa de Centro com Tampo de Vidro', 'Aço Carbono e Vidro', 'Mesa de centro com design sofisticado', 'Estrutura em aço carbono e tampo de vidro temperado', 'Transparente', 2, 8, 149.99, 3),
+    ('0010', 'Cômoda Vintage com Pintura em Laca', 'Madeira de Carvalho', 'Cômoda vintage com acabamento elegante', 'Pintura em laca branca, estilo retrô', 'Branco', 1, 5, 399.99, 4),
+    ('0011', 'Cadeira de Balanço', 'Madeira de Pinho', 'Cadeira de balanço clássica', 'Com assento acolchoado', 'Marrom', 1, 5, 99.99, 5),
+    ('0012', 'Cômoda de Madeira', 'Madeira Maciça', 'Cômoda espaçosa', 'Com cinco gavetas', 'Marrom', 2, 10, 299.99, 4),
+    ('0013', 'Mesa de Jantar Retangular', 'Madeira de Pinho', 'Mesa de jantar para 6 pessoas', 'Com design clean', 'Marrom', 3, 8, 499.99, 3),
+    ('0014', 'Armário Multiuso', 'MDF', 'Armário versátil', 'Com prateleiras ajustáveis', 'Branco', 2, 6, 349.99, 4),
+    ('0015', 'Cadeira Estofada', 'Tecido Chenille', 'Cadeira estofada confortável', 'Com detalhes capitonê', 'Cinza', 3, 12, 129.99, 5),
+    ('0016', 'Mesa de Escritório', 'MDF', 'Mesa de escritório funcional', 'Com gavetas e nichos', 'Branco', 4, 15, 199.99, 3),
+    ('0017', 'Bicama', 'Madeira de Eucalipto', 'Bicama com gavetas', 'Para otimizar espaço', 'Branco', 1, 4, 499.99, 2),
+    ('0018', 'Mesa Lateral de Madeira', 'Madeira de Pinho', 'Mesa lateral compacta', 'Com design moderno', 'Marrom', 2, 6, 79.99, 3),
+    ('0019', 'Guarda-Roupas Modulado', 'MDF', 'Guarda-roupas com módulos', 'Para organizar diferentes tipos de roupas', 'Branco', 2, 8, 599.99, 4),
+    ('0020', 'Cadeira Giratória', 'Couro Sintético', 'Cadeira de escritório giratória', 'Com apoio para braços', 'Preto', 5, 20, 149.99, 5),
+    ('0021', 'Mesa de Canto Redonda', 'MDF e Metal', 'Mesa de canto com design industrial', 'Estrutura em metal preto', 'Preto', 2, 8, 99.99, 3),
+    ('0022', 'Sofá-Cama', 'Tecido Suede', 'Sofá que vira cama', 'Conversível e prático', 'Bege', 1, 5, 599.99, 1),
+    ('0023', 'Mesa de Centro Retangular', 'MDF', 'Mesa de centro com design clean', 'Acompanha revisteiro', 'Branco', 2, 10, 129.99, 3),
+	('0024', 'Luminária de Pé', 'Metal e Tecido', 'Luminária de pé moderna', 'Com regulagem de altura e cúpula ajustável', 'Branco', 1, 3, 159.99, 5);
+
+
+
+
+-- Inserir fornecedores
+INSERT INTO FORNECEDORES (FOR_NOME, FOR_STATUS, FOR_EMAIL, FOR_CONTATO, FOR_CPF) VALUES
+('Distribuidora de Móveis ABC', 1, 'contato@distribuidoraabc.com', '(11) 1234-5678', '123.456.789-10'),
+('Atacado de Decoração XYZ', 1, 'vendas@atacadodecoracaoxyz.com', '(11) 2345-6789', '234.567.890-12'),
+('Fabricante de Móveis QRS', 1, 'comercial@fabricantemoveisqrs.com', '(11) 3456-7890', '345.678.901-23'),
+('Importadora de Utensílios LMN', 1, 'compras@importadorautensilioslmn.com', '(11) 4567-8901', '456.789.012-34'),
+('Indústria de Mobiliário UVW', 1, 'vendas@industriamobiliariouvw.com', '(11) 5678-9012', '567.890.123-45');
+
+-- Inserir clientes
+INSERT INTO CLIENTE (CLI_NOME, CLI_STATUS, CLI_EMAIL, CLI_CONTATO, CLI_CPF) VALUES
+('Ana Silva', 1, 'ana.silva@example.com', '(11) 1111-1111', '111.111.111-11'),
+('Carlos Oliveira', 1, 'carlos.oliveira@example.com', '(11) 2222-2222', '222.222.222-22'),
+('Mariana Santos', 1, 'mariana.santos@example.com', '(11) 3333-3333', '333.333.333-33'),
+('José Pereira', 1, 'jose.pereira@example.com', '(11) 4444-4444', '444.444.444-44'),
+('Amanda Costa', 1, 'amanda.costa@example.com', '(11) 5555-5555', '555.555.555-55');
+
+
+-- Inserir 10 entradas
+INSERT INTO ENTRADA (ENT_DATA_COMPRA, ENT_VALOR_TOTAL, ENT_DATA_PAGAMENTO, FORNECEDORES_FOR_ID, ENT_FORMA_PAGAMENTO) 
+VALUES 
+    ('2024-05-01', 1500, '2024-05-02', 2, 'Boleto'),
+    ('2024-05-03', 2800, '2024-05-05', 3, 'Transferência Bancária'),
+    ('2024-05-06', 2000, '2024-05-07', 1, 'Cartão de Débito'),
+    ('2024-05-09', 3200, '2024-05-10', 4, 'Cheque'),
+    ('2024-05-12', 1800, '2024-05-14', 5, 'Dinheiro'),
+    ('2024-05-15', 2100, '2024-05-17', 2, 'Boleto'),
+    ('2024-05-18', 2600, '2024-05-20', 3, 'Transferência Bancária'),
+    ('2024-05-21', 1950, '2024-05-22', 1, 'Cartão de Crédito'),
+    ('2024-05-24', 3000, '2024-05-25', 4, 'Dinheiro'),
+    ('2024-05-27', 1750, '2024-05-28', 5, 'Cheque');
+
+-- Inserir 10 saídas
+INSERT INTO SAIDA (SAIDA_DATA_VENDA, SAIDA_VALOR_TOTAL, SAIDA_DATA_PAGAMENTO, SAIDA_FORMA_PAGAMENTO, CLIENTE_CLI_ID) 
+VALUES 
+    ('2024-05-02', 1200, '2024-05-05', 'Cartão de Débito', 1),
+    ('2024-05-04', 2200, '2024-05-07', 'Boleto', 2),
+    ('2024-05-07', 1500, '2024-05-10', 'Dinheiro', 3),
+    ('2024-05-10', 1800, '2024-05-13', 'Transferência Bancária', 4),
+    ('2024-05-13', 1300, '2024-05-16', 'Cartão de Crédito', 5),
+    ('2024-05-16', 1900, '2024-05-19', 'Boleto', 1),
+    ('2024-05-19', 2400, '2024-05-22', 'Cheque', 2),
+    ('2024-05-22', 1650, '2024-05-25', 'Transferência Bancária', 3),
+    ('2024-05-25', 2700, '2024-05-28', 'Dinheiro', 4),
+    ('2024-05-28', 1400, '2024-06-01', 'Boleto', 5);
+# # #

@@ -133,27 +133,37 @@ require '../../classes/Categoria/categoria.controller.php';
                 <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">Nome
-                            <i onclick="filtrarDados(1)" id="filtro" name="filtro" class="bi bi-arrow-up"></i>
-                            <i onclick="filtrarDados(2)" id="filtro" name="filtro" class="bi bi-arrow-down"></i>
+                        <th  scope="col">Nome
+                            <div class="d-flex flex-column">
+                            <i onclick="filtrarDados(1)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
+                            <i onclick="filtrarDados(2)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                            </div>
                         </th>
-                        <th scope="col">Cor
-                            <i onclick="filtrarDados(3)" id="filtro" name="filtro" class="bi bi-arrow-up"></i>
-                            <i onclick="filtrarDados(4)" id="filtro" name="filtro" class="bi bi-arrow-down"></i>
+                        <th  scope="col">Cor
+                        <div class="d-flex flex-column">
+                            <i onclick="filtrarDados(3)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
+                            <i onclick="filtrarDados(4)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                            </div>
                         </th>
-                        <th scope="col">Detalhes
+                        <th  scope="col">Detalhes
                         </th>
-                        <th scope="col">Material
-                            <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="bi bi-arrow-up"></i>
-                            <i onclick="filtrarDados(6)" id="filtro" name="filtro" class="bi bi-arrow-down"></i>
+                        <th  scope="col">Material
+                        <div class="d-flex flex-column">
+                            <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
+                            <i onclick="filtrarDados(6)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                            </div>
                         </th>
-                        <th scope="col">Quantidade
-                            <i onclick="filtrarDados(7)" id="filtro" name="filtro" class="bi bi-arrow-up"></i>
-                            <i onclick="filtrarDados(8)" id="filtro" name="filtro" class="bi bi-arrow-down"></i>
+                        <th  scope="col">Quantidade
+                        <div class="d-flex flex-column">
+                            <i onclick="filtrarDados(7)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
+                            <i onclick="filtrarDados(8)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                            </div>
                         </th>
-                        <th scope="col">Status
-                            <i onclick="filtrarDados(9)" id="filtro" name="filtro" class="bi bi-arrow-up"></i>
-                            <i onclick="filtrarDados(10)" id="filtro" name="filtro" class="bi bi-arrow-down"></i>
+                        <th  scope="col">Status
+                        <div class="d-flex flex-column">
+                            <i onclick="filtrarDados(9)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
+                            <i onclick="filtrarDados(10)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                            </div>
                         </th>
                     </tr>
                 </thead>
