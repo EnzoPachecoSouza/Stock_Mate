@@ -248,10 +248,10 @@ require '../../classes/Produto/produto.controller.php';
                                             <option value="" selected></option>
                                             <?php foreach ($produtos as $indice => $produto) { ?>
                                                 <option value="<?= $produto->PRO_ID ?>"
-                                                    data-valor="<?= $produto->PRO_VALOR ?>"><?= $produto->PRO_NOME ?>
+                                                    data-valor="<?= $produto->PRO_VALOR ?>">
+                                                    <?= $produto->PRO_NOME ?>
                                                 </option>
                                             <?php } ?>
-
                                         </select>
                                         <label for="produto">Produto</label>
                                     </div>
@@ -302,20 +302,13 @@ require '../../classes/Produto/produto.controller.php';
         }
 
         function atualizarValor(inputElement) {
-            const productRow = inputElement.closest('.product-row');
-            const quantidadeInput = productRow.querySelector('.quantidade');
-            const valorUnitarioInput = productRow.querySelector('.valorUnitario');
-            const quantidade = parseFloat(quantidadeInput.value) || 0;
-            const valorUnitario = parseFloat(valorUnitarioInput.value) || 0;
             const valorTotalInput = document.querySelector('#valorTotal');
-
             let total = 0;
             document.querySelectorAll('.product-row').forEach(row => {
-                const qty = parseFloat(row.querySelector('.quantidade').value) || 0;
-                const valUnit = parseFloat(row.querySelector('.valorUnitario').value) || 0;
-                total += qty * valUnit;
+                const quantidade = parseFloat(row.querySelector('.quantidade').value) || 0;
+                const valorUnitario = parseFloat(row.querySelector('.valorUnitario').value) || 0;
+                total += quantidade * valorUnitario;
             });
-
             valorTotalInput.value = total.toFixed(2);
         }
 
@@ -334,7 +327,7 @@ require '../../classes/Produto/produto.controller.php';
             select.classList.add("form-select", "produto");
             select.name = "produto[]";
             select.innerHTML = `<?php foreach ($produtos as $indice => $produto) { ?>
-                                                <option value="<?= $produto->PRO_ID ?>" data-valor="<?= $produto->PRO_VALOR ?>"><?= $produto->PRO_NOME ?></option>
+                                <option value="<?= $produto->PRO_ID ?>" data-valor="<?= $produto->PRO_VALOR ?>"><?= $produto->PRO_NOME ?></option>
                             <?php } ?>`;
             select.onchange = function () { determinaValorUnitario(this); };
             const label1 = document.createElement("label");
@@ -381,6 +374,7 @@ require '../../classes/Produto/produto.controller.php';
             productsDiv.appendChild(rowDiv);
         }
     </script>
+
     <!-- ------ -->
 
 
