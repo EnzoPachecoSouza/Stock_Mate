@@ -180,8 +180,8 @@ require '../../classes/Categoria/categoria.controller.php';
                         <th scope="col">
                         <div class="d-flex align-items-center gap-3">
                             <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(6)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
+                                <i onclick="filtrarDados()" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                <i onclick="filtrarDados()" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
                             </div>
                             Preço
                         </div>
@@ -228,7 +228,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <?= $produto->PRO_MATERIAL ?>
                             </td>
                             <td>
-                                R$00000,00
+                                R$ <?= number_format($produto->PRO_PRECO_VENDA, 2, ',', '.') ?>
                             </td>
 
                             <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
