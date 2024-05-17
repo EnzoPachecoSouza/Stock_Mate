@@ -138,39 +138,47 @@ require '../../classes/Cliente/cliente.controller.php';
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="d-flex flex-column">
+                                    <i onclick="filtrarDados(1)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(2)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-down"></i>
+                                </div>
                                 Nome
-                                <div class="d-flex flex-column">
-                                    <i onclick="filtrarDados(1)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
-                                    <i onclick="filtrarDados(2)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
-                                </div>
                             </div>
                         </th>
                         <th scope="col">
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="d-flex flex-column">
+                                    <i onclick="filtrarDados(3)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(4)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-down"></i>
+                                </div>
                                 E-mail
-                                <div class="d-flex flex-column">
-                                    <i onclick="filtrarDados(3)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
-                                    <i onclick="filtrarDados(4)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
-                                </div>
                             </div>
                         </th>
                         <th scope="col">
-                            <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="d-flex flex-column">
+                                    <i onclick="filtrarDados(5)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(6)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-down"></i>
+                                </div>
                                 Contato
-                                <div class="d-flex flex-column">
-                                    <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
-                                    <i onclick="filtrarDados(6)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
-                                </div>
                             </div>
                         </th>
                         <th scope="col">
-                            <div class="d-flex justify-content-between align-items-center">
-                                CPF
+                            <div class="d-flex align-items-center gap-3">
                                 <div class="d-flex flex-column">
-                                    <i onclick="filtrarDados(7)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
-                                    <i onclick="filtrarDados(8)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
+                                    <i onclick="filtrarDados(7)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(8)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-down"></i>
                                 </div>
+                                CPF
                             </div>
                         </th>
                         <th scope="col"></th>
