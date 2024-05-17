@@ -152,23 +152,23 @@ VALUES
 ('M011', 'Cadeira de Escritório', 'Plástico', 'Cadeira ergonômica.', 'Ajustável', 'Preto', 5, 30, 100.00, 150.00, 1, 1),
 ('M012', 'Criado-mudo', 'Madeira', 'Criado-mudo com 2 gavetas.', '2 gavetas', 'Branco', 4, 18, 60.00, 100.00, 1, 4),
 ('M013', 'Mesa Lateral', 'Metal', 'Mesa lateral com tampo de vidro.', 'Tampo temperado', 'Preto', 3, 20, 50.00, 80.00, 1, 1),
-('M014', 'Poltrona', 'Tecido', 'Poltrona confortável.', 'Assento acolchoado', 'Bege', 2, 8, 200.00, 350.00, 1, 2),
+('M014', 'Poltrona', 'Tecido', 'Poltrona confortável.', 'Assento acolchoado', 'Bege', 2, 8, 200.00, 350.00, 1, 5),
 ('M015', 'Prateleira', 'Madeira', 'Prateleira flutuante.', '60 cm', 'Marrom', 5, 25, 30.00, 50.00, 1, 3),
 ('M016', 'Banqueta', 'Plástico', 'Banqueta alta.', 'Ajustável', 'Vermelho', 4, 20, 40.00, 70.00, 1, 2),
 ('M017', 'Sapateira', 'Madeira', 'Sapateira com espelho.', 'Porta espelhada', 'Branca', 2, 10, 150.00, 250.00, 1, 4),
 ('M018', 'Cama de Solteiro', 'Madeira', 'Cama de solteiro com cabeceira.', 'Cabeceira acolchoada', 'Branca', 2, 10, 200.00, 350.00, 1, 4),
 ('M019', 'Mesa de Jantar Extensível', 'Madeira', 'Mesa de jantar extensível.', '8 a 10 lugares', 'Marrom', 1, 6, 500.00, 800.00, 1, 1),
-('M020', 'Estante de Livros', 'Metal', 'Estante para livros.', '5 prateleiras', 'Preto', 3, 15, 100.00, 150.00, 1, 3),
+('M020', 'Estante de Livros', 'Metal', 'Estante para livros.', '5 prateleiras', 'Preto', 3, 15, 100.00, 150.00, 1, 5),
 ('M021', 'Cadeira de Balcão', 'Madeira', 'Cadeira alta para balcão.', 'Ajustável', 'Marrom', 4, 25, 60.00, 100.00, 1, 2),
 ('M022', 'Sofá 2 Lugares', 'Tecido', 'Sofá de 2 lugares confortável.', 'Reclinável', 'Azul', 2, 8, 600.00, 900.00, 1, 2),
 ('M023', 'Cadeira Dobrável', 'Plástico', 'Cadeira dobrável.', 'Leve', 'Preto', 10, 50, 20.00, 35.00, 1, 1),
-('M024', 'Mesa de Jantar Redonda', 'Vidro', 'Mesa de jantar redonda.', '4 lugares', 'Transparente', 3, 10, 250.00, 400.00, 1, 1),
+('M024', 'Mesa de Jantar Redonda', 'Vidro', 'Mesa de jantar redonda.', '4 lugares', 'Transparente', 3, 10, 250.00, 400.00, 1, 5),
 ('M025', 'Armário de Cozinha', 'Madeira', 'Armário de cozinha com portas.', '4 portas', 'Branco', 1, 5, 300.00, 500.00, 1, 4),
 ('M026', 'Conjunto de Sofás', 'Tecido', 'Conjunto de sofás 3+2 lugares.', 'Reclináveis', 'Cinza', 1, 4, 1200.00, 1800.00, 1, 2),
 ('M027', 'Escrivaninha', 'Madeira', 'Escrivaninha com gavetas.', '3 gavetas', 'Marrom', 2, 12, 200.00, 350.00, 1, 1),
-('M028', 'Cadeira de Escritório Luxo', 'Couro', 'Cadeira de escritório luxo.', 'Reclinável', 'Preto', 2, 10, 300.00, 500.00, 1, 1),
+('M028', 'Cadeira de Escritório Luxo', 'Couro', 'Cadeira de escritório luxo.', 'Reclinável', 'Preto', 2, 10, 300.00, 500.00, 1, 5),
 ('M029', 'Penteadeira', 'Madeira', 'Penteadeira com espelho.', 'Espelho grande', 'Branco', 2, 10, 250.00, 400.00, 1, 4),
-('M030', 'Mesa de Centro Elevada', 'Madeira', 'Mesa de centro com tampo elevado.', 'Elevável', 'Marrom', 3, 15, 150.00, 250.00, 1, 1);
+('M030', 'Mesa de Centro Elevada', 'Madeira', 'Mesa de centro com tampo elevado.', 'Elevável', 'Marrom', 3, 15, 150.00, 250.00, 1, 5);
 
 -- Inserir fornecedores com CNPJ 
 INSERT INTO FORNECEDORES (FOR_NOME, FOR_STATUS, FOR_EMAIL, FOR_CONTATO, FOR_CNPJ) VALUES

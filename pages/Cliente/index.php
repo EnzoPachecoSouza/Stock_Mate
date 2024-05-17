@@ -141,9 +141,8 @@ require '../../classes/Cliente/cliente.controller.php';
                             <div class="d-flex justify-content-between align-items-center">
                                 Nome
                                 <div class="d-flex flex-column">
-                                    <i onclick="filtrarDados(1)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
-                                    <i onclick="filtrarDados(2)" id="filtro" name="filtro"
-                                        class="bi bi-chevron-down"></i>
+                                    <i onclick="filtrarDados(1)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(2)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
                                 </div>
                             </div>
                         </th>
@@ -151,9 +150,8 @@ require '../../classes/Cliente/cliente.controller.php';
                             <div class="d-flex justify-content-between align-items-center">
                                 E-mail
                                 <div class="d-flex flex-column">
-                                    <i onclick="filtrarDados(3)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
-                                    <i onclick="filtrarDados(4)" id="filtro" name="filtro"
-                                        class="bi bi-chevron-down"></i>
+                                    <i onclick="filtrarDados(3)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(4)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
                                 </div>
                             </div>
                         </th>
@@ -161,9 +159,8 @@ require '../../classes/Cliente/cliente.controller.php';
                             <div class="d-flex justify-content-between align-items-center">
                                 Contato
                                 <div class="d-flex flex-column">
-                                    <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
-                                    <i onclick="filtrarDados(6)" id="filtro" name="filtro"
-                                        class="bi bi-chevron-down"></i>
+                                    <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(6)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
                                 </div>
                             </div>
                         </th>
@@ -171,9 +168,8 @@ require '../../classes/Cliente/cliente.controller.php';
                             <div class="d-flex justify-content-between align-items-center">
                                 CPF
                                 <div class="d-flex flex-column">
-                                    <i onclick="filtrarDados(7)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
-                                    <i onclick="filtrarDados(8)" id="filtro" name="filtro"
-                                        class="bi bi-chevron-down"></i>
+                                    <i onclick="filtrarDados(7)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(8)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
                                 </div>
                             </div>
                         </th>
