@@ -183,7 +183,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
                                 <i onclick="filtrarDados(6)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
                             </div>
-                            Preço de venda
+                            Preço
                         </div>
                         </th>
                         <th scope="col">
@@ -228,7 +228,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <?= $produto->PRO_MATERIAL ?>
                             </td>
                             <td>
-                                PREÇO DE VENDA
+                                R$00000,00
                             </td>
 
                             <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->

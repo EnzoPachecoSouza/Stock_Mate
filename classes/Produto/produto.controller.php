@@ -21,6 +21,7 @@ if ($acao == 'inserir') {
     $produto->__set('estoqueMinimo', $_POST['estoqueMinimo']);
     $produto->__set('quantidadeEmEstoque', $_POST['quantidadeEmEstoque']);
     $produto->__set('precoDeCompra', $_POST['precoDeCompra']);
+    $produto->__set('precoDeVenda', $_POST['precoDeVenda']);
     $produto->__set('detalhes', $_POST['detalhes']);
 
     //inicia conexão com o BD
@@ -63,6 +64,7 @@ if ($acao == 'inserir') {
     $produto->__set('estoqueMinimo', $_POST['estoqueMinimo']);
     $produto->__set('quantidadeEmEstoque', $_POST['quantidadeEmEstoque']);
     $produto->__set('precoDeCompra', $_POST['precoDeCompra']);
+    $produto->__set('precoDeVenda', $_POST['precoDeVenda']);
     $produto->__set('detalhes', $_POST['detalhes']);
 
     //inicia conexão com o BD

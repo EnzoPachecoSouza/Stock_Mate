@@ -18,8 +18,8 @@ class ProdutoService
     {
         $query = '
         INSERT INTO
-        produtos(PRO_CODIGO, PRO_NOME, PRO_COR, PRO_MATERIAL, CATEGORIA_CAT_ID, PRO_DETALHES, PRO_PRECO_CUSTO, PRO_QUANTIDADE, PRO_MINIMO, PRO_DESCRICAO)
-        VALUES (:codigo, :nome, :cor, :material, :categoria, :detalhes, :precoDeCompra, :quantidadeEmEstoque, :estoqueMinimo, :descricao)
+        produtos(PRO_CODIGO, PRO_NOME, PRO_COR, PRO_MATERIAL, CATEGORIA_CAT_ID, PRO_DETALHES, PRO_PRECO_CUSTO, PRO_PRECO_VENDA, PRO_QUANTIDADE, PRO_MINIMO, PRO_DESCRICAO)
+        VALUES (:codigo, :nome, :cor, :material, :categoria, :detalhes, :precoDeCompra, :precoDeVenda, :quantidadeEmEstoque, :estoqueMinimo, :descricao)
         ';
 
         $stmt = $this->conexao->prepare($query);
@@ -31,6 +31,7 @@ class ProdutoService
         $stmt->bindValue(':categoria', $this->produto->__get('categoria'));
         $stmt->bindValue(':detalhes', $this->produto->__get('detalhes'));
         $stmt->bindValue(':precoDeCompra', $this->produto->__get('precoDeCompra'));
+        $stmt->bindValue(':precoDeVenda', $this->produto->__get('precoDeVenda'));
         $stmt->bindValue(':quantidadeEmEstoque', $this->produto->__get('quantidadeEmEstoque'));
         $stmt->bindValue(':estoqueMinimo', $this->produto->__get('estoqueMinimo'));
         $stmt->bindValue(':descricao', $this->produto->__get('descricao'));
@@ -115,6 +116,7 @@ class ProdutoService
             CATEGORIA_CAT_ID = :categoria,
             PRO_DETALHES = :detalhes,
             PRO_PRECO_CUSTO = :precoDeCompra,
+            PRO_PRECO_VENDA = :precoDeVenda,
             PRO_QUANTIDADE = :quantidadeEmEstoque,
             PRO_MINIMO = :estoqueMinimo,
             PRO_DESCRICAO = :descricao
@@ -130,6 +132,7 @@ class ProdutoService
         $stmt->bindValue(':categoria', $this->produto->__get('categoria'));
         $stmt->bindValue(':detalhes', $this->produto->__get('detalhes'));
         $stmt->bindValue(':precoDeCompra', $this->produto->__get('precoDeCompra'));
+        $stmt->bindValue(':precoDeVenda', $this->produto->__get('precoDeVenda'));
         $stmt->bindValue(':quantidadeEmEstoque', $this->produto->__get('quantidadeEmEstoque'));
         $stmt->bindValue(':estoqueMinimo', $this->produto->__get('estoqueMinimo'));
         $stmt->bindValue(':descricao', $this->produto->__get('descricao'));

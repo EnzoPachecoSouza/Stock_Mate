@@ -12,6 +12,7 @@ class Produto
     private $estoqueMinimo;
     private $quantidadeEmEstoque;
     private $precoDeCompra;
+    private $precoDeVenda;
     private $status;
     private $categoria;
 
