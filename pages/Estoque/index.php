@@ -145,8 +145,8 @@ require '../../classes/Categoria/categoria.controller.php';
                         <div class="d-flex justify-content-between align-items-center">
                             Nome
                             <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(1)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(2)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                                <i onclick="filtrarDados(1)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                <i onclick="filtrarDados(2)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
                             </div>
                         </div>
                         </th>
@@ -154,8 +154,8 @@ require '../../classes/Categoria/categoria.controller.php';
                         <div class="d-flex justify-content-between align-items-center">
                             Cor
                             <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(3)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(4)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                                <i onclick="filtrarDados(3)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                <i onclick="filtrarDados(4)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
                             </div>
                         </div>
                         </th>
@@ -163,8 +163,8 @@ require '../../classes/Categoria/categoria.controller.php';
                             <div class="d-flex justify-content-between align-items-center">
                             Detalhes
                             <div class="d-flex flex-column invisible">
-                                <i class="bi bi-chevron-up"></i>
-                                <i class="bi bi-chevron-down"></i>
+                                <i class="order-hover bi bi-chevron-up"></i>
+                                <i class="order-hover bi bi-chevron-down"></i>
                             </div>
                             </div>
                         </th>
@@ -172,8 +172,8 @@ require '../../classes/Categoria/categoria.controller.php';
                         <div class="d-flex justify-content-between align-items-center">
                             Material
                             <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(6)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                                <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                <i onclick="filtrarDados(6)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
                             </div>
                         </div>
                         </th>
@@ -181,8 +181,8 @@ require '../../classes/Categoria/categoria.controller.php';
                         <div class="d-flex justify-content-between align-items-center gap-3">
                             Quantidade
                             <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(7)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(8)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                                <i onclick="filtrarDados(7)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                <i onclick="filtrarDados(8)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
                             </div>
                         </div>
                         </th>
@@ -190,8 +190,8 @@ require '../../classes/Categoria/categoria.controller.php';
                         <div class="d-flex justify-content-between align-items-center">
                             Status
                             <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(9)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(10)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                                <i onclick="filtrarDados(9)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                <i onclick="filtrarDados(10)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
                             </div>
                         </div>
                         </th>
