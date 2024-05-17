@@ -356,18 +356,31 @@ require '../../classes/Categoria/categoria.controller.php';
                             </div>
 
                             <div class="row mb-4">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="precoDeCompra" name="precoDeCompra"
-                                                placeholder="Preço">
-                                            <label for="precoDeCompra">Preço</label>
+                                                placeholder="Preço de Compra">
+                                            <label for="precoDeCompra">Preço de Compra</label>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text fw-bold">R$</span>
+                                        <div class="form-floating">
+                                            <input class="form-control" type="text" id="precoDeVenda" name="precoDeVenda"
+                                                placeholder="Preço de Venda">
+                                            <label for="precoDeVenda">Preço de Venda</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="quantidadeEmEstoque"
                                             name="quantidadeEmEstoque" placeholder="Quantidade">
@@ -375,7 +388,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="estoqueMinimo" name="estoqueMinimo"
                                             placeholder="Mínimo">
@@ -487,18 +500,31 @@ require '../../classes/Categoria/categoria.controller.php';
                             </div>
 
                             <div class="row mb-4">
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="precoDeCompra" name="precoDeCompra"
-                                                placeholder="Preço" value="<?= $produto->PRO_PRECO_CUSTO ?>">
-                                            <label for="precoDeCompra">Preço</label>
+                                                placeholder="Preço de Compra" value="<?= $produto->PRO_PRECO_CUSTO ?>">
+                                            <label for="precoDeCompra">Preço de Compra</label>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text fw-bold">R$</span>
+                                        <div class="form-floating">
+                                            <input class="form-control" type="text" id="precoDeVenda" name="precoDeVenda"
+                                                placeholder="Preço de Venda" value="<?= $produto->PRO_PRECO_VENDA ?>">
+                                            <label for="precoDeVenda">Preço de Venda</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="quantidadeEmEstoque"
                                             name="quantidadeEmEstoque" placeholder="Quantidade"
@@ -507,7 +533,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="estoqueMinimo" name="estoqueMinimo"
                                             placeholder="Mínimo" value="<?= $produto->PRO_MINIMO ?>">
