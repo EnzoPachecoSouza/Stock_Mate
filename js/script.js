@@ -49,5 +49,5 @@ function filtrarDados(valor) {
 
 //FILTRO DE CATEGORIA
 function filtrarCategoria() {
-     window.location = 'index.php?catFiltro=' + catFiltro.value;
- }
+    window.location = 'index.php?catFiltro=' + catFiltro.value;
+}
