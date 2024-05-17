@@ -20,7 +20,7 @@ if ($acao == 'inserir') {
     $fornecedorService = new FornecedorService($conexao, $fornecedor);
     $fornecedorService->inserir();
 
-    header('Location: ../../pages/Entrada/index.php?act=inserir');
+    header('Location: ../../pages/Fornecedor/index.php?act=inserir');
 } else if ($acao == 'recuperar') {
     //instancia o objeto do produto.model.php
     $fornecedor = new Fornecedor();
@@ -32,4 +32,18 @@ if ($acao == 'inserir') {
     $fornecedorService = new FornecedorService($conexao, $fornecedor);
     //ação a ser executa no produto.service.php que faz a requisição para o BD
     $fornecedores = $fornecedorService->recuperar();
+}else if ($acao == 'editar') {
+    $id = isset($_GET['id']) ? $_GET['id'] : $id;
+    $fornecedor = new Fornecedor();
+
+    $fornecedor->__set('fornecedor', $_POST['fornecedor']);
+    $fornecedor->__set('email', $_POST['email']);
+    $fornecedor->__set('contato', $_POST['contato']);
+    $fornecedor->__set('cnpj', $_POST['cnpj']);
+
+    $conexao = new Conexao();
+    $fornecedorService = new FornecedorService($conexao, $fornecedor);
+    $fornecedorService->editar($id);
+
+    header('Location: ../../pages/Fornecedor/index.php?act=editar');
 }

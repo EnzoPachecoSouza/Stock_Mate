@@ -1,7 +1,7 @@
 <?php
 $acao = 'recuperar';
 
-require '../../classes/Cliente/cliente.controller.php';
+require '../../classes/Fornecedor/fornecedor.controller.php';
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +10,7 @@ require '../../classes/Cliente/cliente.controller.php';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StockMate | Cliente</title>
+    <title>StockMate | Fornecedor</title>
 
     <!-- Font [Noto Sans] -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -59,11 +59,11 @@ require '../../classes/Cliente/cliente.controller.php';
                 <div class="col-9">
                     <ul class="nav justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link text-white nav-font selected" href="#">Clientes</a>
+                            <a class="nav-link text-white nav-font" href="../Cliente">Clientes</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
+                            <a class="nav-link text-white nav-font selected" href="#">Fornecedores</a>
                         </li>
 
                         <li class="nav-item">
@@ -104,7 +104,7 @@ require '../../classes/Cliente/cliente.controller.php';
             <!-- BOTÃO DE CADASTRAR CLIENTE -->
             <div>
                 <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
-                    data-bs-target="#cadastrarClienteModal">
+                    data-bs-target="#cadastrarFornecedorModal">
                     <i class="bi bi-plus-lg"></i>
                 </button>
             </div>
@@ -166,7 +166,7 @@ require '../../classes/Cliente/cliente.controller.php';
                         </th>
                         <th scope="col">
                             <div class="d-flex justify-content-between align-items-center">
-                                CPF
+                                CNPJ
                                 <div class="d-flex flex-column">
                                     <i onclick="filtrarDados(7)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
                                     <i onclick="filtrarDados(8)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
@@ -179,32 +179,32 @@ require '../../classes/Cliente/cliente.controller.php';
 
                 <tbody class="table-group-divider table-hover-shadow">
                     <!-- TABELA MAPEADA -->
-                    <?php foreach ($clientes as $indice => $cliente) { ?>
-                        <?php if ($cliente->CLI_STATUS == 0) { ?>
+                    <?php foreach ($fornecedores as $indice => $fornecedor) { ?>
+                        <?php if ($fornecedor->FOR_STATUS == 0) { ?>
                             <tr class="table-active">
                             <?php } else { ?>
                             <tr>
                             <?php } ?>
                             <th scope="row" class="">
-                                <?= $cliente->CLI_NOME ?>
+                                <?= $fornecedor->FOR_NOME ?>
                             </th>
                             <td>
-                                <?= $cliente->CLI_EMAIL ?>
+                                <?= $fornecedor->FOR_EMAIL ?>
                             </td>
 
                             <td>
-                                <?= $cliente->CLI_CONTATO ?>
+                                <?= $fornecedor->FOR_CONTATO ?>
                             </td>
 
                             <td>
-                                <?= $cliente->CLI_CPF ?>
+                                <?= $fornecedor->FOR_CNPJ ?>
                             </td>
 
 
                             <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
                                 <!-- BOTÃO EDITAR PRODUTO -->
                                 <button type="button" class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#editarClienteModal<?= $indice ?>">
+                                    data-bs-target="#editarFornecedorModal<?= $indice ?>">
                                     <i class="bi bi-pencil-square text-info fs-5"></i>
                                 </button>
                                 <!------->
@@ -218,24 +218,24 @@ require '../../classes/Cliente/cliente.controller.php';
     </div>
 
     <!-- CADASTRAR CLIENTE -->
-    <div class="modal fade" id="cadastrarClienteModal" tabindex="-1" aria-labelledby="cadastrarClienteModalLabel"
+    <div class="modal fade" id="cadastrarFornecedorModal" tabindex="-1" aria-labelledby="cadastrarFornecedorModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="cadastrarClienteModalLabel">Registrar Cliente</h1>
+                    <h1 class="modal-title fs-5" id="cadastrarFornecedorModalLabel">Registrar Fornecedor</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form class="container" method="post"
-                        action="../../classes/Cliente/cliente.controller.php?acao=inserir">
+                        action="../../classes/Fornecedor/fornecedor.controller.php?acao=inserir">
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="cliente" name="cliente"
+                                        <input class="form-control" type="text" id="fornecedor" name="fornecedor"
                                             placeholder="Nome">
-                                        <label for="cliente">Nome</label>
+                                        <label for="fornecedor">Nome</label>
                                     </div>
                                 </div>
                             </div>
@@ -260,14 +260,14 @@ require '../../classes/Cliente/cliente.controller.php';
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF">
-                                    <label for="cpf">CPF</label>
+                                    <input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="CNPJ">
+                                    <label for="cnpj">CNPJ</label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-center align-items-center">
-                            <button class="btn btn-outline-primary">Registrar Cliente</button>
+                            <button class="btn btn-outline-primary">Registrar Fornecedor</button>
                         </div>
                     </form>
 
@@ -278,26 +278,26 @@ require '../../classes/Cliente/cliente.controller.php';
     <!----------------------->
 
     <!-- EDITAR PRODUTO -->
-    <?php foreach ($clientes as $indice => $cliente) { ?>
-        <div class="modal fade" id="editarClienteModal<?= $indice ?>" tabindex="-1"
-            aria-labelledby="editarClienteModalLabel<?= $indice ?>" aria-hidden="true">
+    <?php foreach ($fornecedores as $indice => $fornecedor) { ?>
+        <div class="modal fade" id="editarFornecedorModal<?= $indice ?>" tabindex="-1"
+            aria-labelledby="editarFornecedorModalLabel<?= $indice ?>" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="editarClienteModalLabel<?= $indice ?>">Editar Cliente</h1>
+                        <h1 class="modal-title fs-5" id="editarFornecedorModalLabel<?= $indice ?>">Editar Fornecedor</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form class="container" method="post"
-                            action="../../classes/Cliente/cliente.controller.php?acao=editar&id=<?= $cliente->CLI_ID ?>">
+                            action="../../classes/Fornecedor/fornecedor.controller.php?acao=editar&id=<?= $fornecedor->FOR_ID ?>">
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-text fw-bold">#</span>
                                         <div class="form-floating">
-                                            <input class="form-control" type="text" id="cliente" name="cliente"
-                                                placeholder="Nome" value="<?= $cliente->CLI_NOME ?>">
-                                            <label for="cliente">Nome</label>
+                                            <input class="form-control" type="text" id="fornecedor" name="fornecedor"
+                                                placeholder="Nome" value="<?= $fornecedor->FOR_NOME ?>">
+                                            <label for="fornecedor">Fornecedor</label>
                                         </div>
                                     </div>
                                 </div>
@@ -305,7 +305,7 @@ require '../../classes/Cliente/cliente.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="email" name="email" placeholder="E-mail"
-                                            value="<?= $cliente->CLI_EMAIL ?>">
+                                            value="<?= $fornecedor->FOR_EMAIL ?>">
                                         <label for="email">E-mail</label>
                                     </div>
                                 </div>
@@ -315,22 +315,22 @@ require '../../classes/Cliente/cliente.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="contato" name="contato"
-                                            placeholder="Contato" value="<?= $cliente->CLI_CONTATO ?>">
+                                            placeholder="Contato" value="<?= $fornecedor->FOR_CONTATO ?>">
                                         <label for="contato">Contato</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF"
-                                            value="<?= $cliente->CLI_CPF ?>">
-                                        <label for="cpf">CPF</label>
+                                        <input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="CNPJ"
+                                            value="<?= $fornecedor->FOR_CNPJ ?>">
+                                        <label for="cnpj">CNPJ</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="d-flex justify-content-center align-items-center">
-                                <button class="btn btn-outline-primary">Editar cliente</button>
+                                <button class="btn btn-outline-primary">Editar fornecedor</button>
                             </div>
                         </form>
                     </div>
@@ -351,7 +351,7 @@ require '../../classes/Cliente/cliente.controller.php';
                     <button type="button" class="btn-close" onclick="closeToast()"></button>
                 </div>
                 <div class="toast-body fs-6">
-                    <strong>Cliente registrado com sucesso!</strong>
+                    <strong>Fornecedor registrado com sucesso!</strong>
                 </div>
             <?php } else if ($toastAcao === 'editar') { ?>
                     <div class="toast-header fs-5">
@@ -360,7 +360,7 @@ require '../../classes/Cliente/cliente.controller.php';
                         <button type="button" class="btn-close" onclick="closeToast()"></button>
                     </div>
                     <div class="toast-body fs-6">
-                        <strong>Cliente editado com sucesso!</strong>
+                        <strong>Fornecedor editado com sucesso!</strong>
                     </div>
             <?php } ?>
         </div>

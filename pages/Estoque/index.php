@@ -220,7 +220,9 @@ require '../../classes/Categoria/categoria.controller.php';
                             </td>
 
                             <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
-                            <?php if ($produto->PRO_QUANTIDADE <= $produto->PRO_MINIMO) { ?>
+                            <?php if($produto->PRO_STATUS == 0) { ?>
+                                    <td class="bg-dark">
+                            <?php } else if ($produto->PRO_QUANTIDADE <= $produto->PRO_MINIMO) { ?>
                                 <td class="bg-danger">
                                 <?php } else if ($produto->PRO_QUANTIDADE <= ($produto->PRO_MINIMO * 2)) { ?>
                                     <td class="bg-secondary">
@@ -271,33 +273,33 @@ require '../../classes/Categoria/categoria.controller.php';
     </div>
 
     <!-- CADASTRAR PRODUTO -->
-    <div class="modal fade" id="cadastrarProdutoModal" tabindex="-1" aria-labelledby="cadastrarProdutoModalLabel"
+    <div class="modal fade" id="cadastrarFornecedorModal" tabindex="-1" aria-labelledby="cadastrarFornecedorModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="cadastrarProdutoModalLabel">Registrar Produto</h1>
+                    <h1 class="modal-title fs-5" id="cadastrarFornecedorModalLabel">Registrar Fornecedor</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form class="container" method="post"
-                        action="../../classes/Produto/produto.controller.php?acao=inserir">
+                        action="../../classes/Fornecedor/fornecedor.controller.php?acao=inserir">
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
-                                    <span class="input-group-text fw-bold">#</span>
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="codigo" name="codigo"
-                                            placeholder="Código">
-                                        <label for="codigo">Código</label>
+                                        <input class="form-control" type="text" id="fornecedor" name="fornecedor"
+                                            placeholder="Nome">
+                                        <label for="fornecedor">Nome</label>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome">
-                                    <label for="nome">Nome</label>
+                                    <input class="form-control" type="text" id="email" name="email"
+                                        placeholder="E-mail">
+                                    <label for="email">E-mail</label>
                                 </div>
                             </div>
                         </div>
@@ -305,86 +307,25 @@ require '../../classes/Categoria/categoria.controller.php';
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="cor" name="cor" placeholder="Cor">
-                                    <label for="cor">Cor</label>
+                                    <input class="form-control" type="text" id="contato" name="contato"
+                                        placeholder="Contato">
+                                    <label for="contato">Contato</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="material" name="material"
-                                        placeholder="Material">
-                                    <label for="material">Material</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-4">
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <select class="form-select" id="categoria" name="categoria">
-                                        <option selected></option>
-                                        <?php foreach ($categorias as $indice => $categoria) { ?>
-                                            <option value="<?= $categoria->CAT_ID ?>"><?= $categoria->CAT_CATEGORIA ?>
-                                            </option>
-                                        <?php } ?>
-                                    </select>
-                                    <label for="categoria">Categoria</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input class="form-control" type="text" id="detalhes" name="detalhes"
-                                        placeholder="Detalhes">
-                                    <label for="detalhes">Detalhes</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-4">
-                            <div class="col-md-4">
-                                <div class="input-group">
-                                    <span class="input-group-text fw-bold">R$</span>
-                                    <div class="form-floating">
-                                        <input class="form-control" type="number" id="precoDeCompra"
-                                            name="precoDeCompra" placeholder="Preço">
-                                        <label for="precoDeCompra">Preço</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <input class="form-control" type="number" id="quantidadeEmEstoque"
-                                        name="quantidadeEmEstoque" placeholder="Quantidade">
-                                    <label for="quantidadeEmEstoque">Quantidade</label>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <div class="form-floating">
-                                    <input class="form-control" type="number" id="estoqueMinimo" name="estoqueMinimo"
-                                        placeholder="Mínimo">
-                                    <label for="estoqueMinimo">Mínimo</label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-5">
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Insira a descrição do produto"
-                                        id="descricao" name="descricao" style="height: 100px"></textarea>
-                                    <label for="descricao">Descrição</label>
+                                    <input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="CNPJ">
+                                    <label for="cnpj">CNPJ</label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="d-flex justify-content-center align-items-center">
-                            <button class="btn btn-outline-primary">Registar produto</button>
+                            <button class="btn btn-outline-primary">Registrar Fornecedor</button>
                         </div>
                     </form>
+
                 </div>
             </div>
         </div>

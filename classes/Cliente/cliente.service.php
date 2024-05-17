@@ -45,8 +45,8 @@ class ClienteService
         ORDER BY CLI_NOME
         ";
         }else if (!empty($_GET['filter'])) {
-            $filtrarProduto = $_GET['filter'];
-            $query = $this->getFilterQuery($filtrarProduto);
+            $filtrarCliente = $_GET['filter'];
+            $query = $this->getFilterQuery($filtrarCliente);
         } else {
             $query = '
             SELECT *
