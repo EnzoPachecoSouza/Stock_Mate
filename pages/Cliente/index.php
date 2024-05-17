@@ -137,28 +137,44 @@ require '../../classes/Cliente/cliente.controller.php';
                 <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">Nome
-                            <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(1)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(2)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                        <th scope="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                Nome
+                                <div class="d-flex flex-column">
+                                    <i onclick="filtrarDados(1)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(2)" id="filtro" name="filtro"
+                                        class="bi bi-chevron-down"></i>
+                                </div>
                             </div>
                         </th>
-                        <th scope="col">E-mail
-                            <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(3)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(4)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                        <th scope="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                E-mail
+                                <div class="d-flex flex-column">
+                                    <i onclick="filtrarDados(3)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(4)" id="filtro" name="filtro"
+                                        class="bi bi-chevron-down"></i>
+                                </div>
                             </div>
                         </th>
-                        <th scope="col">Contato
-                            <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(6)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                        <th scope="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                Contato
+                                <div class="d-flex flex-column">
+                                    <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(6)" id="filtro" name="filtro"
+                                        class="bi bi-chevron-down"></i>
+                                </div>
                             </div>
                         </th>
-                        <th scope="col">CPF
-                            <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(7)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(8)" id="filtro" name="filtro" class="bi bi-chevron-down"></i>
+                        <th scope="col">
+                            <div class="d-flex justify-content-between align-items-center">
+                                CPF
+                                <div class="d-flex flex-column">
+                                    <i onclick="filtrarDados(7)" id="filtro" name="filtro" class="bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(8)" id="filtro" name="filtro"
+                                        class="bi bi-chevron-down"></i>
+                                </div>
                             </div>
                         </th>
                         <th scope="col"></th>
