@@ -94,12 +94,16 @@ class ProdutoService
             case 6:
                 return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_MATERIAL DESC;";
             case 7:
-                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_QUANTIDADE DESC;";
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_PRECO_VENDA ASC;";
             case 8:
-                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_QUANTIDADE ASC;";
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_PRECO_VENDA DESC;";
             case 9:
-                return "SELECT * FROM PRODUTOS WHERE PRO_STATUS = 1 ORDER BY PRO_NOME ASC;";
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_QUANTIDADE DESC;";
             case 10:
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_QUANTIDADE ASC;";
+            case 11:
+                return "SELECT * FROM PRODUTOS WHERE PRO_STATUS = 1 ORDER BY PRO_NOME ASC;";
+            case 12:
                 return "SELECT * FROM PRODUTOS WHERE PRO_STATUS = 0 ORDER BY PRO_NOME ASC;";
         }
     }
