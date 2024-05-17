@@ -337,12 +337,10 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <select class="form-select" id="categoria" name="categoria">
-                                            <option value=""></option>
-                                            <?php foreach ($categorias as $categoria) { ?>
-                                                    <option value="<?= $categoria->CAT_ID ?>" selected>
-                                                        <?= $categoria->CAT_CATEGORIA ?>
-                                                    </option>
-                                                <?php } ?>
+                                            <option selected></option>
+                                        <?php foreach ($categorias as $indice => $categoria) { ?>
+                                            <option value="<?= $categoria->CAT_ID ?>"><?= $categoria->CAT_CATEGORIA ?></option>
+                                        <?php } ?>
                                         </select>
                                         <label for="categoria">Categoria</label>
                                     </div>
