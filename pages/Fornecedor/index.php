@@ -121,13 +121,14 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                 <button onclick="" class="btn btn-primary">Filtrar</button>
             </div> -->
 
-
-
-            <div class="box-search d-flex">
-                <input type="search" class="form-control" placeholder="Pesquisar" id="pesquisar" name="pesquisar">
-                <button onclick="pesquisarDados()" class="btn btn-primary">
-                    <i class="bi bi-search"></i>
-                </button>
+            <div class="d-flex">
+                <div class="input-group">
+                    <input type="text" class="form-control shadow-none" placeholder="Pesquisar" id="pesquisar"
+                        name="pesquisar">
+                    <button onclick="pesquisarDados()" class="btn btn-primary" type="button" id="button-addon2">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
             </div>
         </div>
 
