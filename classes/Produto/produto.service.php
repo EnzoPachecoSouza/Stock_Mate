@@ -105,6 +105,8 @@ class ProdutoService
                 return "SELECT * FROM PRODUTOS WHERE PRO_STATUS = 1 ORDER BY PRO_NOME ASC;";
             case 12:
                 return "SELECT * FROM PRODUTOS WHERE PRO_STATUS = 0 ORDER BY PRO_NOME ASC;";
+            case 13:
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_ID ASC;";
         }
     }
 

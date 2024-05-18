@@ -113,6 +113,11 @@ require '../../classes/Categoria/categoria.controller.php';
 
             <div class="d-flex gap-5">
                 <div class="form-floating d-flex">
+                        <button onclick="filtrarDados(13)" class="btn btn-primary" type="button" id="button-addon2">Todos</button>
+                </div>
+
+
+                <div class="form-floating d-flex">
                     <div class="input-group">
                         <select class="form-select shadow-none" id="catFiltro" name="catFiltro">
                             <option disabled selected>Categorias</option>
