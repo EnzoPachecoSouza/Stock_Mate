@@ -250,13 +250,14 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="row mb-2">
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <select class="form-select" name="produto" id="produto">
+                                        <select class="form-select" name="produto" id="produto"
+                                            oninput="determinaValorUnitario(this.value)">
                                             <option value="" selected></option>
-                                            <?php foreach ($produtos as $indice => $produto) { ?>
-                                                <option value="<?= $produto->PRO_ID ?>">
-                                                    <?= $produto->PRO_NOME ?>
-                                                </option>
-                                            <?php } ?>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
                                         </select>
                                         <label for="produto">Produto</label>
                                     </div>
@@ -265,7 +266,7 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <input class="form-control" type="number" name="quantidade" id="quantidade"
-                                            placeholder="Quantidade">
+                                            placeholder="Quantidade" oninput="atualizaValorTotal()">
                                         <label for="quantidade">Quantidade</label>
                                     </div>
                                 </div>
@@ -299,22 +300,20 @@ require '../../classes/Produto/produto.controller.php';
     </div>
 
     <script>
-        function determinaValorUnitario(selectElement) {
-            const valorUnitarioInput = selectElement.closest('.product-row').querySelector('.valorUnitario');
-            const selectedOption = selectElement.options[selectElement.selectedIndex];
-            valorUnitarioInput.value = selectedOption.getAttribute('data-valor') || 0;
-            atualizarValor(selectElement);
+        const valorUnitarioInput = document.querySelector('#valorUnitario')
+        const quantidadeInput = document.querySelector('#quantidade')
+        const valorTotalInput = document.querySelector('#valorTotal')
+
+        function determinaValorUnitario(option) {
+            valorUnitarioInput.value = option
+            atualizaValorTotal()
         }
 
-        function atualizarValor(inputElement) {
-            const valorTotalInput = document.querySelector('#valorTotal');
-            let total = 0;
-            document.querySelectorAll('.product-row').forEach(row => {
-                const quantidade = parseFloat(row.querySelector('.quantidade').value) || 0;
-                const valorUnitario = parseFloat(row.querySelector('.valorUnitario').value) || 0;
-                total += quantidade * valorUnitario;
-            });
-            valorTotalInput.value = total.toFixed(2);
+        function atualizaValorTotal() {
+            const quantidade = quantidadeInput.value || 0
+            const valorUnitario = valorUnitarioInput.value || 0
+            const valorTotal = quantidade * valorUnitario
+            valorTotalInput.value = valorTotal.toFixed(2)
         }
 
         function createNewProductForm() {
