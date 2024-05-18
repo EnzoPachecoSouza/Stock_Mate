@@ -112,27 +112,28 @@ require '../../classes/Categoria/categoria.controller.php';
             <!------->
 
 
-            <div class="form-floating d-flex">
-                <select class="form-select" id="catFiltro" name="catFiltro">
-                    <option selected></option>
-                    <?php foreach ($categorias as $indice => $categoria) { ?>
-                    <option value="<?= $categoria->CAT_ID ?>">
-                        <?= $categoria->CAT_CATEGORIA ?>
-                    </option>
-                    <?php } ?>
-                </select>
-                <label for="catFiltro">Categorias</label>
-                <button onclick="filtrarCategoria()" class="btn btn-primary">Filtrar</button>
-            </div>
+            <div class="d-flex gap-5">
+                <div class="form-floating d-flex">
+                    <div class="input-group">
+                        <select class="form-select shadow-none" id="catFiltro" name="catFiltro">
+                            <option disabled selected>Categorias</option>
+                            <?php foreach ($categorias as $indice => $categoria) { ?>
+                            <option value="<?= $categoria->CAT_ID ?>">
+                                <?= $categoria->CAT_CATEGORIA ?>
+                            </option>
+                            <?php } ?>
+                        </select>
+                        <button onclick="filtrarCategoria()" class="btn btn-primary" type="button" id="button-addon2">Filtrar</button>
+                    </div>
+                </div>
 
-
-
-            <div class="box-search d-flex">
-                <div class="input-group">
-                    <input type="text" class="form-control shadow-none" placeholder="Pesquisar" id="pesquisar" name="pesquisar">
-                    <button onclick="pesquisarDados()" class="btn btn-primary" type="button" id="button-addon2">
-                    <i class="bi bi-search"></i>
-                </button>
+                <div class="d-flex">
+                    <div class="input-group">
+                        <input type="text" class="form-control shadow-none" placeholder="Pesquisar" id="pesquisar" name="pesquisar">
+                        <button onclick="pesquisarDados()" class="btn btn-primary" type="button" id="button-addon2">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
