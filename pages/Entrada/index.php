@@ -247,7 +247,7 @@ require '../../classes/Produto/produto.controller.php';
                             </div>
                         </div>
 
-                        <div id="products">
+                        <div id="products" class="mt-3">
                             <div class="row mb-2 product-item">
                                 <div class="col-md-4">
                                     <div class="form-floating">
@@ -282,10 +282,10 @@ require '../../classes/Produto/produto.controller.php';
                         </div>
 
                         <div class="row my-3">
-                            <div class="d-flex justify-content-center">
-                                <button type="button" class="btn btn-primary rounded-circle"
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-primary bg-primary"
                                     onclick="createNewProductForm()">
-                                    <i class="bi bi-plus-lg"></i>
+                                    Adicionar produto
                                 </button>
                             </div>
                         </div>
