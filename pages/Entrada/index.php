@@ -247,15 +247,13 @@ require '../../classes/Produto/produto.controller.php';
                         </div>
 
                         <div id="products">
-                            <div class="row mb-2 product-row">
+                            <div class="row mb-2">
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <select class="form-select produto" name="produto[]"
-                                            onchange="determinaValorUnitario(this)">
+                                        <select class="form-select" name="produto" id="produto">
                                             <option value="" selected></option>
                                             <?php foreach ($produtos as $indice => $produto) { ?>
-                                                <option value="<?= $produto->PRO_ID ?>"
-                                                    data-valor="<?= $produto->PRO_VALOR ?>">
+                                                <option value="<?= $produto->PRO_ID ?>">
                                                     <?= $produto->PRO_NOME ?>
                                                 </option>
                                             <?php } ?>
@@ -266,16 +264,16 @@ require '../../classes/Produto/produto.controller.php';
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control quantidade" type="number" name="quantidade[]"
-                                            placeholder="Quantidade" oninput="atualizarValor(this)">
+                                        <input class="form-control" type="number" name="quantidade" id="quantidade"
+                                            placeholder="Quantidade">
                                         <label for="quantidade">Quantidade</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control valorUnitario" type="number" name="valorUnitario[]"
-                                            placeholder="Valor unitário" readonly>
+                                        <input class="form-control" type="number" name="valorUnitario"
+                                            placeholder="Valor unitário" id="valorUnitario" readonly>
                                         <label for="valorUnitario">Valor Unitário</label>
                                     </div>
                                 </div>
@@ -320,65 +318,76 @@ require '../../classes/Produto/produto.controller.php';
         }
 
         function createNewProductForm() {
-            const productsDiv = document.getElementById("products");
+            const products = document.querySelector('#products')
 
-            const rowDiv = document.createElement("div");
-            rowDiv.classList.add("row", "mb-2", "product-row");
+            const row = document.createElement('div')
+            row.classList.add('row')
+            row.classList.add('mb-2')
 
-            const colDiv1 = document.createElement("div");
-            colDiv1.classList.add("col-md-4");
-            const formFloat1 = document.createElement("div");
-            formFloat1.classList.add("form-floating");
-            colDiv1.appendChild(formFloat1);
-            const select = document.createElement("select");
-            select.classList.add("form-select", "produto");
-            select.name = "produto[]";
-            select.innerHTML = `<?php foreach ($produtos as $indice => $produto) { ?>
-                                        <option value="<?= $produto->PRO_ID ?>" data-valor="<?= $produto->PRO_VALOR ?>"><?= $produto->PRO_NOME ?></option>
-                            <?php } ?>`;
-            select.onchange = function () { determinaValorUnitario(this); };
-            const label1 = document.createElement("label");
-            label1.innerText = "Produto";
-            formFloat1.appendChild(select);
-            formFloat1.appendChild(label1);
+            products.appendChild(row)
 
-            const colDiv2 = document.createElement("div");
-            colDiv2.classList.add("col-md-4");
-            const formFloat2 = document.createElement("div");
-            formFloat2.classList.add("form-floating");
-            colDiv2.appendChild(formFloat2);
-            const inputQuantidade = document.createElement("input");
-            inputQuantidade.classList.add("form-control", "quantidade");
-            inputQuantidade.setAttribute("type", "number");
-            inputQuantidade.setAttribute("placeholder", "Quantidade");
-            inputQuantidade.name = "quantidade[]";
-            inputQuantidade.oninput = function () { atualizarValor(this); };
-            const label2 = document.createElement("label");
-            label2.innerText = "Quantidade";
-            formFloat2.appendChild(inputQuantidade);
-            formFloat2.appendChild(label2);
+            const col1 = document.createElement('div')
+            col1.classList.add('col-md-4')
+            const col2 = document.createElement('div')
+            col2.classList.add('col-md-4')
+            const col3 = document.createElement('div')
+            col3.classList.add('col-md-4')
 
-            const colDiv3 = document.createElement("div");
-            colDiv3.classList.add("col-md-4");
-            const formFloat3 = document.createElement("div");
-            formFloat3.classList.add("form-floating");
-            colDiv3.appendChild(formFloat3);
-            const inputValorUnitario = document.createElement("input");
-            inputValorUnitario.classList.add("form-control", "valorUnitario");
-            inputValorUnitario.setAttribute("type", "number");
-            inputValorUnitario.setAttribute("placeholder", "Valor unitário");
-            inputValorUnitario.name = "valorUnitario[]";
-            inputValorUnitario.readOnly = true;
-            const label3 = document.createElement("label");
-            label3.innerText = "Valor Unitário";
-            formFloat3.appendChild(inputValorUnitario);
-            formFloat3.appendChild(label3);
+            row.appendChild(col1)
+            row.appendChild(col2)
+            row.appendChild(col3)
 
-            rowDiv.appendChild(colDiv1);
-            rowDiv.appendChild(colDiv2);
-            rowDiv.appendChild(colDiv3);
+            const formFloating1 = document.createElement('div')
+            formFloating1.classList.add('form-floating')
+            const formFloating2 = document.createElement('div')
+            formFloating2.classList.add('form-floating')
+            const formFloating3 = document.createElement('div')
+            formFloating3.classList.add('form-floating')
 
-            productsDiv.appendChild(rowDiv);
+            col1.appendChild(formFloating1)
+            col2.appendChild(formFloating2)
+            col3.appendChild(formFloating3)
+
+            const select = document.createElement('select')
+            select.classList.add('form-select')
+            select.setAttribute('name', 'produto')
+            select.setAttribute('id', 'produto')
+            const label1 = document.createElement('label')
+            label1.innerText = 'Produto'
+
+            formFloating1.appendChild(select)
+            formFloating1.appendChild(label1)
+
+            const optionSelected = document.createElement('option')
+            optionSelected.setAttribute('value', '')
+            optionSelected.setAttribute('selected', true)
+
+            select.appendChild(optionSelected)
+
+            const input1 = document.createElement('input')
+            input1.classList.add('form-control')
+            input1.setAttribute('type', 'number')
+            input1.setAttribute('name', 'quantidade')
+            input1.setAttribute('id', 'quantidade')
+            input1.setAttribute('placeholder', 'Quantidade')
+            const label2 = document.createElement('label')
+            label2.innerText = 'Quantidade'
+
+            formFloating2.appendChild(input1)
+            formFloating2.appendChild(label2)
+
+            const input2 = document.createElement('input')
+            input2.classList.add('form-control')
+            input2.setAttribute('type', 'number')
+            input2.setAttribute('name', 'valorUnitario')
+            input2.setAttribute('id', 'valorUnitario')
+            input2.setAttribute('placeholder', 'Valor Unitário')
+            input2.setAttribute('readonly', true)
+            const label3 = document.createElement('label')
+            label3.innerText = 'Valor Unitário'
+
+            formFloating3.appendChild(input2)
+            formFloating3.appendChild(label3)
         }
     </script>
 
