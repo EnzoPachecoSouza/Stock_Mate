@@ -111,7 +111,6 @@ require '../../classes/Categoria/categoria.controller.php';
             </div>
             <!------->
 
-
             <div class="d-flex gap-5">
                 <div class="form-floating d-flex">
                     <div class="input-group">

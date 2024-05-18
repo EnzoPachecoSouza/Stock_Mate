@@ -118,14 +118,15 @@ require '../../classes/Produto/produto.controller.php';
                 <!------->
             </div>
 
-            <div class="box-search d-flex">
-                <input type="search" class="form-control" placeholder="Pesquisar" id="pesquisar">
-                <button onclick="pesquisarDados()" class="btn btn-primary">
-                    <i class="bi bi-search"></i>
-                </button>
+            <div class="d-flex">
+                <div class="input-group">
+                    <input type="text" class="form-control shadow-none" placeholder="Pesquisar" id="pesquisar"
+                        name="pesquisar">
+                    <button onclick="pesquisarDados()" class="btn btn-primary" type="button" id="button-addon2">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
             </div>
-
-
         </div>
 
         <div class="ps-1" style="height: 70vh; overflow: auto;">
@@ -330,7 +331,7 @@ require '../../classes/Produto/produto.controller.php';
                     <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)">
                         <option value="" selected></option>
                         <?php foreach ($produtos as $produto) { ?>
-                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
+                                                    <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
                         <?php } ?>
                     </select>
                     <label>Produto</label>
@@ -395,7 +396,8 @@ require '../../classes/Produto/produto.controller.php';
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
                                             <input class="form-control" value="<?= $entrada->ENT_VALOR_TOTAL ?>"
-                                                type="number" id="valorTotal" name="valorTotal" placeholder="Valor total" readonly>
+                                                type="number" id="valorTotal" name="valorTotal" placeholder="Valor total"
+                                                readonly>
                                             <label for="valorTotal">Valor total</label>
                                         </div>
                                     </div>
