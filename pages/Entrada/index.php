@@ -330,7 +330,7 @@ require '../../classes/Produto/produto.controller.php';
                     <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)">
                         <option value="" selected></option>
                         <?php foreach ($produtos as $produto) { ?>
-                                <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
+                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
                         <?php } ?>
                     </select>
                     <label>Produto</label>
@@ -353,10 +353,7 @@ require '../../classes/Produto/produto.controller.php';
             products.appendChild(row);
         }
     </script>
-
-
-    <!-- ------ -->
-
+    <!-------------------->
 
     <!-- EDITAR ENTRADA -->
     <?php foreach ($entradas as $indice => $entrada) { ?>
@@ -398,7 +395,7 @@ require '../../classes/Produto/produto.controller.php';
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
                                             <input class="form-control" value="<?= $entrada->ENT_VALOR_TOTAL ?>"
-                                                type="number" id="valorTotal" name="valorTotal" placeholder="Valor total">
+                                                type="number" id="valorTotal" name="valorTotal" placeholder="Valor total" readonly>
                                             <label for="valorTotal">Valor total</label>
                                         </div>
                                     </div>
