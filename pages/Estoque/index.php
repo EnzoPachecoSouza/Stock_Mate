@@ -126,6 +126,9 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <?= $categoria->CAT_CATEGORIA ?>
                             </option>
                             <?php } ?>
+                            <option value="vermelho">Vermelho</option>
+                            <option value="amarelo">amarelo</option>
+                            <option value="verde">Verde</option>
                         </select>
                         <button onclick="filtrarCategoria()" class="btn btn-primary" type="button" id="button-addon2">Filtrar</button>
                     </div>
