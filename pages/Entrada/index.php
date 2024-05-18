@@ -253,11 +253,10 @@ require '../../classes/Produto/produto.controller.php';
                                         <select class="form-select produto" name="produto[]"
                                             oninput="determinaValorUnitario(this)">
                                             <option value="" selected></option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
+                                            <?php foreach ($produtos as $produto) { ?>
+                                                <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?>
+                                                </option>
+                                            <?php } ?>
                                         </select>
                                         <label>Produto</label>
                                     </div>
@@ -330,11 +329,9 @@ require '../../classes/Produto/produto.controller.php';
                 <div class="form-floating">
                     <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)">
                         <option value="" selected></option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
+                        <?php foreach ($produtos as $produto) { ?>
+                                <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
+                        <?php } ?>
                     </select>
                     <label>Produto</label>
                 </div>
