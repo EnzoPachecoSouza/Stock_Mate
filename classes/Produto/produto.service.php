@@ -57,12 +57,41 @@ class ProdutoService
             $query = $this->getFilterQuery($filtrarProduto);
         } elseif (!empty($_GET['catFiltro'])) {
             $filtrarCategoria = $_GET['catFiltro'];
-            $query = "
-        SELECT *
-        FROM PRODUTOS
-        WHERE CATEGORIA_CAT_ID = '$filtrarCategoria'
-        ORDER BY PRO_STATUS DESC, PRO_NOME;
-        ";
+
+            if($filtrarCategoria == "vermelho"){
+                $query = "
+                SELECT *
+                FROM PRODUTOS
+                WHERE PRO_QUANTIDADE <= PRO_MINIMO AND 
+                PRO_STATUS = 1
+                ORDER BY PRO_STATUS DESC, PRO_NOME;
+                ";
+            }else if($filtrarCategoria == "amarelo"){
+                $query = "
+                SELECT *
+                FROM PRODUTOS
+                WHERE PRO_QUANTIDADE > PRO_MINIMO AND 
+                PRO_QUANTIDADE <= PRO_MINIMO * 2 AND 
+                PRO_STATUS = 1
+                ORDER BY PRO_STATUS DESC, PRO_NOME;
+                ";
+            }else if($filtrarCategoria == "verde"){
+                $query = "
+                SELECT *
+                FROM PRODUTOS
+                WHERE PRO_QUANTIDADE >= PRO_MINIMO * 2 AND 
+                PRO_STATUS = 1
+                ORDER BY PRO_STATUS DESC, PRO_NOME;
+                ";
+            }else{
+                $query = "
+                SELECT *
+                FROM PRODUTOS
+                WHERE CATEGORIA_CAT_ID = '$filtrarCategoria'
+                ORDER BY PRO_STATUS DESC, PRO_NOME;
+                ";
+            }
+            
         } else {
             $query = '
         SELECT PRO.*, CATE.CAT_CATEGORIA
@@ -105,6 +134,8 @@ class ProdutoService
                 return "SELECT * FROM PRODUTOS WHERE PRO_STATUS = 1 ORDER BY PRO_NOME ASC;";
             case 12:
                 return "SELECT * FROM PRODUTOS WHERE PRO_STATUS = 0 ORDER BY PRO_NOME ASC;";
+            case 13:
+                return "SELECT * FROM PRODUTOS ORDER BY PRO_STATUS DESC, PRO_ID ASC;";
         }
     }
 
