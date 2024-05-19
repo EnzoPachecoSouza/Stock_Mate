@@ -1,5 +1,4 @@
 <?php
-
 require "produto.model.php";
 require "produto.service.php";
 require "../../classes/conexao.php";
@@ -119,5 +118,4 @@ if ($acao == 'inserir') {
 
     //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi desativado
     header('Location: ../../pages/Estoque/index.php?act=ativar');
-
 }

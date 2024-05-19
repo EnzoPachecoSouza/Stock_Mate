@@ -2,7 +2,6 @@
 //CLASSE DO PRODUTO
 class Produto
 {
-
     private $codigo;
     private $nome;
     private $material;

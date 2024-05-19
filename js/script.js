@@ -51,3 +51,8 @@ function filtrarDados(valor) {
 function filtrarCategoria() {
     window.location = 'index.php?catFiltro=' + catFiltro.value;
 }
+
+
+function filtrarCores() {
+    window.location = 'index.php?filCor=' + filCor.value;
+}

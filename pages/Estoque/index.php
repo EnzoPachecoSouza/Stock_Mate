@@ -116,6 +116,18 @@ require '../../classes/Categoria/categoria.controller.php';
                         <button onclick="filtrarDados(13)" class="btn btn-primary" type="button" id="button-addon2">Apagar filtros</button>
                 </div>
 
+                <div class="form-floating d-flex">
+                    <div class="input-group">
+                        <select class="form-select shadow-none" id="filCor" name="filCor">
+                            <option disabled selected>Quantidade</option>
+                            <option value="verde">Máxima</option>
+                            <option value="amarelo">Média</option>
+                            <option value="vermelho">Mínima</option>
+                        </select>
+                        <button onclick="filtrarCores()" class="btn btn-primary" type="button" id="button-addon2">Filtrar</button>
+                    </div>
+                </div>
+
 
                 <div class="form-floating d-flex">
                     <div class="input-group">
@@ -126,9 +138,6 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <?= $categoria->CAT_CATEGORIA ?>
                             </option>
                             <?php } ?>
-                            <option value="vermelho">Vermelho</option>
-                            <option value="amarelo">Amarelo</option>
-                            <option value="verde">Verde</option>
                         </select>
                         <button onclick="filtrarCategoria()" class="btn btn-primary" type="button" id="button-addon2">Filtrar</button>
                     </div>

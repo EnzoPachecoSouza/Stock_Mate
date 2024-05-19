@@ -52,13 +52,25 @@ class ProdutoService
         OR PRO_DETALHES LIKE '%$pesquisaProduto%'
         ORDER BY PRO_STATUS DESC, PRO_NOME
         ";
+
         } elseif (!empty($_GET['filter'])) {
             $filtrarProduto = $_GET['filter'];
             $query = $this->getFilterQuery($filtrarProduto);
+
         } elseif (!empty($_GET['catFiltro'])) {
             $filtrarCategoria = $_GET['catFiltro'];
+        
+                $query = "
+                SELECT *
+                FROM PRODUTOS
+                WHERE CATEGORIA_CAT_ID = '$filtrarCategoria'
+                ORDER BY PRO_STATUS DESC, PRO_NOME;
+                ";
+            
+        }elseif (!empty($_GET['filCor'])) {
+            $filtrarCores = $_GET['filCor'];
 
-            if($filtrarCategoria == "vermelho"){
+            if($filtrarCores == "vermelho"){
                 $query = "
                 SELECT *
                 FROM PRODUTOS
@@ -66,7 +78,7 @@ class ProdutoService
                 PRO_STATUS = 1
                 ORDER BY PRO_STATUS DESC, PRO_NOME;
                 ";
-            }else if($filtrarCategoria == "amarelo"){
+            }else if($filtrarCores == "amarelo"){
                 $query = "
                 SELECT *
                 FROM PRODUTOS
@@ -75,7 +87,7 @@ class ProdutoService
                 PRO_STATUS = 1
                 ORDER BY PRO_STATUS DESC, PRO_NOME;
                 ";
-            }else if($filtrarCategoria == "verde"){
+            }else if($filtrarCores == "verde"){
                 $query = "
                 SELECT *
                 FROM PRODUTOS
@@ -83,15 +95,8 @@ class ProdutoService
                 PRO_STATUS = 1
                 ORDER BY PRO_STATUS DESC, PRO_NOME;
                 ";
-            }else{
-                $query = "
-                SELECT *
-                FROM PRODUTOS
-                WHERE CATEGORIA_CAT_ID = '$filtrarCategoria'
-                ORDER BY PRO_STATUS DESC, PRO_NOME;
-                ";
-            }
-            
+            } 
+               
         } else {
             $query = '
         SELECT PRO.*, CATE.CAT_CATEGORIA
