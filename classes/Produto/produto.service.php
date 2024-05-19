@@ -91,7 +91,7 @@ class ProdutoService
                 $query = "
                 SELECT *
                 FROM PRODUTOS
-                WHERE PRO_QUANTIDADE >= PRO_MINIMO * 2 AND 
+                WHERE PRO_QUANTIDADE > PRO_MINIMO * 2 AND 
                 PRO_STATUS = 1
                 ORDER BY PRO_STATUS DESC, PRO_NOME;
                 ";
