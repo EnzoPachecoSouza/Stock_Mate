@@ -194,8 +194,7 @@ require '../../classes/Cliente/cliente.controller.php';
                                     <select class="form-select" id="cliente" name="cliente">
                                         <option selected></option>
                                         <?php foreach ($clientes as $indice => $cliente) { ?>
-                                            <option value="<?= $cliente->CLI_ID ?>"><?= $cliente->CLI_NOME ?>
-                                            </option>
+                                            <option value="<?= $cliente->CLI_ID ?>"><?= $cliente->CLI_NOME ?></option>
                                         <?php } ?>
                                     </select>
                                     <label for="cliente">Cliente</label>
@@ -208,8 +207,8 @@ require '../../classes/Cliente/cliente.controller.php';
                                 <div class="input-group">
                                     <span class="input-group-text fw-bold">R$</span>
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="valorTotal" name="valorTotal"
-                                            placeholder="Valor total">
+                                        <input class="form-control form-disabled" type="text" id="valorTotal"
+                                            name="valorTotal" placeholder="Valor total" readonly>
                                         <label for="valorTotal">Valor total</label>
                                     </div>
                                 </div>
@@ -218,7 +217,7 @@ require '../../classes/Cliente/cliente.controller.php';
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <select class="form-select" id="formaPagamento" name="formaPagamento">
-                                        <option selected></option>
+                                        <option selected value=""></option>
                                         <option value="Cartão de crédito">Cartão de Crédito</option>
                                         <option value="Cartão de Débito">Cartão de Débito</option>
                                         <option value="Transferência Bancária">Transferência Bancária</option>
@@ -230,12 +229,12 @@ require '../../classes/Cliente/cliente.controller.php';
                             </div>
                         </div>
 
-                        <div class="row mb-5">
+                        <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="date" id="dataVenda" name="dataVenda"
-                                        placeholder="Data de venda">
-                                    <label for="dataVenda">Data de venda</label>
+                                    <input class="form-control" type="date" id="dataCompra" name="dataCompra"
+                                        placeholder="Data de compra">
+                                    <label for="dataCompra">Data de compra</label>
                                 </div>
                             </div>
 
@@ -248,6 +247,49 @@ require '../../classes/Cliente/cliente.controller.php';
                             </div>
                         </div>
 
+                        <div id="products" class="mt-3">
+                            <div class="row mb-2 product-item">
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <select class="form-select produto" name="produto[]"
+                                            oninput="determinaValorUnitario(this)">
+                                            <option value="" selected></option>
+                                            <?php foreach ($produtos as $produto) { ?>
+                                                <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?>
+                                                </option>
+                                            <?php } ?>
+                                        </select>
+                                        <label>Produto</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input class="form-control quantidade" type="number" name="quantidade[]"
+                                            placeholder="Quantidade" oninput="atualizaValorTotal()">
+                                        <label>Quantidade</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="form-floating">
+                                        <input class="form-control valorUnitario" type="number" name="valorUnitario[]"
+                                            placeholder="Valor unitário" readonly>
+                                        <label>Valor Unitário</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row my-3">
+                            <div class="d-flex justify-content-end">
+                                <button type="button" class="btn btn-primary bg-primary"
+                                    onclick="createNewProductForm()">
+                                    Adicionar produto
+                                </button>
+                            </div>
+                        </div>
+
                         <div class="d-flex justify-content-center align-items-center">
                             <button class="btn btn-outline-primary">Registrar Saída</button>
                         </div>
@@ -256,46 +298,95 @@ require '../../classes/Cliente/cliente.controller.php';
             </div>
         </div>
     </div>
-    <!----------------------->
 
-    <!-- EDITAR SAÍDA -->
-    <?php foreach ($saidas as $indice => $saida) { ?>
-        <div class="modal fade" id="editarSaidaModal<?= $indice ?>" tabindex="-1"
-            aria-labelledby="editarSaidaModalLabel<?= $indice ?>" aria-hidden="true">
+    <script>
+        function determinaValorUnitario(selectElement) {
+            const valorUnitarioInput = selectElement.closest('.product-item').querySelector('.valorUnitario')
+            valorUnitarioInput.value = selectElement.value
+            atualizaValorTotal()
+        }
+
+        function atualizaValorTotal() {
+            const productItems = document.querySelectorAll('.product-item')
+            let valorTotal = 0
+
+            productItems.forEach(item => {
+                const quantidade = item.querySelector('.quantidade').value || 0
+                const valorUnitario = item.querySelector('.valorUnitario').value || 0
+                valorTotal += quantidade * valorUnitario;
+            });
+
+            document.querySelector('#valorTotal').value = valorTotal.toFixed(2);
+        }
+
+        function createNewProductForm() {
+            const products = document.querySelector('#products');
+
+            const row = document.createElement('div');
+            row.classList.add('row', 'mb-2', 'product-item');
+
+            row.innerHTML = `
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)">
+                        <option value="" selected></option>
+                        <?php foreach ($produtos as $produto) { ?>
+                            <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
+                        <?php } ?>
+                    </select>
+                    <label>Produto</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <input class="form-control quantidade" type="number" name="quantidade[]" placeholder="Quantidade" oninput="atualizaValorTotal()">
+                    <label>Quantidade</label>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-floating">
+                    <input class="form-control valorUnitario" type="number" name="valorUnitario[]" placeholder="Valor unitário" readonly>
+                    <label>Valor Unitário</label>
+                </div>
+            </div>
+        `;
+
+            products.appendChild(row);
+        }
+    </script>
+    <!-------------------->
+
+    <!-- EDITAR ENTRADA -->
+    <?php foreach ($entradas as $indice => $entrada) { ?>
+        <div class="modal fade" id="editarEntradaModal<?= $indice ?>" tabindex="-1"
+            aria-labelledby="editarEntradaModalLabel<?= $indice ?>" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="editarSaidaModalLabel<?= $indice ?>">Editar Saída</h1>
+                        <h1 class="modal-title fs-5" id="editarEntradaModalLabel<?= $indice ?>">Editar Entrada</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form class="container" method="post"
-                            action="../../classes/Saida/saida.controller.php?acao=editar&id=<?= $saida->SAIDA_ID ?>">
+                            action="../../classes/Entrada/entrada.controller.php?acao=editar&id=<?= $entrada->ENT_ID ?>">
                             <div class="row align-items-center mb-4">
-                                <div class="col-md-10">
+                                <div class="col-md-12">
                                     <div class="form-floating">
-                                        <select class="form-select" id="cliente" name="cliente">
-                                            <?php foreach ($clientes as $cliente_item) { ?>
-                                                <?php if ($cliente_item->CLI_ID == $saida->CLIENTE_CLI_ID) { ?>
-                                                    <option value="<?= $cliente_item->CLI_ID ?>" selected>
-                                                        <?= $cliente_item->CLI_NOME ?>
+                                        <select class="form-select" id="fornecedor" name="fornecedor">
+                                            <?php foreach ($fornecedores as $fornecedor) { ?>
+                                                <?php if ($fornecedor->FOR_ID == $entrada->FORNECEDORES_FOR_ID) { ?>
+                                                    <option value="<?= $fornecedor->FOR_ID ?>" selected>
+                                                        <?= $fornecedor->FOR_NOME ?>
                                                     </option>
                                                 <?php } else { ?>
-                                                    <option value="<?= $cliente_item->CLI_ID ?>">
-                                                        <?= $cliente_item->CLI_NOME ?>
+                                                    <option value="<?= $fornecedor->FOR_ID ?>">
+                                                        <?= $fornecedor->FOR_NOME ?>
                                                     </option>
                                                 <?php } ?>
                                             <?php } ?>
                                         </select>
-                                        <label for="cliente">Cliente</label>
+                                        <label for="fornecedor">Fornecedor</label>
                                     </div>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <button class="btn btn-primary" type="button" class="btn btn-primary rounded-circle"
-                                        data-bs-toggle="modal" data-bs-target="#cadastrarProdutoModal">
-                                        <i class="bi bi-plus-lg fs-5"></i>
-                                    </button>
                                 </div>
                             </div>
 
@@ -304,8 +395,9 @@ require '../../classes/Cliente/cliente.controller.php';
                                     <div class="input-group">
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
-                                            <input class="form-control" value="<?= $saida->SAIDA_VALOR_TOTAL ?>"
-                                                type="number" id="valorTotal" name="valorTotal" placeholder="Valor total">
+                                            <input class="form-control" value="<?= $entrada->ENT_VALOR_TOTAL ?>"
+                                                type="number" id="valorTotal" name="valorTotal" placeholder="Valor total"
+                                                readonly>
                                             <label for="valorTotal">Valor total</label>
                                         </div>
                                     </div>
@@ -314,8 +406,8 @@ require '../../classes/Cliente/cliente.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <select class="form-select" id="formaPagamento" name="formaPagamento">
-                                            <option selected value="<?= $saida->SAIDA_FORMA_PAGAMENTO ?>">
-                                                <?= $saida->SAIDA_FORMA_PAGAMENTO ?>
+                                            <option selected value="<?= $entrada->ENT_FORMA_PAGAMENTO ?>">
+                                                <?= $entrada->ENT_FORMA_PAGAMENTO ?>
                                             </option>
                                             <option value="Cartão de crédito">Cartão de Crédito</option>
                                             <option value="Cartão de Débito">Cartão de Débito</option>
@@ -331,15 +423,15 @@ require '../../classes/Cliente/cliente.controller.php';
                             <div class="row mb-5">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" value="<?= $saida->SAIDA_DATA_VENDA ?>" type="date"
-                                            id="dataVenda" name="dataVenda" placeholder="Data de venda">
-                                        <label for="dataVenda">Data de venda</label>
+                                        <input class="form-control" value="<?= $entrada->ENT_DATA_COMPRA ?>" type="date"
+                                            id="dataCompra" name="dataCompra" placeholder="Data de compra">
+                                        <label for="dataCompra">Data de compra</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" value="<?= $saida->SAIDA_DATA_PAGAMENTO ?>" type="date"
+                                        <input class="form-control" value="<?= $entrada->ENT_DATA_PAGAMENTO ?>" type="date"
                                             id="dataPagamento" name="dataPagamento" placeholder="Data de pagamento">
                                         <label for="dataPagamento">Data de pagamento</label>
                                     </div>
@@ -347,7 +439,7 @@ require '../../classes/Cliente/cliente.controller.php';
                             </div>
 
                             <div class="d-flex justify-content-center align-items-center">
-                                <button class="btn btn-outline-primary">Editar Saída</button>
+                                <button class="btn btn-outline-primary">Editar Entrada</button>
                             </div>
                         </form>
                     </div>
