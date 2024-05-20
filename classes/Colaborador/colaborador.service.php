@@ -16,8 +16,8 @@ class ColaboradorService
     {
         $query = '
         INSERT INTO
-        COLABORADORES (COL_NOME, COL_EMAIL, COL_CONTATO, COL_CPF)
-        VALUES (:colaborador, :email, :contato, :cpf)
+        COLABORADORES (COL_NOME, COL_EMAIL, COL_CONTATO, COL_CPF, COL_CARGO)
+        VALUES (:colaborador, :email, :contato, :cpf, :cargo)
         ';
 
         $stmt = $this->conexao->prepare($query);
@@ -26,6 +26,7 @@ class ColaboradorService
         $stmt->bindValue(':email', $this->colaborador->__get('email'));
         $stmt->bindValue(':contato', $this->colaborador->__get('contato'));
         $stmt->bindValue(':cpf', $this->colaborador->__get('cpf'));
+        $stmt->bindValue(':cargo', $this->colaborador->__get('cargo'));
 
         $stmt->execute();
     }
@@ -44,7 +45,7 @@ class ColaboradorService
         OR COL_CPF LIKE '%$pesquisaColaborador%'
         ORDER BY COL_NOME
         ";
-        }else if (!empty($_GET['filter'])) {
+        } else if (!empty($_GET['filter'])) {
             $filtrarColaborador = $_GET['filter'];
             $query = $this->getFilterQuery($filtrarColaborador);
         } else {
@@ -78,6 +79,10 @@ class ColaboradorService
                 return "SELECT * FROM COLABORADORES ORDER BY COL_CPF ASC;";
             case 8:
                 return "SELECT * FROM COLABORADORES ORDER BY COL_CPF DESC;";
+            case 9:
+                return "SELECT * FROM COLABORADORES ORDER BY COL_CARGO DESC;";
+            case 10:
+                return "SELECT * FROM COLABORADORES ORDER BY COL_CARGO ASC;";
         }
     }
 
@@ -88,7 +93,8 @@ class ColaboradorService
         SET COL_NOME = :colaborador,
             COL_EMAIL = :email,
             COL_CONTATO = :contato,
-            COL_CPF = :cpf
+            COL_CPF = :cpf,
+            COL_CARGO = :cargo
         WHERE COL_ID = :id
         ';
 
@@ -98,6 +104,7 @@ class ColaboradorService
         $stmt->bindValue(':email', $this->colaborador->__get('email'));
         $stmt->bindValue(':contato', $this->colaborador->__get('contato'));
         $stmt->bindValue(':cpf', $this->colaborador->__get('cpf'));
+        $stmt->bindValue(':cargo', $this->colaborador->__get('cargo'));
         $stmt->bindValue(':id', $id);
 
         $stmt->execute();

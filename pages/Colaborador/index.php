@@ -171,6 +171,17 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                 CPF
                             </div>
                         </th>
+                        <th scope="col">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="d-flex flex-column">
+                                    <i onclick="filtrarDados(9)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(10)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-down"></i>
+                                </div>
+                                Cargo
+                            </div>
+                        </th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -196,6 +207,10 @@ require '../../classes/Colaborador/colaborador.controller.php';
 
                             <td>
                                 <?= $colaborador->COL_CPF ?>
+                            </td>
+
+                            <td>
+                                <?= $colaborador->COL_CARGO ?>
                             </td>
 
 
@@ -264,6 +279,18 @@ require '../../classes/Colaborador/colaborador.controller.php';
                             </div>
                         </div>
 
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <select class="form-select shadow-none" id="cargo" name="cargo">
+                                        <option disabled selected>Cargo</option>
+                                        <option value="Gerente">Gerente</option>
+                                        <option value="Funcionário">Funcionário</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="d-flex justify-content-center align-items-center">
                             <button class="btn btn-outline-primary">Registrar Colaborador</button>
                         </div>
@@ -323,6 +350,19 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                         <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF"
                                             value="<?= $colaborador->COL_CPF ?>">
                                         <label for="cpf">CPF</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                                <div class="col-md-12">
+                                    <div class="form-floating">
+                                        <select class="form-select shadow-none" id="cargo" name="cargo">
+                                            <option disabled selected>Cargo</option>
+                                            <option value="Gerente">Gerente</option>
+                                            <option value="Funcionário">Funcionário</option>
+                                        </select>
+                                        <label for="categoria">Cargo</label>
                                     </div>
                                 </div>
                             </div>
