@@ -59,7 +59,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
                 <div class="col-9">
                     <ul class="nav justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link text-white nav-font selected" href="">Estoque</a>
+                            <a class="nav-link text-white nav-font" href="../estoque">Estoque</a>
                         </li>
 
                         <li class="nav-item">
@@ -78,10 +78,10 @@ require '../../classes/Colaborador/colaborador.controller.php';
                             <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
                         </li>
 
-                        <div class="nav-item bg-white rounded-5" style="width: 2px"></div>
+                        <div class="nav-item bg-white rounded-5 me-2" style="width: 2px"></div>
 
                         <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="#">Colaboradores</a>
+                            <a class="nav-link text-white nav-font selected" href="">Colaboradores</a>
                         </li>
 
                         <li class="nav-item">
