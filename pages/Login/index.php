@@ -38,8 +38,17 @@
 </head>
 
 <body class="bg-primary d-flex justify-content-center align-items-center" style="height: 100vh;">
-    <div class="d-flex flex-column justify-content-center align-items-center bg-white">
+    <div class="d-flex flex-column justify-content-center align-items-center bg-white rounded-3 p-4">
         <h1>Login</h1>
+
+        <div class="form-floating">
+            <input type="email" class="form-control form-control-lg shadow-none" id="floatingInput" placeholder="name@example.com">
+            <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+            <input type="password" class="form-control form-control-lg shadow-none" id="floatingPassword" placeholder="Password">
+            <label for="floatingPassword">Password</label>
+        </div>
     </div>
 
     <!-- Bootstrap JS -->
