@@ -7,7 +7,7 @@ require "../../classes/conexao.php";
 //recebe a ação através do action do form
 $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 
-if ($acao == 'inserir') {
+if ($acao == 'inserir' || $acao == 'inserir-from-entrada') {
     $fornecedor = new Fornecedor();
 
     $fornecedor->__set('fornecedor', $_POST['fornecedor']);
@@ -20,7 +20,11 @@ if ($acao == 'inserir') {
     $fornecedorService = new FornecedorService($conexao, $fornecedor);
     $fornecedorService->inserir();
 
-    header('Location: ../../pages/Fornecedor/index.php?act=inserir');
+    if ($acao == 'inserir') {
+        header('Location: ../../pages/Fornecedor/index.php?act=inserir');
+    } else if($acao == 'inserir-from-entrada'){
+        header('Location: ../../pages/Entrada/index.php?act=inserir-fornecedor');
+    }
 } else if ($acao == 'recuperar') {
     //instancia o objeto do produto.model.php
     $fornecedor = new Fornecedor();
@@ -32,7 +36,7 @@ if ($acao == 'inserir') {
     $fornecedorService = new FornecedorService($conexao, $fornecedor);
     //ação a ser executa no produto.service.php que faz a requisição para o BD
     $fornecedores = $fornecedorService->recuperar();
-}else if ($acao == 'editar') {
+} else if ($acao == 'editar') {
     $id = isset($_GET['id']) ? $_GET['id'] : $id;
     $fornecedor = new Fornecedor();
 

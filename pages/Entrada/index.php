@@ -331,7 +331,7 @@ require '../../classes/Produto/produto.controller.php';
                     <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)">
                         <option value="" selected></option>
                         <?php foreach ($produtos as $produto) { ?>
-                                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
+                                                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
                         <?php } ?>
                     </select>
                     <label>Produto</label>
@@ -460,7 +460,7 @@ require '../../classes/Produto/produto.controller.php';
                 </div>
                 <div class="modal-body">
                     <form class="container" method="post"
-                        action="../../classes/Fornecedor/fornecedor.controller.php?acao=inserir">
+                        action="../../classes/Fornecedor/fornecedor.controller.php?acao=inserir-from-entrada">
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="form-floating">
@@ -528,6 +528,15 @@ require '../../classes/Produto/produto.controller.php';
                     <div class="toast-body fs-6">
                         <strong>Entrada editada com sucesso!</strong>
                     </div>
+            <?php } else if ($toastAcao == 'inserir-fornecedor') { ?>
+                        <div class="toast-header fs-5">
+                            <i class="bi bi-square-fill text-success"></i>
+                            <strong class="me-auto ms-3">Inserir</strong>
+                            <button type="button" class="btn-close" onclick="closeToast()"></button>
+                        </div>
+                        <div class="toast-body fs-6">
+                            <strong>Fornecedor registrado com sucesso!</strong>
+                        </div>
             <?php } ?>
         </div>
     </div>
@@ -535,8 +544,8 @@ require '../../classes/Produto/produto.controller.php';
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script
-
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        
     <!-- Script -->
     <script src="../../js/script.js"></script>
 </body>
