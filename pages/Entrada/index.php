@@ -61,26 +61,29 @@ require '../../classes/Produto/produto.controller.php';
                 <div class="col-9">
                     <ul class="nav justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+                            <a class="nav-link text-white nav-font selected" href="">Estoque</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../saida">Saída</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
                         </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+                        </li>
+
+                        <div class="nav-item bg-white rounded-5" style="width: 2px"></div>
+
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="#">Colaboradores</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../estoque">Estoque</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font selected" href="">Entrada</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../saida">Saída</a>
                         </li>
 
                         <li class="nav-item">
@@ -331,7 +334,7 @@ require '../../classes/Produto/produto.controller.php';
                     <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)">
                         <option value="" selected></option>
                         <?php foreach ($produtos as $produto) { ?>
-                                                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
+                                                                            <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
                         <?php } ?>
                     </select>
                     <label>Produto</label>
@@ -544,8 +547,9 @@ require '../../classes/Produto/produto.controller.php';
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
     <!-- Script -->
     <script src="../../js/script.js"></script>
 </body>

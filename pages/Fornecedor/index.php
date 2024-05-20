@@ -59,19 +59,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                 <div class="col-9">
                     <ul class="nav justify-content-center">
                         <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../Cliente">Clientes</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font selected" href="#">Fornecedores</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="#">Colaboradores</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../estoque">Estoque</a>
+                            <a class="nav-link text-white nav-font selected" href="">Estoque</a>
                         </li>
 
                         <li class="nav-item">
@@ -80,6 +68,20 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
 
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="../saida">Saída</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+                        </li>
+
+                        <div class="nav-item bg-white rounded-5" style="width: 2px"></div>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="#">Colaboradores</a>
                         </li>
 
                         <li class="nav-item">
