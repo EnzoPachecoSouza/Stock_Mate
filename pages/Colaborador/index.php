@@ -77,9 +77,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
                         </li>
-
-                        <div class="nav-item bg-white rounded-5 me-2" style="width: 2px"></div>
-
+                        
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font selected" href="">Colaboradores</a>
                         </li>
