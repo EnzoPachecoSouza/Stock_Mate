@@ -31,23 +31,43 @@
     <link rel="stylesheet" href="../../styles/custom.css">
 
     <!-- Style -->
-    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./style.css">
 
     <!-- Global CSS -->
     <link rel="stylesheet" href="../../styles/global.css">
 </head>
 
 <body class="bg-primary d-flex justify-content-center align-items-center" style="height: 100vh;">
-    <div class="d-flex flex-column justify-content-center align-items-center bg-white rounded-3 p-4">
-        <h1>Login</h1>
-
-        <div class="form-floating">
-            <input type="email" class="form-control form-control-lg shadow-none" id="floatingInput" placeholder="name@example.com">
-            <label for="floatingInput">Email address</label>
+    <div class="login-box d-flex flex-column justify-content-center align-items-center bg-white rounded-3">
+        <div class="px-4 pt-4 pb-2">
+            <h1 class="h2">Login</h1>
         </div>
-        <div class="form-floating">
-            <input type="password" class="form-control form-control-lg shadow-none" id="floatingPassword" placeholder="Password">
-            <label for="floatingPassword">Password</label>
+
+        <div class="bg-primary" style="width: 100%; height: 2px"></div>
+
+        <div class="p-4">
+            <div class="form-floating mb-4">
+                <input type="email" class="form-control form-control-lg shadow-none" id="floatingInput"
+                    placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+            </div>
+
+            <div class="form-floating mb-2">
+                <input type="password" class="form-control form-control-lg shadow-none" id="floatingPassword"
+                    placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+
+            <div class="form-check align-self-start mb-5">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Lembrar de mim
+                </label>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center">
+                <button class="btn px-4 btn-primary">Entrar</button>
+            </div>
         </div>
     </div>
 
