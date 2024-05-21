@@ -1,5 +1,5 @@
 <?php
-include('../Login/session_check.php');
+include ('../Login/session_check.php');
 
 $acao = 'recuperar';
 
@@ -82,13 +82,16 @@ require '../../classes/Produto/produto.controller.php';
                             <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="#">Relatórios</a>
-                        </li>
+                        <?php
+                        // Verificar o cargo do usuário para exibir ou ocultar itens do menu
+                        if ($_SESSION['cargo'] === 'Gerente') { ?>
+                            <li class="nav-item">
+                                <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white nav-font" href="#">Relatórios</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <!------->
@@ -158,7 +161,8 @@ require '../../classes/Produto/produto.controller.php';
                             <?= date("d/m/Y", strtotime($saida->SAIDA_DATA_PAGAMENTO)) ?>
                         </td>
                         <td>
-                            R$ <?= number_format($saida->SAIDA_VALOR_TOTAL, 2, ',', '.') ?>
+                            R$
+                            <?= number_format($saida->SAIDA_VALOR_TOTAL, 2, ',', '.') ?>
                         </td>
                         <td>
                             <?= $saida->SAIDA_FORMA_PAGAMENTO ?>
@@ -334,7 +338,7 @@ require '../../classes/Produto/produto.controller.php';
                     <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)">
                         <option value="" selected></option>
                         <?php foreach ($produtos as $produto) { ?>
-                                <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
+                                    <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
                         <?php } ?>
                     </select>
                     <label>Produto</label>

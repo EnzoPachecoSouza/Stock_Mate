@@ -1,5 +1,5 @@
 <?php
-include('../Login/session_check.php');
+include ('../Login/session_check.php');
 
 $acao = 'recuperar';
 
@@ -80,13 +80,16 @@ require '../../classes/Cliente/cliente.controller.php';
                             <a class="nav-link text-white nav-font selected" href="">Clientes</a>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="#">Relatórios</a>
-                        </li>
+                        <?php
+                        // Verificar o cargo do usuário para exibir ou ocultar itens do menu
+                        if ($_SESSION['cargo'] === 'Gerente') { ?>
+                            <li class="nav-item">
+                                <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white nav-font" href="#">Relatórios</a>
+                            </li>
+                        <?php } ?>
                     </ul>
                 </div>
                 <!------->
