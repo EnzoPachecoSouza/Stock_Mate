@@ -117,7 +117,7 @@ require '../../classes/Categoria/categoria.controller.php';
 
             <div class="d-flex gap-5">
                 <div class="form-floating d-flex">
-                        <button onclick="filtrarDados(13)" class="btn btn-primary" type="button" id="button-addon2">Apagar filtros</button>
+                        <button onclick="filtrarDados(13)" class="btn btn-primary" type="button" id="button-addon2">Limpar filtros</button>
                 </div>
 
                 <div class="form-floating d-flex">
@@ -256,7 +256,7 @@ require '../../classes/Categoria/categoria.controller.php';
 
                             <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
                             <?php if($produto->PRO_STATUS == 0) { ?>
-                                    <td class="bg-dark">
+                                    <td style="background-color: #505050">
                             <?php } else if ($produto->PRO_QUANTIDADE <= $produto->PRO_MINIMO) { ?>
                                 <td class="bg-danger">
                                 <?php } else if ($produto->PRO_QUANTIDADE <= ($produto->PRO_MINIMO * 2)) { ?>

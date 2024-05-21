@@ -135,7 +135,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
         </div>
 
 
-        <div class="mt-3 ps-1" style="height: 70vh; overflow: auto;">
+        <div class="ps-1 mt-3" style="height: 70vh; overflow: auto;">
             <table class="table table-hover">
                 <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
                 <thead class="table-dark">
