@@ -1,4 +1,6 @@
 <?php
+//VERIFICAÇÃO DE SENHA E EMAIL
+
 session_start();
 
 if (!class_exists('Conexao')) {
