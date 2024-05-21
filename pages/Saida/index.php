@@ -130,8 +130,8 @@ require '../../classes/Produto/produto.controller.php';
             </div>
         </div>
 
-        <div class="ps-1" style="height: 70vh; overflow: auto;">
-            <table class="table table-hover mt-3">
+        <div class="ps-1 mt-3" style="height: 70vh; overflow: auto;">
+            <table class="table table-hover">
                 <thead class="table-dark">
                     <tr>
                         <th scope="col">Cliente</th>
