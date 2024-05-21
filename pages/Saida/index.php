@@ -155,7 +155,7 @@ require '../../classes/Cliente/cliente.controller.php';
                             <?= date("d/m/Y", strtotime($saida->SAIDA_DATA_PAGAMENTO)) ?>
                         </td>
                         <td>
-                            <?= number_format($saida->SAIDA_VALOR_TOTAL, 2, ',', '.') ?>
+                            R$ <?= number_format($saida->SAIDA_VALOR_TOTAL, 2, ',', '.') ?>
                         </td>
                         <td>
                             <?= $saida->SAIDA_FORMA_PAGAMENTO ?>

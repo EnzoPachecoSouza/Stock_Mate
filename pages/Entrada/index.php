@@ -156,7 +156,7 @@ require '../../classes/Produto/produto.controller.php';
                             <?= date("d/m/Y", strtotime($entrada->ENT_DATA_PAGAMENTO)) ?>
                         </td>
                         <td>
-                            <?= number_format($entrada->ENT_VALOR_TOTAL, 2, ',', '.') ?>
+                            R$ <?= number_format($entrada->ENT_VALOR_TOTAL, 2, ',', '.') ?>
                         </td>
                         <td>
                             <?= $entrada->ENT_FORMA_PAGAMENTO ?>
@@ -332,7 +332,7 @@ require '../../classes/Produto/produto.controller.php';
                     <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)">
                         <option value="" selected></option>
                         <?php foreach ($produtos as $produto) { ?>
-                                                                                <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
+                        <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
                         <?php } ?>
                     </select>
                     <label>Produto</label>
