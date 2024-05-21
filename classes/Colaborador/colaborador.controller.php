@@ -13,6 +13,7 @@ if ($acao == 'inserir') {
     $colaborador->__set('email', $_POST['email']);
     $colaborador->__set('contato', $_POST['contato']);
     $colaborador->__set('cpf', $_POST['cpf']);
+    $colaborador->__set('cargo', $_POST['cargo']);
 
     $conexao = new Conexao();
 
@@ -35,6 +36,7 @@ if ($acao == 'inserir') {
     $colaborador->__set('email', $_POST['email']);
     $colaborador->__set('contato', $_POST['contato']);
     $colaborador->__set('cpf', $_POST['cpf']);
+    $colaborador->__set('cargo', $_POST['cargo']);
 
     $conexao = new Conexao();
     $colaboradorService = new ColaboradorService($conexao, $colaborador);

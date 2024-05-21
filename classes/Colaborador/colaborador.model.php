@@ -9,6 +9,7 @@ class Colaborador
     private $contato;
     private $cpf;
     private $senha;
+    private $cargo;
 
     public function __set($atributo, $valor)
     {
