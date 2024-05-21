@@ -92,7 +92,7 @@ require '../../classes/Cliente/cliente.controller.php';
 
                 <!-- SAIR -->
                 <div class="col-1 text-end">
-                    <button class="btn btn-lg text-secondary nav-font">Sair</button>
+                    <a href="../logoff.php" class="btn btn-lg text-secondary nav-font">Sair</a>
                 </div>
                 <!------->
             </div>
@@ -331,7 +331,7 @@ require '../../classes/Cliente/cliente.controller.php';
                     <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)">
                         <option value="" selected></option>
                         <?php foreach ($produtos as $produto) { ?>
-                            <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
+                                <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
                         <?php } ?>
                     </select>
                     <label>Produto</label>

@@ -1,4 +1,8 @@
 <?php
+session_start();
+// Verifica se o usuário está logado e obtém o cargo do usuário
+$cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
+
 $acao = 'recuperar';
 
 require '../../classes/Produto/produto.controller.php';
@@ -57,42 +61,41 @@ require '../../classes/Categoria/categoria.controller.php';
                 <!------->
 
                 <!-- NAVIGATION -->
-                <div class="col-9">
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font selected" href="">Estoque</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
-                        </li>
-    
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../saida">Saída</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
-                        </li>
-                        
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
-                        </li>
+<div class="col-9">
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+            <a class="nav-link text-white nav-font selected" href="">Estoque</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white nav-font" href="../saida">Saída</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+        </li>
+        <?php
+        // Verificar o cargo do usuário para exibir ou ocultar itens do menu
+        if ($_SESSION['cargo'] === 'Gerente') { ?>
+            <li class="nav-item">
+                <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white nav-font" href="#">Relatórios</a>
+            </li>
+        <?php } ?>
+    </ul>
+</div>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
-                        </li> 
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="#">Relatórios</a>
-                        </li>
-                    </ul>
-                </div>
                 <!------->
 
                 <!-- SAIR -->
                 <div class="col-1 text-end">
-                    <button class="btn btn-lg text-secondary nav-font">Sair</button>
+                    <a href="../logoff.php" class="btn btn-lg text-secondary nav-font">Sair</a>
                 </div>
                 <!------->
             </div>

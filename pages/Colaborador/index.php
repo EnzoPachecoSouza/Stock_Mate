@@ -77,7 +77,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font selected" href="">Colaboradores</a>
                         </li>
@@ -91,7 +91,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
 
                 <!-- SAIR -->
                 <div class="col-1 text-end">
-                    <button class="btn btn-lg text-secondary nav-font">Sair</button>
+                    <a href="../logoff.php" class="btn btn-lg text-secondary nav-font">Sair</a>
                 </div>
                 <!------->
             </div>
