@@ -3,6 +3,7 @@ $acao = 'recuperar';
 
 require '../../classes/Saida/saida.controller.php';
 require '../../classes/Cliente/cliente.controller.php';
+require '../../classes/Produto/produto.controller.php';
 ?>
 
 <!DOCTYPE html>
@@ -232,9 +233,9 @@ require '../../classes/Cliente/cliente.controller.php';
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="date" id="dataCompra" name="dataCompra"
-                                        placeholder="Data de compra">
-                                    <label for="dataCompra">Data de compra</label>
+                                    <input class="form-control" type="date" id="dataVenda" name="dataVenda"
+                                        placeholder="Data de venda">
+                                    <label for="dataVenda">Data de venda</label>
                                 </div>
                             </div>
 
