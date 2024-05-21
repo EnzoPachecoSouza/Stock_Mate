@@ -1,4 +1,6 @@
 <?php
+include('../Login/session_check.php');
+
 $acao = 'recuperar';
 
 require '../../classes/Fornecedor/fornecedor.controller.php';
