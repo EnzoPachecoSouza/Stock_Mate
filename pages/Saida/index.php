@@ -356,36 +356,36 @@ require '../../classes/Cliente/cliente.controller.php';
     </script>
     <!-------------------->
 
-    <!-- EDITAR ENTRADA -->
-    <?php foreach ($entradas as $indice => $entrada) { ?>
-        <div class="modal fade" id="editarEntradaModal<?= $indice ?>" tabindex="-1"
-            aria-labelledby="editarEntradaModalLabel<?= $indice ?>" aria-hidden="true">
+    <!-- EDITAR SAIDA -->
+    <?php foreach ($saidas as $indice => $saida) { ?>
+        <div class="modal fade" id="editarSaidaModal<?= $indice ?>" tabindex="-1"
+            aria-labelledby="editarSaidaModalLabel<?= $indice ?>" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="editarEntradaModalLabel<?= $indice ?>">Editar Entrada</h1>
+                        <h1 class="modal-title fs-5" id="editarSaidaModalLabel<?= $indice ?>">Editar Saida</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <form class="container" method="post"
-                            action="../../classes/Entrada/entrada.controller.php?acao=editar&id=<?= $entrada->ENT_ID ?>">
+                            action="../../classes/Saida/saida.controller.php?acao=editar&id=<?= $saida->SAIDA_ID ?>">
                             <div class="row align-items-center mb-4">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <select class="form-select" id="fornecedor" name="fornecedor">
-                                            <?php foreach ($fornecedores as $fornecedor) { ?>
-                                                <?php if ($fornecedor->FOR_ID == $entrada->FORNECEDORES_FOR_ID) { ?>
-                                                    <option value="<?= $fornecedor->FOR_ID ?>" selected>
-                                                        <?= $fornecedor->FOR_NOME ?>
+                                        <select class="form-select" id="cliente" name="cliente">
+                                            <?php foreach ($clientes as $cliente) { ?>
+                                                <?php if ($cliente->CLI_ID == $saida->CLIENTE_CLI_ID) { ?>
+                                                    <option value="<?= $cliente->CLI_ID ?>" selected>
+                                                        <?= $cliente->CLI_NOME ?>
                                                     </option>
                                                 <?php } else { ?>
-                                                    <option value="<?= $fornecedor->FOR_ID ?>">
-                                                        <?= $fornecedor->FOR_NOME ?>
+                                                    <option value="<?= $cliente->CLI_ID ?>">
+                                                        <?= $cliente->CLI_NOME ?>
                                                     </option>
                                                 <?php } ?>
                                             <?php } ?>
                                         </select>
-                                        <label for="fornecedor">Fornecedor</label>
+                                        <label for="cliente">Cliente</label>
                                     </div>
                                 </div>
                             </div>
@@ -395,7 +395,7 @@ require '../../classes/Cliente/cliente.controller.php';
                                     <div class="input-group">
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
-                                            <input class="form-control" value="<?= $entrada->ENT_VALOR_TOTAL ?>"
+                                            <input class="form-control" value="<?= $saida->SAIDA_VALOR_TOTAL ?>"
                                                 type="number" id="valorTotal" name="valorTotal" placeholder="Valor total"
                                                 readonly>
                                             <label for="valorTotal">Valor total</label>
@@ -406,8 +406,8 @@ require '../../classes/Cliente/cliente.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <select class="form-select" id="formaPagamento" name="formaPagamento">
-                                            <option selected value="<?= $entrada->ENT_FORMA_PAGAMENTO ?>">
-                                                <?= $entrada->ENT_FORMA_PAGAMENTO ?>
+                                            <option selected value="<?= $saida->SAIDA_FORMA_PAGAMENTO ?>">
+                                                <?= $saida->SAIDA_FORMA_PAGAMENTO ?>
                                             </option>
                                             <option value="Cartão de crédito">Cartão de Crédito</option>
                                             <option value="Cartão de Débito">Cartão de Débito</option>
@@ -423,7 +423,7 @@ require '../../classes/Cliente/cliente.controller.php';
                             <div class="row mb-5">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" value="<?= $entrada->ENT_DATA_COMPRA ?>" type="date"
+                                        <input class="form-control" value="<?= $saida->SAIDA_DATA_COMPRA ?>" type="date"
                                             id="dataCompra" name="dataCompra" placeholder="Data de compra">
                                         <label for="dataCompra">Data de compra</label>
                                     </div>
@@ -431,7 +431,7 @@ require '../../classes/Cliente/cliente.controller.php';
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" value="<?= $entrada->ENT_DATA_PAGAMENTO ?>" type="date"
+                                        <input class="form-control" value="<?= $saida->SAIDA_DATA_PAGAMENTO ?>" type="date"
                                             id="dataPagamento" name="dataPagamento" placeholder="Data de pagamento">
                                         <label for="dataPagamento">Data de pagamento</label>
                                     </div>
@@ -439,7 +439,7 @@ require '../../classes/Cliente/cliente.controller.php';
                             </div>
 
                             <div class="d-flex justify-content-center align-items-center">
-                                <button class="btn btn-outline-primary">Editar Entrada</button>
+                                <button class="btn btn-outline-primary">Editar Saída</button>
                             </div>
                         </form>
                     </div>
