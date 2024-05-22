@@ -89,7 +89,7 @@ require '../../classes/Produto/produto.controller.php';
                                 <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-font" href="#">Relatórios</a>
+                                <a class="nav-link text-white nav-font" href="../relatorio">Relatórios</a>
                             </li>
                         <?php } ?>
                     </ul>
