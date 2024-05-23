@@ -96,7 +96,20 @@ require '../../classes/Colaborador/colaborador.controller.php';
 
                 <!-- SAIR -->
                 <div class="col-1 text-end">
-                    <a href="../logoff.php" class="btn btn-lg text-secondary nav-font">Sair</a>
+                    <div class="dropdown-center">
+                        <button class="btn rounded-circle border-0 p-0" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="bi bi-person-circle fs-1 text-secondary"></i>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><span class="dropdown-item">Alterar senha</span></li>
+                            <li><a class="dropdown-item" href="../logoff.php">
+                                    Sair
+                                    &#8287;&#8287;&#8287;
+                                    <i class="bi bi-box-arrow-right text-primary"></i>
+                                </a></li>
+                        </ul>
+                    </div>
                 </div>
                 <!------->
             </div>
