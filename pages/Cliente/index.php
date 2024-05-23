@@ -102,12 +102,19 @@ require '../../classes/Cliente/cliente.controller.php';
                             <i class="bi bi-person-circle fs-1 text-secondary"></i>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><span class="dropdown-item">Alterar senha</span></li>
-                            <li><a class="dropdown-item" href="../logoff.php">
+                            <li>
+                                <button type="button" class="dropdown-item" data-bs-toggle="modal"
+                                    data-bs-target="#alterarSenhaModal">
+                                    Alterar senha
+                                </button>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="../logoff.php">
                                     Sair
                                     &#8287;&#8287;&#8287;
                                     <i class="bi bi-box-arrow-right text-primary"></i>
-                                </a></li>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -390,6 +397,58 @@ require '../../classes/Cliente/cliente.controller.php';
                         <strong>Cliente editado com sucesso!</strong>
                     </div>
             <?php } ?>
+        </div>
+    </div>
+    <!----------------------->
+
+    <!-- ALTERAR SENHA -->
+    <div class="modal fade" id="alterarSenhaModal" tabindex="-1" aria-labelledby="alterarSenhaModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="alterarSenhaModalLabel">Alterar Senha</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form class="container" method="post"
+                        action="../../classes/Cliente/cliente.controller.php?acao=inserir">
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <div class="form-floating">
+                                    <input class="form-control" type="password" id="senhaAtual" name="senhaAtual"
+                                        placeholder="Senha Atual">
+                                    <label for="senhaAtual">Senha Atual</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-md-12">
+                                <div class="form-floating">
+                                    <input class="form-control" type="password" id="novaSenha" name="novaSenha"
+                                        placeholder="Senha Nova" disabled>
+                                    <label for="novaSenha">Senha Nova</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-5">
+                            <div class="col-md-12">
+                                <div class="form-floating">
+                                    <input class="form-control" type="password" id="confirmarSenhaNova"
+                                        name="confirmarSenhaNova" placeholder="Confirme a Senha Nova" disabled>
+                                    <label for="confirmarSenhaNova">Confirme a Senha Nova</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button class="btn btn-outline-primary">Alterar Senha</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <!----------------------->
