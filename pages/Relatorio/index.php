@@ -103,11 +103,11 @@ require '../../classes/Categoria/categoria.controller.php';
                         </button>
                         <ul class="dropdown-menu">
                             <li><span class="dropdown-item">Alterar senha</span></li>
-                            <li><span class="dropdown-item">
+                            <li><a class="dropdown-item" href="../logoff.php">
                                     Sair
                                     &#8287;&#8287;&#8287;
                                     <i class="bi bi-box-arrow-right text-primary"></i>
-                                </span></li>
+                                </a></li>
                         </ul>
                     </div>
                 </div>
