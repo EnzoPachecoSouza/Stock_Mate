@@ -159,11 +159,61 @@ require '../../classes/Produto/produto.controller.php';
             <table class="table table-hover">
                 <thead class="table-dark">
                     <tr>
-                        <th scope="col">Fornecedor</th>
-                        <th scope="col">Data Compra</th>
-                        <th scope="col">Data Pagamento</th>
-                        <th scope="col">Valor Total</th>
-                        <th scope="col">Forma Pagamento</th>
+                        <th scope="col">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="d-flex flex-column">
+                                    <i onclick="filtrarDados(1)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(2)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-down"></i>
+                                </div>
+                                Fornecedor
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="d-flex flex-column">
+                                    <i onclick="filtrarDados(3)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(4)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-down"></i>
+                                </div>
+                                Data Compra
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="d-flex flex-column">
+                                    <i onclick="filtrarDados(5)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(6)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-down"></i>
+                                </div>
+                                Data Pagamento
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="d-flex flex-column">
+                                    <i onclick="filtrarDados(7)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-up"></i>
+                                    <i onclick="filtrarDados(8)" id="filtro" name="filtro"
+                                        class="order-hover bi bi-chevron-down"></i>
+                                </div>
+                                Valor Total
+                            </div>
+                        </th>
+                        <th scope="col">
+                            <div class="d-flex align-items-center gap-3">
+                            <div class="d-flex align-items-center gap-3">
+                                Forma de Pagamento
+                                <div class="d-flex flex-column invisible">
+                                    <i class="order-hover bi bi-chevron-up"></i>
+                                    <i class="order-hover bi bi-chevron-down"></i>
+                                </div>
+                            </div>
+                            </div>
+                        </th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -358,7 +408,7 @@ require '../../classes/Produto/produto.controller.php';
                     <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)">
                         <option value="" selected></option>
                         <?php foreach ($produtos as $produto) { ?>
-                                            <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
+                                                    <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
                         <?php } ?>
                     </select>
                     <label>Produto</label>
