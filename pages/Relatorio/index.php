@@ -5,6 +5,7 @@ include ('../Login/session_check.php');
 $cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
 ?>
 
+<?php if ($_SESSION['cargo'] === 'Gerente') { ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -222,3 +223,7 @@ $cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
 </body>
 
 </html>
+
+<?php } else{
+    header("Location: ../Login/index.php");
+}?>

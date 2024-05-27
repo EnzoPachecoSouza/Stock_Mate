@@ -6,6 +6,7 @@ $acao = 'recuperar';
 require '../../classes/Colaborador/colaborador.controller.php';
 ?>
 
+<?php if ($_SESSION['cargo'] === 'Gerente') { ?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -492,3 +493,6 @@ require '../../classes/Colaborador/colaborador.controller.php';
 </body>
 
 </html>
+<?php } else{
+    header("Location: ../Login/index.php");
+}?>
