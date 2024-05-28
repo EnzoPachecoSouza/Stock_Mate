@@ -46,3 +46,4 @@ if ($acao == 'inserir') {
 
     header('Location: ../../pages/Saida/index.php?act=editar');
 }
+?>
