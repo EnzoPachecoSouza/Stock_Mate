@@ -1,8 +1,6 @@
 <?php
-//SERVICE VAI EXECUTAR AS FUNÇÕES DAS AÇÕES QUE RECEBER DO CONTROLLER
 class FornecedorService
 {
-
     private $conexao;
     private $fornecedor;
 
@@ -32,28 +30,40 @@ class FornecedorService
 
     public function recuperar()
     {
+        $query = '';
+
         if (!empty($_GET['search'])) {
             $pesquisaFornecedor = $_GET['search'];
             $query = "
-        SELECT *
-        FROM FORNECEDORES 
-        WHERE FOR_NOME LIKE '%$pesquisaFornecedor%' 
-        OR FOR_EMAIL LIKE '%$pesquisaFornecedor%' 
-        OR FOR_CONTATO LIKE '%$pesquisaFornecedor%'
-        OR FOR_CNPJ LIKE '%$pesquisaFornecedor%'
-        ORDER BY FOR_NOME
-        ";
-        }else if (!empty($_GET['filter'])) {
-            $filtrarFornecedor= $_GET['filter'];
+            SELECT *
+            FROM FORNECEDORES 
+            WHERE FOR_NOME LIKE :search 
+            OR FOR_EMAIL LIKE :search 
+            OR FOR_CONTATO LIKE :search
+            OR FOR_CNPJ LIKE :search
+            ORDER BY FOR_NOME
+            ";
+
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindValue(':search', "%$pesquisaFornecedor%");
+        } elseif (!empty($_GET['filter'])) {
+            $filtrarFornecedor = $_GET['filter'];
             $query = $this->getFilterQuery($filtrarFornecedor);
+
+            $stmt = $this->conexao->prepare($query);
         } else {
             $query = '
             SELECT *
             FROM FORNECEDORES
             ';
+
+            $stmt = $this->conexao->prepare($query);
         }
 
-        $stmt = $this->conexao->prepare($query);
+        if ($query == '') {
+            throw new Exception('Query não pode estar vazia');
+        }
+
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
@@ -77,6 +87,8 @@ class FornecedorService
                 return "SELECT * FROM FORNECEDORES ORDER BY FOR_CNPJ ASC;";
             case 8:
                 return "SELECT * FROM FORNECEDORES ORDER BY FOR_CNPJ DESC;";
+            default:
+                return "SELECT * FROM FORNECEDORES";
         }
     }
 

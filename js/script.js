@@ -50,3 +50,9 @@ function filtrarCategoria() {
 function filtrarCores() {
     window.location = 'index.php?filCor=' + filCor.value;
 }
+
+
+//FILTRO DE PAGAMENTO
+function filtrarFormaPagamento() {
+    window.location = 'index.php?catPag=' + catPag.value;
+}

@@ -144,13 +144,35 @@ require '../../classes/Produto/produto.controller.php';
                 <!------->
             </div>
 
-            <div class="d-flex">
-                <div class="input-group">
-                    <input type="text" class="form-control shadow-none" placeholder="Pesquisar" id="pesquisar"
-                        name="pesquisar">
-                    <button onclick="pesquisarDados()" class="btn btn-primary" type="button" id="button-addon2">
-                        <i class="bi bi-search"></i>
-                    </button>
+            <div class="d-flex gap-5">
+                <div class="form-floating d-flex">
+                    <button onclick="filtrarDados(9)" class="btn btn-primary" type="button" id="button-addon2">Limpar
+                        filtros</button>
+                </div>
+
+                <div class="form-floating d-flex">
+                    <div class="input-group">
+                        <select class="form-select shadow-none" id="catPag" name="catPag">
+                            <option disabled selected>Forma de Pagamento</option>
+                            <option value="Cartão de Crédito">Cartão de Crédito</option>
+                            <option value="Cartão de Débito">Cartão de Débito</option>
+                            <option value="Transferência Bancária">Transferência Bancária</option>
+                            <option value="Dinheiro">Dinheiro</option>
+                            <option value="Boleto">Boleto</option>
+                        </select>
+                        <button onclick="filtrarFormaPagamento()" class="btn btn-primary" type="button"
+                            id="button-addon2">Filtrar</button>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <div class="input-group">
+                        <input type="text" class="form-control shadow-none" placeholder="Pesquisar" id="pesquisar"
+                            name="pesquisar">
+                        <button onclick="pesquisarDados()" class="btn btn-primary" type="button" id="button-addon2">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -205,13 +227,13 @@ require '../../classes/Produto/produto.controller.php';
                         </th>
                         <th scope="col">
                             <div class="d-flex align-items-center gap-3">
-                            <div class="d-flex align-items-center gap-3">
-                                Forma de Pagamento
-                                <div class="d-flex flex-column invisible">
-                                    <i class="order-hover bi bi-chevron-up"></i>
-                                    <i class="order-hover bi bi-chevron-down"></i>
+                                <div class="d-flex align-items-center gap-3">
+                                    Forma de Pagamento
+                                    <div class="d-flex flex-column invisible">
+                                        <i class="order-hover bi bi-chevron-up"></i>
+                                        <i class="order-hover bi bi-chevron-down"></i>
+                                    </div>
                                 </div>
-                            </div>
                             </div>
                         </th>
                         <th scope="col"></th>
@@ -408,7 +430,7 @@ require '../../classes/Produto/produto.controller.php';
                     <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)">
                         <option value="" selected></option>
                         <?php foreach ($produtos as $produto) { ?>
-                                                    <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
+                                                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
                         <?php } ?>
                     </select>
                     <label>Produto</label>

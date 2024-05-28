@@ -1,8 +1,6 @@
 <?php
-
 class EntradaService
 {
-
     private $conexao;
     private $entrada;
 
@@ -33,32 +31,53 @@ class EntradaService
 
     public function recuperar()
     {
-        //VAI MOSTRAR DE ACORDO COM A PESQUISA DA FUNÇÃO DE PESQUISAR NOME NO JS
+        $query = '';
 
         if (!empty($_GET['search'])) {
             $pesquisaProduto = $_GET['search'];
-
             $query = "
             SELECT ENT.*, FORN.FOR_NOME
             FROM ENTRADA AS ENT
             INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
-            WHERE FORN.FOR_NOME LIKE '%$pesquisaProduto%' 
-            OR ENT.ENT_FORMA_PAGAMENTO LIKE '%$pesquisaProduto%'
-            OR ENT.ENT_DATA_COMPRA LIKE '%$pesquisaProduto%'
+            WHERE FORN.FOR_NOME LIKE :search 
+            OR ENT.ENT_FORMA_PAGAMENTO LIKE :search
+            OR ENT.ENT_DATA_COMPRA LIKE :search
             ";
-        } else if (!empty($_GET['filter'])) {
+
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindValue(':search', "%$pesquisaProduto%");
+        } elseif (!empty($_GET['catPag'])) {
+            $filtrarFormaPagamento = $_GET['catPag'];
+            $query = "
+            SELECT ENT.*, FORN.FOR_NOME
+            FROM ENTRADA AS ENT
+            INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
+            WHERE ENT_FORMA_PAGAMENTO = :catPag
+            ORDER BY ENT_DATA_COMPRA ASC;
+            ";
+
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindValue(':catPag', $filtrarFormaPagamento);
+        } elseif (!empty($_GET['filter'])) {
             $filtrarEntrada = $_GET['filter'];
             $query = $this->getFilterQuery($filtrarEntrada);
-        } else {
 
+            $stmt = $this->conexao->prepare($query);
+        } else {
             $query = '
             SELECT ENT.*, FORN.FOR_NOME
             FROM ENTRADA AS ENT
-            INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID;
+            INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
+            ORDER BY ENT_ID
             ';
+
+            $stmt = $this->conexao->prepare($query);
         }
 
-        $stmt = $this->conexao->prepare($query);
+        if ($query == '') {
+            throw new Exception('Query não pode estar vazia');
+        }
+
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
@@ -69,43 +88,44 @@ class EntradaService
             case 1:
                 return "SELECT ENT.*, FORN.FOR_NOME FROM ENTRADA AS ENT 
                 INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
-                ORDER BY FOR_NOME ASC;
-                ";
+                ORDER BY FOR_NOME ASC";
             case 2:
                 return "SELECT ENT.*, FORN.FOR_NOME FROM ENTRADA AS ENT 
                 INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
-                ORDER BY FOR_NOME DESC;
-                ";
+                ORDER BY FOR_NOME DESC";
             case 3:
                 return "SELECT ENT.*, FORN.FOR_NOME FROM ENTRADA AS ENT 
                 INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
-                ORDER BY ENT_DATA_COMPRA ASC;
-                ";
+                ORDER BY ENT_DATA_COMPRA ASC";
             case 4:
                 return "SELECT ENT.*, FORN.FOR_NOME FROM ENTRADA AS ENT 
                 INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
-                ORDER BY ENT_DATA_COMPRA DESC;
-                ";
+                ORDER BY ENT_DATA_COMPRA DESC";
             case 5:
                 return "SELECT ENT.*, FORN.FOR_NOME FROM ENTRADA AS ENT 
                 INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
-                ORDER BY ENT_DATA_PAGAMENTO ASC;
-                ";
+                ORDER BY ENT_DATA_PAGAMENTO ASC";
             case 6:
                 return "SELECT ENT.*, FORN.FOR_NOME FROM ENTRADA AS ENT 
                 INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
-                ORDER BY ENT_DATA_PAGAMENTO DESC;
-                ";
+                ORDER BY ENT_DATA_PAGAMENTO DESC";
             case 7:
                 return "SELECT ENT.*, FORN.FOR_NOME FROM ENTRADA AS ENT 
                 INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
-                ORDER BY ENT_VALOR_TOTAL ASC;
-                ";
+                ORDER BY ENT_VALOR_TOTAL ASC";
             case 8:
                 return "SELECT ENT.*, FORN.FOR_NOME FROM ENTRADA AS ENT 
                 INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
-                ORDER BY ENT_VALOR_TOTAL DESC;
-                ";
+                ORDER BY ENT_VALOR_TOTAL DESC";
+            case 9:
+                return "SELECT ENT.*, FORN.FOR_NOME
+                FROM ENTRADA AS ENT
+                INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID
+                ORDER BY ENT_ID";
+            default:
+                return "SELECT ENT.*, FORN.FOR_NOME
+                FROM ENTRADA AS ENT
+                INNER JOIN FORNECEDORES AS FORN ON ENT.FORNECEDORES_FOR_ID = FORN.FOR_ID";
         }
     }
 
