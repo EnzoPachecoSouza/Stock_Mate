@@ -1,5 +1,5 @@
 <?php
-include ('../Login/session_check.php');
+include '../Login/session_check.php';
 
 // Verifica se o usuário está logado e obtém o cargo do usuário
 $cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';

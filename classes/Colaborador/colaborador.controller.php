@@ -25,7 +25,7 @@ if ($acao == 'inserir') {
     $colaborador = new Colaborador();
 
     $conexao = new Conexao();
-    
+
     $colaboradorService = new ColaboradorService($conexao, $colaborador);
     $colaboradores = $colaboradorService->recuperar();
 } else if ($acao == 'editar') {
@@ -44,4 +44,3 @@ if ($acao == 'inserir') {
 
     header('Location: ../../pages/Colaborador/index.php?act=editar');
 }
-?>
