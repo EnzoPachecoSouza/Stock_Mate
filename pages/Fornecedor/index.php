@@ -238,11 +238,23 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
 
 
                             <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
-                                <!-- BOTÃO EDITAR PRODUTO -->
-                                <button type="button" class="btn" data-bs-toggle="modal"
+                                <!-- BOTÃO EDITAR FORNECEDOR -->
+                                <?php
+                                $data_registro = new DateTime($fornecedor->FOR_HORA_DE_REGISTRO);
+                                $data_bloquear_atualizacao = $data_registro->modify('+1 day');
+                                $data_atual = new DateTime();
+                            ?>
+
+                                <?php if($data_atual > $data_bloquear_atualizacao) { ?>
+                                    <button type="button" class="btn">
+                                    <i class="bi bi-pencil-square text-danger fs-5"></i>
+                                    </button>
+                                <?php } else {?>
+                                    <button type="button" class="btn" data-bs-toggle="modal"
                                     data-bs-target="#editarFornecedorModal<?= $indice ?>">
                                     <i class="bi bi-pencil-square text-info fs-5"></i>
-                                </button>
+                                    </button>
+                                <?php }?>
                                 <!------->
                         </td>
                     </tr>
