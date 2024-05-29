@@ -1,6 +1,4 @@
 <?php
-date_default_timezone_set('America/Sao_Paulo');
-
 include('../Login/session_check.php');
 
 // Verifica se o usuário está logado e obtém o cargo do usuário
@@ -260,7 +258,7 @@ require '../../classes/Categoria/categoria.controller.php';
                             <tr>
                             <?php } ?>
                             <th scope="row" class="">
-                                <?= $produto->PRO_HORA_DE_REGISTRO ?>
+                                <?= $produto->PRO_NOME ?>
                             </th>
                             <td>
                                 <?= $produto->PRO_COR ?>
@@ -301,16 +299,23 @@ require '../../classes/Categoria/categoria.controller.php';
                             <!-- BOTÃO EDITAR PRODUTO -->
                             <?php
                                 $data_registro = new DateTime($produto->PRO_HORA_DE_REGISTRO);
-                                $data_atual = new DateTime();
 
+                                $data_registro_formatada = $data_registro->format('d/m/Y H:i:s');
+                                
                                 $data_registro->modify('+1 day');
                                 $data_bloquear_atualizacao = $data_registro->format('d/m/Y H:i:s');
                             ?>
 
-                                <button type="button" class="btn" data-bs-toggle="modal"
+                                <?php if($data_bloquear_atualizacao) { ?>
+                                    <button type="button" class="btn" data-bs-toggle="modal"
                                     data-bs-target="#editarProdutoModal<?= $indice ?>">
-                                    <?= $data_atual->format('d/m/Y H:i:s'); ?>
-                                </button>
+                                    <i class="bi bi-pencil-square text-info fs-5"></i>
+                                    </button>
+                                <?php } else {?>
+                                    <button type="button" class="btn">
+                                    <i class="bi bi-pencil-square text-danger fs-5"></i>
+                                    </button>
+                                <?php }?>
                                 <!------->
 
                             <!-- BOTÃO DESATIVAR PRODUTO -->
