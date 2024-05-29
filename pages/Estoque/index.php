@@ -1,4 +1,6 @@
 <?php
+
+
 include('../Login/session_check.php');
 
 // Verifica se o usuário está logado e obtém o cargo do usuário
@@ -298,15 +300,16 @@ require '../../classes/Categoria/categoria.controller.php';
                             
                             <!-- BOTÃO EDITAR PRODUTO -->
                             <?php
-                            $data_registro = new DateTime($produto->PRO_HORA_DE_REGISTRO);
+                                $data_registro = new DateTime($produto->PRO_HORA_DE_REGISTRO);
+                                $data_atual = new DateTime();
 
-                            $data_registro->modify('+1 day');
-                            $data_bloquear_atualizacao = $data_registro->format('d/m/Y H:i:s');
+                                $data_registro->modify('+1 day');
+                                $data_bloquear_atualizacao = $data_registro->format('d/m/Y H:i:s');
                             ?>
 
                                 <button type="button" class="btn" data-bs-toggle="modal"
                                     data-bs-target="#editarProdutoModal<?= $indice ?>">
-                                    <i class="bi bi-pencil-square text-info fs-5"></i>
+                                    <?= $data_atual->format('d/m/Y H:i:s'); ?>
                                 </button>
                                 <!------->
 
