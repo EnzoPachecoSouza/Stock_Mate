@@ -258,7 +258,7 @@ require '../../classes/Categoria/categoria.controller.php';
                             <tr>
                             <?php } ?>
                             <th scope="row" class="">
-                                <?= $produto->PRO_NOME ?>
+                                <?= $produto->PRO_HORA_DE_REGISTRO ?>
                             </th>
                             <td>
                                 <?= $produto->PRO_COR ?>
@@ -295,7 +295,15 @@ require '../../classes/Categoria/categoria.controller.php';
                                 </button>
                                 <!------->
 
+                            
                             <!-- BOTÃO EDITAR PRODUTO -->
+                            <?php
+                            $data_registro = new DateTime($produto->PRO_HORA_DE_REGISTRO);
+
+                            $data_registro->modify('+1 day');
+                            $data_bloquear_atualizacao = $data_registro->format('d/m/Y H:i:s');
+                            ?>
+
                                 <button type="button" class="btn" data-bs-toggle="modal"
                                     data-bs-target="#editarProdutoModal<?= $indice ?>">
                                     <i class="bi bi-pencil-square text-info fs-5"></i>
