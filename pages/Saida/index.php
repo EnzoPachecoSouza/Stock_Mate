@@ -182,7 +182,7 @@ require '../../classes/Produto/produto.controller.php';
             <table class="table table-hover">
                 <thead class="table-dark">
                     <tr>
-                    <th scope="col">
+                        <th scope="col">
                             <div class="d-flex align-items-center gap-3">
                                 <div class="d-flex flex-column">
                                     <i onclick="filtrarDados(1)" id="filtro" name="filtro"
@@ -263,22 +263,22 @@ require '../../classes/Produto/produto.controller.php';
 
                         <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
                             <!-- BOTÃO EDITAR SAIDA -->
-                            <?php
+                                <?php
                                 $data_registro = new DateTime($saida->SAIDA_HORA_DE_REGISTRO);
                                 $data_bloquear_atualizacao = $data_registro->modify('+1 day');
                                 $data_atual = new DateTime();
-                            ?>
+                                ?>
 
-                                <?php if($data_atual > $data_bloquear_atualizacao) { ?>
+                                <?php if ($data_atual > $data_bloquear_atualizacao) { ?>
                                     <button type="button" class="btn">
-                                    <i class="bi bi-pencil-square text-danger fs-5"></i>
+                                        <i class="bi bi-pencil-square text-danger fs-5"></i>
                                     </button>
-                                <?php } else {?>
+                                <?php } else { ?>
                                     <button type="button" class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#editarSaidaModal<?= $indice ?>">
-                                    <i class="bi bi-pencil-square text-info fs-5"></i>
+                                        data-bs-target="#editarSaidaModal<?= $indice ?>">
+                                        <i class="bi bi-pencil-square text-info fs-5"></i>
                                     </button>
-                                <?php }?>
+                                <?php } ?>
                                 <!------->
                         </td>
                     </tr>
@@ -298,12 +298,12 @@ require '../../classes/Produto/produto.controller.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" method="post"
+                    <form class="container needs-validation" novalidate method="post"
                         action="../../classes/Saida/saida.controller.php?acao=inserir">
                         <div class="row align-items-center mb-4">
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                    <select class="form-select" id="cliente" name="cliente">
+                                    <select class="form-select" id="cliente" name="cliente" required>
                                         <option selected></option>
                                         <?php foreach ($clientes as $indice => $cliente) { ?>
                                             <option value="<?= $cliente->CLI_ID ?>"><?= $cliente->CLI_NOME ?></option>
@@ -328,7 +328,7 @@ require '../../classes/Produto/produto.controller.php';
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-select" id="formaPagamento" name="formaPagamento">
+                                    <select class="form-select" id="formaPagamento" name="formaPagamento" required>
                                         <option selected value=""></option>
                                         <option value="Cartão de crédito">Cartão de Crédito</option>
                                         <option value="Cartão de Débito">Cartão de Débito</option>
@@ -345,7 +345,7 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="date" id="dataVenda" name="dataVenda"
-                                        placeholder="Data de venda">
+                                        placeholder="Data de venda" required>
                                     <label for="dataVenda">Data de venda</label>
                                 </div>
                             </div>
@@ -353,7 +353,7 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="date" id="dataPagamento" name="dataPagamento"
-                                        placeholder="Data de pagamento">
+                                        placeholder="Data de pagamento" required>
                                     <label for="dataPagamento">Data de pagamento</label>
                                 </div>
                             </div>
@@ -364,7 +364,7 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <select class="form-select produto" name="produto[]"
-                                            oninput="determinaValorUnitario(this)">
+                                            oninput="determinaValorUnitario(this)" required>
                                             <option value="" selected></option>
                                             <?php foreach ($produtos as $produto) { ?>
                                                 <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?>
@@ -378,7 +378,7 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <input class="form-control quantidade" type="number" name="quantidade[]"
-                                            placeholder="Quantidade" oninput="atualizaValorTotal()">
+                                            placeholder="Quantidade" oninput="atualizaValorTotal()" required>
                                         <label>Quantidade</label>
                                     </div>
                                 </div>
@@ -440,10 +440,10 @@ require '../../classes/Produto/produto.controller.php';
             row.innerHTML = `
             <div class="col-md-4">
                 <div class="form-floating">
-                    <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)">
+                    <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                         <option value="" selected></option>
                         <?php foreach ($produtos as $produto) { ?>
-                                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
+                            <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
                         <?php } ?>
                     </select>
                     <label>Produto</label>
@@ -451,7 +451,7 @@ require '../../classes/Produto/produto.controller.php';
             </div>
             <div class="col-md-4">
                 <div class="form-floating">
-                    <input class="form-control quantidade" type="number" name="quantidade[]" placeholder="Quantidade" oninput="atualizaValorTotal()">
+                    <input class="form-control quantidade" type="number" name="quantidade[]" placeholder="Quantidade" oninput="atualizaValorTotal()" required>
                     <label>Quantidade</label>
                 </div>
             </div>
@@ -479,12 +479,12 @@ require '../../classes/Produto/produto.controller.php';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="container" method="post"
+                        <form class="container needs-validation" novalidate method="post"
                             action="../../classes/Saida/saida.controller.php?acao=editar&id=<?= $saida->SAIDA_ID ?>">
                             <div class="row align-items-center mb-4">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <select class="form-select" id="cliente" name="cliente">
+                                        <select class="form-select" id="cliente" name="cliente" required>
                                             <?php foreach ($clientes as $cliente) { ?>
                                                 <?php if ($cliente->CLI_ID == $saida->CLIENTE_CLI_ID) { ?>
                                                     <option value="<?= $cliente->CLI_ID ?>" selected>
@@ -517,7 +517,7 @@ require '../../classes/Produto/produto.controller.php';
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select" id="formaPagamento" name="formaPagamento">
+                                        <select class="form-select" id="formaPagamento" name="formaPagamento" required>
                                             <option selected value="<?= $saida->SAIDA_FORMA_PAGAMENTO ?>">
                                                 <?= $saida->SAIDA_FORMA_PAGAMENTO ?>
                                             </option>
@@ -536,7 +536,7 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" value="<?= $saida->SAIDA_DATA_COMPRA ?>" type="date"
-                                            id="dataCompra" name="dataCompra" placeholder="Data de compra">
+                                            id="dataCompra" name="dataCompra" placeholder="Data de compra" required>
                                         <label for="dataCompra">Data de compra</label>
                                     </div>
                                 </div>
@@ -544,7 +544,7 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" value="<?= $saida->SAIDA_DATA_PAGAMENTO ?>" type="date"
-                                            id="dataPagamento" name="dataPagamento" placeholder="Data de pagamento">
+                                            id="dataPagamento" name="dataPagamento" placeholder="Data de pagamento" required>
                                         <label for="dataPagamento">Data de pagamento</label>
                                     </div>
                                 </div>
@@ -571,14 +571,14 @@ require '../../classes/Produto/produto.controller.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" method="post"
+                    <form class="container needs-validation" novalidate method="post"
                         action="../../classes/Cliente/cliente.controller.php?acao=inserir">
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="cliente" name="cliente"
-                                            placeholder="Nome">
+                                            placeholder="Nome" required>
                                         <label for="cliente">Nome</label>
                                     </div>
                                 </div>
@@ -587,7 +587,7 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="text" id="email" name="email"
-                                        placeholder="E-mail">
+                                        placeholder="E-mail" required>
                                     <label for="email">E-mail</label>
                                 </div>
                             </div>
@@ -597,14 +597,14 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="text" id="contato" name="contato"
-                                        placeholder="Contato">
+                                        placeholder="Contato" required>
                                     <label for="contato">Contato</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF">
+                                    <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF" required>
                                     <label for="cpf">CPF</label>
                                 </div>
                             </div>
@@ -699,6 +699,26 @@ require '../../classes/Produto/produto.controller.php';
         </div>
     </div>
     <!----------------------->
+
+    <script>
+        (function () {
+            'use strict'
+
+            let forms = document.querySelectorAll('.needs-validation')
+
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                });
+        })()
+    </script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
