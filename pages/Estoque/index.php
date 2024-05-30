@@ -351,7 +351,7 @@ require '../../classes/Categoria/categoria.controller.php';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="container needs-validation" method="post"
+                        <form class="container needs-validation" novalidate method="post"
                             action="../../classes/Produto/produto.controller.php?acao=inserir">
                             <div class="row mb-4">
                                 <div class="col-md-6">
@@ -361,9 +361,6 @@ require '../../classes/Categoria/categoria.controller.php';
                                             <input class="form-control" type="text" id="codigo" name="codigo"
                                                 placeholder="Código" required>
                                             <label for="codigo">Código</label>
-                                            <div class="valid-feedback">
-                                                Valido!
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -476,7 +473,27 @@ require '../../classes/Categoria/categoria.controller.php';
                 </div>
             </div>
         </div>
-    
+
+        <script>
+            (function () {
+                'use strict'
+
+                let forms = document.querySelectorAll('.needs-validation')
+
+                Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event){
+                        if(!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                });
+            })()
+        </script>
+    <!---------------->
 
     <!-- EDITAR PRODUTO -->
     <?php foreach ($produtos as $indice => $produto) { ?>
