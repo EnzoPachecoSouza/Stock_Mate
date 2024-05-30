@@ -485,7 +485,7 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="row align-items-center mb-4">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <select class="form-select" id="fornecedor" name="fornecedor">
+                                        <select class="form-select" id="fornecedor" name="fornecedor" required>
                                             <?php foreach ($fornecedores as $fornecedor) { ?>
                                                 <?php if ($fornecedor->FOR_ID == $entrada->FORNECEDORES_FOR_ID) { ?>
                                                     <option value="<?= $fornecedor->FOR_ID ?>" selected>
@@ -518,7 +518,7 @@ require '../../classes/Produto/produto.controller.php';
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select" id="formaPagamento" name="formaPagamento">
+                                        <select class="form-select" id="formaPagamento" name="formaPagamento" required>
                                             <option selected value="<?= $entrada->ENT_FORMA_PAGAMENTO ?>">
                                                 <?= $entrada->ENT_FORMA_PAGAMENTO ?>
                                             </option>
@@ -537,7 +537,7 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" value="<?= $entrada->ENT_DATA_COMPRA ?>" type="date"
-                                            id="dataCompra" name="dataCompra" placeholder="Data de compra">
+                                            id="dataCompra" name="dataCompra" placeholder="Data de compra" required>
                                         <label for="dataCompra">Data de compra</label>
                                     </div>
                                 </div>
@@ -545,7 +545,7 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" value="<?= $entrada->ENT_DATA_PAGAMENTO ?>" type="date"
-                                            id="dataPagamento" name="dataPagamento" placeholder="Data de pagamento">
+                                            id="dataPagamento" name="dataPagamento" placeholder="Data de pagamento" required>
                                         <label for="dataPagamento">Data de pagamento</label>
                                     </div>
                                 </div>
@@ -578,7 +578,7 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="text" id="fornecedor" name="fornecedor"
-                                        placeholder="Nome">
+                                        placeholder="Nome" required>
                                     <label for="fornecedor">Nome</label>
                                 </div>
                             </div>
@@ -586,7 +586,7 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="email" id="email" name="email"
-                                        placeholder="Email">
+                                        placeholder="Email" required>
                                     <label for="email">Email</label>
                                 </div>
                             </div>
@@ -596,14 +596,14 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="text" id="contato" name="contato"
-                                        placeholder="Contato">
+                                        placeholder="Contato" required>
                                     <label for="contato">Contato</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="CNPJ">
+                                    <input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="CNPJ" required>
                                     <label for="cnpj">CNPJ</label>
                                 </div>
                             </div>
@@ -665,7 +665,7 @@ require '../../classes/Produto/produto.controller.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container needs-validation" novalidate method="post"
+                    <form class="container" method="post"
                         action="../../classes/Cliente/cliente.controller.php?acao=inserir">
                         <div class="row mb-4">
                             <div class="col-md-12">
