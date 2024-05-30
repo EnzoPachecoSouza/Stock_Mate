@@ -351,7 +351,7 @@ require '../../classes/Categoria/categoria.controller.php';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="container" method="post"
+                        <form class="container needs-validation" method="post"
                             action="../../classes/Produto/produto.controller.php?acao=inserir">
                             <div class="row mb-4">
                                 <div class="col-md-6">
@@ -359,15 +359,18 @@ require '../../classes/Categoria/categoria.controller.php';
                                         <span class="input-group-text fw-bold">#</span>
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="codigo" name="codigo"
-                                                placeholder="Código">
+                                                placeholder="Código" required>
                                             <label for="codigo">Código</label>
+                                            <div class="valid-feedback">
+                                                Valido!
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome">
+                                        <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required>
                                         <label for="nome">Nome</label>
                                     </div>
                                 </div>
@@ -376,7 +379,7 @@ require '../../classes/Categoria/categoria.controller.php';
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="cor" name="cor" placeholder="Cor">
+                                        <input class="form-control" type="text" id="cor" name="cor" placeholder="Cor" required>
                                         <label for="cor">Cor</label>
                                     </div>
                                 </div>
@@ -384,7 +387,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="material" name="material"
-                                            placeholder="Material">
+                                            placeholder="Material" required>
                                         <label for="material">Material</label>
                                     </div>
                                 </div>
@@ -393,7 +396,7 @@ require '../../classes/Categoria/categoria.controller.php';
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select" id="categoria" name="categoria">
+                                        <select class="form-select" id="categoria" name="categoria" required>
                                             <option selected></option>
                                         <?php foreach ($categorias as $indice => $categoria) { ?>
                                             <option value="<?= $categoria->CAT_ID ?>"><?= $categoria->CAT_CATEGORIA ?></option>
@@ -406,7 +409,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="detalhes" name="detalhes"
-                                            placeholder="Detalhes">
+                                            placeholder="Detalhes" required>
                                         <label for="detalhes">Detalhes</label>
                                     </div>
                                 </div>
@@ -418,7 +421,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="precoDeCompra" name="precoDeCompra"
-                                                placeholder="Preço de Compra">
+                                                placeholder="Preço de Compra" required>
                                             <label for="precoDeCompra">Preço de Compra</label>
                                         </div>
                                     </div>
@@ -429,7 +432,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="precoDeVenda" name="precoDeVenda"
-                                                placeholder="Preço de Venda">
+                                                placeholder="Preço de Venda" required>
                                             <label for="precoDeVenda">Preço de Venda</label>
                                         </div>
                                     </div>
@@ -440,7 +443,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="quantidadeEmEstoque"
-                                            name="quantidadeEmEstoque" placeholder="Quantidade">
+                                            name="quantidadeEmEstoque" placeholder="Quantidade" required>
                                         <label for="quantidadeEmEstoque">Quantidade</label>
                                     </div>
                                 </div>
@@ -448,7 +451,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="estoqueMinimo" name="estoqueMinimo"
-                                            placeholder="Mínimo">
+                                            placeholder="Mínimo" required>
                                         <label for="estoqueMinimo">Mínimo</label>
                                     </div>
                                 </div>
@@ -459,7 +462,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Insira a descrição do produto"
                                             id="descricao" name="descricao"
-                                            style="height: 100px"></textarea>
+                                            style="height: 100px" required></textarea>
                                         <label for="descricao">Descrição</label>
                                     </div>
                                 </div>
