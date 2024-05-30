@@ -473,26 +473,6 @@ require '../../classes/Categoria/categoria.controller.php';
                 </div>
             </div>
         </div>
-
-        <script>
-            (function () {
-                'use strict'
-
-                let forms = document.querySelectorAll('.needs-validation')
-
-                Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                    form.addEventListener('submit', function (event){
-                        if(!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
-
-                        form.classList.add('was-validated')
-                    }, false)
-                });
-            })()
-        </script>
     <!---------------->
 
     <!-- EDITAR PRODUTO -->
@@ -506,7 +486,7 @@ require '../../classes/Categoria/categoria.controller.php';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="container" method="post"
+                        <form class="container needs-validation" novalidate method="post"
                             action="../../classes/Produto/produto.controller.php?acao=editar&id=<?= $produto->PRO_ID ?>">
                             <div class="row mb-4">
                                 <div class="col-md-6">
@@ -514,7 +494,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                         <span class="input-group-text fw-bold">#</span>
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="codigo" name="codigo"
-                                                placeholder="Código" value="<?= $produto->PRO_CODIGO ?>">
+                                                placeholder="Código" value="<?= $produto->PRO_CODIGO ?>" required>
                                             <label for="codigo">Código</label>
                                         </div>
                                     </div>
@@ -523,7 +503,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome"
-                                            value="<?= $produto->PRO_NOME ?>">
+                                            value="<?= $produto->PRO_NOME ?>" required>
                                         <label for="nome">Nome</label>
                                     </div>
                                 </div>
@@ -533,7 +513,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="cor" name="cor" placeholder="Cor"
-                                            value="<?= $produto->PRO_COR ?>">
+                                            value="<?= $produto->PRO_COR ?>" required>
                                         <label for="cor">Cor</label>
                                     </div>
                                 </div>
@@ -541,7 +521,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="material" name="material"
-                                            placeholder="Material" value="<?= $produto->PRO_MATERIAL ?>">
+                                            placeholder="Material" value="<?= $produto->PRO_MATERIAL ?>" required>
                                         <label for="material">Material</label>
                                     </div>
                                 </div>
@@ -550,7 +530,7 @@ require '../../classes/Categoria/categoria.controller.php';
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <select class="form-select" id="categoria" name="categoria">
+                                        <select class="form-select" id="categoria" name="categoria" required>
                                             <?php foreach ($categorias as $categoria) { ?>
                                                 <?php if ($categoria->CAT_ID == $produto->CATEGORIA_CAT_ID) { ?>
                                                     <option value="<?= $categoria->CAT_ID ?>" selected>
@@ -570,7 +550,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="detalhes" name="detalhes"
-                                            placeholder="Detalhes" value="<?= $produto->PRO_DETALHES ?>">
+                                            placeholder="Detalhes" value="<?= $produto->PRO_DETALHES ?>" required>
                                         <label for="detalhes">Detalhes</label>
                                     </div>
                                 </div>
@@ -582,7 +562,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="precoDeCompra" name="precoDeCompra"
-                                                placeholder="Preço de Compra" value="<?= $produto->PRO_PRECO_CUSTO ?>">
+                                                placeholder="Preço de Compra" value="<?= $produto->PRO_PRECO_CUSTO ?>" required>
                                             <label for="precoDeCompra">Preço de Compra</label>
                                         </div>
                                     </div>
@@ -593,7 +573,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                         <span class="input-group-text fw-bold">R$</span>
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="precoDeVenda" name="precoDeVenda"
-                                                placeholder="Preço de Venda" value="<?= $produto->PRO_PRECO_VENDA ?>">
+                                                placeholder="Preço de Venda" value="<?= $produto->PRO_PRECO_VENDA ?>" required>
                                             <label for="precoDeVenda">Preço de Venda</label>
                                         </div>
                                     </div>
@@ -605,7 +585,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="quantidadeEmEstoque"
                                             name="quantidadeEmEstoque" placeholder="Quantidade"
-                                            value="<?= $produto->PRO_QUANTIDADE ?>">
+                                            value="<?= $produto->PRO_QUANTIDADE ?>" required>
                                         <label for="quantidadeEmEstoque">Quantidade</label>
                                     </div>
                                 </div>
@@ -613,7 +593,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="estoqueMinimo" name="estoqueMinimo"
-                                            placeholder="Mínimo" value="<?= $produto->PRO_MINIMO ?>">
+                                            placeholder="Mínimo" value="<?= $produto->PRO_MINIMO ?>" required>
                                         <label for="estoqueMinimo">Mínimo</label>
                                     </div>
                                 </div>
@@ -624,7 +604,7 @@ require '../../classes/Categoria/categoria.controller.php';
                                     <div class="form-floating">
                                         <textarea class="form-control" placeholder="Insira a descrição do produto"
                                             id="descricao" name="descricao"
-                                            style="height: 100px"><?= $produto->PRO_DESCRICAO ?></textarea>
+                                            style="height: 100px" required><?= $produto->PRO_DESCRICAO ?></textarea>
                                         <label for="descricao">Descrição</label>
                                     </div>
                                 </div>
@@ -640,6 +620,26 @@ require '../../classes/Categoria/categoria.controller.php';
         </div>
     <?php } ?>
     <!----------------------->
+
+    <script>
+            (function () {
+                'use strict'
+
+                let forms = document.querySelectorAll('.needs-validation')
+
+                Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event){
+                        if(!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                });
+            })()
+        </script>
 
     <!-- DESATIVAR PRODUTO -->
     <?php foreach ($produtos as $indice => $produto) { ?>
