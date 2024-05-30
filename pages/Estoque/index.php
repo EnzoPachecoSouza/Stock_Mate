@@ -621,26 +621,6 @@ require '../../classes/Categoria/categoria.controller.php';
     <?php } ?>
     <!----------------------->
 
-    <script>
-            (function () {
-                'use strict'
-
-                let forms = document.querySelectorAll('.needs-validation')
-
-                Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                    form.addEventListener('submit', function (event){
-                        if(!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
-
-                        form.classList.add('was-validated')
-                    }, false)
-                });
-            })()
-        </script>
-
     <!-- DESATIVAR PRODUTO -->
     <?php foreach ($produtos as $indice => $produto) { ?>
         <div class="modal fade" id="desativarProdutoModal<?= $indice ?>" tabindex="-1"
@@ -927,6 +907,26 @@ require '../../classes/Categoria/categoria.controller.php';
         </div>
     </div>
     <!----------------------->
+
+    <script>
+        (function () {
+            'use strict'
+
+            let forms = document.querySelectorAll('.needs-validation')
+
+            Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event){
+                    if(!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            });
+        })()
+    </script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

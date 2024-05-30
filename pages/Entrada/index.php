@@ -299,12 +299,12 @@ require '../../classes/Produto/produto.controller.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" method="post"
+                    <form class="container needs-validation" novalidate method="post"
                         action="../../classes/Entrada/entrada.controller.php?acao=inserir">
                         <div class="row align-items-center mb-4">
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                    <select class="form-select" id="fornecedor" name="fornecedor">
+                                    <select class="form-select" id="fornecedor" name="fornecedor" required>
                                         <option selected></option>
                                         <?php foreach ($fornecedores as $indice => $fornecedor) { ?>
                                             <option value="<?= $fornecedor->FOR_ID ?>"><?= $fornecedor->FOR_NOME ?></option>
@@ -329,7 +329,7 @@ require '../../classes/Produto/produto.controller.php';
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <select class="form-select" id="formaPagamento" name="formaPagamento">
+                                    <select class="form-select" id="formaPagamento" name="formaPagamento" required>
                                         <option selected value=""></option>
                                         <option value="Cartão de crédito">Cartão de Crédito</option>
                                         <option value="Cartão de Débito">Cartão de Débito</option>
@@ -346,7 +346,7 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="date" id="dataCompra" name="dataCompra"
-                                        placeholder="Data de compra">
+                                        placeholder="Data de compra" required>
                                     <label for="dataCompra">Data de compra</label>
                                 </div>
                             </div>
@@ -354,7 +354,7 @@ require '../../classes/Produto/produto.controller.php';
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="date" id="dataPagamento" name="dataPagamento"
-                                        placeholder="Data de pagamento">
+                                        placeholder="Data de pagamento" required>
                                     <label for="dataPagamento">Data de pagamento</label>
                                 </div>
                             </div>
@@ -365,7 +365,7 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <select class="form-select produto" name="produto[]"
-                                            oninput="determinaValorUnitario(this)">
+                                            oninput="determinaValorUnitario(this)" required>
                                             <option value="" selected></option>
                                             <?php foreach ($produtos as $produto) { ?>
                                                 <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?>
@@ -379,7 +379,7 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <input class="form-control quantidade" type="number" name="quantidade[]"
-                                            placeholder="Quantidade" oninput="atualizaValorTotal()">
+                                            placeholder="Quantidade" oninput="atualizaValorTotal()" required>
                                         <label>Quantidade</label>
                                     </div>
                                 </div>
@@ -441,7 +441,7 @@ require '../../classes/Produto/produto.controller.php';
             row.innerHTML = `
             <div class="col-md-4">
                 <div class="form-floating">
-                    <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)">
+                    <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                         <option value="" selected></option>
                         <?php foreach ($produtos as $produto) { ?>
                             <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
@@ -452,7 +452,7 @@ require '../../classes/Produto/produto.controller.php';
             </div>
             <div class="col-md-4">
                 <div class="form-floating">
-                    <input class="form-control quantidade" type="number" name="quantidade[]" placeholder="Quantidade" oninput="atualizaValorTotal()">
+                    <input class="form-control quantidade" type="number" name="quantidade[]" placeholder="Quantidade" oninput="atualizaValorTotal()" required>
                     <label>Quantidade</label>
                 </div>
             </div>
@@ -480,7 +480,7 @@ require '../../classes/Produto/produto.controller.php';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="container" method="post"
+                        <form class="container needs-validation" novalidate method="post"
                             action="../../classes/Entrada/entrada.controller.php?acao=editar&id=<?= $entrada->ENT_ID ?>">
                             <div class="row align-items-center mb-4">
                                 <div class="col-md-12">
@@ -572,7 +572,7 @@ require '../../classes/Produto/produto.controller.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" method="post"
+                    <form class="container needs-validation" novalidate method="post"
                         action="../../classes/Fornecedor/fornecedor.controller.php?acao=inserir-from-entrada">
                         <div class="row mb-4">
                             <div class="col-md-6">
@@ -665,7 +665,7 @@ require '../../classes/Produto/produto.controller.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" method="post"
+                    <form class="container needs-validation" novalidate method="post"
                         action="../../classes/Cliente/cliente.controller.php?acao=inserir">
                         <div class="row mb-4">
                             <div class="col-md-12">
@@ -706,6 +706,26 @@ require '../../classes/Produto/produto.controller.php';
         </div>
     </div>
     <!----------------------->
+
+    <script>
+        (function () {
+            'use strict'
+
+            let forms = document.querySelectorAll('.needs-validation')
+
+            Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event){
+                    if(!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            });
+        })()
+    </script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
