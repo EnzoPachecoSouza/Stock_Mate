@@ -280,14 +280,14 @@ require '../../classes/Colaborador/colaborador.controller.php';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="container" method="post"
+                        <form class="container needs-validation" novalidate method="post"
                             action="../../classes/Colaborador/colaborador.controller.php?acao=inserir">
                             <div class="row mb-4">
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="colaborador" name="colaborador"
-                                                placeholder="Nome">
+                                                placeholder="Nome" required>
                                             <label for="colaborador">Nome</label>
                                         </div>
                                     </div>
@@ -295,8 +295,8 @@ require '../../classes/Colaborador/colaborador.controller.php';
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="email" name="email"
-                                            placeholder="E-mail">
+                                        <input class="form-control" type="text" id="email" name="email" placeholder="E-mail"
+                                            required>
                                         <label for="email">E-mail</label>
                                     </div>
                                 </div>
@@ -306,14 +306,15 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="contato" name="contato"
-                                            placeholder="Contato">
+                                            placeholder="Contato" required>
                                         <label for="contato">Contato</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF">
+                                        <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF"
+                                            required>
                                         <label for="cpf">CPF</label>
                                     </div>
                                 </div>
@@ -322,8 +323,8 @@ require '../../classes/Colaborador/colaborador.controller.php';
                             <div class="row mb-4">
                                 <div class="col-12">
                                     <div class="input-group">
-                                        <select class="form-select shadow-none" id="cargo" name="cargo">
-                                            <option disabled selected>Cargo</option>
+                                        <select class="form-select shadow-none" id="cargo" name="cargo" required>
+                                            <option value="" disabled selected>Cargo</option>
                                             <option value="Gerente">Gerente</option>
                                             <option value="Funcionário">Funcionário</option>
                                         </select>
@@ -353,7 +354,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form class="container" method="post"
+                            <form class="container needs-validation" novalidate method="post"
                                 action="../../classes/Colaborador/colaborador.controller.php?acao=editar&id=<?= $colaborador->COL_ID ?>">
                                 <div class="row mb-4">
                                     <div class="col-md-6">
@@ -361,7 +362,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                             <span class="input-group-text fw-bold">#</span>
                                             <div class="form-floating">
                                                 <input class="form-control" type="text" id="colaborador" name="colaborador"
-                                                    placeholder="Nome" value="<?= $colaborador->COL_NOME ?>">
+                                                    placeholder="Nome" value="<?= $colaborador->COL_NOME ?>" required>
                                                 <label for="colaborador">Nome</label>
                                             </div>
                                         </div>
@@ -370,7 +371,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                     <div class="col-md-6">
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="email" name="email" placeholder="E-mail"
-                                                value="<?= $colaborador->COL_EMAIL ?>">
+                                                value="<?= $colaborador->COL_EMAIL ?>" required>
                                             <label for="email">E-mail</label>
                                         </div>
                                     </div>
@@ -380,7 +381,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                     <div class="col-md-6">
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="contato" name="contato"
-                                                placeholder="Contato" value="<?= $colaborador->COL_CONTATO ?>">
+                                                placeholder="Contato" value="<?= $colaborador->COL_CONTATO ?>" required>
                                             <label for="contato">Contato</label>
                                         </div>
                                     </div>
@@ -388,7 +389,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                     <div class="col-md-6">
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF"
-                                                value="<?= $colaborador->COL_CPF ?>">
+                                                value="<?= $colaborador->COL_CPF ?>" required>
                                             <label for="cpf">CPF</label>
                                         </div>
                                     </div>
@@ -397,7 +398,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                 <div class="row mb-4">
                                     <div class="col-md-12">
                                         <div class="form-floating">
-                                            <select class="form-select shadow-none" id="cargo" name="cargo">
+                                            <select class="form-select shadow-none" id="cargo" name="cargo" required>
                                                 <option disabled selected>Cargo</option>
                                                 <option value="Gerente">Gerente</option>
                                                 <option value="Funcionário">Funcionário</option>
@@ -496,6 +497,26 @@ require '../../classes/Colaborador/colaborador.controller.php';
             </div>
         </div>
         <!----------------------->
+
+    <script>
+        (function () {
+            'use strict'
+
+            let forms = document.querySelectorAll('.needs-validation')
+
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                });
+        })()
+    </script>
 
     <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
