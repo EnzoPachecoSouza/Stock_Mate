@@ -275,14 +275,14 @@ require '../../classes/Cliente/cliente.controller.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" method="post"
+                    <form class="container needs-validation" novalidate method="post"
                         action="../../classes/Cliente/cliente.controller.php?acao=inserir">
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="cliente" name="cliente"
-                                            placeholder="Nome">
+                                            placeholder="Nome" required>
                                         <label for="cliente">Nome</label>
                                     </div>
                                 </div>
@@ -290,8 +290,8 @@ require '../../classes/Cliente/cliente.controller.php';
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="email" name="email"
-                                        placeholder="E-mail">
+                                    <input class="form-control" type="text" id="email" name="email" placeholder="E-mail"
+                                        required>
                                     <label for="email">E-mail</label>
                                 </div>
                             </div>
@@ -301,14 +301,15 @@ require '../../classes/Cliente/cliente.controller.php';
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="text" id="contato" name="contato"
-                                        placeholder="Contato">
+                                        placeholder="Contato" required>
                                     <label for="contato">Contato</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF">
+                                    <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF"
+                                        required>
                                     <label for="cpf">CPF</label>
                                 </div>
                             </div>
@@ -325,7 +326,7 @@ require '../../classes/Cliente/cliente.controller.php';
     </div>
     <!----------------------->
 
-    <!-- EDITAR PRODUTO -->
+    <!-- EDITAR CLIENTE -->
     <?php foreach ($clientes as $indice => $cliente) { ?>
         <div class="modal fade" id="editarClienteModal<?= $indice ?>" tabindex="-1"
             aria-labelledby="editarClienteModalLabel<?= $indice ?>" aria-hidden="true">
@@ -336,7 +337,7 @@ require '../../classes/Cliente/cliente.controller.php';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="container" method="post"
+                        <form class="container needs-validation" novalidate method="post"
                             action="../../classes/Cliente/cliente.controller.php?acao=editar&id=<?= $cliente->CLI_ID ?>">
                             <div class="row mb-4">
                                 <div class="col-md-6">
@@ -344,7 +345,7 @@ require '../../classes/Cliente/cliente.controller.php';
                                         <span class="input-group-text fw-bold">#</span>
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="cliente" name="cliente"
-                                                placeholder="Nome" value="<?= $cliente->CLI_NOME ?>">
+                                                placeholder="Nome" value="<?= $cliente->CLI_NOME ?>" required>
                                             <label for="cliente">Nome</label>
                                         </div>
                                     </div>
@@ -353,7 +354,7 @@ require '../../classes/Cliente/cliente.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="email" name="email" placeholder="E-mail"
-                                            value="<?= $cliente->CLI_EMAIL ?>">
+                                            value="<?= $cliente->CLI_EMAIL ?>" required>
                                         <label for="email">E-mail</label>
                                     </div>
                                 </div>
@@ -363,7 +364,7 @@ require '../../classes/Cliente/cliente.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="contato" name="contato"
-                                            placeholder="Contato" value="<?= $cliente->CLI_CONTATO ?>">
+                                            placeholder="Contato" value="<?= $cliente->CLI_CONTATO ?>" required>
                                         <label for="contato">Contato</label>
                                     </div>
                                 </div>
@@ -371,7 +372,7 @@ require '../../classes/Cliente/cliente.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF"
-                                            value="<?= $cliente->CLI_CPF ?>">
+                                            value="<?= $cliente->CLI_CPF ?>" required>
                                         <label for="cpf">CPF</label>
                                     </div>
                                 </div>
@@ -466,6 +467,26 @@ require '../../classes/Cliente/cliente.controller.php';
         </div>
     </div>
     <!----------------------->
+
+    <script>
+        (function () {
+            'use strict'
+
+            let forms = document.querySelectorAll('.needs-validation')
+
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                });
+        })()
+    </script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

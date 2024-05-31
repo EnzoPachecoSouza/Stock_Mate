@@ -243,18 +243,18 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                 $data_registro = new DateTime($fornecedor->FOR_HORA_DE_REGISTRO);
                                 $data_bloquear_atualizacao = $data_registro->modify('+1 day');
                                 $data_atual = new DateTime();
-                            ?>
+                                ?>
 
-                                <?php if($data_atual > $data_bloquear_atualizacao) { ?>
+                                <?php if ($data_atual > $data_bloquear_atualizacao) { ?>
                                     <button type="button" class="btn">
-                                    <i class="bi bi-pencil-square text-danger fs-5"></i>
+                                        <i class="bi bi-pencil-square text-danger fs-5"></i>
                                     </button>
-                                <?php } else {?>
+                                <?php } else { ?>
                                     <button type="button" class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#editarFornecedorModal<?= $indice ?>">
-                                    <i class="bi bi-pencil-square text-info fs-5"></i>
+                                        data-bs-target="#editarFornecedorModal<?= $indice ?>">
+                                        <i class="bi bi-pencil-square text-info fs-5"></i>
                                     </button>
-                                <?php }?>
+                                <?php } ?>
                                 <!------->
                         </td>
                     </tr>
@@ -265,7 +265,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
         </div>
     </div>
 
-    <!-- CADASTRAR CLIENTE -->
+    <!-- CADASTRAR FORNECEDOR -->
     <div class="modal fade" id="cadastrarFornecedorModal" tabindex="-1" aria-labelledby="cadastrarFornecedorModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -275,14 +275,14 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form class="container" method="post"
+                    <form class="container needs-validation" novalidate method="post"
                         action="../../classes/Fornecedor/fornecedor.controller.php?acao=inserir">
                         <div class="row mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="fornecedor" name="fornecedor"
-                                            placeholder="Nome">
+                                            placeholder="Nome" required>
                                         <label for="fornecedor">Nome</label>
                                     </div>
                                 </div>
@@ -290,8 +290,8 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="email" name="email"
-                                        placeholder="E-mail">
+                                    <input class="form-control" type="text" id="email" name="email" placeholder="E-mail"
+                                        required>
                                     <label for="email">E-mail</label>
                                 </div>
                             </div>
@@ -301,14 +301,15 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="text" id="contato" name="contato"
-                                        placeholder="Contato">
+                                        placeholder="Contato" required>
                                     <label for="contato">Contato</label>
                                 </div>
                             </div>
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="CNPJ">
+                                    <input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="CNPJ"
+                                        required>
                                     <label for="cnpj">CNPJ</label>
                                 </div>
                             </div>
@@ -325,7 +326,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
     </div>
     <!----------------------->
 
-    <!-- EDITAR PRODUTO -->
+    <!-- EDITAR FORNECEDOR -->
     <?php foreach ($fornecedores as $indice => $fornecedor) { ?>
         <div class="modal fade" id="editarFornecedorModal<?= $indice ?>" tabindex="-1"
             aria-labelledby="editarFornecedorModalLabel<?= $indice ?>" aria-hidden="true">
@@ -336,7 +337,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="container" method="post"
+                        <form class="container needs-validation" novalidate method="post"
                             action="../../classes/Fornecedor/fornecedor.controller.php?acao=editar&id=<?= $fornecedor->FOR_ID ?>">
                             <div class="row mb-4">
                                 <div class="col-md-6">
@@ -344,7 +345,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                         <span class="input-group-text fw-bold">#</span>
                                         <div class="form-floating">
                                             <input class="form-control" type="text" id="fornecedor" name="fornecedor"
-                                                placeholder="Nome" value="<?= $fornecedor->FOR_NOME ?>">
+                                                placeholder="Nome" value="<?= $fornecedor->FOR_NOME ?>" required>
                                             <label for="fornecedor">Fornecedor</label>
                                         </div>
                                     </div>
@@ -353,7 +354,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="email" name="email" placeholder="E-mail"
-                                            value="<?= $fornecedor->FOR_EMAIL ?>">
+                                            value="<?= $fornecedor->FOR_EMAIL ?>" required>
                                         <label for="email">E-mail</label>
                                     </div>
                                 </div>
@@ -363,7 +364,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="contato" name="contato"
-                                            placeholder="Contato" value="<?= $fornecedor->FOR_CONTATO ?>">
+                                            placeholder="Contato" value="<?= $fornecedor->FOR_CONTATO ?>" required>
                                         <label for="contato">Contato</label>
                                     </div>
                                 </div>
@@ -371,7 +372,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="CNPJ"
-                                            value="<?= $fornecedor->FOR_CNPJ ?>">
+                                            value="<?= $fornecedor->FOR_CNPJ ?>" required>
                                         <label for="cnpj">CNPJ</label>
                                     </div>
                                 </div>
@@ -466,6 +467,26 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
         </div>
     </div>
     <!----------------------->
+
+    <script>
+        (function () {
+            'use strict'
+
+            let forms = document.querySelectorAll('.needs-validation')
+
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+
+                        form.classList.add('was-validated')
+                    }, false)
+                });
+        })()
+    </script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
