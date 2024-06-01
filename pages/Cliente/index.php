@@ -239,22 +239,10 @@ require '../../classes/Cliente/cliente.controller.php';
 
                             <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
                                 <!-- BOTÃO EDITAR CLIENTE -->
-                                <?php
-                                $data_registro = new DateTime($cliente->CLI_HORA_DE_REGISTRO);
-                                $data_bloquear_atualizacao = $data_registro->modify('+1 day');
-                                $data_atual = new DateTime();
-                                ?>
-
-                                <?php if ($data_atual > $data_bloquear_atualizacao) { ?>
-                                    <button type="button" class="btn">
-                                        <i class="bi bi-pencil-square text-danger fs-5"></i>
-                                    </button>
-                                <?php } else { ?>
-                                    <button type="button" class="btn" data-bs-toggle="modal"
-                                        data-bs-target="#editarClienteModal<?= $indice ?>">
-                                        <i class="bi bi-pencil-square text-info fs-5"></i>
-                                    </button>
-                                <?php } ?>
+                                <button type="button" class="btn" data-bs-toggle="modal"
+                                    data-bs-target="#editarClienteModal<?= $indice ?>">
+                                    <i class="bi bi-pencil-square text-info fs-5"></i>
+                                </button>
                                 <!------->
                         </td>
                     </tr>
