@@ -379,7 +379,7 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <input class="form-control quantidade" type="number" name="quantidade[]"
-                                            placeholder="Quantidade" oninput="atualizaValorTotal()" required>
+                                            placeholder="Quantidade" min="1" oninput="atualizaValorTotal()" required>
                                         <label>Quantidade</label>
                                     </div>
                                 </div>
