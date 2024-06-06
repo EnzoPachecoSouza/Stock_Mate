@@ -423,6 +423,17 @@ require '../../classes/Produto/produto.controller.php';
 
             selectElement.setAttribute('data-id', id);
             console.log(`ID do Produto: ${id}, Valor Unitário: ${valorUnitario}`);
+
+            atualizaIds()
+        }
+
+        function atualizaIds() {
+            const productSelects = document.querySelectorAll('.produto');
+            selectedProductIds = Array.from(productSelects)
+                .map(select => select.getAttribute('data-id'))
+                .filter(id => id);
+
+            console.log(selectedProductIds)
         }
 
         function atualizaValorTotal() {
@@ -451,7 +462,7 @@ require '../../classes/Produto/produto.controller.php';
                     <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                         <option value="" selected></option>
                         <?php foreach ($produtos as $produto) { ?>
-                                    <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID?>"><?= $produto->PRO_NOME ?></option>
+                                                <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
                         <?php } ?>
                     </select>
                     <label>Produto</label>
