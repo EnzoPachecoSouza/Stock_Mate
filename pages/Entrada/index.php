@@ -264,22 +264,22 @@ require '../../classes/Produto/produto.controller.php';
 
                         <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
                             <!-- BOTÃO EDITAR ENTRADA -->
-                            <?php
+                                <?php
                                 $data_registro = new DateTime($entrada->ENT_HORA_DE_REGISTRO);
                                 $data_bloquear_atualizacao = $data_registro->modify('+1 day');
                                 $data_atual = new DateTime();
-                            ?>
+                                ?>
 
-                                <?php if($data_atual > $data_bloquear_atualizacao) { ?>
+                                <?php if ($data_atual > $data_bloquear_atualizacao) { ?>
                                     <button type="button" class="btn">
-                                    <i class="bi bi-pencil-square text-danger fs-5"></i>
+                                        <i class="bi bi-pencil-square text-danger fs-5"></i>
                                     </button>
-                                <?php } else {?>
+                                <?php } else { ?>
                                     <button type="button" class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#editarEntradaModal<?= $indice ?>">
-                                    <i class="bi bi-pencil-square text-info fs-5"></i>
+                                        data-bs-target="#editarEntradaModal<?= $indice ?>">
+                                        <i class="bi bi-pencil-square text-info fs-5"></i>
                                     </button>
-                                <?php }?>
+                                <?php } ?>
                                 <!------->
                         </td>
                     </tr>
@@ -424,9 +424,10 @@ require '../../classes/Produto/produto.controller.php';
             let valorTotal = 0
 
             productItems.forEach(item => {
+                const produto = item.querySelector('.produto')
                 const quantidade = item.querySelector('.quantidade').value || 0
                 const valorUnitario = item.querySelector('.valorUnitario').value || 0
-                valorTotal += quantidade * valorUnitario;
+                valorTotal += quantidade * valorUnitario
             });
 
             document.querySelector('#valorTotal').value = valorTotal.toFixed(2);
@@ -444,7 +445,7 @@ require '../../classes/Produto/produto.controller.php';
                     <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                         <option value="" selected></option>
                         <?php foreach ($produtos as $produto) { ?>
-                            <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
+                                <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
                         <?php } ?>
                     </select>
                     <label>Produto</label>
@@ -545,7 +546,8 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" value="<?= $entrada->ENT_DATA_PAGAMENTO ?>" type="date"
-                                            id="dataPagamento" name="dataPagamento" placeholder="Data de pagamento" required>
+                                            id="dataPagamento" name="dataPagamento" placeholder="Data de pagamento"
+                                            required>
                                         <label for="dataPagamento">Data de pagamento</label>
                                     </div>
                                 </div>
@@ -585,8 +587,8 @@ require '../../classes/Produto/produto.controller.php';
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="email" id="email" name="email"
-                                        placeholder="Email" required>
+                                    <input class="form-control" type="email" id="email" name="email" placeholder="Email"
+                                        required>
                                     <label for="email">Email</label>
                                 </div>
                             </div>
@@ -603,7 +605,8 @@ require '../../classes/Produto/produto.controller.php';
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="CNPJ" required>
+                                    <input class="form-control" type="text" id="cnpj" name="cnpj" placeholder="CNPJ"
+                                        required>
                                     <label for="cnpj">CNPJ</label>
                                 </div>
                             </div>
@@ -714,16 +717,16 @@ require '../../classes/Produto/produto.controller.php';
             let forms = document.querySelectorAll('.needs-validation')
 
             Array.prototype.slice.call(forms)
-            .forEach(function (form) {
-                form.addEventListener('submit', function (event){
-                    if(!form.checkValidity()) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                    }
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
 
-                    form.classList.add('was-validated')
-                }, false)
-            });
+                        form.classList.add('was-validated')
+                    }, false)
+                });
         })()
     </script>
 
