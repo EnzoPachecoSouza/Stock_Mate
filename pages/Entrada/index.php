@@ -442,8 +442,8 @@ require '../../classes/Produto/produto.controller.php';
 
             productItems.forEach(item => {
                 const produto = item.querySelector('.produto')
-                const quantidade = item.querySelector('.quantidade').value || 0
-                const valorUnitario = item.querySelector('.valorUnitario').value || 0
+                const quantidade = item.querySelector('.quantidade').value || 1
+                const valorUnitario = item.querySelector('.valorUnitario').value || 1
                 valorTotal += quantidade * valorUnitario
             });
 
