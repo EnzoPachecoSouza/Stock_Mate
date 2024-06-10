@@ -414,38 +414,40 @@ require '../../classes/Produto/produto.controller.php';
     </div>
 
     <script>
+        let selectedProducts = [];
+
         function determinaValorUnitario(selectElement) {
             const [valorUnitario, id] = selectElement.value.split('-');
-
-            const valorUnitarioInput = selectElement.closest('.product-item').querySelector('.valorUnitario')
-            valorUnitarioInput.value = valorUnitario
-            atualizaValorTotal()
+            const valorUnitarioInput = selectElement.closest('.product-item').querySelector('.valorUnitario');
+            valorUnitarioInput.value = valorUnitario;
+            atualizaValorTotal();
 
             selectElement.setAttribute('data-id', id);
-            console.log(`ID do Produto: ${id}, Valor Unitário: ${valorUnitario}`);
-
-            atualizaIds()
+            atualizaIdsEQuantidades();
+            console.log(`Produtos Selecionados:`, selectedProducts);
         }
 
-        function atualizaIds() {
-            const productSelects = document.querySelectorAll('.produto');
-            selectedProductIds = Array.from(productSelects)
-                .map(select => select.getAttribute('data-id'))
-                .filter(id => id);
-
-            console.log(selectedProductIds)
+        function atualizaIdsEQuantidades() {
+            const productItems = document.querySelectorAll('.product-item');
+            selectedProducts = Array.from(productItems).map(item => {
+                const selectElement = item.querySelector('.produto');
+                const id = selectElement.getAttribute('data-id');
+                const quantidade = item.querySelector('.quantidade').value || 1;
+                return { id, quantidade };
+            }).filter(item => item.id);
         }
 
         function atualizaValorTotal() {
-            const productItems = document.querySelectorAll('.product-item')
-            let valorTotal = 0
+            const productItems = document.querySelectorAll('.product-item');
+            let valorTotal = 0;
 
             productItems.forEach(item => {
-                const produto = item.querySelector('.produto')
-                const quantidade = item.querySelector('.quantidade').value || 1
-                const valorUnitario = item.querySelector('.valorUnitario').value || 1
-                valorTotal += quantidade * valorUnitario
+                const quantidade = item.querySelector('.quantidade').value || 1;
+                const valorUnitario = item.querySelector('.valorUnitario').value || 1;
+                valorTotal += quantidade * valorUnitario;
             });
+
+            atualizaIdsEQuantidades()
 
             document.querySelector('#valorTotal').value = valorTotal.toFixed(2);
         }
@@ -457,30 +459,30 @@ require '../../classes/Produto/produto.controller.php';
             row.classList.add('row', 'mb-2', 'product-item');
 
             row.innerHTML = `
-            <div class="col-md-4">
-                <div class="form-floating">
-                    <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
-                        <option value="" selected></option>
-                        <?php foreach ($produtos as $produto) { ?>
-                                                <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
-                        <?php } ?>
-                    </select>
-                    <label>Produto</label>
-                </div>
+        <div class="col-md-4">
+            <div class="form-floating">
+                <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
+                    <option value="" selected></option>
+                    <?php foreach ($produtos as $produto) { ?>
+                            <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
+                    <?php } ?>
+                </select>
+                <label>Produto</label>
             </div>
-            <div class="col-md-4">
-                <div class="form-floating">
-                    <input class="form-control quantidade" type="number" name="quantidade[]" placeholder="Quantidade" oninput="atualizaValorTotal()" required>
-                    <label>Quantidade</label>
-                </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-floating">
+                <input class="form-control quantidade" type="number" name="quantidade[]" placeholder="Quantidade" oninput="atualizaValorTotal(); atualizaIdsEQuantidades();" required>
+                <label>Quantidade</label>
             </div>
-            <div class="col-md-4">
-                <div class="form-floating">
-                    <input class="form-control valorUnitario" type="number" name="valorUnitario[]" placeholder="Valor unitário" readonly>
-                    <label>Valor Unitário</label>
-                </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-floating">
+                <input class="form-control valorUnitario" type="number" name="valorUnitario[]" placeholder="Valor unitário" readonly>
+                <label>Valor Unitário</label>
             </div>
-        `;
+        </div>
+    `;
 
             products.appendChild(row);
         }
