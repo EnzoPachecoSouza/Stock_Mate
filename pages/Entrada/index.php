@@ -424,7 +424,6 @@ require '../../classes/Produto/produto.controller.php';
 
             selectElement.setAttribute('data-id', id);
             atualizaIdsEQuantidades();
-            console.log(`Produtos Selecionados:`, selectedProducts);
         }
 
         function atualizaIdsEQuantidades() {
@@ -432,9 +431,11 @@ require '../../classes/Produto/produto.controller.php';
             selectedProducts = Array.from(productItems).map(item => {
                 const selectElement = item.querySelector('.produto');
                 const id = selectElement.getAttribute('data-id');
-                const quantidade = item.querySelector('.quantidade').value || 1;
+                const quantidade = item.querySelector('.quantidade').value || 0;
                 return { id, quantidade };
             }).filter(item => item.id);
+
+            console.log(`Produtos Selecionados:`, selectedProducts);
         }
 
         function atualizaValorTotal() {
@@ -442,8 +443,8 @@ require '../../classes/Produto/produto.controller.php';
             let valorTotal = 0;
 
             productItems.forEach(item => {
-                const quantidade = item.querySelector('.quantidade').value || 1;
-                const valorUnitario = item.querySelector('.valorUnitario').value || 1;
+                const quantidade = item.querySelector('.quantidade').value || 0;
+                const valorUnitario = item.querySelector('.valorUnitario').value || 0;
                 valorTotal += quantidade * valorUnitario;
             });
 
@@ -464,7 +465,7 @@ require '../../classes/Produto/produto.controller.php';
                 <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                     <option value="" selected></option>
                     <?php foreach ($produtos as $produto) { ?>
-                            <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
+                                    <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
                     <?php } ?>
                 </select>
                 <label>Produto</label>
