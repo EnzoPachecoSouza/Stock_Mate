@@ -300,7 +300,11 @@ require '../../classes/Produto/produto.controller.php';
                 </div>
                 <div class="modal-body">
                     <form class="container needs-validation" novalidate method="post"
-                        action="../../classes/Entrada/entrada.controller.php?acao=inserir">
+                        action="../../classes/Entrada/entrada.controller.php?acao=inserir"
+                        onsubmit="prepareSelectedProducts()">
+
+                        <input type="hidden" id="selectedProducts" name="selectedProducts">
+
                         <div class="row align-items-center mb-4">
                             <div class="col-md-12">
                                 <div class="form-floating">
@@ -436,6 +440,7 @@ require '../../classes/Produto/produto.controller.php';
             }).filter(item => item.id);
 
             console.log(`Produtos Selecionados:`, selectedProducts);
+            document.querySelector('#selectedProducts').value = JSON.stringify(selectedProducts);
         }
 
         function atualizaValorTotal() {
@@ -448,7 +453,7 @@ require '../../classes/Produto/produto.controller.php';
                 valorTotal += quantidade * valorUnitario;
             });
 
-            atualizaIdsEQuantidades()
+            atualizaIdsEQuantidades();
 
             document.querySelector('#valorTotal').value = valorTotal.toFixed(2);
         }
@@ -465,7 +470,7 @@ require '../../classes/Produto/produto.controller.php';
                 <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                     <option value="" selected></option>
                     <?php foreach ($produtos as $produto) { ?>
-                                    <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
+                            <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
                     <?php } ?>
                 </select>
                 <label>Produto</label>
@@ -486,6 +491,11 @@ require '../../classes/Produto/produto.controller.php';
     `;
 
             products.appendChild(row);
+        }
+
+        function prepareSelectedProducts() {
+            const selectedProductsField = document.querySelector('#selectedProducts');
+            selectedProductsField.value = JSON.stringify(selectedProducts);
         }
     </script>
     <!-------------------->
