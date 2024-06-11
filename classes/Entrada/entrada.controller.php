@@ -16,12 +16,26 @@ if ($acao == 'inserir') {
     $entrada->__set('fornecedor', $_POST['fornecedor']);
     $entrada->__set('formaPagamento', $_POST['formaPagamento']);
 
-    $conexao = new Conexao();
+    $selectedProducts = json_decode($_POST['selectedProducts'], true);
 
-    $entradaService = new EntradaService($conexao, $entrada);
-    $entradaService->inserir();
+    if (json_last_error() === JSON_ERROR_NONE) {
+        foreach ($selectedProducts as $produto) {
+            $itensEntrada->__set('produtoID', $produto['id']);
+            $itensEntrada->__set('produtoQuantidade', $produto['quantidade']);
 
-    header('Location: ../../pages/Entrada/index.php?act=inserir');
+            $itensEntradaService = new ItensEntradaService($conexao, $itensEntrada);
+            $itensEntradaService->inserir();
+        }
+
+        $conexao = new Conexao();
+
+        $entradaService = new EntradaService($conexao, $entrada);
+        $entradaService->inserir();
+
+        header('Location: ../../pages/Entrada/index.php?act=inserir');
+    } else {
+        echo 'Erro na decodificação do JSON: ' . json_last_error_msg();
+    }
 } else if ($acao == 'recuperar') {
     $entrada = new Entrada();
 

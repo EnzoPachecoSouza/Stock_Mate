@@ -228,3 +228,4 @@ INSERT INTO COLABORADORES (COL_NOME, COL_CARGO, COL_STATUS, COL_EMAIL, COL_SENHA
 ('Maria Souza', 'Funcionário', 1, 'maria.souza@example.com', 'senha456', '(11) 7777-7777', '777.777.777-77');
 
 -- TIRAR O ITENS_VALOR (itens_entrada)
+-- ENTRADA_ID (NULO)
