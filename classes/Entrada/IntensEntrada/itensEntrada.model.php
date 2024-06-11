@@ -1,13 +1,10 @@
 <?php
 
-class Entrada
+class ItensEntrada
 {
-    private $dataCompra;
-    private $valorTotal;
-    private $dataPagamento;
-    private $formaPagamento;
-    private $status;
-    private $fornecedor;
+    private $entradaID;
+    private $produtoID;
+    private $produtoQuantidade;
 
     public function __set($atributo, $valor)
     {

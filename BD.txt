@@ -226,3 +226,5 @@ VALUES
 INSERT INTO COLABORADORES (COL_NOME, COL_CARGO, COL_STATUS, COL_EMAIL, COL_SENHA, COL_CONTATO, COL_CPF) VALUES
 ('João da Silva', 'Gerente', 1, 'joao.silva@example.com', 'senha123', '(11) 6666-6666', '666.666.666-66'),
 ('Maria Souza', 'Funcionário', 1, 'maria.souza@example.com', 'senha456', '(11) 7777-7777', '777.777.777-77');
+
+-- TIRAR O ITENS_VALOR (itens_entrada)
