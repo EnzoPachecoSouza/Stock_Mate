@@ -1,4 +1,5 @@
 <?php
+
 class ItensEntradaService
 {
     private $conexao;
@@ -13,19 +14,20 @@ class ItensEntradaService
     public function inserir()
     {
         $query = '
-        INSERT INTO
-        ENTRADA(ENT_DATA_COMPRA, ENT_VALOR_TOTAL, ENT_DATA_PAGAMENTO, ENT_FORMA_PAGAMENTO, FORNECEDORES_FOR_ID)
-        VALUES (:dataCompra, :valorTotal, :dataPagamento, :formaPagamento, :fornecedor)
+        INSERT INTO ITENS_ENTRADA (PRODUTOS_PRO_ID, ITENS_QUANTIDADE)
+        VALUES (:produtoID, :produtoQuantidade)
         ';
 
         $stmt = $this->conexao->prepare($query);
 
-        $stmt->bindValue(':dataCompra', $this->itensEntrada->__get('dataCompra'));
-        $stmt->bindValue(':valorTotal', $this->itensEntrada->__get('valorTotal'));
-        $stmt->bindValue(':dataPagamento', $this->itensEntrada->__get('dataPagamento'));
-        $stmt->bindValue(':formaPagamento', $this->itensEntrada->__get('formaPagamento'));
-        $stmt->bindValue(':fornecedor', $this->itensEntrada->__get('fornecedor'));
+        $stmt->bindValue(':produtoID', $this->itensEntrada->__get('produtoID'));
+        $stmt->bindValue(':produtoQuantidade', $this->itensEntrada->__get('produtoQuantidade'));
 
-        $stmt->execute();
+        try {
+            $stmt->execute();
+        } catch (PDOException $e) {
+            // Manejo de erros: exibe ou registra o erro
+            echo 'Erro ao inserir item de entrada: ' . $e->getMessage();
+        }
     }
 }
