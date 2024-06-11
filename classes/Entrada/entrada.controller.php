@@ -1,5 +1,6 @@
 <?php
 require "entrada.model.php";
+require "ItensEntrada/itensEntrada.model.php";
 require "entrada.service.php";
 require "../../classes/conexao.php";
 
@@ -7,6 +8,7 @@ $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 
 if ($acao == 'inserir') {
     $entrada = new Entrada();
+    $itensEntrada = new ItensEntrada();
 
     $entrada->__set('dataCompra', $_POST['dataCompra']);
     $entrada->__set('valorTotal', $_POST['valorTotal']);
