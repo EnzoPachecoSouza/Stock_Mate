@@ -110,4 +110,3 @@ class ColaboradorService
         $stmt->execute();
     }
 }
-?>

@@ -2,7 +2,7 @@
 
 class ItensEntrada
 {
-    // private $entradaID;
+    private $entradaID;
     private $produtoID;
     private $produtoQuantidade;
 

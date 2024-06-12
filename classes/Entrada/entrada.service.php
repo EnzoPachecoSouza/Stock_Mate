@@ -29,6 +29,20 @@ class EntradaService
         $stmt->execute();
     }
 
+    public function getID()
+    {
+        $query = '
+        SELECT ENT_ID FROM ENTRADA
+        ORDER BY ENT_ID DESC
+        LIMIT 1
+        ';  
+
+        $stmt = $this->conexao->prepare($query);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public function recuperar()
     {
         $query = '';

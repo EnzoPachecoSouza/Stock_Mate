@@ -21,18 +21,20 @@ if ($acao == 'inserir') {
 
     $conexao = new Conexao();
 
+    $entradaService = new EntradaService($conexao, $entrada);
+    $entradaService->inserir();
+    $entradaID = $entradaService->getID();
+
     if (json_last_error() === JSON_ERROR_NONE) {
-        
+
         foreach ($selectedProducts as $produto) {
+            $itensEntrada->__set('entradaID', $entradaID);
             $itensEntrada->__set('produtoID', $produto['id']);
             $itensEntrada->__set('produtoQuantidade', $produto['quantidade']);
 
             $itensEntradaService = new ItensEntradaService($conexao, $itensEntrada);
             $itensEntradaService->inserir();
         }
-
-        $entradaService = new EntradaService($conexao, $entrada);
-        $entradaService->inserir();
 
         header('Location: ../../pages/Entrada/index.php?act=inserir');
     } else {
