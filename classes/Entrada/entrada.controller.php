@@ -20,7 +20,7 @@ if ($acao == 'inserir') {
     $selectedProducts = json_decode($_POST['selectedProducts'], true);
 
     $conexao = new Conexao();
-    
+
     if (json_last_error() === JSON_ERROR_NONE) {
         
         foreach ($selectedProducts as $produto) {

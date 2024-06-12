@@ -26,7 +26,6 @@ class ItensEntradaService
         try {
             $stmt->execute();
         } catch (PDOException $e) {
-            // Manejo de erros: exibe ou registra o erro
             echo 'Erro ao inserir item de entrada: ' . $e->getMessage();
         }
     }
