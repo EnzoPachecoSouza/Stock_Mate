@@ -35,13 +35,15 @@ class EntradaService
         SELECT ENT_ID FROM ENTRADA
         ORDER BY ENT_ID DESC
         LIMIT 1
-        ';  
+        ';
 
         $stmt = $this->conexao->prepare($query);
-
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_OBJ);
+
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+        return $result ? $result->ENT_ID : null;
     }
+
 
     public function recuperar()
     {
