@@ -33,6 +33,7 @@ if ($acao == 'inserir') {
 
         foreach ($selectedProducts as $produto) {
             $produtoAtualizar = new Produto();
+            $produtoService = new ProdutoService($conexao, $produtoAtualizar);
 
             $itensEntrada->__set('entradaID', $entradaID);
             $itensEntrada->__set('produtoID', $produto['id']);
@@ -40,6 +41,8 @@ if ($acao == 'inserir') {
 
             $itensEntradaService = new ItensEntradaService($conexao, $itensEntrada);
             $itensEntradaService->inserir();
+
+            $produtoService->atualizarEntrada($produto['id'], $produto['quantidade']);
         }
 
         header('Location: ../../pages/Entrada/index.php?act=inserir');

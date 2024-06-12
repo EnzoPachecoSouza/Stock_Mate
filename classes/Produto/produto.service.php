@@ -200,10 +200,10 @@ if (!class_exists('ProdutoService')) {
         public function ativar($id)
         {
             $query = '
-        UPDATE PRODUTOS
-        SET PRO_STATUS = :status
-        WHERE PRO_ID = :id
-        ';
+            UPDATE PRODUTOS
+            SET PRO_STATUS = :status
+            WHERE PRO_ID = :id
+            ';
 
             $stmt = $this->conexao->prepare($query);
             $stmt->bindValue(':status', 1);
@@ -211,11 +211,18 @@ if (!class_exists('ProdutoService')) {
             $stmt->execute();
         }
 
-        public function atualizarEntrada()
+        public function atualizarEntrada($id, $quantidade)
         {
-            // 'UPDATE PRODUTOS
-            // SET PRO_QUANTIDADE = PRO_QUANTIDADE + 10
-            // WHERE PRO_ID = 1';
+            $query = '
+            UPDATE PRODUTOS
+            SET PRO_QUANTIDADE = PRO_QUANTIDADE + :quantidade
+            WHERE PRO_ID = :id
+            ';
+
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindValue(':quantidade', $quantidade);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
         }
     }
 }
