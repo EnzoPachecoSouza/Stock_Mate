@@ -1,8 +1,12 @@
 <?php
 require "entrada.model.php";
 require "ItensEntrada/itensEntrada.model.php";
+require "../../classes/Produto/produto.model.php";
+
 require "entrada.service.php";
 require "ItensEntrada/itensEntrada.service.php";
+require "../../classes/Produto/produto.service.php";
+
 require "../../classes/conexao.php";
 
 $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
@@ -28,6 +32,8 @@ if ($acao == 'inserir') {
     if (json_last_error() === JSON_ERROR_NONE) {
 
         foreach ($selectedProducts as $produto) {
+            $produtoAtualizar = new Produto();
+
             $itensEntrada->__set('entradaID', $entradaID);
             $itensEntrada->__set('produtoID', $produto['id']);
             $itensEntrada->__set('produtoQuantidade', $produto['quantidade']);
