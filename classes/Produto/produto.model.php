@@ -1,7 +1,7 @@
 <?php
 //CLASSE DO PRODUTO
 
-if (!class_exists('Conexao')) {
+if (!class_exists('Produto')) {
     class Produto
     {
         private $codigo;
