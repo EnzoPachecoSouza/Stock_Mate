@@ -42,7 +42,7 @@ class SaidaService
         $stmt->execute();
 
         $result = $stmt->fetch(PDO::FETCH_OBJ);
-        return $result ? $result->ENT_ID : null;
+        return $result ? $result->SAIDA_ID : null;
     }
 
     public function recuperar()
@@ -167,4 +167,3 @@ class SaidaService
         $stmt->execute();
     }
 }
-?>

@@ -224,5 +224,19 @@ if (!class_exists('ProdutoService')) {
             $stmt->bindValue(':id', $id);
             $stmt->execute();
         }
+        
+        public function atualizarSaida($id, $quantidade)
+        {
+            $query = '
+            UPDATE PRODUTOS
+            SET PRO_QUANTIDADE = PRO_QUANTIDADE - :quantidade
+            WHERE PRO_ID = :id
+            ';
+
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindValue(':quantidade', $quantidade);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+        }
     }
 }
