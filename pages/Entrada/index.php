@@ -1,7 +1,7 @@
 <?php
 date_default_timezone_set('America/Sao_Paulo');
 
-include ('../Login/session_check.php');
+include '../Login/session_check.php';
 
 $acao = 'recuperar';
 

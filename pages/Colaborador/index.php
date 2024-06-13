@@ -15,7 +15,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>StockMate | Colaborador</Canvas></title>
+        <title>StockMate | Colaborador</title>
 
         <!-- Font [Noto Sans] -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
