@@ -22,12 +22,35 @@ if ($acao == 'inserir') {
     $saida->__set('cliente', $_POST['cliente']);
     $saida->__set('formaPagamento', $_POST['formaPagamento']);
 
+    $selectedProducts = json_decode($_POST['selectedProducts'], true);
+
     $conexao = new Conexao();
 
     $saidaService = new SaidaService($conexao, $saida);
-    $saidaService->inserir();
 
-    header('Location: ../../pages/Saida/index.php?act=inserir');
+    $saidaService->inserir();
+    $saidaID = $saidaService->getID();
+
+    if (json_last_error() === JSON_ERROR_NONE) {
+
+        foreach ($selectedProducts as $produto) {
+            $produtoAtualizar = new Produto();
+            $produtoService = new ProdutoService($conexao, $produtoAtualizar);
+
+            $itensSaida->__set('saidaID', $saidaID);
+            $itensSaida->__set('produtoID', $produto['id']);
+            $itensSaida->__set('produtoQuantidade', $produto['quantidade']);
+
+            $itensSaidaService = new ItensSaidaService($conexao, $itensSaida);
+            $itensSaidaService->inserir();
+
+            $produtoService->atualizarSaida($produto['id'], $produto['quantidade']);
+        }
+
+        header('Location: ../../pages/Saida/index.php?act=inserir');
+    } else {
+        echo 'Erro na decodificação do JSON: ' . json_last_error_msg();
+    }
 } else if ($acao == 'recuperar') {
     $saida = new Saida();
 
@@ -53,4 +76,3 @@ if ($acao == 'inserir') {
 
     header('Location: ../../pages/Saida/index.php?act=editar');
 }
-?>

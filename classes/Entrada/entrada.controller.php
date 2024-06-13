@@ -1,4 +1,5 @@
 <?php
+
 require "entrada.model.php";
 require "ItensEntrada/itensEntrada.model.php";
 require "../../classes/Produto/produto.model.php";
@@ -22,10 +23,11 @@ if ($acao == 'inserir') {
     $entrada->__set('formaPagamento', $_POST['formaPagamento']);
 
     $selectedProducts = json_decode($_POST['selectedProducts'], true);
-
+    
     $conexao = new Conexao();
 
     $entradaService = new EntradaService($conexao, $entrada);
+
     $entradaService->inserir();
     $entradaID = $entradaService->getID();
 
