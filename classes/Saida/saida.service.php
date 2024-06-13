@@ -30,6 +30,21 @@ class SaidaService
         $stmt->execute();
     }
 
+    public function getID()
+    {
+        $query = '
+        SELECT SAIDA_ID FROM SAIDA
+        ORDER BY SAIDA_ID DESC
+        LIMIT 1
+        ';
+
+        $stmt = $this->conexao->prepare($query);
+        $stmt->execute();
+
+        $result = $stmt->fetch(PDO::FETCH_OBJ);
+        return $result ? $result->ENT_ID : null;
+    }
+
     public function recuperar()
     {
         $query = '';

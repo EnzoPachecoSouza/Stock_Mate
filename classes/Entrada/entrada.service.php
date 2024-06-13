@@ -44,7 +44,6 @@ class EntradaService
         return $result ? $result->ENT_ID : null;
     }
 
-
     public function recuperar()
     {
         $query = '';
