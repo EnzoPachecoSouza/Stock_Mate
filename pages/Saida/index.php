@@ -299,7 +299,11 @@ require '../../classes/Produto/produto.controller.php';
                 </div>
                 <div class="modal-body">
                     <form class="container needs-validation" novalidate method="post"
-                        action="../../classes/Saida/saida.controller.php?acao=inserir">
+                        action="../../classes/Saida/saida.controller.php?acao=inserir"
+                        onsubmit="prepareSelectedProducts()">
+
+                        <input type="hidden" id="selectedProducts" name="selectedProducts">
+
                         <div class="row align-items-center mb-4">
                             <div class="col-md-12">
                                 <div class="form-floating">
@@ -367,7 +371,8 @@ require '../../classes/Produto/produto.controller.php';
                                             oninput="determinaValorUnitario(this)" required>
                                             <option value="" selected></option>
                                             <?php foreach ($produtos as $produto) { ?>
-                                                <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?>
+                                                <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>">
+                                                    <?= $produto->PRO_NOME ?>
                                                 </option>
                                             <?php } ?>
                                         </select>
@@ -378,7 +383,7 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <input class="form-control quantidade" type="number" name="quantidade[]"
-                                            placeholder="Quantidade" oninput="atualizaValorTotal()" required>
+                                            placeholder="Quantidade" min="1" oninput="atualizaValorTotal()" required>
                                         <label>Quantidade</label>
                                     </div>
                                 </div>
@@ -412,21 +417,42 @@ require '../../classes/Produto/produto.controller.php';
     </div>
 
     <script>
+        let selectedProducts = [];
+
         function determinaValorUnitario(selectElement) {
-            const valorUnitarioInput = selectElement.closest('.product-item').querySelector('.valorUnitario')
-            valorUnitarioInput.value = selectElement.value
-            atualizaValorTotal()
+            const [valorUnitario, id] = selectElement.value.split('-');
+            const valorUnitarioInput = selectElement.closest('.product-item').querySelector('.valorUnitario');
+            valorUnitarioInput.value = valorUnitario;
+            atualizaValorTotal();
+
+            selectElement.setAttribute('data-id', id);
+            atualizaIdsEQuantidades();
+        }
+
+        function atualizaIdsEQuantidades() {
+            const productItems = document.querySelectorAll('.product-item');
+            selectedProducts = Array.from(productItems).map(item => {
+                const selectElement = item.querySelector('.produto');
+                const id = selectElement.getAttribute('data-id');
+                const quantidade = item.querySelector('.quantidade').value || 0;
+                return { id, quantidade };
+            }).filter(item => item.id);
+
+            console.log(`Produtos Selecionados:`, selectedProducts);
+            document.querySelector('#selectedProducts').value = JSON.stringify(selectedProducts);
         }
 
         function atualizaValorTotal() {
-            const productItems = document.querySelectorAll('.product-item')
-            let valorTotal = 0
+            const productItems = document.querySelectorAll('.product-item');
+            let valorTotal = 0;
 
             productItems.forEach(item => {
-                const quantidade = item.querySelector('.quantidade').value || 0
-                const valorUnitario = item.querySelector('.valorUnitario').value || 0
+                const quantidade = item.querySelector('.quantidade').value || 0;
+                const valorUnitario = item.querySelector('.valorUnitario').value || 0;
                 valorTotal += quantidade * valorUnitario;
             });
+
+            atualizaIdsEQuantidades();
 
             document.querySelector('#valorTotal').value = valorTotal.toFixed(2);
         }
@@ -438,32 +464,37 @@ require '../../classes/Produto/produto.controller.php';
             row.classList.add('row', 'mb-2', 'product-item');
 
             row.innerHTML = `
-            <div class="col-md-4">
-                <div class="form-floating">
-                    <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
-                        <option value="" selected></option>
-                        <?php foreach ($produtos as $produto) { ?>
-                            <option value="<?= $produto->PRO_PRECO_VENDA ?>"><?= $produto->PRO_NOME ?></option>
-                        <?php } ?>
-                    </select>
-                    <label>Produto</label>
-                </div>
+        <div class="col-md-4">
+            <div class="form-floating">
+                <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
+                    <option value="" selected></option>
+                    <?php foreach ($produtos as $produto) { ?>
+                    <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
+                    <?php } ?>
+                </select>
+                <label>Produto</label>
             </div>
-            <div class="col-md-4">
-                <div class="form-floating">
-                    <input class="form-control quantidade" type="number" name="quantidade[]" placeholder="Quantidade" oninput="atualizaValorTotal()" required>
-                    <label>Quantidade</label>
-                </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-floating">
+                <input class="form-control quantidade" type="number" name="quantidade[]" placeholder="Quantidade" oninput="atualizaValorTotal(); atualizaIdsEQuantidades();" required>
+                <label>Quantidade</label>
             </div>
-            <div class="col-md-4">
-                <div class="form-floating">
-                    <input class="form-control valorUnitario" type="number" name="valorUnitario[]" placeholder="Valor unitário" readonly>
-                    <label>Valor Unitário</label>
-                </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-floating">
+                <input class="form-control valorUnitario" type="number" name="valorUnitario[]" placeholder="Valor unitário" readonly>
+                <label>Valor Unitário</label>
             </div>
-        `;
+        </div>
+    `;
 
             products.appendChild(row);
+        }
+
+        function prepareSelectedProducts() {
+            const selectedProductsField = document.querySelector('#selectedProducts');
+            selectedProductsField.value = JSON.stringify(selectedProducts);
         }
     </script>
     <!-------------------->
@@ -544,7 +575,8 @@ require '../../classes/Produto/produto.controller.php';
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" value="<?= $saida->SAIDA_DATA_PAGAMENTO ?>" type="date"
-                                            id="dataPagamento" name="dataPagamento" placeholder="Data de pagamento" required>
+                                            id="dataPagamento" name="dataPagamento" placeholder="Data de pagamento"
+                                            required>
                                         <label for="dataPagamento">Data de pagamento</label>
                                     </div>
                                 </div>
@@ -586,8 +618,8 @@ require '../../classes/Produto/produto.controller.php';
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="email" name="email"
-                                        placeholder="E-mail" required>
+                                    <input class="form-control" type="text" id="email" name="email" placeholder="E-mail"
+                                        required>
                                     <label for="email">E-mail</label>
                                 </div>
                             </div>
@@ -604,7 +636,8 @@ require '../../classes/Produto/produto.controller.php';
 
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF" required>
+                                    <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF"
+                                        required>
                                     <label for="cpf">CPF</label>
                                 </div>
                             </div>
