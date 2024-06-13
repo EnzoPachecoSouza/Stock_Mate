@@ -371,7 +371,8 @@ require '../../classes/Produto/produto.controller.php';
                                             oninput="determinaValorUnitario(this)" required>
                                             <option value="" selected></option>
                                             <?php foreach ($produtos as $produto) { ?>
-                                                <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>">
+                                                <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"
+                                                    data-estoque="<?= $produto->PRO_QUANTIDADE ?>">
                                                     <?= $produto->PRO_NOME ?>
                                                 </option>
                                             <?php } ?>
@@ -423,6 +424,11 @@ require '../../classes/Produto/produto.controller.php';
             const [valorUnitario, id] = selectElement.value.split('-');
             const valorUnitarioInput = selectElement.closest('.product-item').querySelector('.valorUnitario');
             valorUnitarioInput.value = valorUnitario;
+
+            const quantidadeInput = selectElement.closest('.product-item').querySelector('.quantidade');
+            const estoque = selectElement.selectedOptions[0].getAttribute('data-estoque');
+            quantidadeInput.max = estoque;
+
             atualizaValorTotal();
 
             selectElement.setAttribute('data-id', id);
@@ -469,7 +475,9 @@ require '../../classes/Produto/produto.controller.php';
                 <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                     <option value="" selected></option>
                     <?php foreach ($produtos as $produto) { ?>
-                    <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
+                            <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>" data-estoque="<?= $produto->PRO_QUANTIDADE ?>">
+                                <?= $produto->PRO_NOME ?>
+                            </option>
                     <?php } ?>
                 </select>
                 <label>Produto</label>
@@ -477,7 +485,7 @@ require '../../classes/Produto/produto.controller.php';
         </div>
         <div class="col-md-4">
             <div class="form-floating">
-                <input class="form-control quantidade" type="number" name="quantidade[]" placeholder="Quantidade" oninput="atualizaValorTotal(); atualizaIdsEQuantidades();" required>
+                <input class="form-control quantidade" type="number" name="quantidade[]" placeholder="Quantidade" min="1" oninput="atualizaValorTotal()" required>
                 <label>Quantidade</label>
             </div>
         </div>
