@@ -1,8 +1,8 @@
 <?php
 
-class ItensEntrada
+class ItensSaida
 {
-    private $entradaID;
+    private $saidaID;
     private $produtoID;
     private $produtoQuantidade;
 

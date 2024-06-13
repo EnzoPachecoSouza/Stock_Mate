@@ -1,13 +1,20 @@
 <?php
 
 require "saida.model.php";
+require "ItensSaida/itensSaida.model.php";
+require "../../classes/Produto/produto.model.php";
+
 require "saida.service.php";
+require "ItensSaida/itensSaida.service.php";
+require "../../classes/Produto/produto.service.php";
+
 require "../../classes/conexao.php";
 
 $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 
 if ($acao == 'inserir') {
     $saida = new Saida();
+    $itensSaida = new ItensSaida();
 
     $saida->__set('dataVenda', $_POST['dataVenda']);
     $saida->__set('valorTotal', $_POST['valorTotal']);
