@@ -40,6 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_PO
         if ($result) {
             $_SESSION['loggedin'] = true;
             $_SESSION['email'] = $email;
+            $_SESSION['senha'] = $senha;
             $_SESSION['cargo'] = $result['COL_CARGO']; // Definindo o cargo do usuário na sessão
 
             // Redirecionar para a página correta após o login

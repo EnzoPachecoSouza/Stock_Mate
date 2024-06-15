@@ -44,5 +44,5 @@ if ($acao == 'inserir') {
 
     header('Location: ../../pages/Colaborador/index.php?act=editar');
 } else if ($acao == 'alterarSenha') {
-    
+    // ---
 }
