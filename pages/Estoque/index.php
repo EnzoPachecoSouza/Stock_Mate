@@ -850,6 +850,15 @@ require '../../classes/Categoria/categoria.controller.php';
                             <div class="toast-body fs-6">
                                 <strong>Produto reativado com sucesso!</strong>
                             </div>
+            <?php } else if ($toastAcao === 'alterarSenha') { ?>
+                        <div class="toast-header fs-5">
+                            <i class="bi bi-square-fill text-info"></i>
+                            <strong class="me-auto ms-3">Alterar Senha</strong>
+                            <button type="button" class="btn-close" onclick="closeToast()"></button>
+                        </div>
+                        <div class="toast-body fs-6">
+                            <strong>Senha alterada com sucesso!</strong>
+                        </div>
             <?php } ?>
         </div>
     </div>

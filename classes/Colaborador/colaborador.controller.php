@@ -54,5 +54,5 @@ if ($acao == 'inserir') {
     $colaboradorService = new ColaboradorService($conexao, $colaborador);
     $colaboradorService->alterarSenha($id);
 
-    header('Location: ../../pages/Colaborador/index.php?act=inserir');
+    header('Location: ../../pages/Estoque/index.php?act=alterarSenha');
 }
