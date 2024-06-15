@@ -1,5 +1,4 @@
 <?php
-
 require "cliente.model.php";
 require "cliente.service.php";
 require "../../classes/conexao.php";
@@ -46,7 +45,7 @@ $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 if ($acao == 'inserir') {
     $cliente = new Cliente();
 
-    $cliente->__set('nome', $_POST['nome']);
+    $cliente->__set('nome', $_POST['cliente']);
     $cliente->__set('email', $_POST['email']);
     $cliente->__set('contato', $_POST['contato']);
     $cliente->__set('cpf', $_POST['cpf']);
@@ -69,7 +68,7 @@ if ($acao == 'inserir') {
 
     $cliente = new Cliente();
 
-    $cliente->__set('nome', $_POST['nome']);
+    $cliente->__set('nome', $_POST['cliente']);
     $cliente->__set('email', $_POST['email']);
     $cliente->__set('contato', $_POST['contato']);
     $cliente->__set('cpf', $_POST['cpf']);
