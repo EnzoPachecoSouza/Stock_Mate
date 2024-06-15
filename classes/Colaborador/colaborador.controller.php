@@ -43,4 +43,16 @@ if ($acao == 'inserir') {
     $colaboradorService->editar($id);
 
     header('Location: ../../pages/Colaborador/index.php?act=editar');
+} else if ($acao == 'alterarSenha') {
+    $id = isset($_GET['id']) ? $_GET['id'] : $id;
+    $colaborador = new Colaborador();
+
+    $colaborador->__set('senha', $_POST['novaSenha']);
+
+    $conexao = new Conexao();
+
+    $colaboradorService = new ColaboradorService($conexao, $colaborador);
+    $colaboradorService->alterarSenha($id);
+
+    header('Location: ../../pages/Colaborador/index.php?act=inserir');
 }

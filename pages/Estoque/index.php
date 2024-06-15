@@ -866,7 +866,7 @@ require '../../classes/Categoria/categoria.controller.php';
                 </div>
                 <div class="modal-body">
                     <form class="container" method="post"
-                        action="../../classes/Colaborador/colaborador.controller.php?acao=alterarSenha">
+                        action="../../classes/Colaborador/colaborador.controller.php?acao=alterarSenha&id=<?= $_SESSION['id'] ?>">
                         <div class="row mb-4">
                             <div class="col-md-12">
                                 <div class="form-floating">

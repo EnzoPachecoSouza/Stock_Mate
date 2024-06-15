@@ -109,4 +109,19 @@ class ColaboradorService
 
         $stmt->execute();
     }
+
+    public function alterarSenha($id) {
+        $query = '
+        UPDATE COLABORADORES
+        SET COL_SENHA = :senha
+        WHERE COL_ID = :id
+        ';
+
+        $stmt = $this->conexao->prepare($query);
+
+        $stmt->bindValue(':senha', $this->colaborador->__get('senha'));
+        $stmt->bindValue(':id', $id);
+
+        $stmt->execute();
+    }
 }
