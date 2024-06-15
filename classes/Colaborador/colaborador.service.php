@@ -109,9 +109,4 @@ class ColaboradorService
 
         $stmt->execute();
     }
-
-    public function alterarSenha($id)
-    {
-        // ----
-    }
 }

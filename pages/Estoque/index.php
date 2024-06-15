@@ -9,9 +9,6 @@ $cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
 $acao = 'recuperar';
 require '../../classes/Produto/produto.controller.php';
 require '../../classes/Categoria/categoria.controller.php';
-
-$acao = 'alterarSenha';
-require '../../classes/Colaborador/colaborador.controller.php';
 ?>
 
 <!DOCTYPE html>
@@ -869,13 +866,13 @@ require '../../classes/Colaborador/colaborador.controller.php';
                 </div>
                 <div class="modal-body">
                     <form class="container" method="post"
-                        action="../../classes/Cliente/cliente.controller.php?acao=inserir">
+                        action="../../classes/Colaborador/colaborador.controller.php?acao=alterarSenha">
                         <div class="row mb-4">
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                    <input class="form-control" type="password" id="senhaAtual" name="senhaAtual"
-                                        placeholder="Senha Atual">
-                                    <label for="senhaAtual">Senha Atual</label>
+                                <input class="form-control" type="text" id="senhaAtual" name="senhaAtual"
+                                    placeholder="Senha Atual" oninput="verificaSenha(this.value)">
+                                <label for="senhaAtual">Senha Atual</label>
                                 </div>
                             </div>
                         </div>
@@ -909,6 +906,19 @@ require '../../classes/Colaborador/colaborador.controller.php';
         </div>
     </div>
     <!----------------------->
+
+    <script>
+        function verificaSenha(senha){
+            const senhaAtual = "<?= $_SESSION['senha'] ?>"
+            const senhaNovaInput = document.querySelector('#novaSenha')
+            const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova')
+
+            if(senha === senhaAtual){
+                senhaNovaInput.removeAttribute('disabled')
+                senhaNovaConfirmaInput.removeAttribute('disabled')
+            }
+        }
+    </script>
 
     <script>
         (function () {
