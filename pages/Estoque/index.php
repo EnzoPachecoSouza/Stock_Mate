@@ -1,15 +1,17 @@
 <?php
 date_default_timezone_set('America/Sao_Paulo');
 
-include('../Login/session_check.php');
+include '../Login/session_check.php';
 
 // Verifica se o usuário está logado e obtém o cargo do usuário
 $cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
 
 $acao = 'recuperar';
-
 require '../../classes/Produto/produto.controller.php';
 require '../../classes/Categoria/categoria.controller.php';
+
+$acao = 'alterarSenha';
+require '../../classes/Colaborador/colaborador.controller.php';
 ?>
 
 <!DOCTYPE html>

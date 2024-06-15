@@ -43,4 +43,6 @@ if ($acao == 'inserir') {
     $colaboradorService->editar($id);
 
     header('Location: ../../pages/Colaborador/index.php?act=editar');
+} else if ($acao == 'alterarSenha') {
+    
 }
