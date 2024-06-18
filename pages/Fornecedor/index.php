@@ -415,12 +415,12 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                 </div>
                 <div class="modal-body">
                     <form class="container" method="post"
-                        action="../../classes/Cliente/cliente.controller.php?acao=inserir">
+                        action="../../classes/Colaborador/colaborador.controller.php?acao=alterarSenha&id=<?= $_SESSION['id'] ?>">
                         <div class="row mb-4">
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                    <input class="form-control" type="password" id="senhaAtual" name="senhaAtual"
-                                        placeholder="Senha Atual">
+                                    <input class="form-control" type="text" id="senhaAtual" name="senhaAtual"
+                                        placeholder="Senha Atual" oninput="verificaSenha(this.value)">
                                     <label for="senhaAtual">Senha Atual</label>
                                 </div>
                             </div>
@@ -429,7 +429,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                         <div class="row mb-2">
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                    <input class="form-control" type="password" id="novaSenha" name="novaSenha"
+                                    <input class="form-control" type="text" id="novaSenha" name="novaSenha"
                                         placeholder="Senha Nova" disabled>
                                     <label for="novaSenha">Senha Nova</label>
                                 </div>
@@ -439,7 +439,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                         <div class="row mb-5">
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                    <input class="form-control" type="password" id="confirmarSenhaNova"
+                                    <input class="form-control" type="text" id="confirmarSenhaNova"
                                         name="confirmarSenhaNova" placeholder="Confirme a Senha Nova" disabled>
                                     <label for="confirmarSenhaNova">Confirme a Senha Nova</label>
                                 </div>
@@ -455,6 +455,19 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
         </div>
     </div>
     <!----------------------->
+
+    <script>
+        function verificaSenha(senha) {
+            const senhaAtual = "<?= $_SESSION['senha'] ?>"
+            const senhaNovaInput = document.querySelector('#novaSenha')
+            const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova')
+
+            if (senha === senhaAtual) {
+                senhaNovaInput.removeAttribute('disabled')
+                senhaNovaConfirmaInput.removeAttribute('disabled')
+            }
+        }
+    </script>
 
     <script>
         (function () {
