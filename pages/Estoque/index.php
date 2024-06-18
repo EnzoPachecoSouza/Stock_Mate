@@ -63,34 +63,45 @@ require '../../classes/Categoria/categoria.controller.php';
                 <!------->
 
                 <!-- NAVIGATION -->
+                 
                 <div class="col-9">
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font selected" href="">Estoque</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../saida">Saída</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
-                        </li>
-                        <?php
-                        // Verificar o cargo do usuário para exibir ou ocultar itens do menu
-                        if ($_SESSION['cargo'] === 'Gerente') { ?>
+                    <button class="navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="collapse" 
+                    data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" 
+                    aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"><i class="bi bi-check"></i></span>
+                    </button>
+                </div>
+                
+                <div class="col-9">
+                    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
+                        <ul class="nav justify-content-center">
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
+                                <a class="nav-link text-white nav-font selected" href="">Estoque</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-font" href="../relatorio">Relatórios</a>
+                                <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
                             </li>
-                        <?php } ?>
-                    </ul>
+                            <li class="nav-item">
+                                <a class="nav-link text-white nav-font" href="../saida">Saída</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+                            </li>
+                            <?php
+                            // Verificar o cargo do usuário para exibir ou ocultar itens do menu
+                            if ($_SESSION['cargo'] === 'Gerente') { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white nav-font" href="../relatorio">Relatórios</a>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    </div>
                 </div>
                 <!------->
 
