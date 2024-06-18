@@ -475,9 +475,9 @@ require '../../classes/Produto/produto.controller.php';
                 <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                     <option value="" selected></option>
                     <?php foreach ($produtos as $produto) { ?>
-                                <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>" data-estoque="<?= $produto->PRO_QUANTIDADE ?>">
-                                    <?= $produto->PRO_NOME ?>
-                                </option>
+                                    <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>" data-estoque="<?= $produto->PRO_QUANTIDADE ?>">
+                                        <?= $produto->PRO_NOME ?>
+                                    </option>
                     <?php } ?>
                 </select>
                 <label>Produto</label>
@@ -684,6 +684,15 @@ require '../../classes/Produto/produto.controller.php';
                     <div class="toast-body fs-6">
                         <strong>Saída editada com sucesso!</strong>
                     </div>
+            <?php } else if ($toastAcao === 'alterarSenha') { ?>
+                        <div class="toast-header fs-5">
+                            <i class="bi bi-square-fill text-info"></i>
+                            <strong class="me-auto ms-3">Alterar Senha</strong>
+                            <button type="button" class="btn-close" onclick="closeToast()"></button>
+                        </div>
+                        <div class="toast-body fs-6">
+                            <strong>Senha alterada com sucesso!</strong>
+                        </div>
             <?php } ?>
         </div>
     </div>
