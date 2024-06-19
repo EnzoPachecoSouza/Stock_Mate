@@ -1,7 +1,7 @@
 <?php
 require "itensEntrada.model.php";
 require "itensEntrada.service.php";
-require "../../../classes/conexao.php";
+require __DIR__ . "/../../../classes/conexao.php";
 
 $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 
