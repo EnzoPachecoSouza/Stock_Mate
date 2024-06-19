@@ -371,7 +371,7 @@ require '../../classes/Produto/produto.controller.php';
                                             oninput="determinaValorUnitario(this)" required>
                                             <option value="" selected></option>
                                             <?php foreach ($produtos as $produto) { ?>
-                                                <?php if ($produto->PRO_QUANTIDADE > 0) { ?>
+                                                <?php if ($produto->PRO_QUANTIDADE > 0 || $produto->PRO_STATUS === 0) { ?>
                                                     <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"
                                                         data-estoque="<?= $produto->PRO_QUANTIDADE ?>">
                                                         <?= $produto->PRO_NOME ?>
@@ -477,9 +477,9 @@ require '../../classes/Produto/produto.controller.php';
                 <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                     <option value="" selected></option>
                     <?php foreach ($produtos as $produto) { ?>
-                                                <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>" data-estoque="<?= $produto->PRO_QUANTIDADE ?>">
-                                                    <?= $produto->PRO_NOME ?>
-                                                </option>
+                                                    <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>" data-estoque="<?= $produto->PRO_QUANTIDADE ?>">
+                                                        <?= $produto->PRO_NOME ?>
+                                                    </option>
                     <?php } ?>
                 </select>
                 <label>Produto</label>
