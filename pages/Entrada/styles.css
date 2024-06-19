@@ -1,0 +1,5 @@
+#products {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 30vh;
+}
