@@ -263,6 +263,13 @@ require '../../classes/Produto/produto.controller.php';
                         </td>
 
                         <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
+                            <!-- VISUALIZAR DETALHES -->
+                                <button type="button" class="btn" data-bs-toggle="modal"
+                                    data-bs-target="#visualizarDetalhesEntradaModal<?= $indice ?>">
+                                    <i class="bi bi-eye-fill text-success fs-5"></i>
+                                </button>
+                                <!------->
+
                             <!-- BOTÃO EDITAR ENTRADA -->
                                 <?php
                                 $data_registro = new DateTime($entrada->ENT_HORA_DE_REGISTRO);
@@ -470,7 +477,7 @@ require '../../classes/Produto/produto.controller.php';
                 <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                     <option value="" selected></option>
                     <?php foreach ($produtos as $produto) { ?>
-                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
+                                                                <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
                     <?php } ?>
                 </select>
                 <label>Produto</label>
@@ -593,6 +600,47 @@ require '../../classes/Produto/produto.controller.php';
         </div>
     <?php } ?>
     <!----------------------->
+
+    <!-- VER MAIS DETALHES -->
+    <?php foreach ($entradas as $indice => $entrada) { ?>
+        <!-- VER MAIS DETALHES -->
+        <div class="modal fade" id="visualizarDetalhesEntradaModal<?= $indice ?>" tabindex="-1"
+            aria-labelledby="visualizarDetalhesEntradaModalLabel<?= $indice ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="visualizarDetalhesEntradaModalLabel<?= $indice ?>">Detalhes da
+                            Entrada</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <div class="row mb-4">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <span class="input-group-text fw-bold">#</span>
+                                        <div class="form-floating">
+                                            <input class="form-control" type="text" id="codigo" name="codigo"
+                                                placeholder="Código" value="<?= $produto->PRO_CODIGO ?>" disabled>
+                                            <label for="codigo">Código</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome"
+                                            value="<?= $produto->PRO_NOME ?>" disabled>
+                                        <label for="nome">Nome</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
 
     <!-- REGISTRAR FORNECEDOR -->
     <div class="modal fade" id="registrarFornecedorModal" tabindex="-1" aria-labelledby="registrarFornecedorModalLabel"

@@ -30,4 +30,18 @@ class ItensEntradaService
             echo 'Erro ao inserir item de entrada: ' . $e->getMessage();
         }
     }
+
+    public function recuperar()
+    {
+
+        $query = '
+            SELECT *
+            FROM ITENS_ENTRADA;
+            ';
+
+        $stmt = $this->conexao->prepare($query);
+
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
 }

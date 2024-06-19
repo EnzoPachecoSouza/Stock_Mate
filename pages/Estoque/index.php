@@ -63,17 +63,7 @@ require '../../classes/Categoria/categoria.controller.php';
                 <!------->
 
                 <!-- NAVIGATION -->
-                 
                 <div class="col-9">
-                    <button class="navbar-toggler d-block d-lg-none" type="button" data-bs-toggle="collapse" 
-                    data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" 
-                    aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"><i class="bi bi-check"></i></span>
-                    </button>
-                </div>
-                
-                <div class="col-9">
-                    <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="dark">
                         <ul class="nav justify-content-center">
                             <li class="nav-item">
                                 <a class="nav-link text-white nav-font selected" href="">Estoque</a>
@@ -101,7 +91,6 @@ require '../../classes/Categoria/categoria.controller.php';
                                 </li>
                             <?php } ?>
                         </ul>
-                    </div>
                 </div>
                 <!------->
 
