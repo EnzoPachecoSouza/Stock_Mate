@@ -1,21 +1,22 @@
 <?php
-
-class Entrada
-{
-    private $dataCompra;
-    private $valorTotal;
-    private $dataPagamento;
-    private $formaPagamento;
-    private $status;
-    private $fornecedor;
-
-    public function __set($atributo, $valor)
+if (!class_exists('ItensEntrada')) {
+    class Entrada
     {
-        $this->$atributo = $valor;
-    }
+        private $dataCompra;
+        private $valorTotal;
+        private $dataPagamento;
+        private $formaPagamento;
+        private $status;
+        private $fornecedor;
 
-    public function __get($atributo)
-    {
-        return $this->$atributo;
+        public function __set($atributo, $valor)
+        {
+            $this->$atributo = $valor;
+        }
+
+        public function __get($atributo)
+        {
+            return $this->$atributo;
+        }
     }
 }

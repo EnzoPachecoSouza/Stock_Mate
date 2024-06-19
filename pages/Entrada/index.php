@@ -6,6 +6,7 @@ include '../Login/session_check.php';
 $acao = 'recuperar';
 
 require '../../classes/Entrada/entrada.controller.php';
+require '../../classes/Entrada/ItensEntrada/itensEntrada.controller.php';
 require '../../classes/Fornecedor/fornecedor.controller.php';
 require '../../classes/Produto/produto.controller.php';
 ?>
@@ -477,7 +478,7 @@ require '../../classes/Produto/produto.controller.php';
                 <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                     <option value="" selected></option>
                     <?php foreach ($produtos as $produto) { ?>
-                                                                <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
+                                                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
                     <?php } ?>
                 </select>
                 <label>Produto</label>
@@ -615,26 +616,30 @@ require '../../classes/Produto/produto.controller.php';
                     </div>
                     <div class="modal-body">
                         <div class="container">
-                            <div class="row mb-4">
-                                <div class="col-md-6">
-                                    <div class="input-group">
-                                        <span class="input-group-text fw-bold">#</span>
-                                        <div class="form-floating">
-                                            <input class="form-control" type="text" id="codigo" name="codigo"
-                                                placeholder="Código" value="<?= $produto->PRO_CODIGO ?>" disabled>
-                                            <label for="codigo">Código</label>
+                            <?php foreach ($itensEntradaRecuperar as $indice => $itensEntrada) { ?>
+                                <?php if ($itensEntrada->ENTRADA_ENT_ID === $entrada->ENT_ID) { ?>
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <div class="input-group">
+                                                <span class="input-group-text fw-bold">#</span>
+                                                <div class="form-floating">
+                                                    <input class="form-control" type="text" id="codigo" name="codigo"
+                                                        placeholder="Código" value="<?= $produto->PRO_CODIGO ?>" disabled>
+                                                    <label for="codigo">Código</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-floating">
+                                                <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome"
+                                                    value="<?= $produto->PRO_NOME ?>" disabled>
+                                                <label for="nome">Nome</label>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome"
-                                            value="<?= $produto->PRO_NOME ?>" disabled>
-                                        <label for="nome">Nome</label>
-                                    </div>
-                                </div>
-                            </div>
+                                <?php } ?>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

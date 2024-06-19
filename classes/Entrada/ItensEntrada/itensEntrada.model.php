@@ -1,18 +1,19 @@
 <?php
-
-class ItensEntrada
-{
-    private $entradaID;
-    private $produtoID;
-    private $produtoQuantidade;
-
-    public function __set($atributo, $valor)
+if (!class_exists('ItensEntrada')) {
+    class ItensEntrada
     {
-        $this->$atributo = $valor;
-    }
+        private $entradaID;
+        private $produtoID;
+        private $produtoQuantidade;
 
-    public function __get($atributo)
-    {
-        return $this->$atributo;
+        public function __set($atributo, $valor)
+        {
+            $this->$atributo = $valor;
+        }
+
+        public function __get($atributo)
+        {
+            return $this->$atributo;
+        }
     }
 }
