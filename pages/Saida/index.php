@@ -475,9 +475,9 @@ require '../../classes/Produto/produto.controller.php';
                 <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                     <option value="" selected></option>
                     <?php foreach ($produtos as $produto) { ?>
-                                    <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>" data-estoque="<?= $produto->PRO_QUANTIDADE ?>">
-                                        <?= $produto->PRO_NOME ?>
-                                    </option>
+                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>" data-estoque="<?= $produto->PRO_QUANTIDADE ?>">
+                                            <?= $produto->PRO_NOME ?>
+                                        </option>
                     <?php } ?>
                 </select>
                 <label>Produto</label>
@@ -497,7 +497,11 @@ require '../../classes/Produto/produto.controller.php';
         </div>
     `;
 
-            products.appendChild(row);
+            if (products.firstChild) {
+                products.insertBefore(row, products.firstChild);
+            } else {
+                products.appendChild(row);
+            }
         }
 
         function prepareSelectedProducts() {
