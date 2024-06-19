@@ -43,6 +43,26 @@ $cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
 
         <!-- Global CSS -->
         <link rel="stylesheet" href="../../styles/global.css">
+
+        <script>
+            document.getElementById('button-addon2').addEventListener('click', function () {
+                var reportType = document.getElementById('reportType').value;
+                var financeiroReport = document.getElementById('financeiroReport');
+                var estoqueReport = document.getElementById('estoqueReport');
+
+                if (reportType == "2") {
+                    financeiroReport.style.display = "block";
+                    estoqueReport.style.display = "none";
+                } else if (reportType == "1") {
+                    financeiroReport.style.display = "none";
+                    estoqueReport.style.display = "block";
+                } else {
+                    financeiroReport.style.display = "none";
+                    estoqueReport.style.display = "none";
+                }
+            });
+        </script>
+
     </head>
 
     <body>
@@ -120,66 +140,52 @@ $cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
     </div>
     <!------->
 
-    <div class="container mt-5">
-        <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex gap-5">
-                <div class="form-floating">
-                    <div class="form-floating">
-                        <input class="form-control" type="date" id="dataInicio" name="dataInicio"
-                            placeholder="Data de início">
-                        <label for="dataInicio">Data de início</label>
-                    </div>
-                </div>
+    <!--RELATORIOS-->
+        <div class="container mt-5">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="d-flex gap-5"></div>
 
                 <div class="form-floating">
-                    <div class="form-floating">
-                        <input class="form-control" type="date" id="dataTermino" name="dataTermino"
-                            placeholder="Data de término">
-                        <label for="dataTermino">Data de término</label>
-                    </div>
+                    <form method="post" action="">
+                        <div class="input-group">
+                            <select class="form-select shadow-none" id="reportType" name="reportType">
+                                <option disabled selected>Tipos</option>
+                                <option value="1">Estoque</option>
+                                <option value="2">Financeiro</option>
+                            </select>
+                            <button class="btn btn-primary" type="submit" id="button-addon2">Selecionar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 
-            <div class="form-floating">
-                <div class="input-group">
-                    <select class="form-select shadow-none" id="catFiltro" name="catFiltro">
-                        <option disabled selected>Tipos</option>
-                        <option value="1">Tipo 1</option>
-                        <option value="2">Tipo 2</option>
-                        <option value="3">Tipo 3</option>
-                        <option value="4">Tipo 4</option>
-                        <option value="5">Tipo 5</option>
-                    </select>
-                    <button class="btn btn-primary" type="button" id="button-addon2">Selecionar</button>
-                </div>
-            </div>
+            <div class="mt-3"></div>
+
+            <?php
+            if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['reportType'])) {
+                $reportType = $_POST['reportType'];
+
+                if ($reportType == "2") {
+                    echo '<div id="financeiroReport" class="col-12 mt-3">';
+                    echo '<iframe title="Financeiro" width="100%" height="650"
+                        src="https://app.powerbi.com/view?r=eyJrIjoiYmM1YzhkYjQtNGUzMi00NDZhLTg5MDUtNmEyZTU1N2MxNzk2IiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9"
+                        frameborder="0" allowFullScreen="true">
+                    </iframe>';
+                    echo '</div>';
+                } elseif ($reportType == "1") {
+                    echo '<div id="estoqueReport" class="col-12 mt-3">';
+                    include "../../classes/Relatorio/relatorio.php";
+                    echo '</div>';
+                }
+            } else {
+                echo '<div id="estoqueReport" class="col-12 mt-3">';
+                include "../../classes/Relatorio/relatorio.php";
+                echo '</div>';
+            }
+            ?>
         </div>
-
-
-        <div class="mt-3">
-            <!--  -->
-            </div>
-        </div>
-
-        <!-- TOAST DE CONFIRMAR AÇÃO REALIZADA -->
-        <div class="toast-container position-fixed top-0 end-0 p-3">
-            <div class="toast bg-white" id="toast">
-                <?php $toastAcao = isset($_GET['act']) ? $_GET['act'] : $toastAcao; ?>
-                <?php if ($toastAcao === 'alterarSenha') { ?>
-                    <div class="toast-header fs-5">
-                                <i class="bi bi-square-fill text-info"></i>
-                                <strong class="me-auto ms-3">Alterar Senha</strong>
-                                <button type="button" class="btn-close" onclick="closeToast()"></button>
-                            </div>
-                            <div class="toast-body fs-6">
-                                <strong>Senha alterada com sucesso!</strong>
-                            </div>
-                <?php } ?>
-            </div>
-        </div>
-        <!----------------------->
-
-    <!-- ALTERAR SENHA -->
+        <!--fim do RELATORIO-->
+        <!-- ALTERAR SENHA -->
         <div class="modal fade" id="alterarSenhaModal" tabindex="-1" aria-labelledby="alterarSenhaModalLabel"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -190,12 +196,11 @@ $cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
                     </div>
                     <div class="modal-body">
                         <form class="container" method="post"
-                            action="../../classes/Colaborador/colaborador.controller.php?acao=alterarSenha&id=<?= $_SESSION['id'] ?>">
+                            action="../../classes/Cliente/cliente.controller.php?acao=inserir">
                             <div class="row mb-4">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="senhaAtual" name="senhaAtual"
-                                            placeholder="Senha Atual" oninput="verificaSenha(this.value)">
+                                        <input class="form-control" type="password" id="senhaAtual" name="senhaAtual"pti                                           placeholder="Senha Atual">
                                         <label for="senhaAtual">Senha Atual</label>
                                     </div>
                                 </div>
@@ -204,7 +209,7 @@ $cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
                             <div class="row mb-2">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="novaSenha" name="novaSenha"
+                                        <input class="form-control" type="password" id="novaSenha" name="novaSenha"
                                             placeholder="Senha Nova" disabled>
                                         <label for="novaSenha">Senha Nova</label>
                                     </div>
@@ -214,7 +219,7 @@ $cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
                             <div class="row mb-5">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="confirmarSenhaNova"
+                                        <input class="form-control" type="password" id="confirmarSenhaNova"
                                             name="confirmarSenhaNova" placeholder="Confirme a Senha Nova" disabled>
                                         <label for="confirmarSenhaNova">Confirme a Senha Nova</label>
                                     </div>
@@ -231,21 +236,6 @@ $cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
         </div>
         <!----------------------->
 
-    <script>
-        function verificaSenha(senha) {
-            const senhaAtual = "<?= $_SESSION['senha'] ?>"
-            const senhaNovaInput = document.querySelector('#novaSenha')
-            const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova')
-
-            if (senha === senhaAtual) {
-                senhaNovaInput.removeAttribute('disabled')
-                senhaNovaConfirmaInput.removeAttribute('disabled')
-            }
-        }
-    </script>
-
-    <?php include "../../classes/Relatorio/relatorio.php"; ?>
-
     <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
@@ -257,6 +247,6 @@ $cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
 
     </html>
 
-<?php } else { 
+<?php } else {
     header("Location: ../Login/index.php");
 } ?>
