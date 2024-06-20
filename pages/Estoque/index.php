@@ -130,11 +130,33 @@ require '../../classes/Categoria/categoria.controller.php';
             </div>
         </nav>
 
-        <div class="collapse container" id="navbarToggleExternalContent">
+        <div class="collapse container d-lg-none" id="navbarToggleExternalContent">
             <ul class="nav d-flex flex-column">
-                <li class="nav-item d-flex mb-3">
+                <li class="nav-item d-flex mb-1">
                     <a class="nav-link text-white nav-font selected" href="">Estoque</a>
                 </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
+                </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../saida">Saída</a>
+                </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
+                </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+                </li>
+                    <?php
+                    // Verificar o cargo do usuário para exibir ou ocultar itens do menu
+                    if ($_SESSION['cargo'] === 'Gerente') { ?>
+                    <li class="nav-item d-flex mb-1">
+                        <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
+                    </li>
+                    <li class="nav-item d-flex mb-1">
+                        <a class="nav-link text-white nav-font" href="../relatorio">Relatórios</a>
+                    </li>
+                    <?php } ?>
             </ul>
         </div>
     </div>
