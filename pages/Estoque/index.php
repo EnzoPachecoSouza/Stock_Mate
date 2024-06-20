@@ -59,7 +59,7 @@ require '../../classes/Categoria/categoria.controller.php';
                 <!-- MENU -->
                 <div class="d-block d-lg-none col-3">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="bi bi-list text-lg"></i>
+                    <i class="bi bi-list fs-1 text-white"></i>
                 </button>
                 </div>
                 <!------->
@@ -130,18 +130,9 @@ require '../../classes/Categoria/categoria.controller.php';
             </div>
         </nav>
 
-        <div class="collapse" id="navbarToggleExternalContent">
+        <div class="collapse container" id="navbarToggleExternalContent">
             <ul class="nav d-flex flex-column">
-                <li class="nav-item d-flex">
-                    <a class="nav-link text-white nav-font selected" href="">Estoque</a>
-                </li>
-                <li class="nav-item d-flex">
-                    <a class="nav-link text-white nav-font selected" href="">Estoque</a>
-                </li>
-                <li class="nav-item d-flex">
-                    <a class="nav-link text-white nav-font selected" href="">Estoque</a>
-                </li>
-                <li class="nav-item d-flex">
+                <li class="nav-item d-flex mb-3">
                     <a class="nav-link text-white nav-font selected" href="">Estoque</a>
                 </li>
             </ul>
