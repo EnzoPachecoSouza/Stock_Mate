@@ -56,14 +56,22 @@ require '../../classes/Categoria/categoria.controller.php';
         <nav class="container">
             <div class="row d-flex align-items-center py-3">
 
+                <!-- MENU -->
+                <div class="d-block d-lg-none col-3">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list text-lg"></i>
+                </button>
+                </div>
+                <!------->
+
                 <!-- LOGO -->
-                <div class="col-2">
+                <div class="col-6 col-lg-2">
                     <img src="../../images/logo_stock_mate.png" alt="Logo Stock Mate" class="img-fluid">
                 </div>
                 <!------->
 
                 <!-- NAVIGATION -->
-                <div class="col-9">
+                <div class="d-none d-lg-block col-9">
                         <ul class="nav justify-content-center">
                             <li class="nav-item">
                                 <a class="nav-link text-white nav-font selected" href="">Estoque</a>
@@ -90,12 +98,12 @@ require '../../classes/Categoria/categoria.controller.php';
                                     <a class="nav-link text-white nav-font" href="../relatorio">Relatórios</a>
                                 </li>
                             <?php } ?>
-                        </ul>
+                    </ul>
                 </div>
                 <!------->
 
                 <!-- SAIR -->
-                <div class="col-1 text-end">
+                <div class="col-3 col-lg-1 text-end">
                     <div class="dropdown-center">
                         <button class="btn rounded-circle border-0 p-0" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -121,6 +129,23 @@ require '../../classes/Categoria/categoria.controller.php';
                 <!------->
             </div>
         </nav>
+
+        <div class="collapse" id="navbarToggleExternalContent">
+            <ul class="nav d-flex flex-column">
+                <li class="nav-item d-flex">
+                    <a class="nav-link text-white nav-font selected" href="">Estoque</a>
+                </li>
+                <li class="nav-item d-flex">
+                    <a class="nav-link text-white nav-font selected" href="">Estoque</a>
+                </li>
+                <li class="nav-item d-flex">
+                    <a class="nav-link text-white nav-font selected" href="">Estoque</a>
+                </li>
+                <li class="nav-item d-flex">
+                    <a class="nav-link text-white nav-font selected" href="">Estoque</a>
+                </li>
+            </ul>
+        </div>
     </div>
     <!------->
 
