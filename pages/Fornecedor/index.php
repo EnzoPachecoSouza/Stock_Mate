@@ -53,35 +53,40 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
         <nav class="container">
             <div class="row d-flex align-items-center py-3">
 
+                <!-- MENU -->
+                <div class="d-block d-lg-none col-3">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="bi bi-list fs-1 text-white"></i>
+                    </button>
+                </div>
+                <!------->
+
                 <!-- LOGO -->
-                <div class="col-2">
+                <div class="col-6 col-lg-2">
                     <img src="../../images/logo_stock_mate.png" alt="Logo Stock Mate" class="img-fluid">
                 </div>
                 <!------->
 
                 <!-- NAVIGATION -->
-                <div class="col-9">
+                <div class="d-none d-lg-block col-9">
                     <ul class="nav justify-content-center">
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="../estoque">Estoque</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="../saida">Saída</a>
                         </li>
-
                         <li class="nav-item">
-                            <a class="nav-link text-white nav-font selected" href="">Fornecedores</a>
+                            <a class="nav-link text-white nav-font selected" href="../fornecedor">Fornecedores</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
                         </li>
-
                         <?php
                         // Verificar o cargo do usuário para exibir ou ocultar itens do menu
                         if ($_SESSION['cargo'] === 'Gerente') { ?>
@@ -97,7 +102,7 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                 <!------->
 
                 <!-- SAIR -->
-                <div class="col-1 text-end">
+                <div class="col-3 col-lg-1 text-end">
                     <div class="dropdown-center">
                         <button class="btn rounded-circle border-0 p-0" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -123,6 +128,36 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                 <!------->
             </div>
         </nav>
+
+        <div class="collapse container d-lg-none" id="navbarToggleExternalContent">
+            <ul class="nav d-flex flex-column">
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../estoque">Estoque</a>
+                </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
+                </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../saida">Saída</a>
+                </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font selected" href="../fornecedor">Fornecedores</a>
+                </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+                </li>
+                <?php
+                // Verificar o cargo do usuário para exibir ou ocultar itens do menu
+                if ($_SESSION['cargo'] === 'Gerente') { ?>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
+                </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../relatorio">Relatórios</a>
+                </li>
+                <?php } ?>
+            </ul>
+        </div>
     </div>
     <!------->
 
@@ -399,16 +434,16 @@ require '../../classes/Fornecedor/fornecedor.controller.php';
                     <div class="toast-body fs-6">
                         <strong>Fornecedor editado com sucesso!</strong>
                     </div>
-            <?php }else if ($toastAcao === 'alterarSenha') { ?>
-                            <div class="toast-header fs-5">
-                                <i class="bi bi-square-fill text-info"></i>
-                                <strong class="me-auto ms-3">Alterar Senha</strong>
-                                <button type="button" class="btn-close" onclick="closeToast()"></button>
-                            </div>
-                            <div class="toast-body fs-6">
-                                <strong>Senha alterada com sucesso!</strong>
-                            </div>
-                <?php } ?>
+            <?php } else if ($toastAcao === 'alterarSenha') { ?>
+                        <div class="toast-header fs-5">
+                            <i class="bi bi-square-fill text-info"></i>
+                            <strong class="me-auto ms-3">Alterar Senha</strong>
+                            <button type="button" class="btn-close" onclick="closeToast()"></button>
+                        </div>
+                        <div class="toast-body fs-6">
+                            <strong>Senha alterada com sucesso!</strong>
+                        </div>
+            <?php } ?>
         </div>
     </div>
     <!----------------------->
