@@ -70,7 +70,7 @@ require '../../classes/Cliente/cliente.controller.php';
                 <div class="d-none d-lg-block col-9">
                         <ul class="nav justify-content-center">
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-font selected" href="../estoque">Estoque</a>
+                                <a class="nav-link text-white nav-font" href="../estoque">Estoque</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
@@ -82,7 +82,7 @@ require '../../classes/Cliente/cliente.controller.php';
                                 <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+                                <a class="nav-link text-white nav-font selected" href="../cliente">Clientes</a>
                             </li>
                             <?php
                             // Verificar o cargo do usuário para exibir ou ocultar itens do menu
@@ -129,7 +129,7 @@ require '../../classes/Cliente/cliente.controller.php';
         <div class="collapse container d-lg-none" id="navbarToggleExternalContent">
             <ul class="nav d-flex flex-column">
                 <li class="nav-item d-flex mb-1">
-                    <a class="nav-link text-white nav-font selected" href="../estoque">Estoque</a>
+                    <a class="nav-link text-white nav-font" href="../estoque">Estoque</a>
                 </li>
                 <li class="nav-item d-flex mb-1">
                     <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
@@ -141,7 +141,7 @@ require '../../classes/Cliente/cliente.controller.php';
                     <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
                 </li>
                 <li class="nav-item d-flex mb-1">
-                    <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+                    <a class="nav-link text-white nav-font selected" href="../cliente">Clientes</a>
                 </li>
                     <?php
                     // Verificar o cargo do usuário para exibir ou ocultar itens do menu
