@@ -74,7 +74,7 @@ require '../../classes/Categoria/categoria.controller.php';
                 <div class="d-none d-lg-block col-9">
                         <ul class="nav justify-content-center">
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-font selected" href="">Estoque</a>
+                                <a class="nav-link text-white nav-font selected" href="../estoque">Estoque</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
@@ -133,7 +133,7 @@ require '../../classes/Categoria/categoria.controller.php';
         <div class="collapse container d-lg-none" id="navbarToggleExternalContent">
             <ul class="nav d-flex flex-column">
                 <li class="nav-item d-flex mb-1">
-                    <a class="nav-link text-white nav-font selected" href="">Estoque</a>
+                    <a class="nav-link text-white nav-font selected" href="../estoque">Estoque</a>
                 </li>
                 <li class="nav-item d-flex mb-1">
                     <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
@@ -175,7 +175,7 @@ require '../../classes/Categoria/categoria.controller.php';
 
             <div class="d-flex gap-5">
                 <div class="form-floating d-flex">
-                        <button onclick="filtrarDados(13)" class="btn btn-primary" type="button" id="button-addon2">Limpar filtros</button>
+                    <button onclick="filtrarDados(13)" class="btn btn-primary" type="button" id="button-addon2">Limpar filtros</button>
                 </div>
 
                 <div class="form-floating d-flex">

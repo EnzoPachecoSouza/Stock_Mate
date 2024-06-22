@@ -52,51 +52,54 @@ require '../../classes/Cliente/cliente.controller.php';
         <nav class="container">
             <div class="row d-flex align-items-center py-3">
 
+                <!-- MENU -->
+                <div class="d-block d-lg-none col-3">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list fs-1 text-white"></i>
+                </button>
+                </div>
+                <!------->
+
                 <!-- LOGO -->
-                <div class="col-2">
+                <div class="col-6 col-lg-2">
                     <img src="../../images/logo_stock_mate.png" alt="Logo Stock Mate" class="img-fluid">
                 </div>
                 <!------->
 
                 <!-- NAVIGATION -->
-                <div class="col-9">
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../estoque">Estoque</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../saida">Saída</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link text-white nav-font selected" href="">Clientes</a>
-                        </li>
-
-                        <?php
-                        // Verificar o cargo do usuário para exibir ou ocultar itens do menu
-                        if ($_SESSION['cargo'] === 'Gerente') { ?>
+                <div class="d-none d-lg-block col-9">
+                        <ul class="nav justify-content-center">
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
+                                <a class="nav-link text-white nav-font selected" href="../estoque">Estoque</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-font" href="../relatorio">Relatórios</a>
+                                <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
                             </li>
-                        <?php } ?>
+                            <li class="nav-item">
+                                <a class="nav-link text-white nav-font" href="../saida">Saída</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+                            </li>
+                            <?php
+                            // Verificar o cargo do usuário para exibir ou ocultar itens do menu
+                            if ($_SESSION['cargo'] === 'Gerente') { ?>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-white nav-font" href="../relatorio">Relatórios</a>
+                                </li>
+                            <?php } ?>
                     </ul>
                 </div>
                 <!------->
 
                 <!-- SAIR -->
-                <div class="col-1 text-end">
+                <div class="col-3 col-lg-1 text-end">
                     <div class="dropdown-center">
                         <button class="btn rounded-circle border-0 p-0" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
@@ -122,6 +125,36 @@ require '../../classes/Cliente/cliente.controller.php';
                 <!------->
             </div>
         </nav>
+
+        <div class="collapse container d-lg-none" id="navbarToggleExternalContent">
+            <ul class="nav d-flex flex-column">
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font selected" href="../estoque">Estoque</a>
+                </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
+                </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../saida">Saída</a>
+                </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
+                </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../cliente">Clientes</a>
+                </li>
+                    <?php
+                    // Verificar o cargo do usuário para exibir ou ocultar itens do menu
+                    if ($_SESSION['cargo'] === 'Gerente') { ?>
+                    <li class="nav-item d-flex mb-1">
+                        <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
+                    </li>
+                    <li class="nav-item d-flex mb-1">
+                        <a class="nav-link text-white nav-font" href="../relatorio">Relatórios</a>
+                    </li>
+                    <?php } ?>
+            </ul>
+        </div>
     </div>
     <!------->
 
@@ -427,13 +460,13 @@ require '../../classes/Cliente/cliente.controller.php';
                         <div class="row mb-4">
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                <input class="form-control" type="text" id="senhaAtual" name="senhaAtual"
-                                    placeholder="Senha Atual" oninput="verificaSenha(this.value)">
-                                <label for="senhaAtual">Senha Atual</label>
+                                    <input class="form-control" type="text" id="senhaAtual" name="senhaAtual"
+                                        placeholder="Senha Atual" oninput="verificaSenha(this.value)">
+                                    <label for="senhaAtual">Senha Atual</label>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="row mb-2">
                             <div class="col-md-12">
                                 <div class="form-floating">
@@ -443,12 +476,12 @@ require '../../classes/Cliente/cliente.controller.php';
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="row mb-5">
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="confirmarSenhaNova" name="confirmarSenhaNova"
-                                        placeholder="Confirme a Senha Nova" disabled>
+                                    <input class="form-control" type="text" id="confirmarSenhaNova"
+                                        name="confirmarSenhaNova" placeholder="Confirme a Senha Nova" disabled>
                                     <label for="confirmarSenhaNova">Confirme a Senha Nova</label>
                                 </div>
                             </div>
@@ -465,12 +498,12 @@ require '../../classes/Cliente/cliente.controller.php';
     <!----------------------->
 
     <script>
-        function verificaSenha(senha){
+        function verificaSenha(senha) {
             const senhaAtual = "<?= $_SESSION['senha'] ?>"
             const senhaNovaInput = document.querySelector('#novaSenha')
             const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova')
 
-            if(senha === senhaAtual){
+            if (senha === senhaAtual) {
                 senhaNovaInput.removeAttribute('disabled')
                 senhaNovaConfirmaInput.removeAttribute('disabled')
             }
