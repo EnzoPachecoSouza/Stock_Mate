@@ -653,7 +653,7 @@ require '../../classes/Produto/produto.controller.php';
     <!----------------------->
 
     <!-- VER MAIS DETALHES -->
-    <?php foreach ($entradas as $indice => $entrada) { ?>
+    <?php foreach ($saidas as $indice => $saida) { ?>
         <!-- VER MAIS DETALHES -->
         <div class="modal fade" id="visualizarDetalhesSaidaModal<?= $indice ?>" tabindex="-1"
             aria-labelledby="visualizarDetalhesSaidaModalLabel<?= $indice ?>" aria-hidden="true">
@@ -661,20 +661,20 @@ require '../../classes/Produto/produto.controller.php';
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="visualizarDetalhesSaidaModalLabel<?= $indice ?>">Detalhes da
-                            Entrada</h1>
+                            Saida</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="container">
-                            <?php foreach ($itensEntradaRecuperar as $indice => $itensEntrada) { ?>
-                                <?php if ($itensEntrada->ENTRADA_ENT_ID === $entrada->ENT_ID) { ?>
+                            <?php foreach ($itensSaidaRecuperar as $indice => $itensSaida) { ?>
+                                <?php if ($itensSaida->SAIDA_SAIDA_ID === $saida->SAIDA_ID) { ?>
                                     <div class="row mb-4">
                                         <div class="col-md-8">
                                             <div class="form-floating">
                                                 <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome"
                                                     value="<?php
                                                     foreach ($produtos as $indice => $produto) {
-                                                        if ($produto->PRO_ID === $itensEntrada->PRODUTOS_PRO_ID) {
+                                                        if ($produto->PRO_ID === $itensSaida->PRODUTOS_PRO_ID) {
                                                             echo $produto->PRO_NOME;
                                                         }
                                                     }
@@ -687,7 +687,7 @@ require '../../classes/Produto/produto.controller.php';
                                         <div class="col-md-4">
                                             <div class="form-floating">
                                                 <input class="form-control" type="text" id="quantidade" name="quantidade"
-                                                    placeholder="quantidade" value="<?= $itensEntrada->ITENS_QUANTIDADE ?>"
+                                                    placeholder="quantidade" value="<?= $itensSaida->ITENS_QUANTIDADE ?>"
                                                     disabled>
                                                 <label for="quantidade">Quantidade</label>
                                             </div>
