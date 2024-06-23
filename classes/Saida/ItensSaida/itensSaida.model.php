@@ -1,18 +1,20 @@
 <?php
 
-class ItensSaida
-{
-    private $saidaID;
-    private $produtoID;
-    private $produtoQuantidade;
-
-    public function __set($atributo, $valor)
+if (!class_exists('ItensSaidaService')) {
+    class ItensSaida
     {
-        $this->$atributo = $valor;
-    }
+        private $saidaID;
+        private $produtoID;
+        private $produtoQuantidade;
 
-    public function __get($atributo)
-    {
-        return $this->$atributo;
+        public function __set($atributo, $valor)
+        {
+            $this->$atributo = $valor;
+        }
+
+        public function __get($atributo)
+        {
+            return $this->$atributo;
+        }
     }
 }

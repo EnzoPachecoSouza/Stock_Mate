@@ -6,6 +6,7 @@ include '../Login/session_check.php';
 $acao = 'recuperar';
 
 require '../../classes/Saida/saida.controller.php';
+require '../../classes/Saida/ItensSaida/itensSaida.controller.php';
 require '../../classes/Cliente/cliente.controller.php';
 require '../../classes/Produto/produto.controller.php';
 ?>
@@ -297,6 +298,13 @@ require '../../classes/Produto/produto.controller.php';
                         </td>
 
                         <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
+                            <!-- VISUALIZAR DETALHES -->
+                                <button type="button" class="btn" data-bs-toggle="modal"
+                                    data-bs-target="#visualizarDetalhesSaidaModal<?= $indice ?>">
+                                    <i class="bi bi-eye-fill text-success fs-5"></i>
+                                </button>
+                                <!------->
+
                             <!-- BOTÃO EDITAR SAIDA -->
                                 <?php
                                 $data_registro = new DateTime($saida->SAIDA_HORA_DE_REGISTRO);
@@ -512,11 +520,11 @@ require '../../classes/Produto/produto.controller.php';
                 <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                     <option value="" selected></option>
                     <?php foreach ($produtos as $produto) { ?>
-                                <?php if ($produto->PRO_QUANTIDADE > 0 || $produto->PRO_STATUS === 0) { ?>
-                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>" data-estoque="<?= $produto->PRO_QUANTIDADE ?>">
-                                            <?= $produto->PRO_NOME ?>
-                                        </option>
-                            <?php } ?>
+                                        <?php if ($produto->PRO_QUANTIDADE > 0 || $produto->PRO_STATUS === 0) { ?>
+                                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>" data-estoque="<?= $produto->PRO_QUANTIDADE ?>">
+                                                            <?= $produto->PRO_NOME ?>
+                                                        </option>
+                                    <?php } ?>
                     <?php } ?>
                 </select>
                 <label>Produto</label>
@@ -643,6 +651,56 @@ require '../../classes/Produto/produto.controller.php';
         </div>
     <?php } ?>
     <!----------------------->
+
+    <!-- VER MAIS DETALHES -->
+    <?php foreach ($entradas as $indice => $entrada) { ?>
+        <!-- VER MAIS DETALHES -->
+        <div class="modal fade" id="visualizarDetalhesSaidaModal<?= $indice ?>" tabindex="-1"
+            aria-labelledby="visualizarDetalhesSaidaModalLabel<?= $indice ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="visualizarDetalhesSaidaModalLabel<?= $indice ?>">Detalhes da
+                            Entrada</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container">
+                            <?php foreach ($itensEntradaRecuperar as $indice => $itensEntrada) { ?>
+                                <?php if ($itensEntrada->ENTRADA_ENT_ID === $entrada->ENT_ID) { ?>
+                                    <div class="row mb-4">
+                                        <div class="col-md-8">
+                                            <div class="form-floating">
+                                                <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome"
+                                                    value="<?php
+                                                    foreach ($produtos as $indice => $produto) {
+                                                        if ($produto->PRO_ID === $itensEntrada->PRODUTOS_PRO_ID) {
+                                                            echo $produto->PRO_NOME;
+                                                        }
+                                                    }
+                                                    ?>" disabled>
+                                                <label for="nome">Nome</label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <div class="form-floating">
+                                                <input class="form-control" type="text" id="quantidade" name="quantidade"
+                                                    placeholder="quantidade" value="<?= $itensEntrada->ITENS_QUANTIDADE ?>"
+                                                    disabled>
+                                                <label for="quantidade">Quantidade</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+                            <?php } ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
 
     <!-- REGISTRAR CLIENTE -->
     <div class="modal fade" id="cadastrarClienteModal" tabindex="-1" aria-labelledby="cadastrarClienteModalLabel"

@@ -38,7 +38,7 @@ if (!class_exists('ItensSaidaService')) {
 
             $query = '
             SELECT *
-            FROM ITENS_ENTRADA;
+            FROM ITENS_SAIDA;
             ';
 
             $stmt = $this->conexao->prepare($query);
