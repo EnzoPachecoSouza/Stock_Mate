@@ -206,10 +206,9 @@ $cargo_usuario = isset($_SESSION['cargo']) ? $_SESSION['cargo'] : '';
 
                 if ($reportType == "2") {
                     echo '<div id="financeiroReport" class="col-12 mt-3">';
-                    echo '<iframe title="Financeiro" width="100%" height="650"
-                        src="https://app.powerbi.com/view?r=eyJrIjoiYmM1YzhkYjQtNGUzMi00NDZhLTg5MDUtNmEyZTU1N2MxNzk2IiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9"
-                        frameborder="0" allowFullScreen="true">
-                    </iframe>';
+                    echo '<iframe title="stock_mate_pi" width="100%" height="650" 
+                    src="https://app.powerbi.com/view?r=eyJrIjoiYWUxNjRjOGYtMGMzNC00NTU2LWJkOGItYWQ4NGVmNGM1M2IwIiwidCI6ImNmNzJlMmJkLTdhMmItNDc4My1iZGViLTM5ZDU3YjA3Zjc2ZiIsImMiOjR9" 
+                        frameborder="0" allowFullScreen="true"></iframe>';
                     echo '</div>';
                 } elseif ($reportType == "1") {
                     echo '<div id="estoqueReport" class="col-12 mt-3">';

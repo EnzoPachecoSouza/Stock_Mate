@@ -66,6 +66,7 @@ if (!class_exists('ProdutoService')) {
                 SELECT *
                 FROM PRODUTOS
                 WHERE CATEGORIA_CAT_ID = '$filtrarCategoria'
+                AND PRO_STATUS = 1
                 ORDER BY PRO_STATUS DESC, PRO_NOME;
                 ";
 
@@ -97,6 +98,13 @@ if (!class_exists('ProdutoService')) {
                 PRO_STATUS = 1
                 ORDER BY PRO_STATUS DESC, PRO_NOME;
                 ";
+                } else {
+                    $query = '
+        SELECT PRO.*, CATE.CAT_CATEGORIA
+        FROM PRODUTOS AS PRO
+        INNER JOIN CATEGORIA AS CATE ON PRO.CATEGORIA_CAT_ID = CATE.CAT_ID 
+        ORDER BY PRO_STATUS DESC, PRO_ID ASC;
+        ';
                 }
 
             } else {
@@ -224,7 +232,7 @@ if (!class_exists('ProdutoService')) {
             $stmt->bindValue(':id', $id);
             $stmt->execute();
         }
-        
+
         public function atualizarSaida($id, $quantidade)
         {
             $query = '
