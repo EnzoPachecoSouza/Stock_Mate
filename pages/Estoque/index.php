@@ -163,7 +163,7 @@ require '../../classes/Categoria/categoria.controller.php';
     <!------->
 
     <div class="container mt-5">
-        <div class="d-flex justify-content-between align-items-center">
+        <div class="d-none d-lg-flex justify-content-between align-items-center">
             <!-- BOTÃO DE CRIAR PRODUTO -->
             <div>
                 <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
@@ -174,6 +174,59 @@ require '../../classes/Categoria/categoria.controller.php';
             <!------->
 
             <div class="d-flex gap-5">
+                <div class="form-floating d-flex">
+                    <button onclick="filtrarDados(13)" class="btn btn-primary" type="button" id="button-addon2">Limpar filtros</button>
+                </div>
+
+                <div class="form-floating d-flex">
+                    <div class="input-group">
+                        <select class="form-select shadow-none" id="filCor" name="filCor">
+                            <option disabled selected>Quantidade</option>
+                            <option value="verde">Máxima</option>
+                            <option value="amarelo">Média</option>
+                            <option value="vermelho">Mínima</option>
+                        </select>
+                        <button onclick="filtrarCores()" class="btn btn-primary" type="button" id="button-addon2">Filtrar</button>
+                    </div>
+                </div>
+
+
+                <div class="form-floating d-flex">
+                    <div class="input-group">
+                        <select class="form-select shadow-none" id="catFiltro" name="catFiltro">
+                            <option disabled selected>Categorias</option>
+                            <?php foreach ($categorias as $indice => $categoria) { ?>
+                            <option value="<?= $categoria->CAT_ID ?>">
+                                <?= $categoria->CAT_CATEGORIA ?>
+                            </option>
+                            <?php } ?>
+                        </select>
+                        <button onclick="filtrarCategoria()" class="btn btn-primary" type="button" id="button-addon2">Filtrar</button>
+                    </div>
+                </div>
+
+                <div class="d-flex">
+                    <div class="input-group">
+                        <input type="text" class="form-control shadow-none" placeholder="Pesquisar" id="pesquisar" name="pesquisar">
+                        <button onclick="pesquisarDados()" class="btn btn-primary" type="button" id="button-addon2">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex d-lg-none flex-column justify-content-between align-items-center">
+            <!-- BOTÃO DE CRIAR PRODUTO -->
+            <div class="mb-3">
+                <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
+                    data-bs-target="#cadastrarProdutoModal">
+                    <i class="bi bi-plus-lg"></i>
+                </button>
+            </div>
+            <!------->
+
+            <div class="d-flex flex-column gap-2">
                 <div class="form-floating d-flex">
                     <button onclick="filtrarDados(13)" class="btn btn-primary" type="button" id="button-addon2">Limpar filtros</button>
                 </div>
