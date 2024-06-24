@@ -163,22 +163,24 @@ require '../../classes/Categoria/categoria.controller.php';
     <!------->
 
     <div class="container mt-5">
-        <div class="d-none d-lg-flex justify-content-between align-items-center">
-            <!-- BOTÃO DE CRIAR PRODUTO -->
-            <div>
-                <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
-                    data-bs-target="#cadastrarProdutoModal">
-                    <i class="bi bi-plus-lg"></i>
-                </button>
-            </div>
-            <!------->
+    <div class="container">
+    <div class="row align-items-center">
+        <!-- BOTÃO DE CRIAR PRODUTO -->
+        <div class="col-12 col-sm-2 col-md-1 mb-2 d-flex justify-content-center justify-content-sm-start">
+            <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
+                data-bs-target="#cadastrarProdutoModal">
+                <i class="bi bi-plus-lg"></i>
+            </button>
+        </div>
+        <!------->
 
-            <div class="d-flex gap-5">
-                <div class="form-floating d-flex">
-                    <button onclick="filtrarDados(13)" class="btn btn-primary" type="button" id="button-addon2">Limpar filtros</button>
+        <div class="col-12 col-sm-10 col-md-11">
+            <div class="row g-2 justify-content-end">
+                <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                    <button onclick="filtrarDados(13)" class="btn btn-primary w-100" type="button" id="button-addon2">Limpar filtros</button>
                 </div>
 
-                <div class="form-floating d-flex">
+                <div class="col-12 col-sm-6 col-md-3 col-lg-3">
                     <div class="input-group">
                         <select class="form-select shadow-none" id="filCor" name="filCor">
                             <option disabled selected>Quantidade</option>
@@ -190,8 +192,7 @@ require '../../classes/Categoria/categoria.controller.php';
                     </div>
                 </div>
 
-
-                <div class="form-floating d-flex">
+                <div class="col-12 col-sm-6 col-md-3 col-lg-3">
                     <div class="input-group">
                         <select class="form-select shadow-none" id="catFiltro" name="catFiltro">
                             <option disabled selected>Categorias</option>
@@ -205,7 +206,7 @@ require '../../classes/Categoria/categoria.controller.php';
                     </div>
                 </div>
 
-                <div class="d-flex">
+                <div class="col-12 col-sm-6 col-md-3 col-lg-4">
                     <div class="input-group">
                         <input type="text" class="form-control shadow-none" placeholder="Pesquisar" id="pesquisar" name="pesquisar">
                         <button onclick="pesquisarDados()" class="btn btn-primary" type="button" id="button-addon2">
@@ -215,6 +216,9 @@ require '../../classes/Categoria/categoria.controller.php';
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
 
         <div class="mt-3 ps-1" style="height: 70vh; overflow: auto;">
             <table class="table table-hover">
