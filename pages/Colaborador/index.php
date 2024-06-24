@@ -432,7 +432,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
     </script>
 
 
-    <!-- EDITAR PRODUTO -->
+    <!-- EDITAR COLABORADOR -->
         <?php foreach ($colaboradores as $indice => $colaborador) { ?>
             <div class="modal fade" id="editarColaboradorModal<?= $indice ?>" tabindex="-1"
                 aria-labelledby="editarColaboradorModalLabel<?= $indice ?>" aria-hidden="true">
@@ -485,14 +485,26 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                 </div>
 
                                 <div class="row mb-4">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-floating">
+                                            <div class="input-group">
+                                                <input class="form-control" type="text" id="senhaEdit" name="senha"
+                                                    placeholder="Senha" required readonly>
+                                                <span onclick="criarSenha()" class="input-group-text"><i
+                                                        class="bi bi-arrow-clockwise"></i></span>
+                                                <span onclick="copiarSenha()" class="input-group-text" id="copiarSenha"><i
+                                                        class="bi bi-copy"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="input-group">
                                             <select class="form-select shadow-none" id="cargo" name="cargo" required>
-                                                <option disabled selected>Cargo</option>
+                                                <option value="<?= $colaborador->COL_CARGO ?>" selected></option>
                                                 <option value="Gerente">Gerente</option>
                                                 <option value="Funcionário">Funcionário</option>
                                             </select>
-                                            <label for="categoria">Cargo</label>
                                         </div>
                                     </div>
                                 </div>
@@ -607,15 +619,15 @@ require '../../classes/Colaborador/colaborador.controller.php';
                 senhaNovaConfirmaInput.removeAttribute('disabled')
             }
         }
-    </>
+    </script>
 
-            <script>
-                (function () {
-                    'use strict'
+    <script>
+        (function () {
+            'use strict'
 
             let forms = document.querySelectorAll('.needs-validation')
 
-                Array.prototype.slice.call(forms)
+            Array.prototype.slice.call(forms)
                 .forEach(function (form) {
                     form.addEventListener('submit', function (event) {
                         if (!form.checkValidity()) {
