@@ -54,9 +54,11 @@ require '../../classes/Cliente/cliente.controller.php';
 
                 <!-- MENU -->
                 <div class="d-block d-lg-none col-3">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="bi bi-list fs-1 text-white"></i>
-                </button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="bi bi-list fs-1 text-white"></i>
+                    </button>
                 </div>
                 <!------->
 
@@ -68,32 +70,32 @@ require '../../classes/Cliente/cliente.controller.php';
 
                 <!-- NAVIGATION -->
                 <div class="d-none d-lg-block col-9">
-                        <ul class="nav justify-content-center">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../estoque">Estoque</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../saida">Saída</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white nav-font selected" href="../cliente">Clientes</a>
+                        </li>
+                        <?php
+                        // Verificar o cargo do usuário para exibir ou ocultar itens do menu
+                        if ($_SESSION['cargo'] === 'Gerente') { ?>
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-font" href="../estoque">Estoque</a>
+                                <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link text-white nav-font" href="../entrada">Entrada</a>
+                                <a class="nav-link text-white nav-font" href="../relatorio">Relatórios</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white nav-font" href="../saida">Saída</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white nav-font" href="../fornecedor">Fornecedores</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-white nav-font selected" href="../cliente">Clientes</a>
-                            </li>
-                            <?php
-                            // Verificar o cargo do usuário para exibir ou ocultar itens do menu
-                            if ($_SESSION['cargo'] === 'Gerente') { ?>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-white nav-font" href="../relatorio">Relatórios</a>
-                                </li>
-                            <?php } ?>
+                        <?php } ?>
                     </ul>
                 </div>
                 <!------->
@@ -143,54 +145,49 @@ require '../../classes/Cliente/cliente.controller.php';
                 <li class="nav-item d-flex mb-1">
                     <a class="nav-link text-white nav-font selected" href="../cliente">Clientes</a>
                 </li>
-                    <?php
-                    // Verificar o cargo do usuário para exibir ou ocultar itens do menu
-                    if ($_SESSION['cargo'] === 'Gerente') { ?>
-                    <li class="nav-item d-flex mb-1">
-                        <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
-                    </li>
-                    <li class="nav-item d-flex mb-1">
-                        <a class="nav-link text-white nav-font" href="../relatorio">Relatórios</a>
-                    </li>
-                    <?php } ?>
+                <?php
+                // Verificar o cargo do usuário para exibir ou ocultar itens do menu
+                if ($_SESSION['cargo'] === 'Gerente') { ?>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../colaborador">Colaboradores</a>
+                </li>
+                <li class="nav-item d-flex mb-1">
+                    <a class="nav-link text-white nav-font" href="../relatorio">Relatórios</a>
+                </li>
+                <?php } ?>
             </ul>
         </div>
     </div>
     <!------->
 
     <div class="container mt-5">
-        <div class="d-flex justify-content-between align-items-center">
-            <!-- BOTÃO DE CADASTRAR CLIENTE -->
-            <div>
-                <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
-                    data-bs-target="#cadastrarClienteModal">
-                    <i class="bi bi-plus-lg"></i>
-                </button>
-            </div>
-            <!------->
-
-
-            <!-- <div class="form-floating d-flex">
-                <select class="form-select" id="catFiltro" name="catFiltro">
-                    <option selected>            </option>
-                    <option selected>Mais comprou</option>
-                    <option selected>Menos comprou</option>
-                </select>
-                <label for="catFiltro">Categorias</label>
-                <button onclick="" class="btn btn-primary">Filtrar</button>
-            </div> -->
-
-            <div class="d-flex">
-                <div class="input-group">
-                    <input type="text" class="form-control shadow-none" placeholder="Pesquisar" id="pesquisar"
-                        name="pesquisar">
-                    <button onclick="pesquisarDados()" class="btn btn-primary" type="button" id="button-addon2">
-                        <i class="bi bi-search"></i>
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- BOTÃO DE CADASTRAR CLIENTE -->
+                <div class="col-12 col-md-2 mb-2 d-flex justify-content-center justify-content-md-start">
+                    <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
+                        data-bs-target="#cadastrarClienteModal">
+                        <i class="bi bi-plus-lg"></i>
                     </button>
+                </div>
+                <!------->
+
+                <div class="col-12 col-md-10">
+                    <div class="row g-2 justify-content-end">
+                        <div class="col-12 col-sm-8 col-md-8 col-lg-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" placeholder="Pesquisar"
+                                    id="pesquisar" name="pesquisar">
+                                <button onclick="pesquisarDados()" class="btn btn-primary" type="button"
+                                    id="button-addon2">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
 
         <div class="ps-1 mt-3" style="height: 70vh; overflow: auto;">
             <table class="table table-hover">
