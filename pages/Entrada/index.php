@@ -367,7 +367,7 @@ require '../../classes/Produto/produto.controller.php';
                             </div>
                         </div>
 
-                        <div class="row mb-4">
+                        <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-text fw-bold">R$</span>
@@ -394,7 +394,7 @@ require '../../classes/Produto/produto.controller.php';
                             </div>
                         </div>
 
-                        <div class="row mb-4">
+                        <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="date" id="dataCompra" name="dataCompra"
@@ -413,7 +413,7 @@ require '../../classes/Produto/produto.controller.php';
                         </div>
 
                         <div id="products" class="mt-3">
-                            <div class="row mb-2 product-item">
+                            <div class="row mb-5 g-3 product-item">
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <select class="form-select produto" name="produto[]"
@@ -512,7 +512,7 @@ require '../../classes/Produto/produto.controller.php';
             const products = document.querySelector('#products');
 
             const row = document.createElement('div');
-            row.classList.add('row', 'mb-2', 'product-item');
+            row.classList.add('row', 'g-3', 'mb-5', 'product-item');
 
             row.innerHTML = `
         <div class="col-md-4">
@@ -520,9 +520,9 @@ require '../../classes/Produto/produto.controller.php';
                 <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                     <option value="" selected></option>
                     <?php foreach ($produtos as $produto) { ?>
-                                                        <?php if ($produto->PRO_STATUS === 1) { ?>
-                                                                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
-                                                    <?php } ?>
+                        <?php if ($produto->PRO_STATUS === 1) { ?>
+                                <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
+                        <?php } ?>
                     <?php } ?>
                 </select>
                 <label>Produto</label>
@@ -590,7 +590,7 @@ require '../../classes/Produto/produto.controller.php';
                                 </div>
                             </div>
 
-                            <div class="row mb-4">
+                            <div class="row g-3 mb-4">
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-text fw-bold">R$</span>
@@ -620,7 +620,7 @@ require '../../classes/Produto/produto.controller.php';
                                 </div>
                             </div>
 
-                            <div class="row mb-5">
+                            <div class="row g-3 mb-5">
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" value="<?= $entrada->ENT_DATA_COMPRA ?>" type="date"
@@ -666,7 +666,7 @@ require '../../classes/Produto/produto.controller.php';
                         <div class="container">
                             <?php foreach ($itensEntradaRecuperar as $indice => $itensEntrada) { ?>
                                 <?php if ($itensEntrada->ENTRADA_ENT_ID === $entrada->ENT_ID) { ?>
-                                    <div class="row mb-4">
+                                    <div class="row g-3 mb-5">
                                         <div class="col-md-8">
                                             <div class="form-floating">
                                                 <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome"
@@ -712,7 +712,7 @@ require '../../classes/Produto/produto.controller.php';
                 <div class="modal-body">
                     <form class="container needs-validation" novalidate method="post"
                         action="../../classes/Fornecedor/fornecedor.controller.php?acao=inserir-from-entrada">
-                        <div class="row mb-4">
+                        <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="text" id="fornecedor" name="fornecedor"
@@ -730,7 +730,7 @@ require '../../classes/Produto/produto.controller.php';
                             </div>
                         </div>
 
-                        <div class="row mb-5">
+                        <div class="row g-3 mb-5">
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="text" id="contato" name="contato"
