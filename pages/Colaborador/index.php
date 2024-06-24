@@ -566,14 +566,16 @@ require '../../classes/Colaborador/colaborador.controller.php';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="container" method="post"
-                            action="../../classes/Colaborador/colaborador.controller.php?acao=alterarSenha&id=<?= $_SESSION['id'] ?>">
+                        <form class="container needs-validation" method="post"
+                            action="../../classes/Colaborador/colaborador.controller.php?acao=alterarSenha&id=<?= $_SESSION['id'] ?>"
+                            novalidate>
                             <div class="row mb-4">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="senhaAtual" name="senhaAtual"
-                                            placeholder="Senha Atual" oninput="verificaSenha(this.value)">
+                                        <input class="form-control" type="password" id="senhaAtual" name="senhaAtual"
+                                            placeholder="Senha Atual" oninput="verificaSenha(this.value)" required>
                                         <label for="senhaAtual">Senha Atual</label>
+                                        <div class="invalid-feedback">Por favor, insira sua senha atual.</div>
                                     </div>
                                 </div>
                             </div>
@@ -581,67 +583,85 @@ require '../../classes/Colaborador/colaborador.controller.php';
                             <div class="row mb-2">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="novaSenha" name="novaSenha"
-                                            placeholder="Senha Nova" disabled>
+                                        <input class="form-control" type="password" id="novaSenha" name="novaSenha"
+                                            placeholder="Senha Nova" disabled required>
                                         <label for="novaSenha">Senha Nova</label>
+                                        <div class="invalid-feedback">Por favor, insira a nova senha.</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row mb-5">
+                            <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="confirmarSenhaNova"
-                                            name="confirmarSenhaNova" placeholder="Confirme a Senha Nova" disabled>
+                                        <input class="form-control" type="password" id="confirmarSenhaNova"
+                                            name="confirmarSenhaNova" placeholder="Confirme a Senha Nova" disabled required>
                                         <label for="confirmarSenhaNova">Confirme a Senha Nova</label>
+                                        <div class="invalid-feedback">Por favor, confirme a nova senha.</div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="d-flex justify-content-center align-items-center">
-                                <button class="btn btn-outline-primary">Alterar Senha</button>
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <span id="senha-erro" class="text-danger" style="display:none;">As senhas não
+                                        coincidem.</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-center align-items-center mt-5">
+                                <button class="btn btn-outline-primary" type="submit">Alterar Senha</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!----------------------->
 
-    <script>
-        function verificaSenha(senha) {
-            const senhaAtual = "<?= $_SESSION['senha'] ?>"
-            const senhaNovaInput = document.querySelector('#novaSenha')
-            const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova')
+        <script>
+            function verificaSenha(senha) {
+                const senhaAtual = "<?= $_SESSION['senha'] ?>"
+                const senhaNovaInput = document.querySelector('#novaSenha')
+                const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova')
 
-            if (senha === senhaAtual) {
-                senhaNovaInput.removeAttribute('disabled')
-                senhaNovaConfirmaInput.removeAttribute('disabled')
+                if (senha === senhaAtual) {
+                    senhaNovaInput.removeAttribute('disabled')
+                    senhaNovaConfirmaInput.removeAttribute('disabled')
+                } else {
+                    senhaNovaInput.setAttribute('disabled', 'true')
+                    senhaNovaConfirmaInput.setAttribute('disabled', 'true')
+                }
             }
-        }
-    </script>
 
-    <script>
-        (function () {
-            'use strict'
+            function validarSenhasIguais() {
+                const senhaNovaInput = document.querySelector('#novaSenha')
+                const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova')
+                const senhaErro = document.querySelector('#senha-erro')
 
-            let forms = document.querySelectorAll('.needs-validation')
+                if (senhaNovaInput.value !== senhaNovaConfirmaInput.value) {
+                    senhaErro.style.display = 'block'
+                    return false
+                } else {
+                    senhaErro.style.display = 'none'
+                    return true
+                }
+            }
 
-            Array.prototype.slice.call(forms)
-                .forEach(function (form) {
-                    form.addEventListener('submit', function (event) {
-                        if (!form.checkValidity()) {
-                            event.preventDefault()
-                            event.stopPropagation()
-                        }
+            document.querySelector('.needs-validation').addEventListener('submit', function (event) {
+                if (!this.checkValidity() || !validarSenhasIguais()) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
 
-                        form.classList.add('was-validated')
-                    }, false)
-                });
-        })()
-    </script>
+                this.classList.add('was-validated');
 
-    <!-- Bootstrap JS -->
+            }, false);
+
+            document.querySelector('#novaSenha').addEventListener('input', validarSenhasIguais);
+            document.querySelector('#confirmarSenhaNova').addEventListener('input', validarSenhasIguais);
+        </script>
+
+        <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
             </script>
