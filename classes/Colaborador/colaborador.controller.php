@@ -9,13 +9,19 @@ $acao = isset($_GET['acao']) ? $_GET['acao'] : $acao;
 if ($acao == 'inserir') {
     $colaborador = new Colaborador();
 
-    $senha = criarSenha();
+    // Função para criptografar a senha
+    function criptografarSenha($senha) {
+        return hash('sha256', $senha);
+    }
+
+    // Senha criptografada
+    $senhaCriptografada = criptografarSenha($_POST['senha']);
 
     $colaborador->__set('colaborador', $_POST['colaborador']);
     $colaborador->__set('email', $_POST['email']);
     $colaborador->__set('contato', $_POST['contato']);
     $colaborador->__set('cpf', $_POST['cpf']);
-    $colaborador->__set('senha', $senha);
+    $colaborador->__set('senha', $senhaCriptografada);
     $colaborador->__set('cargo', $_POST['cargo']);
 
     $conexao = new Conexao();
@@ -24,7 +30,7 @@ if ($acao == 'inserir') {
     $colaboradorService->inserir();
 
     header('Location: ../../pages/Colaborador/index.php?act=inserir');
-} else if ($acao == 'recuperar') {
+}else if ($acao == 'recuperar') {
     $colaborador = new Colaborador();
 
     $conexao = new Conexao();
@@ -50,7 +56,15 @@ if ($acao == 'inserir') {
     $id = isset($_GET['id']) ? $_GET['id'] : $id;
     $colaborador = new Colaborador();
 
-    $colaborador->__set('senha', $_POST['novaSenha']);
+    // Função para criptografar a senha
+    function criptografarSenha($senha) {
+        return hash('sha256', $senha);
+    }
+
+    // Criptografar a nova senha
+    $novaSenhaCriptografada = criptografarSenha($_POST['novaSenha']);
+
+    $colaborador->__set('senha', $novaSenhaCriptografada);
 
     $conexao = new Conexao();
 
@@ -59,6 +73,7 @@ if ($acao == 'inserir') {
 
     header('Location: ../../pages/Estoque/index.php?act=alterarSenha');
 }
+
 
 function criarSenha()
 {

@@ -25,16 +25,23 @@ if (!class_exists('Conexao')) {
     }
 }
 
+function hashSenha($senha) {
+    return hash('sha256', $senha);
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && isset($_POST['senha'])) {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
+
+    // Criptografa a senha fornecida pelo usuário
+    $hashed_senha = hashSenha($senha);
 
     // Cria uma instância de conexão
     $conexao = (new Conexao())->conectar();
     if ($conexao) {
         $sql = "SELECT * FROM COLABORADORES WHERE COL_EMAIL = ? AND COL_SENHA = ?";
         $stmt = $conexao->prepare($sql);
-        $stmt->execute([$email, $senha]);
+        $stmt->execute([$email, $hashed_senha]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($result) {

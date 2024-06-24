@@ -100,11 +100,11 @@ if (!class_exists('ProdutoService')) {
                 ";
                 } else {
                     $query = '
-        SELECT PRO.*, CATE.CAT_CATEGORIA
-        FROM PRODUTOS AS PRO
-        INNER JOIN CATEGORIA AS CATE ON PRO.CATEGORIA_CAT_ID = CATE.CAT_ID 
-        ORDER BY PRO_STATUS DESC, PRO_ID ASC;
-        ';
+                SELECT PRO.*, CATE.CAT_CATEGORIA
+                FROM PRODUTOS AS PRO
+                INNER JOIN CATEGORIA AS CATE ON PRO.CATEGORIA_CAT_ID = CATE.CAT_ID 
+                ORDER BY PRO_STATUS DESC, PRO_ID ASC;
+                ';
                 }
 
             } else {

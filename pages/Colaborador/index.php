@@ -324,9 +324,9 @@ require '../../classes/Colaborador/colaborador.controller.php';
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="email" name="email" placeholder="E-mail"
-                                            required>
-                                        <label for="email">E-mail</label>
+                                        <input class="form-control" type="text" id="contato" name="contato"
+                                            placeholder="Contato" required>
+                                        <label for="contato">Contato</label>
                                     </div>
                                 </div>
                             </div>
@@ -334,23 +334,30 @@ require '../../classes/Colaborador/colaborador.controller.php';
                             <div class="row g-3 mb-4">
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" type="text" id="contato" name="contato"
-                                            placeholder="Contato" required>
-                                        <label for="contato">Contato</label>
+                                        <input class="form-control" type="text" id="email" name="email" placeholder="E-mail"
+                                            required>
+                                        <label for="email">E-mail</label>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input class="form-control" type="password" id="senha" name="senha" placeholder="Senha"
+                                            required>
+                                        <label for="senha">Senha</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-4">
+                            <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF"
                                             required>
                                         <label for="cpf">CPF</label>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="row mb-4">
-                                <div class="col-12">
+                                <div class="col-6">
                                     <div class="input-group">
                                         <select class="form-select shadow-none" id="cargo" name="cargo" required>
                                             <option value="" disabled selected>Cargo</option>

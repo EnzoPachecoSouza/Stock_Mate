@@ -16,8 +16,8 @@ class ColaboradorService
     {
         $query = '
         INSERT INTO
-        COLABORADORES (COL_NOME, COL_EMAIL, COL_CONTATO, COL_CPF, COL_SENHA, COL_CARGO)
-        VALUES (:colaborador, :email, :contato, :cpf, :senha, :cargo)
+        COLABORADORES (COL_NOME, COL_EMAIL, COL_CONTATO, COL_CPF, COL_CARGO, COL_SENHA)
+        VALUES (:colaborador, :email, :contato, :cpf, :cargo, :senha)
         ';
 
         $stmt = $this->conexao->prepare($query);
@@ -28,6 +28,7 @@ class ColaboradorService
         $stmt->bindValue(':cpf', $this->colaborador->__get('cpf'));
         $stmt->bindValue(':senha', $this->colaborador->__get('senha'));
         $stmt->bindValue(':cargo', $this->colaborador->__get('cargo'));
+        $stmt->bindValue(':senha', $this->colaborador->__get('senha'));
 
         $stmt->execute();
     }
