@@ -163,27 +163,33 @@ require '../../classes/Colaborador/colaborador.controller.php';
     <!------->
 
     <div class="container mt-5">
-        <div class="d-flex justify-content-between align-items-center">
-            <!-- BOTÃO DE CADASTRAR COLABORADOR -->
-                <div>
-                    <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
-                        data-bs-target="#cadastrarColaboradorModal">
-                        <i class="bi bi-plus-lg"></i>
-                    </button>
-                </div>
-                <!------->
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- BOTÃO DE CADASTRAR COLABORADOR -->
+                    <div class="col-12 col-md-2 mb-2 d-flex justify-content-center justify-content-md-start">
+                        <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
+                            data-bs-target="#cadastrarColaboradorModal">
+                            <i class="bi bi-plus-lg"></i>
+                        </button>
+                    </div>
+                    <!------->
 
-            <div class="d-flex">
-                <div class="input-group">
-                    <input type="text" class="form-control shadow-none" placeholder="Pesquisar" id="pesquisar"
-                        name="pesquisar">
-                    <button onclick="pesquisarDados()" class="btn btn-primary" type="button" id="button-addon2">
-                        <i class="bi bi-search"></i>
-                    </button>
+                <div class="col-12 col-md-10">
+                    <div class="row g-2 justify-content-end">
+                        <div class="col-12 col-sm-8 col-md-8 col-lg-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" placeholder="Pesquisar"
+                                    id="pesquisar" name="pesquisar">
+                                <button onclick="pesquisarDados()" class="btn btn-primary" type="button"
+                                    id="button-addon2">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
 
         <div class="ps-1 mt-3" style="height: 70vh; overflow: auto;">
             <table class="table table-hover">
