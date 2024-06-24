@@ -163,221 +163,221 @@ require '../../classes/Categoria/categoria.controller.php';
     <!------->
 
     <div class="container mt-5">
-    <div class="container">
-    <div class="row align-items-center">
-        <!-- BOTÃO DE CRIAR PRODUTO -->
-        <div class="col-12 col-sm-2 col-md-1 mb-2 d-flex justify-content-center justify-content-sm-start">
-            <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
-                data-bs-target="#cadastrarProdutoModal">
-                <i class="bi bi-plus-lg"></i>
-            </button>
-        </div>
-        <!------->
-
-        <div class="col-12 col-sm-10 col-md-11">
-            <div class="row g-2 justify-content-end">
-                <div class="col-12 col-sm-6 col-md-3 col-lg-2">
-                    <button onclick="filtrarDados(13)" class="btn btn-primary w-100" type="button" id="button-addon2">Limpar filtros</button>
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- BOTÃO DE CRIAR PRODUTO -->
+                <div class="col-12 col-sm-2 col-md-1 mb-2 d-flex justify-content-center justify-content-sm-start">
+                    <button type="button" class="btn btn-primary rounded-circle" data-bs-toggle="modal"
+                        data-bs-target="#cadastrarProdutoModal">
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
                 </div>
+                <!------->
 
-                <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                    <div class="input-group">
-                        <select class="form-select shadow-none" id="filCor" name="filCor">
-                            <option disabled selected>Quantidade</option>
-                            <option value="verde">Máxima</option>
-                            <option value="amarelo">Média</option>
-                            <option value="vermelho">Mínima</option>
-                        </select>
-                        <button onclick="filtrarCores()" class="btn btn-primary" type="button" id="button-addon2">Filtrar</button>
-                    </div>
-                </div>
+                <div class="col-12 col-sm-10 col-md-11">
+                    <div class="row g-2 justify-content-end">
+                        <div class="col-12 col-sm-6 col-md-3 col-lg-2">
+                            <button onclick="filtrarDados(13)" class="btn btn-primary w-100" type="button" id="button-addon2">Limpar filtros</button>
+                        </div>
 
-                <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                    <div class="input-group">
-                        <select class="form-select shadow-none" id="catFiltro" name="catFiltro">
-                            <option disabled selected>Categorias</option>
-                            <?php foreach ($categorias as $indice => $categoria) { ?>
-                            <option value="<?= $categoria->CAT_ID ?>">
-                                <?= $categoria->CAT_CATEGORIA ?>
-                            </option>
-                            <?php } ?>
-                        </select>
-                        <button onclick="filtrarCategoria()" class="btn btn-primary" type="button" id="button-addon2">Filtrar</button>
-                    </div>
-                </div>
+                        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="input-group">
+                                <select class="form-select shadow-none" id="filCor" name="filCor">
+                                    <option disabled selected>Quantidade</option>
+                                    <option value="verde">Máxima</option>
+                                    <option value="amarelo">Média</option>
+                                    <option value="vermelho">Mínima</option>
+                                </select>
+                                <button onclick="filtrarCores()" class="btn btn-primary" type="button" id="button-addon2">Filtrar</button>
+                            </div>
+                        </div>
 
-                <div class="col-12 col-sm-6 col-md-3 col-lg-4">
-                    <div class="input-group">
-                        <input type="text" class="form-control shadow-none" placeholder="Pesquisar" id="pesquisar" name="pesquisar">
-                        <button onclick="pesquisarDados()" class="btn btn-primary" type="button" id="button-addon2">
-                            <i class="bi bi-search"></i>
-                        </button>
+                        <div class="col-12 col-sm-6 col-md-3 col-lg-3">
+                            <div class="input-group">
+                                <select class="form-select shadow-none" id="catFiltro" name="catFiltro">
+                                    <option disabled selected>Categorias</option>
+                                    <?php foreach ($categorias as $indice => $categoria) { ?>
+                                    <option value="<?= $categoria->CAT_ID ?>">
+                                        <?= $categoria->CAT_CATEGORIA ?>
+                                    </option>
+                                    <?php } ?>
+                                </select>
+                                <button onclick="filtrarCategoria()" class="btn btn-primary" type="button" id="button-addon2">Filtrar</button>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-3 col-lg-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" placeholder="Pesquisar" id="pesquisar" name="pesquisar">
+                                <button onclick="pesquisarDados()" class="btn btn-primary" type="button" id="button-addon2">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-
 
         <div class="mt-3 ps-1" style="height: 70vh; overflow: auto;">
-            <table class="table table-hover">
-                <!-- <caption class="caption-bottom">LEGENDA DA TABELA</caption> -->
-                <thead class="table-dark">
-                    <tr>
-                        <th scope="col">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(1)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(2)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
-                            </div>
-                            Nome
-                        </div>
-                        </th>
-                        <th scope="col">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(3)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(4)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
-                            </div>
-                            Cor
-                        </div>
-                        </th>
-                        <th scope="col">
-                            <div class="d-flex align-items-center gap-3">
-                                Detalhes
-                                <div class="d-flex flex-column invisible">
-                                    <i class="order-hover bi bi-chevron-up"></i>
-                                    <i class="order-hover bi bi-chevron-down"></i>
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="d-flex flex-column">
+                                        <i onclick="filtrarDados(1)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                        <i onclick="filtrarDados(2)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
+                                    </div>
+                                    Nome
                                 </div>
-                            </div>
-                        </th>
-                        <th scope="col">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(6)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
-                            </div>
-                            Material
-                        </div>
-                        </th>
-                        <th scope="col">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(7)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(8)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
-                            </div>
-                            Preço
-                        </div>
-                        </th>
-                        <th scope="col">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(9)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(10)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
-                            </div>
-                            Quantidade
-                        </div>
-                        </th>
-                        <th scope="col">
-                        <div class="d-flex align-items-center gap-3">
-                            <div class="d-flex flex-column">
-                                <i onclick="filtrarDados(11)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
-                                <i onclick="filtrarDados(12)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
-                            </div>
-                            Status
-                        </div>
-                        </th>
-                    </tr>
-                </thead>
-
-                <tbody class="table-group-divider table-hover-shadow">
-                    <!-- TABELA MAPEADA -->
-                    <?php foreach ($produtos as $indice => $produto) { ?>
-                        <?php if ($produto->PRO_STATUS == 0) { ?>
-                            <tr class="table-active">
-                            <?php } else { ?>
-                            <tr>
-                            <?php } ?>
-                            <th scope="row" class="">
-                                <?= $produto->PRO_NOME ?>
                             </th>
-                            <td>
-                                <?= $produto->PRO_COR ?>
-                            </td>
-                            <td>
-                                <?= $produto->PRO_DETALHES ?>
-                            </td>
-                            <td>
-                                <?= $produto->PRO_MATERIAL ?>
-                            </td>
-                            <td>
-                                R$ <?= number_format($produto->PRO_PRECO_VENDA, 2, ',', '.') ?>
-                            </td>
+                            <th scope="col">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="d-flex flex-column">
+                                        <i onclick="filtrarDados(3)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                        <i onclick="filtrarDados(4)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
+                                    </div>
+                                    Cor
+                                </div>
+                            </th>
+                            <th scope="col" class="d-none d-md-table-cell">
+                                <div class="d-flex align-items-center gap-3">
+                                    Detalhes
+                                    <div class="d-flex flex-column invisible">
+                                        <i class="order-hover bi bi-chevron-up"></i>
+                                        <i class="order-hover bi bi-chevron-down"></i>
+                                    </div>
+                                </div>
+                            </th>
+                            <th scope="col" class="d-none d-md-table-cell">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="d-flex flex-column">
+                                        <i onclick="filtrarDados(5)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                        <i onclick="filtrarDados(6)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
+                                    </div>
+                                    Material
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="d-flex flex-column">
+                                        <i onclick="filtrarDados(7)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                        <i onclick="filtrarDados(8)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
+                                    </div>
+                                    Preço
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="d-flex flex-column">
+                                        <i onclick="filtrarDados(9)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                        <i onclick="filtrarDados(10)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
+                                    </div>
+                                    Quantidade
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="d-flex flex-column">
+                                        <i onclick="filtrarDados(11)" id="filtro" name="filtro" class="order-hover bi bi-chevron-up"></i>
+                                        <i onclick="filtrarDados(12)" id="filtro" name="filtro" class="order-hover bi bi-chevron-down"></i>
+                                    </div>
+                                    Status
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
 
-                            <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
-                            <?php if($produto->PRO_STATUS == 0) { ?>
-                                    <td style="background-color: #505050">
-                            <?php } else if ($produto->PRO_QUANTIDADE <= $produto->PRO_MINIMO) { ?>
-                                <td class="bg-danger">
-                                <?php } else if ($produto->PRO_QUANTIDADE <= ($produto->PRO_MINIMO * 2)) { ?>
-                                    <td class="bg-secondary">
+                    <tbody class="table-group-divider table-hover-shadow">
+                        <!-- TABELA MAPEADA -->
+                        <?php foreach ($produtos as $indice => $produto) { ?>
+                            <?php if ($produto->PRO_STATUS == 0) { ?>
+                                <tr class="table-active">
                                 <?php } else { ?>
-                                    <td class="bg-success">
+                                <tr>
                                 <?php } ?>
-                                <?= $produto->PRO_QUANTIDADE ?>
-                            </td>
-                            <!------->
+                                <th scope="row" class="">
+                                    <?= $produto->PRO_NOME ?>
+                                </th>
+                                <td>
+                                    <?= $produto->PRO_COR ?>
+                                </td>
+                                <td class="d-none d-md-table-cell">
+                                    <?= $produto->PRO_DETALHES ?>
+                                </td>
+                                <td class="d-none d-md-table-cell">
+                                    <?= $produto->PRO_MATERIAL ?>
+                                </td>
+                                <td>
+                                    R$ <?= number_format($produto->PRO_PRECO_VENDA, 2, ',', '.') ?>
+                                </td>
 
-                        <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
-                            <!-- BOTÃO VISUALIZAR DETALHES -->
-                                <button type="button" class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#visualizarDetalhesProdutoModal<?= $indice ?>">
-                                    <i class="bi bi-eye-fill text-success fs-5"></i>
-                                </button>
+                                <!-- COR DE FUNDO DA COLUNA "QUANTIDADE" (VOU TRANSFORMAR ISSO EM UMA FUNÇÃO PARA LIMPAR O CÓDIGO) -->
+                                <?php if($produto->PRO_STATUS == 0) { ?>
+                                        <td style="background-color: #505050">
+                                <?php } else if ($produto->PRO_QUANTIDADE <= $produto->PRO_MINIMO) { ?>
+                                    <td class="bg-danger">
+                                    <?php } else if ($produto->PRO_QUANTIDADE <= ($produto->PRO_MINIMO * 2)) { ?>
+                                        <td class="bg-secondary">
+                                    <?php } else { ?>
+                                        <td class="bg-success">
+                                    <?php } ?>
+                                    <?= $produto->PRO_QUANTIDADE ?>
+                                </td>
                                 <!------->
 
-                            
-                            <!-- BOTÃO EDITAR PRODUTO -->
-                            <?php
-                                $data_registro = new DateTime($produto->PRO_HORA_DE_REGISTRO);
-                                $data_bloquear_atualizacao = $data_registro->modify('+1 day');
-                                $data_atual = new DateTime();
-                            ?>
-
-                                <?php if($data_atual > $data_bloquear_atualizacao) { ?>
-                                    <button type="button" class="btn">
-                                    <i class="bi bi-pencil-square text-danger fs-5"></i>
-                                    </button>
-                                <?php } else {?>
+                            <td class="text-center fs-4 d-flex justify-content-center align-items-center gap-3">
+                                <!-- BOTÃO VISUALIZAR DETALHES -->
                                     <button type="button" class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#editarProdutoModal<?= $indice ?>">
-                                    <i class="bi bi-pencil-square text-info fs-5"></i>
+                                        data-bs-target="#visualizarDetalhesProdutoModal<?= $indice ?>">
+                                        <i class="bi bi-eye-fill text-success fs-5"></i>
                                     </button>
-                                <?php }?>
-                                <!------->
+                                    <!------->
 
-                            <!-- BOTÃO DESATIVAR PRODUTO -->
-                                <?php if ($produto->PRO_STATUS === 1) { ?>
-                                    <button type="button" class="btn" data-bs-toggle="modal"
-                                        data-bs-target="#desativarProdutoModal<?= $indice ?>">
-                                        <i class="bi bi-x-circle-fill text-danger fs-5"></i>
-                                    </button>
-                                <?php } else { ?>
-                                    <form method="post"
-                                        action="../../classes/Produto/produto.controller.php?acao=ativar&id=<?= $produto->PRO_ID ?>">
-                                        <button type="submit" class="btn">
-                                            <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                
+                                <!-- BOTÃO EDITAR PRODUTO -->
+                                <?php
+                                    $data_registro = new DateTime($produto->PRO_HORA_DE_REGISTRO);
+                                    $data_bloquear_atualizacao = $data_registro->modify('+1 day');
+                                    $data_atual = new DateTime();
+                                ?>
+
+                                    <?php if($data_atual > $data_bloquear_atualizacao) { ?>
+                                        <button type="button" class="btn">
+                                        <i class="bi bi-pencil-square text-danger fs-5"></i>
                                         </button>
-                                    </form>
-                                <?php } ?>
-                                <!------->
-                        </td>
-                    </tr>
-                    <?php } ?>
-                    <!------->
-                </tbody>
-            </table>
+                                    <?php } else {?>
+                                        <button type="button" class="btn" data-bs-toggle="modal"
+                                        data-bs-target="#editarProdutoModal<?= $indice ?>">
+                                        <i class="bi bi-pencil-square text-info fs-5"></i>
+                                        </button>
+                                    <?php }?>
+                                    <!------->
+
+                                <!-- BOTÃO DESATIVAR PRODUTO -->
+                                    <?php if ($produto->PRO_STATUS === 1) { ?>
+                                        <button type="button" class="btn" data-bs-toggle="modal"
+                                            data-bs-target="#desativarProdutoModal<?= $indice ?>">
+                                            <i class="bi bi-x-circle-fill text-danger fs-5"></i>
+                                        </button>
+                                    <?php } else { ?>
+                                        <form method="post"
+                                            action="../../classes/Produto/produto.controller.php?acao=ativar&id=<?= $produto->PRO_ID ?>">
+                                            <button type="submit" class="btn">
+                                                <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                            </button>
+                                        </form>
+                                    <?php } ?>
+                                    <!------->
+                            </td>
+                        </tr>
+                        <?php } ?>
+                        <!------->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
