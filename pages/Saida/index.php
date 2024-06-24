@@ -220,7 +220,6 @@ require '../../classes/Produto/produto.controller.php';
             </div>
         </div>
 
-
         <div class="ps-1 mt-3" style="height: 70vh; overflow: auto;">
             <table class="table table-hover">
                 <thead class="table-dark">
@@ -368,7 +367,7 @@ require '../../classes/Produto/produto.controller.php';
                             </div>
                         </div>
 
-                        <div class="row mb-4">
+                        <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <span class="input-group-text fw-bold">R$</span>
@@ -395,7 +394,7 @@ require '../../classes/Produto/produto.controller.php';
                             </div>
                         </div>
 
-                        <div class="row mb-4">
+                        <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="date" id="dataVenda" name="dataVenda"
@@ -414,7 +413,7 @@ require '../../classes/Produto/produto.controller.php';
                         </div>
 
                         <div id="products" class="mt-3">
-                            <div class="row mb-2 product-item">
+                            <div class="row g-3 mb-5 product-item">
                                 <div class="col-md-4">
                                     <div class="form-floating">
                                         <select class="form-select produto" name="produto[]"
@@ -519,7 +518,7 @@ require '../../classes/Produto/produto.controller.php';
             const products = document.querySelector('#products');
 
             const row = document.createElement('div');
-            row.classList.add('row', 'mb-2', 'product-item');
+            row.classList.add('row', 'g-3', 'mb-5', 'product-item');
 
             row.innerHTML = `
         <div class="col-md-4">
@@ -599,7 +598,7 @@ require '../../classes/Produto/produto.controller.php';
                                 </div>
                             </div>
 
-                            <div class="row mb-4">
+                            <div class="row g-3 mb-4">
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-text fw-bold">R$</span>
@@ -629,7 +628,7 @@ require '../../classes/Produto/produto.controller.php';
                                 </div>
                             </div>
 
-                            <div class="row mb-5">
+                            <div class="row g-3 mb-5">
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" value="<?= $saida->SAIDA_DATA_COMPRA ?>" type="date"
@@ -675,7 +674,7 @@ require '../../classes/Produto/produto.controller.php';
                         <div class="container">
                             <?php foreach ($itensSaidaRecuperar as $indice => $itensSaida) { ?>
                                 <?php if ($itensSaida->SAIDA_SAIDA_ID === $saida->SAIDA_ID) { ?>
-                                    <div class="row mb-4">
+                                    <div class="row g-3 mb-5">
                                         <div class="col-md-8">
                                             <div class="form-floating">
                                                 <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome"
@@ -720,7 +719,7 @@ require '../../classes/Produto/produto.controller.php';
                 <div class="modal-body">
                     <form class="container needs-validation" novalidate method="post"
                         action="../../classes/Cliente/cliente.controller.php?acao=inserir">
-                        <div class="row mb-4">
+                        <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <div class="form-floating">
@@ -740,7 +739,7 @@ require '../../classes/Produto/produto.controller.php';
                             </div>
                         </div>
 
-                        <div class="row mb-4">
+                        <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="text" id="contato" name="contato"
