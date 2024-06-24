@@ -165,51 +165,56 @@ require '../../classes/Produto/produto.controller.php';
     <!------->
 
     <div class="container mt-5">
-        <div class="d-flex justify-content-between align-items-center">
-            <div>
-                <!-- BOTÃO DE REGISTRAR ENTRADA DE PRODUTO -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#entradaProdutoModal">
-                    Entrada
-                </button>
-                <!------->
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12 col-md-4 mb-2 d-flex justify-content-center justify-content-md-start">
+                    <!-- BOTÃO DE REGISTRAR ENTRADA DE PRODUTO -->
+                    <button type="button" class="btn btn-primary me-2" data-bs-toggle="modal"
+                        data-bs-target="#entradaProdutoModal">
+                        Entrada
+                    </button>
+                    <!------->
 
-                <!-- BOTÃO DE REGISTRAR FORNECEDOR -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                    data-bs-target="#registrarFornecedorModal">
-                    Fornecedor
-                </button>
-                <!------->
-            </div>
-
-            <div class="d-flex gap-5">
-                <div class="form-floating d-flex">
-                    <button onclick="filtrarDados(9)" class="btn btn-primary" type="button" id="button-addon2">Limpar
-                        filtros</button>
+                    <!-- BOTÃO DE REGISTRAR FORNECEDOR -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#registrarFornecedorModal">
+                        Fornecedor
+                    </button>
+                    <!------->
                 </div>
 
-                <div class="form-floating d-flex">
-                    <div class="input-group">
-                        <select class="form-select shadow-none" id="catPag" name="catPag">
-                            <option disabled selected>Forma de Pagamento</option>
-                            <option value="Cartão de Crédito">Cartão de Crédito</option>
-                            <option value="Cartão de Débito">Cartão de Débito</option>
-                            <option value="Transferência Bancária">Transferência Bancária</option>
-                            <option value="Dinheiro">Dinheiro</option>
-                            <option value="Boleto">Boleto</option>
-                        </select>
-                        <button onclick="filtrarFormaPagamento()" class="btn btn-primary" type="button"
-                            id="button-addon2">Filtrar</button>
-                    </div>
-                </div>
+                <div class="col-12 col-md-8">
+                    <div class="row g-2 justify-content-end">
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <button onclick="filtrarDados(9)" class="btn btn-primary w-100" type="button"
+                                id="button-addon2">Limpar filtros</button>
+                        </div>
 
-                <div class="d-flex">
-                    <div class="input-group">
-                        <input type="text" class="form-control shadow-none" placeholder="Pesquisar" id="pesquisar"
-                            name="pesquisar">
-                        <button onclick="pesquisarDados()" class="btn btn-primary" type="button" id="button-addon2">
-                            <i class="bi bi-search"></i>
-                        </button>
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="input-group">
+                                <select class="form-select shadow-none" id="catPag" name="catPag">
+                                    <option disabled selected>Forma de Pagamento</option>
+                                    <option value="Cartão de Crédito">Cartão de Crédito</option>
+                                    <option value="Cartão de Débito">Cartão de Débito</option>
+                                    <option value="Transferência Bancária">Transferência Bancária</option>
+                                    <option value="Dinheiro">Dinheiro</option>
+                                    <option value="Boleto">Boleto</option>
+                                </select>
+                                <button onclick="filtrarFormaPagamento()" class="btn btn-primary" type="button"
+                                    id="button-addon2">Filtrar</button>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                            <div class="input-group">
+                                <input type="text" class="form-control shadow-none" placeholder="Pesquisar"
+                                    id="pesquisar" name="pesquisar">
+                                <button onclick="pesquisarDados()" class="btn btn-primary" type="button"
+                                    id="button-addon2">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -515,9 +520,9 @@ require '../../classes/Produto/produto.controller.php';
                 <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                     <option value="" selected></option>
                     <?php foreach ($produtos as $produto) { ?>
-                                                    <?php if ($produto->PRO_STATUS === 1) { ?>
-                                                                                <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
-                                                <?php } ?>
+                                                        <?php if ($produto->PRO_STATUS === 1) { ?>
+                                                                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
+                                                    <?php } ?>
                     <?php } ?>
                 </select>
                 <label>Produto</label>
