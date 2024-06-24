@@ -342,22 +342,28 @@ require '../../classes/Colaborador/colaborador.controller.php';
 
                                 <div class="col-md-6">
                                     <div class="form-floating">
-                                        <input class="form-control" type="password" id="senha" name="senha" placeholder="Senha"
-                                            required>
-                                        <label for="senha">Senha</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-4">
-                            <div class="col-md-6">
-                                    <div class="form-floating">
                                         <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF"
                                             required>
                                         <label for="cpf">CPF</label>
                                     </div>
                                 </div>
-                                <div class="col-6">
+                            </div>
+
+                            <div class="row g-3 mb-4">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <div class="input-group">
+                                            <input class="form-control" type="text" id="senha" name="senha"
+                                                placeholder="Senha" required readonly>
+                                            <span onclick="criarSenha()" class="input-group-text"><i
+                                                    class="bi bi-arrow-clockwise"></i></span>
+                                            <span onclick="copiarSenha()" class="input-group-text" id="copiarSenha"><i
+                                                    class="bi bi-copy"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
                                     <div class="input-group">
                                         <select class="form-select shadow-none" id="cargo" name="cargo" required>
                                             <option value="" disabled selected>Cargo</option>
@@ -372,12 +378,59 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                 <button class="btn btn-outline-primary">Registrar Colaborador</button>
                             </div>
                         </form>
-
                     </div>
                 </div>
             </div>
         </div>
         <!----------------------->
+
+    <script>
+        const senhaInput = document.querySelector('#senha');
+        const copiarSenhaInput = document.querySelector('#copiarSenha');
+
+        function criarSenha() {
+            const caracteresEspeciais = ['!', '@', '#', '$', '%', '&', '*', '?', '(', ')', '[', ']', '{', '}'];
+            const letrasMinusculas = 'abcdefghijklmnopqrstuvwxyz'.split('');
+            const letrasMaiusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+            const numeros = '0123456789'.split('');
+
+            let senha = '';
+            senha += caracteresEspeciais[Math.floor(Math.random() * caracteresEspeciais.length)];
+            senha += letrasMinusculas[Math.floor(Math.random() * letrasMinusculas.length)];
+            senha += letrasMaiusculas[Math.floor(Math.random() * letrasMaiusculas.length)];
+            senha += numeros[Math.floor(Math.random() * numeros.length)];
+
+            for (let i = 0; i < 6; i++) {
+                const grupoAleatorio = Math.floor(Math.random() * 3);
+                switch (grupoAleatorio) {
+                    case 0:
+                        senha += letrasMinusculas[Math.floor(Math.random() * letrasMinusculas.length)];
+                        break;
+                    case 1:
+                        senha += letrasMaiusculas[Math.floor(Math.random() * letrasMaiusculas.length)];
+                        break;
+                    case 2:
+                        senha += numeros[Math.floor(Math.random() * numeros.length)];
+                        break;
+                }
+            }
+
+            const senhaEmbaralhada = senha.split('').sort(() => 0.5 - Math.random()).join('');
+
+            copiarSenhaInput.classList.remove('bg-success', 'text-white')
+            senhaInput.value = senhaEmbaralhada;
+        }
+
+        function copiarSenha() {
+            navigator.clipboard.writeText(senhaInput.value).then(function () {
+                console.log('Senha copiada com sucesso!');
+                copiarSenhaInput.classList.add('bg-success', 'text-white')
+            }, function (err) {
+                console.log('Erro ao tentar copiar a senha:', err);
+            });
+        }
+    </script>
+
 
     <!-- EDITAR PRODUTO -->
         <?php foreach ($colaboradores as $indice => $colaborador) { ?>
@@ -554,15 +607,15 @@ require '../../classes/Colaborador/colaborador.controller.php';
                 senhaNovaConfirmaInput.removeAttribute('disabled')
             }
         }
-    </script>
+    </>
 
-    <script>
-        (function () {
-            'use strict'
+            <script>
+                (function () {
+                    'use strict'
 
             let forms = document.querySelectorAll('.needs-validation')
 
-            Array.prototype.slice.call(forms)
+                Array.prototype.slice.call(forms)
                 .forEach(function (form) {
                     form.addEventListener('submit', function (event) {
                         if (!form.checkValidity()) {

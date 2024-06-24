@@ -75,37 +75,4 @@ if ($acao == 'inserir') {
 }
 
 
-function criarSenha()
-{
-    $caracteresEspeciais = array('!', '@', '#', '$', '%', '&', '*', '?', '(', ')', '[', ']', '{', '}');
-    $letrasMinusculas = range('a', 'z');
-    $letrasMaiusculas = range('A', 'Z');
-    $numeros = range('0', '9');
-
-    $senha = '';
-    $senha .= $caracteresEspeciais[array_rand($caracteresEspeciais)];
-    $senha .= $letrasMinusculas[array_rand($letrasMinusculas)];
-    $senha .= $letrasMaiusculas[array_rand($letrasMaiusculas)];
-    $senha .= $numeros[array_rand($numeros)];
-
-    for ($i = 0; $i < 6; $i++) {
-        $grupoAleatorio = mt_rand(0, 2);
-        switch ($grupoAleatorio) {
-            case 0:
-                $senha .= $letrasMinusculas[array_rand($letrasMinusculas)];
-                break;
-            case 1:
-                $senha .= $letrasMaiusculas[array_rand($letrasMaiusculas)];
-                break;
-            case 2:
-                $senha .= $numeros[array_rand($numeros)];
-                break;
-        }
-    }
-
-    $senhaEmbaralhada = str_shuffle($senha);
-
-    return $senhaEmbaralhada;
-}
-
 
