@@ -294,7 +294,7 @@ require '../../classes/Cliente/cliente.controller.php';
                 <div class="modal-body">
                     <form class="container needs-validation" novalidate method="post"
                         action="../../classes/Cliente/cliente.controller.php?acao=inserir">
-                        <div class="row mb-4">
+                        <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <div class="input-group">
                                     <div class="form-floating">
@@ -314,7 +314,7 @@ require '../../classes/Cliente/cliente.controller.php';
                             </div>
                         </div>
 
-                        <div class="row mb-4">
+                        <div class="row g-3 mb-4">
                             <div class="col-md-6">
                                 <div class="form-floating">
                                     <input class="form-control" type="text" id="contato" name="contato"
@@ -356,7 +356,7 @@ require '../../classes/Cliente/cliente.controller.php';
                     <div class="modal-body">
                         <form class="container needs-validation" novalidate method="post"
                             action="../../classes/Cliente/cliente.controller.php?acao=editar&id=<?= $cliente->CLI_ID ?>">
-                            <div class="row mb-4">
+                            <div class="row g-3 mb-4">
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <span class="input-group-text fw-bold">#</span>
@@ -377,7 +377,7 @@ require '../../classes/Cliente/cliente.controller.php';
                                 </div>
                             </div>
 
-                            <div class="row mb-4">
+                            <div class="row g-3 mb-4">
                                 <div class="col-md-6">
                                     <div class="form-floating">
                                         <input class="form-control" type="text" id="contato" name="contato"
