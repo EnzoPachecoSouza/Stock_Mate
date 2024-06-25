@@ -565,9 +565,8 @@ require '../../classes/Colaborador/colaborador.controller.php';
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form class="container needs-validation" method="post"
-                            action="../../classes/Colaborador/colaborador.controller.php?acao=alterarSenha&id=<?= $_SESSION['id'] ?>"
-                            novalidate>
+                        <form class="container" method="post"
+                            action="../../classes/Colaborador/colaborador.controller.php?acao=alterarSenha&id=<?= $_SESSION['id'] ?>">
                             <div class="row mb-4">
                                 <div class="col-md-12">
                                     <div class="form-floating">
@@ -583,7 +582,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                 <div class="col-md-12">
                                     <div class="form-floating">
                                         <input class="form-control" type="password" id="novaSenha" name="novaSenha"
-                                            placeholder="Senha Nova" disabled required>
+                                            placeholder="Senha Nova" disabled required oninput="validaSenha()">
                                         <label for="novaSenha">Senha Nova</label>
                                         <div class="invalid-feedback">Por favor, insira a nova senha.</div>
                                     </div>
@@ -594,7 +593,8 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                 <div class="col-md-12">
                                     <div class="form-floating">
                                         <input class="form-control" type="password" id="confirmarSenhaNova"
-                                            name="confirmarSenhaNova" placeholder="Confirme a Senha Nova" disabled required>
+                                            name="confirmarSenhaNova" placeholder="Confirme a Senha Nova" disabled required
+                                            oninput="validaSenha()">
                                         <label for="confirmarSenhaNova">Confirme a Senha Nova</label>
                                         <div class="invalid-feedback">Por favor, confirme a nova senha.</div>
                                     </div>
@@ -609,7 +609,8 @@ require '../../classes/Colaborador/colaborador.controller.php';
                             </div>
 
                             <div class="d-flex justify-content-center align-items-center mt-5">
-                                <button class="btn btn-outline-primary" type="submit">Alterar Senha</button>
+                                <button class="btn btn-outline-primary" type="submit" id="alterarSenhaBtn" disabled>Alterar
+                                    Senha</button>
                             </div>
                         </form>
                     </div>
@@ -618,46 +619,30 @@ require '../../classes/Colaborador/colaborador.controller.php';
         </div>
 
         <script>
+            const senhaAtual = "<?= $_SESSION['senha'] ?>";
+            const senhaNovaInput = document.querySelector('#novaSenha');
+            const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova');
+            const alterarSenhaBtn = document.querySelector('#alterarSenhaBtn');
+
             function verificaSenha(senha) {
-                const senhaAtual = "<?= $_SESSION['senha'] ?>"
-                const senhaNovaInput = document.querySelector('#novaSenha')
-                const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova')
-
                 if (senha === senhaAtual) {
-                    senhaNovaInput.removeAttribute('disabled')
-                    senhaNovaConfirmaInput.removeAttribute('disabled')
+                    senhaNovaInput.removeAttribute('disabled');
+                    senhaNovaConfirmaInput.removeAttribute('disabled');
                 } else {
-                    senhaNovaInput.setAttribute('disabled', 'true')
-                    senhaNovaConfirmaInput.setAttribute('disabled', 'true')
+                    senhaNovaInput.setAttribute('disabled', 'true');
+                    senhaNovaConfirmaInput.setAttribute('disabled', 'true');
                 }
             }
 
-            function validarSenhasIguais() {
-                const senhaNovaInput = document.querySelector('#novaSenha')
-                const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova')
-                const senhaErro = document.querySelector('#senha-erro')
-
-                if (senhaNovaInput.value !== senhaNovaConfirmaInput.value) {
-                    senhaErro.style.display = 'block'
-                    return false
+            function validaSenha() {
+                if (senhaNovaInput.value === senhaNovaConfirmaInput.value) {
+                    alterarSenhaBtn.removeAttribute('disabled');
+                    document.querySelector('#senha-erro').style.display = 'none';
                 } else {
-                    senhaErro.style.display = 'none'
-                    return true
+                    alterarSenhaBtn.setAttribute('disabled', 'true');
+                    document.querySelector('#senha-erro').style.display = 'block';
                 }
             }
-
-            document.querySelector('.needs-validation').addEventListener('submit', function (event) {
-                if (!this.checkValidity() || !validarSenhasIguais()) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-
-                this.classList.add('was-validated');
-
-            }, false);
-
-            document.querySelector('#novaSenha').addEventListener('input', validarSenhasIguais);
-            document.querySelector('#confirmarSenhaNova').addEventListener('input', validarSenhasIguais);
         </script>
 
         <!-- Bootstrap JS -->
