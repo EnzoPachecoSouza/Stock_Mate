@@ -292,18 +292,34 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                     <!------->
 
                             <!-- BOTÃO DESATIVAR PRODUTO -->
-                                    <?php if ($colaborador->COL_STATUS === 1) { ?>
-                                        <button type="button" class="btn" data-bs-toggle="modal"
-                                            data-bs-target="#desativarColaboradorModal<?= $indice ?>">
-                                            <i class="bi bi-x-circle-fill text-danger fs-5"></i>
-                                        </button>
-                                    <?php } else { ?>
-                                        <form method="post"
-                                            action="../../classes/Colaborador/colaborador.controller.php?acao=ativar&id=<?= $colaborador->COL_ID ?>">
-                                            <button type="submit" class="btn">
-                                                <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                    <?php if ($colaborador->COL_CARGO === 'Funcionário') { ?>
+                                        <?php if ($colaborador->COL_STATUS === 1) { ?>
+                                            <button type="button" class="btn" data-bs-toggle="modal"
+                                                data-bs-target="#desativarColaboradorModal<?= $indice ?>">
+                                                <i class="bi bi-x-circle-fill text-danger fs-5"></i>
                                             </button>
-                                        </form>
+                                        <?php } else { ?>
+                                            <form method="post"
+                                                action="../../classes/Colaborador/colaborador.controller.php?acao=ativar&id=<?= $colaborador->COL_ID ?>">
+                                                <button type="submit" class="btn">
+                                                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                                </button>
+                                            </form>
+                                        <?php } ?>
+                                    <?php } else { ?>
+                                        <?php if ($colaborador->COL_STATUS === 1) { ?>
+                                            <button type="button" class="btn invisible" data-bs-toggle="modal"
+                                                data-bs-target="#desativarColaboradorModal<?= $indice ?>">
+                                                <i class="bi bi-x-circle-fill text-danger fs-5"></i>
+                                            </button>
+                                        <?php } else { ?>
+                                            <form method="post" class="invisible"
+                                                action="../../classes/Colaborador/colaborador.controller.php?acao=ativar&id=<?= $colaborador->COL_ID ?>">
+                                                <button type="submit" class="btn">
+                                                    <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                                </button>
+                                            </form>
+                                        <?php } ?>
                                     <?php } ?>
                                     <!------->
                         </td>
