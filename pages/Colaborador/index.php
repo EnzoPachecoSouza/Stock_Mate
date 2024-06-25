@@ -624,110 +624,124 @@ require '../../classes/Colaborador/colaborador.controller.php';
         </div>
         <!----------------------->
 
-    <!-- ALTERAR SENHA -->
-        <div class="modal fade" id="alterarSenhaModal" tabindex="-1" aria-labelledby="alterarSenhaModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="alterarSenhaModalLabel">Alterar Senha</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- ALTERAR SENHA -->
+<div class="modal fade" id="alterarSenhaModal" tabindex="-1" aria-labelledby="alterarSenhaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="alterarSenhaModalLabel">Alterar Senha</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="container" method="post"
+                    action="../../classes/Colaborador/colaborador.controller.php?acao=alterarSenha&id=<?= $_SESSION['id'] ?>">
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <input class="form-control shadow-none" type="password" id="senhaAtual" name="senhaAtual"
+                                    placeholder="Senha Atual" oninput="verificaSenha(this.value)" required>
+                                <span class="input-group-text btn btn-primary" onclick="mostrarSenhas()">
+                                    <i id="senhaIcon" class="bi bi-eye-fill fs-4"></i>
+                                </span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <form class="container" method="post"
-                            action="../../classes/Colaborador/colaborador.controller.php?acao=alterarSenha&id=<?= $_SESSION['id'] ?>">
-                            <div class="row mb-4">
-                                <div class="col-md-12">
-                                    <div class="input-group">
-                                        <input class="form-control shadow-none" type="password" id="senhaAtual"
-                                            name="senhaAtual" placeholder="Senha Atual" oninput="verificaSenha(this.value)"
-                                            required>
-                                        <span class="input-group-text btn btn-primary" onclick="mostrarSenhas()">
-                                            <i id="senhaIcon" class="bi bi-eye-fill fs-4"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <div class="row mb-2">
-                                <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <input class="form-control" type="password" id="novaSenha" name="novaSenha"
-                                            placeholder="Senha Nova" disabled required oninput="validaSenha()">
-                                        <label for="novaSenha">Senha Nova</label>
-                                    </div>
-                                </div>
+                    <div class="row mb-2">
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <input class="form-control" type="password" id="novaSenha" name="novaSenha"
+                                    placeholder="Senha Nova" disabled required oninput="validaSenha()">
+                                <label for="novaSenha">Senha Nova</label>
                             </div>
-
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <input class="form-control" type="password" id="confirmarSenhaNova"
-                                            name="confirmarSenhaNova" placeholder="Confirme a Senha Nova" disabled required
-                                            oninput="validaSenha()">
-                                        <label for="confirmarSenhaNova">Confirme a Senha Nova</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-md-12">
-                                    <span id="senha-erro" class="text-danger" style="display:none;">As senhas não
-                                        coincidem.</span>
-                                </div>
-                            </div>
-
-                            <div class="d-flex justify-content-center align-items-center mt-5">
-                                <button class="btn btn-outline-primary" type="submit" id="alterarSenhaBtn" disabled>Alterar
-                                    Senha</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
-                </div>
+
+                    <div class="row mb-2">
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <input class="form-control" type="password" id="confirmarSenhaNova" name="confirmarSenhaNova"
+                                    placeholder="Confirme a Senha Nova" disabled required oninput="validaSenha()">
+                                <label for="confirmarSenhaNova">Confirme a Senha Nova</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <span id="senha-erro" class="text-danger" style="display:none;">As senhas não coincidem.</span>
+                            <span id="senha-requisitos" class="text-danger" style="display:none;">A senha deve ter no mínimo 8 caracteres, conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.</span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-center align-items-center mt-5">
+                        <button class="btn btn-outline-primary" type="submit" id="alterarSenhaBtn" disabled>Alterar Senha</button>
+                    </div>
+                </form>
             </div>
         </div>
+    </div>
+</div>
 
-        <script>
-            const senhaAtual = "<?= $_SESSION['senha'] ?>";
-            const senhaAtualInput = document.querySelector('#senhaAtual');
-            const senhaNovaInput = document.querySelector('#novaSenha');
-            const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova');
-            const alterarSenhaBtn = document.querySelector('#alterarSenhaBtn');
-            const senhaIcon = document.querySelector('#senhaIcon');
+<script>
+    const senhaAtual = "<?= $_SESSION['senha'] ?>";
+    const senhaAtualInput = document.querySelector('#senhaAtual');
+    const senhaNovaInput = document.querySelector('#novaSenha');
+    const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova');
+    const alterarSenhaBtn = document.querySelector('#alterarSenhaBtn');
+    const senhaIcon = document.querySelector('#senhaIcon');
 
-            let senhaVisivel = false;
+    let senhaVisivel = false;
 
-            function verificaSenha(senha) {
-                if (senha === senhaAtual) {
-                    senhaNovaInput.removeAttribute('disabled');
-                    senhaNovaConfirmaInput.removeAttribute('disabled');
-                } else {
-                    senhaNovaInput.setAttribute('disabled', 'true');
-                    senhaNovaConfirmaInput.setAttribute('disabled', 'true');
-                }
-            }
+    function verificaSenha(senha) {
+        if (senha === senhaAtual) {
+            senhaNovaInput.removeAttribute('disabled');
+            senhaNovaConfirmaInput.removeAttribute('disabled');
+        } else {
+            senhaNovaInput.setAttribute('disabled', 'true');
+            senhaNovaConfirmaInput.setAttribute('disabled', 'true');
+        }
+    }
 
-            function validaSenha() {
-                if (senhaNovaInput.value === senhaNovaConfirmaInput.value) {
-                    alterarSenhaBtn.removeAttribute('disabled');
-                    document.querySelector('#senha-erro').style.display = 'none';
-                } else {
-                    alterarSenhaBtn.setAttribute('disabled', 'true');
-                    document.querySelector('#senha-erro').style.display = 'block';
-                }
-            }
+    function verificaRequisitosSenha(senha) {
+        const requisitos = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+        return requisitos.test(senha);
+    }
 
-            function mostrarSenhas() {
-                senhaVisivel = !senhaVisivel;
-                const tipo = senhaVisivel ? 'text' : 'password';
-                senhaAtualInput.type = tipo;
-                senhaNovaInput.type = tipo;
-                senhaNovaConfirmaInput.type = tipo;
-                senhaIcon.classList.toggle('bi-eye-fill', !senhaVisivel);
-                senhaIcon.classList.toggle('bi-eye-slash-fill', senhaVisivel);
-            }
-        </script>
-        <!----------------------->
+    function validaSenha() {
+        const senhaValida = verificaRequisitosSenha(senhaNovaInput.value);
+        const senhasIguais = senhaNovaInput.value === senhaNovaConfirmaInput.value;
+
+        if (!senhaValida) {
+            document.querySelector('#senha-requisitos').style.display = 'block';
+        } else {
+            document.querySelector('#senha-requisitos').style.display = 'none';
+        }
+
+        if (senhasIguais) {
+            document.querySelector('#senha-erro').style.display = 'none';
+        } else {
+            document.querySelector('#senha-erro').style.display = 'block';
+        }
+
+        if (senhaValida && senhasIguais) {
+            alterarSenhaBtn.removeAttribute('disabled');
+        } else {
+            alterarSenhaBtn.setAttribute('disabled', 'true');
+        }
+    }
+
+    function mostrarSenhas() {
+        senhaVisivel = !senhaVisivel;
+        const tipo = senhaVisivel ? 'text' : 'password';
+        senhaAtualInput.type = tipo;
+        senhaNovaInput.type = tipo;
+        senhaNovaConfirmaInput.type = tipo;
+        senhaIcon.classList.toggle('bi-eye-fill', !senhaVisivel);
+        senhaIcon.classList.toggle('bi-eye-slash-fill', senhaVisivel);
+    }
+</script>
+<!------------->
 
 
     <!-- Bootstrap JS -->
