@@ -290,6 +290,22 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                         <i class="bi bi-pencil-square text-info fs-5"></i>
                                     </button>
                                     <!------->
+
+                                    <!-- BOTÃO DESATIVAR PRODUTO -->
+                                    <?php if ($colaborador->COL_STATUS === 1) { ?>
+                                        <button type="button" class="btn" data-bs-toggle="modal"
+                                            data-bs-target="#desativarColaboradorModal<?= $indice ?>">
+                                            <i class="bi bi-x-circle-fill text-danger fs-5"></i>
+                                        </button>
+                                    <?php } else { ?>
+                                        <form method="post"
+                                            action="../../classes/Colaborador/colaborador.controller.php?acao=ativar&id=<?= $colaborador->COL_ID ?>">
+                                            <button type="submit" class="btn">
+                                                <i class="bi bi-check-circle-fill text-success fs-5"></i>
+                                            </button>
+                                        </form>
+                                    <?php } ?>
+                                    <!------->
                         </td>
                     </tr>
                     <?php } ?>
@@ -519,6 +535,36 @@ require '../../classes/Colaborador/colaborador.controller.php';
             </div>
         <?php } ?>
         <!----------------------->
+
+        <!-- DESATIVAR PRODUTO -->
+    <?php foreach ($colaboradores as $indice => $colaborador) { ?>
+        <div class="modal fade" id="desativarColaboradorModal<?= $indice ?>" tabindex="-1"
+            aria-labelledby="desativarColaboradorModalLabel<?= $indice ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="desativarColaboradorModalLabel<?= $indice ?>">Desativar Colaborador</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="container" method="post"
+                            action="../../classes/Colaborador/colaborador.controller.php?acao=desativar&id=<?= $colaborador->COL_ID ?>">
+                            <div class="d-flex justify-content-center align-items-center mb-4">
+                                <h4>Deseja desativar esse colaborador?</h4>
+                            </div>
+
+                            <div class="d-flex justify-content-center align-items-center gap-3">
+                                <button type="submit" class="btn btn-outline-success">Sim</button>
+                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Não</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+    <!----------------------->
+
     <!-- TOAST DE CONFIRMAR AÇÃO REALIZADA -->
         <div class="toast-container position-fixed top-0 end-0 p-3">
             <div class="toast bg-white" id="toast">
@@ -550,7 +596,16 @@ require '../../classes/Colaborador/colaborador.controller.php';
                             <div class="toast-body fs-6">
                                 <strong>Senha alterada com sucesso!</strong>
                             </div>
-                <?php } ?>
+                <?php } else if ($toastAcao === 'desativar') { ?>
+                        <div class="toast-header fs-5">
+                            <i class="bi bi-square-fill text-danger"></i>
+                            <strong class="me-auto ms-3">Desativar</strong>
+                            <button type="button" class="btn-close" onclick="closeToast()"></button>
+                        </div>
+                        <div class="toast-body fs-6">
+                            <strong>Colaborador desativado com sucesso!</strong>
+                        </div>
+            <?php } ?>
             </div>
         </div>
         <!----------------------->

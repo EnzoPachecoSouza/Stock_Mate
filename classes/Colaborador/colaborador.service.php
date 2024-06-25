@@ -112,6 +112,34 @@ class ColaboradorService
         $stmt->execute();
     }
 
+    public function desativar($id)
+        {
+            $query = '
+        UPDATE COLABORADORES
+        SET COL_STATUS = :status
+        WHERE COL_ID = :id
+        ';
+
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindValue(':status', 0);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+        }
+
+        public function ativar($id)
+        {
+            $query = '
+            UPDATE COLABORADORES
+            SET COL_STATUS = :status
+            WHERE COL_ID = :id
+            ';
+
+            $stmt = $this->conexao->prepare($query);
+            $stmt->bindValue(':status', 1);
+            $stmt->bindValue(':id', $id);
+            $stmt->execute();
+        }
+
     public function alterarSenha($id) {
         $query = '
         UPDATE COLABORADORES

@@ -72,6 +72,47 @@ if ($acao == 'inserir') {
     $colaboradorService->alterarSenha($id);
 
     header('Location: ../../pages/Estoque/index.php?act=alterarSenha');
+}else if ($acao == 'desativar') {
+    //recebe o id do produto a ser desativado
+    $id = isset($_GET['id']) ? $_GET['id'] : $id;
+
+    //instancia o objeto do produto.model.php
+    $colaborador = new Colaborador();
+
+    //faz a atribuição do atributo pelo __set no produto.model.php
+    $colaborador->__set('status', 0);
+
+    //inicia conexão com o BD
+    $conexao = new Conexao();
+
+    //instancia o objeto ProdutoService do produto.service.php com a conexao do BD e o produto a ser desativado
+    $colaboradorService = new ColaboradorService($conexao, $colaborador);
+    //ação a ser executa no produto.service.php que faz a requisição para o BD
+    $colaboradorService->desativar($id);
+
+    //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi desativado
+    header('Location: ../../pages/Colaborador/index.php?act=desativar');
+
+} else if ($acao == 'ativar') {
+    //recebe o id do produto a ser desativado
+    $id = isset($_GET['id']) ? $_GET['id'] : $id;
+
+    //instancia o objeto do produto.model.php
+    $colaborador = new Colaborador();
+
+    //faz a atribuição do atributo pelo __set no produto.model.php
+    $colaborador->__set('status', 1);
+
+    //inicia conexão com o BD
+    $conexao = new Conexao();
+
+    //instancia o objeto ProdutoService do produto.service.php com a conexao do BD e o produto a ser desativado
+    $colaboradorService = new ColaboradorService($conexao, $colaborador);
+    //ação a ser executa no produto.service.php que faz a requisição para o BD
+    $colaboradorService->ativar($id);
+
+    //retorna para a tela passando parametro na url para mostrar uma label dinamica dizendo que o produto foi desativado
+    header('Location: ../../pages/Colaborador/index.php?act=ativar');
 }
 
 
