@@ -520,9 +520,9 @@ require '../../classes/Produto/produto.controller.php';
                 <select class="form-select produto" name="produto[]" oninput="determinaValorUnitario(this)" required>
                     <option value="" selected></option>
                     <?php foreach ($produtos as $produto) { ?>
-                        <?php if ($produto->PRO_STATUS === 1) { ?>
-                                <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
-                        <?php } ?>
+                            <?php if ($produto->PRO_STATUS === 1) { ?>
+                                        <option value="<?= $produto->PRO_PRECO_VENDA ?>-<?= $produto->PRO_ID ?>"><?= $produto->PRO_NOME ?></option>
+                            <?php } ?>
                     <?php } ?>
                 </select>
                 <label>Produto</label>
@@ -817,10 +817,13 @@ require '../../classes/Produto/produto.controller.php';
                         action="../../classes/Colaborador/colaborador.controller.php?acao=alterarSenha&id=<?= $_SESSION['id'] ?>">
                         <div class="row mb-4">
                             <div class="col-md-12">
-                                <div class="form-floating">
-                                    <input class="form-control" type="text" id="senhaAtual" name="senhaAtual"
-                                        placeholder="Senha Atual" oninput="verificaSenha(this.value)">
-                                    <label for="senhaAtual">Senha Atual</label>
+                                <div class="input-group">
+                                    <input class="form-control shadow-none" type="password" id="senhaAtual"
+                                        name="senhaAtual" placeholder="Senha Atual" oninput="verificaSenha(this.value)"
+                                        required>
+                                    <span class="input-group-text btn btn-primary" onclick="mostrarSenhas()">
+                                        <i id="senhaIcon" class="bi bi-eye-fill fs-4"></i>
+                                    </span>
                                 </div>
                             </div>
                         </div>
@@ -828,45 +831,82 @@ require '../../classes/Produto/produto.controller.php';
                         <div class="row mb-2">
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="novaSenha" name="novaSenha"
-                                        placeholder="Senha Nova" disabled>
+                                    <input class="form-control" type="password" id="novaSenha" name="novaSenha"
+                                        placeholder="Senha Nova" disabled required oninput="validaSenha()">
                                     <label for="novaSenha">Senha Nova</label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row mb-5">
+                        <div class="row">
                             <div class="col-md-12">
                                 <div class="form-floating">
-                                    <input class="form-control" type="text" id="confirmarSenhaNova"
-                                        name="confirmarSenhaNova" placeholder="Confirme a Senha Nova" disabled>
+                                    <input class="form-control" type="password" id="confirmarSenhaNova"
+                                        name="confirmarSenhaNova" placeholder="Confirme a Senha Nova" disabled required
+                                        oninput="validaSenha()">
                                     <label for="confirmarSenhaNova">Confirme a Senha Nova</label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-center align-items-center">
-                            <button class="btn btn-outline-primary">Alterar Senha</button>
+                        <div class="row mb-3">
+                            <div class="col-md-12">
+                                <span id="senha-erro" class="text-danger" style="display:none;">As senhas não
+                                    coincidem.</span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-center align-items-center mt-5">
+                            <button class="btn btn-outline-primary" type="submit" id="alterarSenhaBtn" disabled>Alterar
+                                Senha</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-    <!----------------------->
 
     <script>
-        function verificaSenha(senha) {
-            const senhaAtual = "<?= $_SESSION['senha'] ?>"
-            const senhaNovaInput = document.querySelector('#novaSenha')
-            const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova')
+        const senhaAtual = "<?= $_SESSION['senha'] ?>";
+        const senhaAtualInput = document.querySelector('#senhaAtual');
+        const senhaNovaInput = document.querySelector('#novaSenha');
+        const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova');
+        const alterarSenhaBtn = document.querySelector('#alterarSenhaBtn');
+        const senhaIcon = document.querySelector('#senhaIcon');
 
+        let senhaVisivel = false;
+
+        function verificaSenha(senha) {
             if (senha === senhaAtual) {
-                senhaNovaInput.removeAttribute('disabled')
-                senhaNovaConfirmaInput.removeAttribute('disabled')
+                senhaNovaInput.removeAttribute('disabled');
+                senhaNovaConfirmaInput.removeAttribute('disabled');
+            } else {
+                senhaNovaInput.setAttribute('disabled', 'true');
+                senhaNovaConfirmaInput.setAttribute('disabled', 'true');
             }
         }
+
+        function validaSenha() {
+            if (senhaNovaInput.value === senhaNovaConfirmaInput.value) {
+                alterarSenhaBtn.removeAttribute('disabled');
+                document.querySelector('#senha-erro').style.display = 'none';
+            } else {
+                alterarSenhaBtn.setAttribute('disabled', 'true');
+                document.querySelector('#senha-erro').style.display = 'block';
+            }
+        }
+
+        function mostrarSenhas() {
+            senhaVisivel = !senhaVisivel;
+            const tipo = senhaVisivel ? 'text' : 'password';
+            senhaAtualInput.type = tipo;
+            senhaNovaInput.type = tipo;
+            senhaNovaConfirmaInput.type = tipo;
+            senhaIcon.classList.toggle('bi-eye-fill', !senhaVisivel);
+            senhaIcon.classList.toggle('bi-eye-slash-fill', senhaVisivel);
+        }
     </script>
+    <!----------------------->
 
     <script>
         (function () {
