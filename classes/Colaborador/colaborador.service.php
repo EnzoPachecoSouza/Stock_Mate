@@ -45,7 +45,7 @@ class ColaboradorService
         OR COL_EMAIL LIKE '%$pesquisaColaborador%' 
         OR COL_CONTATO LIKE '%$pesquisaColaborador%'
         OR COL_CPF LIKE '%$pesquisaColaborador%'
-        ORDER BY COL_NOME
+        ORDER BY COL_STATUS DESC, COL_CARGO DESC, COL_NOME
         ";
         } else if (!empty($_GET['filter'])) {
             $filtrarColaborador = $_GET['filter'];
@@ -54,6 +54,7 @@ class ColaboradorService
             $query = '
             SELECT *
             FROM COLABORADORES
+            ORDER BY COL_STATUS DESC, COL_CARGO DESC, COL_NOME
         ';
         }
 
