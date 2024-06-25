@@ -358,13 +358,10 @@ require '../../classes/Cliente/cliente.controller.php';
                             action="../../classes/Cliente/cliente.controller.php?acao=editar&id=<?= $cliente->CLI_ID ?>">
                             <div class="row g-3 mb-4">
                                 <div class="col-md-6">
-                                    <div class="input-group">
-                                        <span class="input-group-text fw-bold">#</span>
-                                        <div class="form-floating">
-                                            <input class="form-control" type="text" id="cliente" name="cliente"
-                                                placeholder="Nome" value="<?= $cliente->CLI_NOME ?>" required>
-                                            <label for="cliente">Nome</label>
-                                        </div>
+                                    <div class="form-floating">
+                                        <input class="form-control" type="text" id="cliente" name="cliente"
+                                            placeholder="Nome" value="<?= $cliente->CLI_NOME ?>" required>
+                                        <label for="cliente">Nome</label>
                                     </div>
                                 </div>
 
