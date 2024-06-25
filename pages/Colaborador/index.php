@@ -569,11 +569,13 @@ require '../../classes/Colaborador/colaborador.controller.php';
                             action="../../classes/Colaborador/colaborador.controller.php?acao=alterarSenha&id=<?= $_SESSION['id'] ?>">
                             <div class="row mb-4">
                                 <div class="col-md-12">
-                                    <div class="form-floating">
-                                        <input class="form-control" type="password" id="senhaAtual" name="senhaAtual"
-                                            placeholder="Senha Atual" oninput="verificaSenha(this.value)" required>
-                                        <label for="senhaAtual">Senha Atual</label>
-                                        <div class="invalid-feedback">Por favor, insira sua senha atual.</div>
+                                    <div class="input-group">
+                                        <input class="form-control shadow-none" type="password" id="senhaAtual"
+                                            name="senhaAtual" placeholder="Senha Atual" oninput="verificaSenha(this.value)"
+                                            required>
+                                        <span class="input-group-text btn btn-primary" onclick="mostrarSenhas()">
+                                            <i id="senhaIcon" class="bi bi-eye-fill fs-4"></i>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -584,7 +586,6 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                         <input class="form-control" type="password" id="novaSenha" name="novaSenha"
                                             placeholder="Senha Nova" disabled required oninput="validaSenha()">
                                         <label for="novaSenha">Senha Nova</label>
-                                        <div class="invalid-feedback">Por favor, insira a nova senha.</div>
                                     </div>
                                 </div>
                             </div>
@@ -596,7 +597,6 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                             name="confirmarSenhaNova" placeholder="Confirme a Senha Nova" disabled required
                                             oninput="validaSenha()">
                                         <label for="confirmarSenhaNova">Confirme a Senha Nova</label>
-                                        <div class="invalid-feedback">Por favor, confirme a nova senha.</div>
                                     </div>
                                 </div>
                             </div>
@@ -620,9 +620,13 @@ require '../../classes/Colaborador/colaborador.controller.php';
 
         <script>
             const senhaAtual = "<?= $_SESSION['senha'] ?>";
+            const senhaAtualInput = document.querySelector('#senhaAtual');
             const senhaNovaInput = document.querySelector('#novaSenha');
             const senhaNovaConfirmaInput = document.querySelector('#confirmarSenhaNova');
             const alterarSenhaBtn = document.querySelector('#alterarSenhaBtn');
+            const senhaIcon = document.querySelector('#senhaIcon');
+
+            let senhaVisivel = false;
 
             function verificaSenha(senha) {
                 if (senha === senhaAtual) {
@@ -643,7 +647,18 @@ require '../../classes/Colaborador/colaborador.controller.php';
                     document.querySelector('#senha-erro').style.display = 'block';
                 }
             }
+
+            function mostrarSenhas() {
+                senhaVisivel = !senhaVisivel;
+                const tipo = senhaVisivel ? 'text' : 'password';
+                senhaAtualInput.type = tipo;
+                senhaNovaInput.type = tipo;
+                senhaNovaConfirmaInput.type = tipo;
+                senhaIcon.classList.toggle('bi-eye-fill', !senhaVisivel);
+                senhaIcon.classList.toggle('bi-eye-slash-fill', senhaVisivel);
+            }
         </script>
+
 
         <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
