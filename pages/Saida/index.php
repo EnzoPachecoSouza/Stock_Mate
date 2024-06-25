@@ -199,6 +199,7 @@ require '../../classes/Produto/produto.controller.php';
                                     <option value="Transferência Bancária">Transferência Bancária</option>
                                     <option value="Dinheiro">Dinheiro</option>
                                     <option value="Boleto">Boleto</option>
+                                    <option value="Pix">Pix</option>
                                 </select>
                                 <button onclick="filtrarFormaPagamento()" class="btn btn-primary" type="button"
                                     id="button-addon2">Filtrar</button>
@@ -388,6 +389,7 @@ require '../../classes/Produto/produto.controller.php';
                                         <option value="Transferência Bancária">Transferência Bancária</option>
                                         <option value="Dinheiro">Dinheiro</option>
                                         <option value="Boleto">Boleto</option>
+                                        <option value="Pix">Pix</option>
                                     </select>
                                     <label for="formaPagamento">Forma de pagamento</label>
                                 </div>
@@ -622,6 +624,7 @@ require '../../classes/Produto/produto.controller.php';
                                             <option value="Transferência Bancária">Transferência Bancária</option>
                                             <option value="Dinheiro">Dinheiro</option>
                                             <option value="Boleto">Boleto</option>
+                                            <option value="Pix">Pix</option>
                                         </select>
                                         <label for="formaPagamento">Forma de pagamento</label>
                                     </div>
