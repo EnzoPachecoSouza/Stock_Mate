@@ -484,16 +484,16 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                     </div>
                                 </div>
 
-                                <div class="row mb-4">
+                                <!-- <div class="row mb-4">
                                     <div class="col-md-6">
                                         <div class="form-floating">
                                             <div class="input-group">
-                                                <input class="form-control" type="text" id="senhaEdit" name="senha"
+                                                <input class="form-control" type="text" id="senhaEditar" name="senha"
                                                     placeholder="Senha" required readonly>
-                                                <span onclick="criarSenha()" class="input-group-text"><i
+                                                <span onclick="criarSenhaEditar()" class="input-group-text"><i
                                                         class="bi bi-arrow-clockwise"></i></span>
-                                                <span onclick="copiarSenha()" class="input-group-text" id="copiarSenha"><i
-                                                        class="bi bi-copy"></i></span>
+                                                <span onclick="copiarSenhaEditar()" class="input-group-text"
+                                                    id="copiarSenhaEditar"><i class="bi bi-copy"></i></span>
                                             </div>
                                         </div>
                                     </div>
@@ -507,7 +507,7 @@ require '../../classes/Colaborador/colaborador.controller.php';
                                             </select>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="d-flex justify-content-center align-items-center">
                                     <button class="btn btn-outline-primary">Editar colaborador</button>
@@ -519,7 +519,6 @@ require '../../classes/Colaborador/colaborador.controller.php';
             </div>
         <?php } ?>
         <!----------------------->
-
     <!-- TOAST DE CONFIRMAR AÇÃO REALIZADA -->
         <div class="toast-container position-fixed top-0 end-0 p-3">
             <div class="toast bg-white" id="toast">
